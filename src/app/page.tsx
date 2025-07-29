@@ -1,12 +1,11 @@
-import { Button } from "@/components/ui/button";
+import Navbar from "@/components/Navbar";
 
 const page = () => {
 	console.log("page component rendered");
 	return (
-		<div>
-			hello world
-			<Button>Click me</Button>
-		</div>
+		<>
+			<Navbar />
+		</>
 	);
 };
 

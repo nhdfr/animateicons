@@ -117,7 +117,8 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-[#1b1b1f] text-white font-sans antialiased;
+		@apply bg-[#1A1A2E] text-white  antialiased;
+		font-family: var(--font-geist-mono), monospace;
 	}
 	button {
 		@apply cursor-pointer text-inherit;
