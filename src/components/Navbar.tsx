@@ -1,6 +1,7 @@
 "use client";
 
 import { Github, Menu, X } from "lucide-react";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 const Navbar: React.FC = () => {
@@ -30,14 +31,15 @@ const Navbar: React.FC = () => {
 				<div className="flex justify-between items-center h-16">
 					{/* Logo */}
 					<div className="flex items-center space-x-3">
-						<img
-							src="/logo.png"
+						<Image
+							src="/logo.svg"
 							alt="logo"
 							width={45}
 							height={45}
 							loading="eager"
+							className="max-md:size-10"
 						/>
-						<span className="text-white text-xl font-semibold">
+						<span className="text-white text-lg md:text-xl font-semibold">
 							AnimateIcons
 						</span>
 						{/* <span className="bg-gradient-to-r from-[#007BFF] via-[#322AFF] to-[#FF3B3F] bg-clip-text text-transparent text-xl font-semibold">
