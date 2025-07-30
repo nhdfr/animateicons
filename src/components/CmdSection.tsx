@@ -44,13 +44,13 @@ const CmdSection: React.FC = () => {
 			<TabsList className="h-12 space-x-1.5 bg-transparent px-2 py-2.5">
 				<TabsTrigger
 					value="npm"
-					className="data-[state=active]:bg-primary rounded-sm text-white data-[state=active]:text-white data-[state=active]:shadow-sm"
+					className="data-[state=active]:bg-primary/30 rounded-sm text-white data-[state=active]:text-white data-[state=active]:shadow-sm"
 				>
 					npm
 				</TabsTrigger>
 				<TabsTrigger
 					value="bun"
-					className="data-[state=active]:bg-primary rounded-sm text-white data-[state=active]:text-white data-[state=active]:shadow-sm"
+					className="data-[state=active]:bg-primary/30 rounded-sm text-white data-[state=active]:text-white data-[state=active]:shadow-sm"
 				>
 					bun
 				</TabsTrigger>
