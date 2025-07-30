@@ -117,10 +117,18 @@
 		@apply border-border outline-ring/50;
 	}
 	body {
-		@apply bg-[#1A1A2E] text-white  antialiased;
+		@apply bg-[#1A1A2E] text-white antialiased;
 		font-family: var(--font-geist-mono), monospace;
 	}
 	button {
 		@apply cursor-pointer text-inherit;
 	}
+}
+
+@theme {
+	--color-primary: #007bff;
+	--color-indigoDeep: #322aff;
+	--color-accent: #ff3b3f;
+	--color-orangeEdge: #ff8f3c;
+	--color-bgDark: #1a1a2e;
 }

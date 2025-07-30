@@ -1,80 +1,71 @@
 "use client";
 
-import { Github, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import React, { useState } from "react";
+import { GithubIcon } from "./icons/Github";
 
 const Navbar: React.FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [isScrolled, setIsScrolled] = useState(false);
-
-	useEffect(() => {
-		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 20);
-		};
-
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
 
 	const toggleMenu = () => setIsOpen(!isOpen);
 
 	return (
-		<nav
-			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-				isScrolled
-					? "bg-black/50 backdrop-blur-md shadow-lg"
-					: "bg-transparent"
-			}`}
-		>
-			<div className="max-w-7xl mx-auto px-6 lg:px-8">
-				<div className="flex justify-between items-center h-16">
-					{/* Logo */}
-					<div className="flex items-center space-x-3">
+		<nav className="relative z-50 transition-all duration-300">
+			<div className="border-primary/20 border-b py-2 text-center text-xs text-zinc-400">
+				<p>
+					This is is under development, so some features may not work as
+					expected.
+				</p>
+			</div>
+			<div className="mx-auto max-w-7xl px-6 lg:px-8">
+				<div className="flex h-16 items-center justify-between">
+					<div className="flex items-center space-x-2">
 						<Image
 							src="/logo.svg"
 							alt="logo"
-							width={45}
-							height={45}
+							width={40}
+							height={40}
 							loading="eager"
 							className="max-md:size-10"
 						/>
-						<span className="text-white text-lg md:text-xl font-semibold">
+						<span className="text-lg font-semibold text-white">
 							AnimateIcons
 						</span>
-						{/* <span className="bg-gradient-to-r from-[#007BFF] via-[#322AFF] to-[#FF3B3F] bg-clip-text text-transparent text-xl font-semibold">
-							AnimateIcons
-						</span> */}
 					</div>
 
 					{/* Desktop Navigation */}
-					<div className="hidden md:flex items-center space-x-8">
-						<a
+					<div className="hidden items-center space-x-8 text-sm md:flex">
+						<Link
 							href="#docs"
-							className="text-zinc-300 hover:text-indigo-400 transition-colors duration-200 font-medium"
+							target="_blank"
+							className="font-medium text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
 							Docs
-						</a>
-						<a
+						</Link>
+						<Link
 							href="#examples"
-							className="text-zinc-300 hover:text-indigo-400 transition-colors duration-200 font-medium"
+							target="_blank"
+							className="font-medium text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
 							Examples
-						</a>
-						<a
-							href="#github"
-							className="text-zinc-300 hover:text-indigo-400 transition-colors duration-200 font-medium flex items-center space-x-2"
+						</Link>
+						<Link
+							href="https://github.com/Avijit07x/animateicons"
+							target="_blank"
+							className="flex items-center space-x-2 font-medium text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
-							<Github size={18} />
+							<GithubIcon size={18} />
 							<span>GitHub</span>
-						</a>
+						</Link>
 					</div>
 
 					{/* Mobile menu button */}
 					<div className="md:hidden">
 						<button
 							onClick={toggleMenu}
-							className="text-zinc-300 hover:text-indigo-400 transition-colors duration-200"
+							className="text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
 							{isOpen ? <X size={24} /> : <Menu size={24} />}
 						</button>
@@ -83,26 +74,26 @@ const Navbar: React.FC = () => {
 
 				{/* Mobile Navigation */}
 				<div
-					className={`md:hidden transition-all duration-300 overflow-hidden ${
+					className={`overflow-hidden transition-all duration-300 md:hidden ${
 						isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
 					}`}
 				>
-					<div className="px-2 pt-2 pb-3 space-y-1 bg-zinc-900/90 backdrop-blur-md rounded-lg mt-2 border border-zinc-800/50">
+					<div className="bg-primary/10 border-primary/20 mt-2 w-full gap-0 space-y-1 rounded-lg border px-2 pt-2 pb-3 shadow-lg backdrop-blur-md">
 						<a
 							href="#docs"
-							className="block px-3 py-2 text-zinc-300 hover:text-indigo-400 transition-colors duration-200 font-medium"
+							className="block px-3 py-2 font-medium text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
 							Docs
 						</a>
 						<a
 							href="#examples"
-							className="block px-3 py-2 text-zinc-300 hover:text-indigo-400 transition-colors duration-200 font-medium"
+							className="block px-3 py-2 font-medium text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
 							Examples
 						</a>
 						<a
 							href="#github"
-							className="block px-3 py-2 text-zinc-300 hover:text-indigo-400 transition-colors duration-200 font-medium"
+							className="block px-3 py-2 font-medium text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
 							GitHub
 						</a>

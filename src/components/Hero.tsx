@@ -1,122 +1,89 @@
 "use client";
-import { ArrowRight, Github, Sparkles } from "lucide-react";
+
+import { Sparkles } from "lucide-react";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Button } from "./ui/button";
+import CmdSection from "./CmdSection";
 
 const HeroSection: React.FC = () => {
-	const [isVisible, setIsVisible] = useState(false);
+	const [isVisible, setIsVisible] = useState<boolean>(false);
 
 	useEffect(() => {
 		setIsVisible(true);
 	}, []);
 
 	return (
-		<section className="min-h-screen bg-gradient-to-br from-bgDark via-zinc-900 to-bgDark pt-16 overflow-hidden relative">
+		<section>
 			{/* Background Elements */}
-			<div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
-			<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
+			<div className="from-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] via-transparent to-transparent"></div>
+			<div className="bg-primary/5 absolute top-1/4 left-1/4 h-96 w-96 animate-pulse rounded-full blur-3xl"></div>
 			<div
-				className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigoDeep/5 rounded-full blur-3xl animate-pulse"
+				className="bg-indigoDeep/5 absolute right-1/4 bottom-1/4 h-96 w-96 animate-pulse rounded-full blur-3xl"
 				style={{ animationDelay: "1s" }}
 			></div>
 			<div
-				className="absolute top-1/2 left-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse"
+				className="bg-accent/5 absolute top-1/2 left-1/2 h-64 w-64 animate-pulse rounded-full blur-3xl"
 				style={{ animationDelay: "2s" }}
 			></div>
 
-			<div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-				<div className="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20">
+			<div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+				<div className="mt-10 flex flex-col items-center justify-between md:mt-20 lg:flex-row">
 					{/* Left Content */}
 					<div
-						className={`lg:w-1/2 space-y-8 transform transition-all duration-1000 ${
+						className={`transform space-y-8 transition-all duration-1000 lg:w-1/2 ${
 							isVisible
 								? "translate-y-0 opacity-100"
 								: "translate-y-10 opacity-0"
 						}`}
 					>
 						<div className="space-y-6">
-							{/* Badge */}
 							<div
-								className={`inline-flex items-center space-x-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 transform transition-all duration-1000 delay-100 ${
+								className={`bg-primary/10 border-primary/20 inline-flex transform items-center space-x-2 rounded-full border px-4 py-2 transition-all delay-100 duration-1000 ${
 									isVisible
 										? "translate-y-0 opacity-100"
 										: "translate-y-10 opacity-0"
 								}`}
 							>
-								<Sparkles size={16} className="text-primary" />
-								<span className="text-primary text-sm font-medium">
+								<Sparkles size={14} className="text-primary" />
+								<span className="text-primary text-xs font-medium">
 									Now with 50+ animated icons
 								</span>
 							</div>
 
-							<h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-								<span className="bg-gradient-to-r from-primary via-indigoDeep to-accent bg-clip-text text-transparent">
-									Bring Icons to Life
+							<h1 className="text-4xl leading-tight font-bold">
+								<span className="from-primary via-indigoDeep to-accent bg-gradient-to-r bg-clip-text text-transparent">
+									Make Every <br className="hidden max-sm:block" /> Icon Move
 								</span>
 								<br />
-								<span className="text-white">
-									with AnimateIcons
-								</span>
+								<span className="text-white">with AnimateIcons</span>
 							</h1>
 
-							<p className="text-xl lg:text-2xl text-zinc-300 leading-relaxed max-w-2xl">
-								A sleek React library for animated SVG icons
-								that move with purpose. Transform static designs
-								into engaging user experiences with smooth,
-								performant animations.
-							</p>
-						</div>
-
-						{/* CTA Buttons */}
-						<div
-							className={`flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-200 ${
-								isVisible
-									? "translate-y-0 opacity-100"
-									: "translate-y-10 opacity-0"
-							}`}
-						>
-							<Button>
-								<span>Get Started</span>
-								<ArrowRight
-									size={20}
-									className="group-hover:translate-x-1 transition-transform duration-200"
-								/>
-							</Button>
-
-							<Button variant="outline">
-								<Github size={20} />
-								<span>GitHub</span>
-							</Button>
-						</div>
-
-						{/* Stats */}
-						<div
-							className={`flex flex-col sm:flex-row gap-8 pt-8 transform transition-all duration-1000 delay-400 ${
-								isVisible
-									? "translate-y-0 opacity-100"
-									: "translate-y-10 opacity-0"
-							}`}
-						>
-							<div className="text-center sm:text-left">
-								<div className="text-3xl font-bold text-primary">
-									50+
-								</div>
-								<div className="text-zinc-400">
-									Animated Icons
-								</div>
+							<div className="max-w-2xl space-y-2 text-sm leading-relaxed text-zinc-300">
+								<p>
+									A sleek React library for animated SVG icons that move with
+									purpose. Transform static designs into engaging user
+									experiences with smooth, performant animations.
+								</p>
+								<p>
+									built with{" "}
+									<Link
+										href={"https://motion.dev/"}
+										target="_blank"
+										className="underline"
+									>
+										motion
+									</Link>{" "}
+									and{" "}
+									<Link
+										href={"https://lucide.dev/"}
+										target="_blank"
+										className="underline"
+									>
+										lucide
+									</Link>
+								</p>
 							</div>
-							<div className="text-center sm:text-left">
-								<div className="text-3xl font-bold text-indigoDeep">
-									2.5KB
-								</div>
-								<div className="text-zinc-400">Bundle Size</div>
-							</div>
-							<div className="text-center sm:text-left">
-								<div className="text-3xl font-bold text-accent">
-									10K+
-								</div>
-								<div className="text-zinc-400">Downloads</div>
-							</div>
+							<CmdSection />
 						</div>
 					</div>
 				</div>
