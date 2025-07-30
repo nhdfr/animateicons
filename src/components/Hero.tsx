@@ -13,7 +13,7 @@ const HeroSection: React.FC = () => {
 	}, []);
 
 	return (
-		<section>
+		<div>
 			{/* Background Elements */}
 			<div className="from-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] via-transparent to-transparent"></div>
 			<div className="bg-primary/5 absolute top-1/4 left-1/4 h-96 w-96 animate-pulse rounded-full blur-3xl"></div>
@@ -88,7 +88,7 @@ const HeroSection: React.FC = () => {
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 	);
 };
 
