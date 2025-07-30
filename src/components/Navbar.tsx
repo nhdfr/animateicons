@@ -15,8 +15,7 @@ const Navbar: React.FC = () => {
 		<nav className="relative z-50 transition-all duration-300">
 			<div className="border-primary/20 border-b py-2 text-center text-xs text-zinc-400">
 				<p>
-					This is under development, so some features may not work as
-					expected.
+					This is under development, so some features may not work as expected.
 				</p>
 			</div>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -65,6 +64,7 @@ const Navbar: React.FC = () => {
 					<div className="md:hidden">
 						<button
 							onClick={toggleMenu}
+							aria-label="Open menu"
 							className="text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
 							{isOpen ? <X size={24} /> : <Menu size={24} />}
