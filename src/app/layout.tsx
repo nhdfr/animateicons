@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ogImg from "./og.png";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -17,6 +18,37 @@ export const metadata: Metadata = {
 	title: "AnimateIcons – Modern Animated React Icon Library",
 	description:
 		"Seamless, animated icons for React—make your interface stand out with beautifully smooth motion and easy customization. Built to help you create engaging experiences without the hassle.",
+	openGraph: {
+		title: "AnimateIcons – Modern Animated React Icon Library",
+		description:
+			"Seamless, animated icons for React—make your interface stand out with beautifully smooth motion and easy customization. Built to help you create engaging experiences without the hassle.",
+		url: "https://animateicons.vercel.app",
+		siteName: "AnimateIcons",
+		images: [
+			{
+				url: ogImg.src,
+				width: ogImg.width,
+				height: ogImg.height,
+				alt: "AnimateIcons OG Banner",
+			},
+		],
+		locale: "en_US",
+		type: "website",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "AnimateIcons – Modern Animated React Icon Library",
+		description:
+			"Seamless, animated icons for React—make your interface stand out with beautifully smooth motion and easy customization. Built to help you create engaging experiences without the hassle.",
+		images: [
+			{
+				url: ogImg.src,
+				width: ogImg.width,
+				height: ogImg.height,
+				alt: "AnimateIcons OG Banner",
+			},
+		],
+	},
 };
 
 export default function RootLayout({
