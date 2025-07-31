@@ -20,18 +20,20 @@ const Navbar: React.FC = () => {
 			</div>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="flex h-16 items-center justify-between">
-					<div className="flex items-center space-x-2">
-						<Image
-							src="/logo.svg"
-							alt="logo"
-							width={40}
-							height={40}
-							loading="eager"
-							className="max-md:size-10"
-						/>
-						<span className="text-lg font-semibold text-white">
-							AnimateIcons
-						</span>
+					<div className="flex items-center">
+						<Link href="/" className="flex items-center space-x-2">
+							<Image
+								src="/logo.svg"
+								alt="logo"
+								width={40}
+								height={40}
+								loading="eager"
+								className="max-md:size-10"
+							/>
+							<span className="text-lg font-semibold text-white">
+								AnimateIcons
+							</span>
+						</Link>
 					</div>
 
 					{/* Desktop Navigation */}
