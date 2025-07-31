@@ -1,9 +1,9 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import CmdSection from "./CmdSection";
+import { SparklesIcon } from "./icons/SparklesIcon";
 
 const HeroSection: React.FC = () => {
 	const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -27,7 +27,7 @@ const HeroSection: React.FC = () => {
 			></div>
 
 			<div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-				<div className="mt-10 flex flex-col items-center justify-between md:mt-20 lg:flex-row">
+				<div className="mt-10 flex flex-col md:mt-20 lg:flex-row lg:items-center lg:justify-between">
 					{/* Left Content */}
 					<div
 						className={`transform space-y-8 transition-all duration-1000 lg:w-1/2 ${
@@ -44,7 +44,7 @@ const HeroSection: React.FC = () => {
 										: "translate-y-10 opacity-0"
 								}`}
 							>
-								<Sparkles size={14} className="text-primary" />
+								<SparklesIcon size={14} className="text-primary" />
 								<span className="text-primary text-xs font-medium">
 									Now with 50+ animated icons
 								</span>

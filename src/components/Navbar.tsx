@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
 
 	return (
 		<nav className="relative z-50 transition-all duration-300">
-			<div className="border-primary/20 border-b py-2 text-center text-xs text-zinc-400">
+			<div className="border-primary/20 border-b py-2 px-4 text-center text-xs text-zinc-400">
 				<p>
 					This is under development, so some features may not work as expected.
 				</p>

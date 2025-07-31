@@ -22,6 +22,16 @@ const defaultTransition: Transition = {
 	mass: 1,
 };
 
+const boxVariants = {
+	normal: { translateY: 0, translateX: 0, rotate: 0 },
+	animate: { translateY: -3, translateX: -3, rotate: 360 },
+};
+
+const pathVariants = {
+	normal: { x: 0, y: 0 },
+	animate: { x: 3, y: 3 },
+};
+
 const CopyIcon = forwardRef<CopyIconHandle, CopyIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
@@ -57,6 +67,7 @@ const CopyIcon = forwardRef<CopyIconHandle, CopyIconProps>(
 			},
 			[controls, onMouseLeave],
 		);
+
 		return (
 			<div
 				className={cn(className)}
@@ -82,21 +93,18 @@ const CopyIcon = forwardRef<CopyIconHandle, CopyIconProps>(
 						y="8"
 						rx="2"
 						ry="2"
-						variants={{
-							normal: { translateY: 0, translateX: 0 },
-							animate: { translateY: -3, translateX: -3 },
-						}}
+						variants={boxVariants}
 						animate={controls}
-						transition={defaultTransition}
+						transition={{
+							...defaultTransition,
+							duration: 0.7,
+						}}
 					/>
 					<motion.path
 						d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
-						variants={{
-							normal: { x: 0, y: 0 },
-							animate: { x: 3, y: 3 },
-						}}
-						transition={defaultTransition}
+						variants={pathVariants}
 						animate={controls}
+						transition={defaultTransition}
 					/>
 				</svg>
 			</div>
