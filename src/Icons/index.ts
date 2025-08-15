@@ -1,6 +1,7 @@
 import { AtomIcon } from "./AtomIcon";
 import { BicepsFlexedIcon } from "./BicepsFlexedIcon";
-import { SnowflakeIcon } from "./SnowflakeIcon";
+import { GithubIcon } from "./GithubIcon";
+import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { XIcon } from "./XIcon";
 
 const Icon_List: IconListItem[] = [
@@ -52,9 +53,14 @@ const Icon_List: IconListItem[] = [
 		],
 	},
 	{
-		name: "SnowflakeIcon",
+		name: "snow-flake",
 		icon: SnowflakeIcon,
 		keywords: ["cold", "weather", "freeze", "snow", "winter"],
+	},
+	{
+		name: "github",
+		icon: GithubIcon,
+		keywords: ["logo", " version control"],
 	},
 ];
 
