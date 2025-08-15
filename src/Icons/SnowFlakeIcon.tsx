@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { HTMLMotionProps, motion, useAnimation } from "motion/react";
+import type { HTMLMotionProps } from "motion/react";
+import { motion, useAnimation } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface SnowflakeIconHandle {
