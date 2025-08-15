@@ -6,7 +6,9 @@ import { GithubIcon } from "./GithubIcon";
 import { HeartIcon } from "./HeartIcon";
 import { LoaderCircleIcon } from "./LoaderCircleIcon";
 import { LoaderIcon } from "./LoaderIcon";
+import { LockIcon } from "./LockIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
+import { UserLockIcon } from "./UserLockIcon";
 import { XIcon } from "./XIcon";
 
 const Icon_List: IconListItem[] = [
@@ -130,6 +132,16 @@ const Icon_List: IconListItem[] = [
 			"…",
 			"...",
 		],
+	},
+	{
+		name: "lock",
+		icon: LockIcon,
+		keywords: ["security", "password", "secure", "admin"],
+	},
+	{
+		name: "user-lock",
+		icon: UserLockIcon,
+		keywords: ["person", "lock", "locked", "account", "secure"],
 	},
 ];
 
