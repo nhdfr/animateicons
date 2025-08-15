@@ -1,6 +1,7 @@
 import { AtomIcon } from "./AtomIcon";
 import { BicepsFlexedIcon } from "./BicepsFlexedIcon";
 import { GithubIcon } from "./GithubIcon";
+import { HeartIcon } from "./HeartIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { XIcon } from "./XIcon";
 
@@ -61,6 +62,11 @@ const Icon_List: IconListItem[] = [
 		name: "github",
 		icon: GithubIcon,
 		keywords: ["logo", " version control"],
+	},
+	{
+		name: "heart",
+		icon: HeartIcon,
+		keywords: ["like", "love", "emotion", "suit", "playing", "cards"],
 	},
 ];
 
