@@ -132,3 +132,12 @@
 	--color-orangeEdge: #ff8f3c;
 	--color-bgDark: #1a1a2e;
 }
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+	}
+  body {
+    @apply bg-background text-foreground;
+	}
+}

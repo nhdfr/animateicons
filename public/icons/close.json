@@ -1,0 +1,34 @@
+{
+  "name": "close",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": [
+    "motion"
+  ],
+  "devDependencies": [],
+  "tailwind": {},
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "keywords": [
+    "cancel",
+    "close",
+    "cross",
+    "delete",
+    "ex",
+    "remove",
+    "times",
+    "clear",
+    "math",
+    "multiply",
+    "multiplication"
+  ],
+  "files": [
+    {
+      "path": "",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,7 +1,11 @@
 import { AtomIcon } from "./AtomIcon";
 import { BicepsFlexedIcon } from "./BicepsFlexedIcon";
+import { CopyIcon } from "./CopyIcon";
+import { EllipsisIcon } from "./EllipsisIcon";
 import { GithubIcon } from "./GithubIcon";
 import { HeartIcon } from "./HeartIcon";
+import { LoaderCircleIcon } from "./LoaderCircleIcon";
+import { LoaderIcon } from "./LoaderIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { XIcon } from "./XIcon";
 
@@ -37,7 +41,7 @@ const Icon_List: IconListItem[] = [
 		],
 	},
 	{
-		name: "X",
+		name: "close",
 		icon: XIcon,
 		keywords: [
 			"cancel",
@@ -67,6 +71,65 @@ const Icon_List: IconListItem[] = [
 		name: "heart",
 		icon: HeartIcon,
 		keywords: ["like", "love", "emotion", "suit", "playing", "cards"],
+	},
+	{
+		name: "copy",
+		icon: CopyIcon,
+		keywords: ["clone", "duplicate", "multiple"],
+	},
+	{
+		name: "loader",
+		icon: LoaderIcon,
+		keywords: [
+			"loading",
+			"wait",
+			"busy",
+			"progress",
+			"spinner",
+			"spinning",
+			"throbber",
+		],
+	},
+	{
+		name: "loader-circle",
+		icon: LoaderCircleIcon,
+		keywords: [
+			"loading",
+			"wait",
+			"busy",
+			"progress",
+			"spinner",
+			"spinning",
+			"throbber",
+			"circle",
+		],
+	},
+	{
+		name: "ellipsis",
+		icon: EllipsisIcon,
+		keywords: [
+			"et cetera",
+			"etc",
+			"loader",
+			"loading",
+			"progress",
+			"pending",
+			"throbber",
+			"menu",
+			"options",
+			"operator",
+			"code",
+			"coding",
+			"spread",
+			"rest",
+			"more",
+			"further",
+			"extra",
+			"overflow",
+			"dots",
+			"…",
+			"...",
+		],
 	},
 ];
 

@@ -12,7 +12,7 @@ const CmdSection: React.FC = () => {
 	const [copied, setCopied] = useState(false);
 	const [isReady, setIsReady] = useState(false);
 
-	const commands = ["'Loader'", "'Heart'", "'Food'", "'Copy'"];
+	const commands = ["loader.json", "heart.json", "food.json", "copy.json"];
 
 	const copyToClipboard = () => {
 		if (!currentCmd) return;
@@ -35,11 +35,11 @@ const CmdSection: React.FC = () => {
 			if (tab) {
 				setActiveTab(tab);
 			}
-			setIsReady(true); 
+			setIsReady(true);
 		}
 	}, []);
 
-	if (!isReady) return null; 
+	if (!isReady) return null;
 
 	return (
 		<Tabs
@@ -48,7 +48,7 @@ const CmdSection: React.FC = () => {
 				setActiveTab(value as "npm" | "bun");
 				localStorage.setItem("tab", value);
 			}}
-			className="bg-primary/10 border-primary/20 relative mt-5 w-full gap-0 rounded-md border shadow-lg"
+			className="bg-primary/10 border-primary/20 relative mt-5 w-full gap-0 rounded-md border shadow-lg lg:w-200"
 		>
 			<TabsList className="h-12 space-x-1.5 bg-transparent px-2 py-2.5">
 				<TabsTrigger
@@ -56,6 +56,12 @@ const CmdSection: React.FC = () => {
 					className="data-[state=active]:bg-primary/30 rounded-sm text-white data-[state=active]:shadow-sm"
 				>
 					npm
+				</TabsTrigger>
+				<TabsTrigger
+					value="pnpm"
+					className="data-[state=active]:bg-primary/30 rounded-sm text-white data-[state=active]:shadow-sm"
+				>
+					pnpm
 				</TabsTrigger>
 				<TabsTrigger
 					value="bun"
@@ -69,13 +75,42 @@ const CmdSection: React.FC = () => {
 				value="npm"
 				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-scroll"
 			>
-				<div className="flex w-full items-center justify-between gap-2">
-					<code className="flex items-center gap-1">
-						<span>npx animate-icons</span>{" "}
+				<div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
+					<code className="line-clamp-1 flex flex-nowrap items-center">
+						npx shadcn@latest add "https://animateicons.vercel.app/icons/
 						<WordRotate
 							words={commands}
 							onWordChange={(word) =>
-								setCurrentCmd(`npx animate-icons ${word}`)
+								setCurrentCmd(
+									`npx shadcn@latest add "https://animateicons.vercel.app/icons/${word}"`,
+								)
+							}
+						/>
+					</code>
+					<Button
+						variant="ghost"
+						size="icon"
+						className="hover:bg-primary/10 p-0.5 hover:text-white"
+						onClick={copyToClipboard}
+						aria-label={copied ? "Copied" : "Copy"}
+					>
+						{copied ? <CheckIcon /> : <CopyIcon />}
+					</Button>
+				</div>
+			</TabsContent>
+			<TabsContent
+				value="pnpm"
+				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-scroll"
+			>
+				<div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
+					<code className="line-clamp-1 flex flex-nowrap items-center">
+						pnpm dlx shadcn@latest add "https://animateicons.vercel.app/icons/
+						<WordRotate
+							words={commands}
+							onWordChange={(word) =>
+								setCurrentCmd(
+									`pnpm dlx shadcn@latest add "https://animateicons.vercel.app/icons/${word}"`,
+								)
 							}
 						/>
 					</code>
@@ -95,14 +130,17 @@ const CmdSection: React.FC = () => {
 				value="bun"
 				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-scroll"
 			>
-				<div className="flex w-full items-center justify-between gap-2">
-					<code className="flex items-center gap-1">
-						<span>bunx animate-icons</span>{" "}
+				<div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
+					<code className="line-clamp-1 flex items-center">
+						bunx shadcn@latest add "https://animateicons.vercel.app/icons/
 						<WordRotate
 							words={commands}
 							onWordChange={(word) =>
-								setCurrentCmd(`bunx animate-icons ${word}`)
+								setCurrentCmd(
+									`bunx shadcn@latest add "https://animateicons.vercel.app/icons/${word}"`,
+								)
 							}
+							className="inline-block"
 						/>
 					</code>
 					<Button

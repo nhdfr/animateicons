@@ -45,7 +45,7 @@ export function WordRotate({
 					className={cn(className)}
 					{...motionProps}
 				>
-					{words[index]}
+					{words[index]}"
 				</motion.span>
 			</AnimatePresence>
 		</div>

@@ -55,7 +55,7 @@ const HeroSection: React.FC = () => {
 						initial={{ opacity: 0, y: 40 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7 }}
-						className="space-y-8 lg:w-1/2"
+						className="space-y-8"
 					>
 						<div className="space-y-6">
 							<motion.div
