@@ -1,5 +1,6 @@
 import { AtomIcon } from "./AtomIcon";
 import { BicepsFlexedIcon } from "./BicepsFlexedIcon";
+import { SnowflakeIcon } from "./SnowflakeIcon";
 import { XIcon } from "./XIcon";
 
 const Icon_List: IconListItem[] = [
@@ -49,6 +50,11 @@ const Icon_List: IconListItem[] = [
 			"multiply",
 			"multiplication",
 		],
+	},
+	{
+		name: "SnowflakeIcon",
+		icon: SnowflakeIcon,
+		keywords: ["cold", "weather", "freeze", "snow", "winter"],
 	},
 ];
 

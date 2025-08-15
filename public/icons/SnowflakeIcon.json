@@ -1,0 +1,28 @@
+{
+  "name": "SnowflakeIcon",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": [
+    "motion"
+  ],
+  "devDependencies": [],
+  "tailwind": {},
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "keywords": [
+    "cold",
+    "weather",
+    "freeze",
+    "snow",
+    "winter"
+  ],
+  "files": [
+    {
+      "path": "",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

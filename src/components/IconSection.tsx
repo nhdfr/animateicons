@@ -22,7 +22,7 @@ const IconSection = () => {
 	});
 
 	return (
-		<div className="w-full">
+		<div className="min-h-80 w-full">
 			<motion.input
 				type="text"
 				className="bg-primary/10 border-primary/20 focus:ring-primary/50 relative mt-5 w-full rounded-md border px-4 py-2 text-sm text-white shadow-lg placeholder:text-zinc-300 focus:ring-1 focus:outline-none"
@@ -42,7 +42,7 @@ const IconSection = () => {
 						exit={{ opacity: 0, y: -10 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.3, delay: 0.4 }}
-						className="mt-5 grid pb-10 w-full grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
+						className="mt-5 grid w-full grid-cols-1 gap-4 pb-10 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
 					>
 						{filteredItems.map((item, i) => (
 							<IconTile key={i} item={item} />
