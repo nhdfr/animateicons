@@ -30,9 +30,12 @@ const IconTile: React.FC<Props> = ({ item }) => {
 			if (savedTab === "bun") {
 				cliTool = "bunx";
 			}
+			if (savedTab === "pnpm") {
+				cliTool = "pnpm dlx";
+			}
 		}
 
-		const command = `${cliTool} animate-icons ${item.name}`;
+		const command = `${cliTool} shadcn@latest add "https://animateicons.vercel.app/icons/${item.name}.json"`;
 		await navigator.clipboard.writeText(command);
 		setCopiedCli(true);
 		setTimeout(() => setCopiedCli(false), 1500);
