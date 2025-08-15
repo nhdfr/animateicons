@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AnimateIcons
 
-## Getting Started
+![Animate Icons Preview](https://animateicons.vercel.app/_next/static/media/og.7862f95f.png)
 
-First, run the development server:
+A sleek React library for animated SVG icons that move with purpose. Transform static designs into engaging user experiences with smooth, performant animations.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 📦 Installation
+
+You can install any icon directly into your project using the **shadcn** CLI:
+
+### npm example
+
+```
+npx shadcn@latest add "https://animateicons.vercel.app/icons/atom.json"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### bun example
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+bunx shadcn@latest add "https://animateicons.vercel.app/icons/atom.json"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Replace `atom.json` with any icon name from our gallery.
+View all icons → **[animateicons.vercel.app](https://animateicons.vercel.app)**
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+After installing an icon, import it into your component:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+"use client";
+import { AtomIcon } from "./components/ui/AtomIcon";
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+export default function Page() {
+return ;
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## ✨ Features
+
+- 🎯 Smooth, purposeful animations out‑of‑the‑box
+- ⚡ Lightweight & built with `motion/react`
+- 🎨 100+ customizable SVG icons
+- 📱 Works with React & Next.js
+- 🔧 Optimized for performance
+
+---
+
+## Notes
+
+> **Note:** This project is a work in progress — new animated icons are added regularly.  
+> We’d love your feedback and contributions as the project evolves!
