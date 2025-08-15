@@ -66,7 +66,6 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 		const tailControls = useAnimation();
 		const isControlledRef = useRef(false);
 
-		// Tail (hand) animation: always waving
 		useEffect(() => {
 			tailControls.start("wag");
 		}, [tailControls]);
@@ -76,11 +75,9 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 			return {
 				startAnimation: async () => {
 					bodyControls.start("animate");
-					// The tail is always waving, no need to start manually.
 				},
 				stopAnimation: () => {
 					bodyControls.start("normal");
-					// The tail keeps waving.
 				},
 			};
 		});
@@ -88,7 +85,6 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 		const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
 			if (!isControlledRef.current) {
 				bodyControls.start("animate");
-				// The tail is always waving.
 			} else {
 				onMouseEnter?.(e);
 			}
@@ -97,7 +93,6 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 		const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
 			if (!isControlledRef.current) {
 				bodyControls.start("normal");
-				// The tail keeps waving.
 			} else {
 				onMouseLeave?.(e);
 			}

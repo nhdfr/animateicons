@@ -1,0 +1,113 @@
+"use client";
+
+import { cn } from "@/lib/utils";
+import { HTMLMotionProps, motion, useAnimation } from "motion/react";
+import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+
+export interface TerminalIconHandle {
+	startAnimation: () => void;
+	stopAnimation: () => void;
+}
+
+interface TerminalIconProps extends HTMLMotionProps<"div"> {
+	size?: number;
+}
+
+const TerminalIcon = forwardRef<TerminalIconHandle, TerminalIconProps>(
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
+		const controls = useAnimation();
+		const isControlledRef = useRef(false);
+
+		useImperativeHandle(ref, () => {
+			isControlledRef.current = true;
+			return {
+				startAnimation: () => controls.start("animate"),
+				stopAnimation: () => controls.start("normal"),
+			};
+		});
+
+		const handleMouseEnter = useCallback(
+			(e: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlledRef.current) {
+					controls.start("animate");
+				} else {
+					onMouseEnter?.(e);
+				}
+			},
+			[controls, onMouseEnter],
+		);
+
+		const handleMouseLeave = useCallback(
+			(e: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlledRef.current) {
+					controls.start("normal");
+				} else {
+					onMouseLeave?.(e);
+				}
+			},
+			[controls, onMouseLeave],
+		);
+
+		return (
+			<motion.div
+				className={cn(className)}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
+				{...props}
+			>
+				<motion.svg
+					xmlns="http://www.w3.org/2000/svg"
+					width={size}
+					height={size}
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					variants={{
+						normal: { transition: { duration: 0.3 } },
+						animate: { transition: { staggerChildren: 0.1 } },
+					}}
+					animate={controls}
+					initial="normal"
+				>
+					<motion.path
+						d="M12 19h8"
+						variants={{
+							normal: { scaleX: 1, originX: 0, transition: { duration: 0.3 } },
+
+							animate: {
+								scaleX: [1, 0.3, 1],
+								originX: 0,
+								transition: {
+									duration: 0.6,
+									times: [0, 0.5, 1],
+								},
+							},
+						}}
+					/>
+
+					<motion.path
+						d="m4 17 6-6-6-6"
+						variants={{
+							normal: { x: 0, opacity: 1 },
+							animate: {
+								x: [0, -2, 0],
+								opacity: [1, 0.6, 1],
+								transition: {
+									duration: 0.5,
+									repeat: Infinity,
+									repeatDelay: 0.5,
+								},
+							},
+						}}
+					/>
+				</motion.svg>
+			</motion.div>
+		);
+	},
+);
+
+TerminalIcon.displayName = "TerminalIcon";
+export { TerminalIcon };
