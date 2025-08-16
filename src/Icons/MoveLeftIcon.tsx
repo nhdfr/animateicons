@@ -52,8 +52,8 @@ const MoveLeftIcon = forwardRef<MoveLeftIconHandle, MoveLeftIconProps>(
 		const arrowVariants: Variants = {
 			normal: { x: 0 },
 			animate: {
-				x: [-2, 0, -2, 0],
-				transition: { duration: 0.6, repeat: Infinity },
+				x: [0, -3, 0],
+				transition: { duration: 0.6, repeat: Infinity, ease: "easeInOut" },
 			},
 		};
 
@@ -85,9 +85,16 @@ const MoveLeftIcon = forwardRef<MoveLeftIconHandle, MoveLeftIconProps>(
 					animate={controls}
 					initial="normal"
 				>
-					<motion.path d="M6 8L2 12L6 16" variants={arrowVariants} />
-
-					<motion.path d="M2 12H22" variants={lineVariants} />
+					<motion.path
+						d="M6 8L2 12L6 16"
+						variants={arrowVariants}
+						stroke="currentColor"
+					/>
+					<motion.path
+						d="M2 12H22"
+						variants={lineVariants}
+						stroke="currentColor"
+					/>
 				</motion.svg>
 			</motion.div>
 		);

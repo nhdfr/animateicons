@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import type { HTMLMotionProps, Variants } from "motion/react";
+import type { HTMLMotionProps } from "motion/react";
 import { motion, useAnimation } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
@@ -31,51 +31,19 @@ const LoaderCircleIcon = forwardRef<
 
 	const handleEnter = useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
-			if (!isControlled.current) {
-				controls.start("animate");
-			} else {
-				onMouseEnter?.(e);
-			}
+			if (!isControlled.current) controls.start("animate");
+			onMouseEnter?.(e);
 		},
 		[controls, onMouseEnter],
 	);
 
 	const handleLeave = useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
-			if (!isControlled.current) {
-				controls.start("normal");
-			} else {
-				onMouseLeave?.(e);
-			}
+			if (!isControlled.current) controls.start("normal");
+			onMouseLeave?.(e);
 		},
 		[controls, onMouseLeave],
 	);
-
-	const wrapperVariants: Variants = {
-		normal: { rotate: 0, scale: 1 },
-		animate: {
-			rotate: 360,
-			scale: [1, 1.08, 1],
-			transition: {
-				rotate: { duration: 1.2, ease: "linear", repeat: Infinity },
-				scale: { duration: 0.8, repeat: Infinity, repeatType: "mirror" },
-			},
-		},
-	};
-
-	const arcVariants: Variants = {
-		normal: { pathLength: 0.85, pathOffset: 0, opacity: 0.9 },
-		animate: {
-			pathLength: [0.3, 0.85],
-			pathOffset: [0, 0.15],
-			opacity: [0.6, 1],
-			transition: {
-				duration: 1.2,
-				ease: [0.42, 0, 0.58, 1],
-				repeat: Infinity,
-			},
-		},
-	};
 
 	return (
 		<motion.div
@@ -94,11 +62,21 @@ const LoaderCircleIcon = forwardRef<
 				strokeWidth="2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
-				variants={wrapperVariants}
 				animate={controls}
 				initial="normal"
+				variants={{
+					normal: { rotate: 0 },
+					animate: {
+						rotate: 360,
+						transition: {
+							duration: 1,
+							ease: "linear",
+							repeat: Infinity,
+						},
+					},
+				}}
 			>
-				<motion.path d="M21 12a9 9 0 1 1-6.219-8.56" variants={arcVariants} />
+				<path d="M21 12a9 9 0 1 1-6.219-8.56" />
 			</motion.svg>
 		</motion.div>
 	);
