@@ -5,18 +5,18 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface LoaderCircleIconHandle {
+export interface EllipsisVerticalIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface LoaderCircleIconProps extends HTMLMotionProps<"div"> {
+interface EllipsisVerticalIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const LoaderCircleIcon = forwardRef<
-	LoaderCircleIconHandle,
-	LoaderCircleIconProps
+const EllipsisVerticalIcon = forwardRef<
+	EllipsisVerticalIconHandle,
+	EllipsisVerticalIconProps
 >(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 	const controls = useAnimation();
 	const isControlled = useRef(false);
@@ -51,35 +51,22 @@ const LoaderCircleIcon = forwardRef<
 		[controls, onMouseLeave],
 	);
 
-	const wrapperVariants: Variants = {
-		normal: { rotate: 0, scale: 1 },
-		animate: {
-			rotate: 360,
-			scale: [1, 1.08, 1],
+	const dotVariants: Variants = {
+		normal: { y: 0, opacity: 0.7 },
+		animate: (i) => ({
+			y: [-3, 0, -3],
+			opacity: [0.4, 1, 0.4],
 			transition: {
-				rotate: { duration: 1.2, ease: "linear", repeat: Infinity },
-				scale: { duration: 0.8, repeat: Infinity, repeatType: "mirror" },
-			},
-		},
-	};
-
-	const arcVariants: Variants = {
-		normal: { pathLength: 0.85, pathOffset: 0, opacity: 0.9 },
-		animate: {
-			pathLength: [0.3, 0.85],
-			pathOffset: [0, 0.15],
-			opacity: [0.6, 1],
-			transition: {
-				duration: 1.2,
-				ease: [0.42, 0, 0.58, 1],
+				duration: 0.8,
 				repeat: Infinity,
+				delay: i * 0.2,
 			},
-		},
+		}),
 	};
 
 	return (
 		<motion.div
-			className={cn(className)}
+			className={cn("inline-flex", className)}
 			onMouseEnter={handleEnter}
 			onMouseLeave={handleLeave}
 			{...props}
@@ -94,15 +81,28 @@ const LoaderCircleIcon = forwardRef<
 				strokeWidth="2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
-				variants={wrapperVariants}
 				animate={controls}
 				initial="normal"
 			>
-				<motion.path d="M21 12a9 9 0 1 1-6.219-8.56" variants={arcVariants} />
+				<motion.circle
+					cx="12"
+					cy="12"
+					r="1"
+					variants={dotVariants}
+					custom={0}
+				/>
+				<motion.circle cx="12" cy="5" r="1" variants={dotVariants} custom={1} />
+				<motion.circle
+					cx="12"
+					cy="19"
+					r="1"
+					variants={dotVariants}
+					custom={2}
+				/>
 			</motion.svg>
 		</motion.div>
 	);
 });
 
-LoaderCircleIcon.displayName = "LoaderCircleIcon";
-export { LoaderCircleIcon };
+EllipsisVerticalIcon.displayName = "EllipsisVerticalIcon";
+export { EllipsisVerticalIcon };

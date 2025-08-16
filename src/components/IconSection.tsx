@@ -26,7 +26,7 @@ const IconSection = () => {
 			<motion.input
 				type="text"
 				className="bg-primary/10 border-primary/20 focus:ring-primary/50 relative mt-5 w-full rounded-md border px-4 py-2 text-sm text-white shadow-lg placeholder:text-zinc-300 focus:ring-1 focus:outline-none"
-				placeholder="Search for icons, animations, or categories..."
+				placeholder={`Search ${Icon_List.length} icons...`}
 				value={query}
 				onChange={(e) => setQuery(e.target.value)}
 				initial={{ opacity: 0, y: 20 }}
