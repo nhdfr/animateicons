@@ -5,16 +5,16 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface AudioLinesIconHandle {
+export interface ShoppingBagIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface AudioLinesIconProps extends HTMLMotionProps<"div"> {
+interface ShoppingBagIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const AudioLinesIcon = forwardRef<AudioLinesIconHandle, AudioLinesIconProps>(
+const ShoppingBagIcon = forwardRef<ShoppingBagIconHandle, ShoppingBagIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
@@ -42,29 +42,20 @@ const AudioLinesIcon = forwardRef<AudioLinesIconHandle, AudioLinesIconProps>(
 			},
 			[controls, onMouseLeave],
 		);
-
-		const barVariants: Variants = {
-			normal: { scaleY: 1, opacity: 1 },
-			animate: (i: number) => ({
-				scaleY: [1, 1.4, 0.6, 1],
-				opacity: [1, 0.8, 1],
+		const bagVariants: Variants = {
+			normal: { scaleY: 1, scaleX: 1, rotate: 0, y: 0 },
+			animate: {
+				scaleY: [1, 0.85, 1.1, 1],
+				scaleX: [1, 1.1, 0.9, 1],
+				rotate: [0, -4, 4, -2, 0],
+				y: [0, -3, 0, -1, 0],
 				transition: {
-					duration: 1.2,
+					duration: 1.5,
 					repeat: Infinity,
-					delay: i * 0.2,
 					ease: "easeInOut",
 				},
-			}),
+			},
 		};
-
-		const paths = [
-			"M2 10v3",
-			"M6 6v11",
-			"M10 3v18",
-			"M14 8v7",
-			"M18 5v13",
-			"M22 10v3",
-		];
 
 		return (
 			<motion.div
@@ -85,21 +76,16 @@ const AudioLinesIcon = forwardRef<AudioLinesIconHandle, AudioLinesIconProps>(
 					strokeLinejoin="round"
 					animate={controls}
 					initial="normal"
+					variants={bagVariants}
 				>
-					{paths.map((d, i) => (
-						<motion.path
-							key={i}
-							d={d}
-							variants={barVariants}
-							custom={i}
-							style={{ originY: 0.5 }}
-						/>
-					))}
+					<path d="M16 10a4 4 0 0 1-8 0" />
+					<path d="M3.103 6.034h17.794" />
+					<path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" />
 				</motion.svg>
 			</motion.div>
 		);
 	},
 );
 
-AudioLinesIcon.displayName = "AudioLinesIcon";
-export { AudioLinesIcon };
+ShoppingBagIcon.displayName = "ShoppingBagIcon";
+export { ShoppingBagIcon };

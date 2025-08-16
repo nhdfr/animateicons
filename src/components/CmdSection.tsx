@@ -12,7 +12,7 @@ const CmdSection: React.FC = () => {
 	const [copied, setCopied] = useState(false);
 	const [isReady, setIsReady] = useState(false);
 
-	const commands = ["loader.json", "heart.json", "food.json", "copy.json"];
+	const commands = ["loader.json", "heart.json", "lock.json", "copy.json"];
 
 	const copyToClipboard = () => {
 		if (!currentCmd) return;

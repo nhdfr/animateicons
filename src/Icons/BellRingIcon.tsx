@@ -5,16 +5,16 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface AudioLinesIconHandle {
+export interface BellRingIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface AudioLinesIconProps extends HTMLMotionProps<"div"> {
+interface BellRingIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const AudioLinesIcon = forwardRef<AudioLinesIconHandle, AudioLinesIconProps>(
+const BellRingIcon = forwardRef<BellRingIconHandle, BellRingIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
@@ -43,32 +43,33 @@ const AudioLinesIcon = forwardRef<AudioLinesIconHandle, AudioLinesIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const barVariants: Variants = {
-			normal: { scaleY: 1, opacity: 1 },
-			animate: (i: number) => ({
-				scaleY: [1, 1.4, 0.6, 1],
-				opacity: [1, 0.8, 1],
-				transition: {
-					duration: 1.2,
-					repeat: Infinity,
-					delay: i * 0.2,
-					ease: "easeInOut",
-				},
-			}),
+		const bellVariants: Variants = {
+			normal: { rotate: 0 },
+			animate: {
+				rotate: [0, -15, 13, -9, 6, -3, 0],
+				transition: { duration: 1.4, ease: "easeInOut", repeat: Infinity },
+			},
 		};
 
-		const paths = [
-			"M2 10v3",
-			"M6 6v11",
-			"M10 3v18",
-			"M14 8v7",
-			"M18 5v13",
-			"M22 10v3",
-		];
+		const clapperVariants: Variants = {
+			normal: { x: 0 },
+			animate: {
+				x: [0, -3, 3, -2, 2, 0],
+				transition: { duration: 1.4, ease: "easeInOut", repeat: Infinity },
+			},
+		};
+
+		const waveVariants: Variants = {
+			normal: { opacity: 1 },
+			animate: {
+				opacity: [1, 0.4, 1],
+				transition: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
+			},
+		};
 
 		return (
 			<motion.div
-				className={cn("inline-flex", className)}
+				className={cn("relative inline-flex", className)}
 				onMouseEnter={handleEnter}
 				onMouseLeave={handleLeave}
 				{...props}
@@ -85,21 +86,20 @@ const AudioLinesIcon = forwardRef<AudioLinesIconHandle, AudioLinesIconProps>(
 					strokeLinejoin="round"
 					animate={controls}
 					initial="normal"
+					variants={bellVariants}
 				>
-					{paths.map((d, i) => (
-						<motion.path
-							key={i}
-							d={d}
-							variants={barVariants}
-							custom={i}
-							style={{ originY: 0.5 }}
-						/>
-					))}
+					<motion.path
+						d="M10.268 21a2 2 0 0 0 3.464 0"
+						variants={clapperVariants}
+					/>
+					<motion.path d="M22 8c0-2.3-.8-4.3-2-6" variants={waveVariants} />
+					<path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
+					<motion.path d="M4 2C2.8 3.7 2 5.7 2 8" variants={waveVariants} />
 				</motion.svg>
 			</motion.div>
 		);
 	},
 );
 
-AudioLinesIcon.displayName = "AudioLinesIcon";
-export { AudioLinesIcon };
+BellRingIcon.displayName = "BellRingIcon";
+export { BellRingIcon };

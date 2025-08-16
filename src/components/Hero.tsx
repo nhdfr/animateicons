@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon_List } from "@/Icons";
 import { SparklesIcon } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
@@ -66,7 +67,7 @@ const HeroSection: React.FC = () => {
 							>
 								<SparklesIcon size={14} className="text-primary" />
 								<span className="text-primary text-xs font-medium">
-									Now with 50+ animated icons
+									{`Now with ${Icon_List.length}+ animated icons`}
 								</span>
 							</motion.div>
 
