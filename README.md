@@ -13,16 +13,16 @@ You can install any icon directly into your project using the **shadcn** CLI:
 ### npm example
 
 ```
-npx shadcn@latest add "https://animateicons.vercel.app/icons/atom.json"
+npx shadcn@latest add "https://animateicons.vercel.app/icons/bell.json"
 ```
 
 ### bun example
 
 ```
-bunx shadcn@latest add "https://animateicons.vercel.app/icons/atom.json"
+bunx shadcn@latest add "https://animateicons.vercel.app/icons/bell.json"
 ```
 
-Replace `atom.json` with any icon name from our gallery.
+Replace `bell.json` with any icon name from our gallery.
 View all icons → **[animateicons.vercel.app](https://animateicons.vercel.app)**
 
 ---
@@ -31,13 +31,37 @@ View all icons → **[animateicons.vercel.app](https://animateicons.vercel.app)*
 
 After installing an icon, import it into your component:
 
-```
-
+```tsx
 "use client";
 import { AtomIcon } from "./components/ui/AtomIcon";
 
 export default function Page() {
-return ;
+	return <AtomIcon />;
+}
+```
+
+### Bell Icon Example
+
+```tsx
+"use client";
+import { useRef } from "react";
+import { BellRingIcon, BellRingIconHandle } from "./components/ui/BellRingIcon";
+
+export default function Page() {
+    
+	const bellRef = useRef<BellRingIconHandle>(null);
+
+	return (
+		<>
+			{/* Default hover animation */}
+			<BellRingIcon size={32} />
+
+			{/* Programmatic control */}
+			<button onClick={() => bellRef.current?.startAnimation()}>Start</button>
+			<button onClick={() => bellRef.current?.stopAnimation()}>Stop</button>
+			<BellRingIcon ref={bellRef} size={32} />
+		</>
+	);
 }
 ```
 
@@ -45,7 +69,7 @@ return ;
 
 ## ✨ Features
 
-- 🎯 Smooth, purposeful animations out‑of‑the‑box
+- 🎯 Smooth, purposeful animations out-of-the-box
 - ⚡ Lightweight & built with `motion/react`
 - 🎨 100+ customizable SVG icons
 - 📱 Works with React & Next.js
@@ -55,5 +79,5 @@ return ;
 
 ## Notes
 
-> **Note:** This project is a work in progress — new animated icons are added regularly.  
+> **Note:** This project is a work in progress — new animated icons are added regularly.
 > We’d love your feedback and contributions as the project evolves!

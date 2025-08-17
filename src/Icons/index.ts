@@ -6,6 +6,11 @@ import { BellMinusIcon } from "./BellMinusIcon";
 import { BellPlusIcon } from "./BellPlusIcon";
 import { BellRingIcon } from "./BellRingIcon";
 import { BicepsFlexedIcon } from "./BicepsFlexedIcon";
+import { BookmarkCheckIcon } from "./BookmarkCheckIcon";
+import { BookmarkIcon } from "./BookmarkIcon";
+import { BookmarkMinusIcon } from "./BookmarkMinusIcon";
+import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
+import { BookmarkXIcon } from "./BookmarkXIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
 import { ChevronRightIcon } from "./ChevronRightIcon";
 import { ChevronsLeftIcon } from "./ChevronsLeftIcon";
@@ -16,17 +21,26 @@ import { ChevronsRightLeftIcon } from "./ChevronsRightLeftIcon";
 import { CopyIcon } from "./CopyIcon";
 import { EllipsisIcon } from "./EllipsisIcon";
 import { EllipsisVerticalIcon } from "./EllipsisVerticalIcon";
+import { FacebookIcon } from "./FacebookIcon";
 import { GithubIcon } from "./GithubIcon";
+import { HeadphonesIcon } from "./HeadphonesIcon";
+import { HeadphonesOffIcon } from "./HeadphonesOffIcon";
 import { HeartIcon } from "./HeartIcon";
+import { InstagramIcon } from "./InstagramIcon";
+import { LinkedInIcon } from "./LinkedInIcon";
 import { LoaderCircleIcon } from "./LoaderCircleIcon";
 import { LoaderIcon } from "./LoaderIcon";
 import { LockIcon } from "./LockIcon";
 import { MenuIcon } from "./MenuIcon";
+import { MicIcon } from "./MicIcon";
+import { MicOffIcon } from "./MicOffIcon";
 import { MoveLeftIcon } from "./MoveLeftIcon";
 import { MoveRightIcon } from "./MoveRightIcon";
+import { PlusIcon } from "./PlusIcon";
 import { ShoppingBagIcon } from "./ShoppingBagIcon";
 import { ShoppingCartIcon } from "./ShoppingCartIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
+import { TwitterIcon } from "./TwitterIcon";
 import { UserLockIcon } from "./UserLockIcon";
 import { XIcon } from "./XIcon";
 
@@ -40,6 +54,93 @@ const Icon_List: IconListItem[] = [
 		name: "ellipsis-vertical",
 		icon: EllipsisVerticalIcon,
 		keywords: ["menu", "options", "more", "overflow", "dots", "..."],
+	},
+	{
+		name: "bookmark",
+		icon: BookmarkIcon,
+		keywords: ["read", "clip", "marker", "tag"],
+	},
+	{
+		name: "bookmark-check",
+		icon: BookmarkCheckIcon,
+		keywords: [
+			"read",
+			"finished",
+			"complete",
+			"clip",
+			"marker",
+			"tag",
+			"task",
+			"todo",
+		],
+	},
+	{
+		name: "bookmark-plus",
+		icon: BookmarkPlusIcon,
+		keywords: ["read", "clip", "marker", "tag", "add", "plus"],
+	},
+	{
+		name: "bookmark-minus",
+		icon: BookmarkMinusIcon,
+		keywords: ["read", "clip", "marker", "tag", "delete", "remove"],
+	},
+	{
+		name: "bookmark-x",
+		icon: BookmarkXIcon,
+		keywords: [
+			"read",
+			"clip",
+			"marker",
+			"tag",
+			"cancel",
+			"close",
+			"delete",
+			"remove",
+			"clear",
+		],
+	},
+	{
+		name: "mic",
+		icon: MicIcon,
+		keywords: ["record", "sound", "listen", "radio", "podcast", "microphone"],
+	},
+	{
+		name: "mic",
+		icon: MicOffIcon,
+		keywords: ["record", "sound", "listen", "radio", "podcast", "microphone"],
+	},
+	{
+		name: "headphones",
+		icon: HeadphonesIcon,
+		keywords: ["music", "audio", "sound"],
+	},
+	{
+		name: "headphones",
+		icon: HeadphonesOffIcon,
+		keywords: ["music", "audio", "sound", "mute", "off"],
+	},
+	{
+		name: "plus",
+		icon: PlusIcon,
+		keywords: [
+			"add",
+			"new",
+			"increase",
+			"increment",
+			"positive",
+			"calculate",
+			"toolbar",
+			"crosshair",
+			"aim",
+			"target",
+			"scope",
+			"sight",
+			"reticule",
+			"maximum",
+			"upgrade",
+			"extra",
+			"+",
+		],
 	},
 	{
 		name: "ellipsis",
@@ -163,7 +264,27 @@ const Icon_List: IconListItem[] = [
 	{
 		name: "github",
 		icon: GithubIcon,
-		keywords: ["logo", "version control"],
+		keywords: ["logo", "version control", "git"],
+	},
+	{
+		name: "Twitter",
+		icon: TwitterIcon,
+		keywords: ["logo", "social", "x", "twitter"],
+	},
+	{
+		name: "facebook",
+		icon: FacebookIcon,
+		keywords: ["logo", "social", "facebook", "social media"],
+	},
+	{
+		name: "LinkedIn",
+		icon: LinkedInIcon,
+		keywords: ["logo", "social", "linkedin", "social media"],
+	},
+	{
+		name: "instagram",
+		icon: InstagramIcon,
+		keywords: ["logo", "social", "insta", "social media"],
 	},
 	{
 		name: "shopping-cart",

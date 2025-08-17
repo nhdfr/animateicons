@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
 
 	return (
 		<nav className="relative z-50 transition-all duration-300">
-			<div className="border-primary/20 border-b py-2 px-4 text-center text-xs text-zinc-400">
+			<div className="border-primary/20 border-b px-4 py-2 text-center text-xs text-zinc-400">
 				<p>
 					This is under development, so some features may not work as expected.
 				</p>
@@ -39,14 +39,14 @@ const Navbar: React.FC = () => {
 					{/* Desktop Navigation */}
 					<div className="hidden items-center space-x-8 text-sm md:flex">
 						<Link
-							href="#docs"
+							href="https://github.com/Avijit07x/animateicons/blob/main/README.md"
 							target="_blank"
 							className="font-medium text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>
 							Docs
 						</Link>
 						<Link
-							href="#examples"
+							href="https://github.com/Avijit07x/animateicons/blob/main/README.md#-usage"
 							target="_blank"
 							className="font-medium text-zinc-300 transition-colors duration-200 hover:text-indigo-400"
 						>

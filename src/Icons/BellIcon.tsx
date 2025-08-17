@@ -51,15 +51,6 @@ const BellIcon = forwardRef<BellIconHandle, BellIconProps>(
 			},
 		};
 
-		const waveVariants: Variants = {
-			normal: { opacity: 0, scale: 0.5 },
-			animate: {
-				opacity: [0.5, 0, 0],
-				scale: [1, 2],
-				transition: { duration: 1.6, repeat: Infinity, ease: "easeOut" },
-			},
-		};
-
 		const clapperVariants: Variants = {
 			normal: { x: 0 },
 			animate: {
@@ -89,15 +80,6 @@ const BellIcon = forwardRef<BellIconHandle, BellIconProps>(
 					initial="normal"
 					variants={bellVariants}
 				>
-					<motion.circle
-						cx="12"
-						cy="22"
-						r="6"
-						stroke="currentColor"
-						fill="none"
-						strokeWidth="1.5"
-						variants={waveVariants}
-					/>
 					<motion.path
 						d="M10.268 21a2 2 0 0 0 3.464 0"
 						variants={clapperVariants}

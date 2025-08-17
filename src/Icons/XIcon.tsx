@@ -79,22 +79,29 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 				>
 					<motion.path
 						d="M18 6 6 18"
+						initial={{ pathLength: 0, opacity: 0 }}
+						animate={{ pathLength: 1, opacity: 1 }}
+						transition={{ duration: 0.6, ease: "easeInOut" }}
 						variants={{
-							normal: { pathLength: 1 },
+							normal: { pathLength: 1, opacity: 1 },
 							animate: {
-								pathLength: [1, 0.2, 1],
-								transition: { duration: 0.6 },
+								pathLength: [0, 1],
+								opacity: [0, 1],
+								transition: { duration: 0.6, ease: "easeInOut" },
 							},
 						}}
 					/>
-
 					<motion.path
 						d="m6 6 12 12"
+						initial={{ pathLength: 0, opacity: 0 }}
+						animate={{ pathLength: 1, opacity: 1 }}
+						transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }}
 						variants={{
-							normal: { pathLength: 1 },
+							normal: { pathLength: 1, opacity: 1 },
 							animate: {
-								pathLength: [1, 0.2, 1],
-								transition: { duration: 0.6, delay: 0.05 },
+								pathLength: [0, 1],
+								opacity: [0, 1],
+								transition: { duration: 0.6, ease: "easeInOut", delay: 0.2 },
 							},
 						}}
 					/>
