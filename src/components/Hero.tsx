@@ -51,7 +51,7 @@ const HeroSection: React.FC = () => {
 			/>
 
 			<div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-				<div className="mt-10 flex flex-col md:mt-20 lg:flex-row lg:items-center lg:justify-between">
+				<div className="mt-10 flex flex-col md:mt-15 lg:flex-row lg:items-center lg:justify-between">
 					<motion.div
 						initial={{ opacity: 0, y: 40 }}
 						animate={{ opacity: 1, y: 0 }}

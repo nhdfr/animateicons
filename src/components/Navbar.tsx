@@ -13,12 +13,12 @@ const Navbar: React.FC = () => {
 
 	return (
 		<nav className="relative z-50 transition-all duration-300">
-			<div className="border-primary/20 border-b px-4 py-2 text-center text-xs text-zinc-400">
+			{/* <div className="border-primary/20 border-b px-4 py-2 text-center text-xs text-zinc-400">
 				<p>
 					Try out my new CLI tool <code>create-vrtw</code> 🚀 — build projects
 					faster and smarter!
 				</p>
-			</div>
+			</div> */}
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="flex h-16 items-center justify-between">
 					<div className="flex items-center">
