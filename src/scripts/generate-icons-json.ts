@@ -76,11 +76,8 @@ function main() {
 			],
 		};
 
-
 		const outFilePath = path.join(PUBLIC_ICONS_DIR, `${item.name}.json`);
 		fs.writeFileSync(outFilePath, JSON.stringify(iconJson, null, 2), "utf8");
-
-		console.log(`${item.name}.json generated`);
 	});
 }
 

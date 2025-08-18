@@ -15,7 +15,8 @@ const Navbar: React.FC = () => {
 		<nav className="relative z-50 transition-all duration-300">
 			<div className="border-primary/20 border-b px-4 py-2 text-center text-xs text-zinc-400">
 				<p>
-					This is under development, so some features may not work as expected.
+					Try out my new CLI tool <code>create-vrtw</code> 🚀 — build projects
+					faster and smarter!
 				</p>
 			</div>
 			<div className="mx-auto max-w-7xl px-6 lg:px-8">
