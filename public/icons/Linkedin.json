@@ -1,0 +1,28 @@
+{
+  "name": "Linkedin",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": [
+    "motion"
+  ],
+  "devDependencies": [],
+  "tailwind": {},
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "keywords": [
+    "logo",
+    "social",
+    "linkedin",
+    "social media",
+    "jobs"
+  ],
+  "files": [
+    {
+      "path": "",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

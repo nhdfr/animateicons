@@ -14,7 +14,9 @@
   "keywords": [
     "expand",
     "horizontal",
-    "unfold"
+    "unfold",
+    "resize",
+    "swap"
   ],
   "files": [
     {

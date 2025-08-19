@@ -15,10 +15,9 @@
     "alarm",
     "notification",
     "silent",
-    "reminder",
     "delete",
     "remove",
-    "erase"
+    "mute"
   ],
   "files": [
     {

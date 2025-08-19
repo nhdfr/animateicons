@@ -16,9 +16,7 @@
     "wait",
     "busy",
     "progress",
-    "spinner",
-    "spinning",
-    "throbber"
+    "spinner"
   ],
   "files": [
     {

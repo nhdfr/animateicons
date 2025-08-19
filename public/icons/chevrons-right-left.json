@@ -14,7 +14,9 @@
   "keywords": [
     "collapse",
     "fold",
-    "horizontal"
+    "horizontal",
+    "resize",
+    "swap"
   ],
   "files": [
     {

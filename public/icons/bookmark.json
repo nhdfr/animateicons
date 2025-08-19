@@ -15,7 +15,8 @@
     "read",
     "clip",
     "marker",
-    "tag"
+    "tag",
+    "save"
   ],
   "files": [
     {

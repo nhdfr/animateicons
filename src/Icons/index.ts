@@ -32,10 +32,11 @@ import { HeadphonesOffIcon } from "./HeadphonesOffIcon";
 import { HeartIcon } from "./HeartIcon";
 import { InfoIcon } from "./InfoIcon";
 import { InstagramIcon } from "./InstagramIcon";
-import { LinkedInIcon } from "./LinkedInIcon";
+import { LinkedInIcon } from "./LinkedinIcon";
 import { LoaderCircleIcon } from "./LoaderCircleIcon";
 import { LoaderIcon } from "./LoaderIcon";
 import { LockIcon } from "./LockIcon";
+import { MailsIcon } from "./MailsIcon";
 import { MenuIcon } from "./MenuIcon";
 import { MessageCircleIcon } from "./MessageCircleIcon";
 import { MicIcon } from "./MicIcon";
@@ -362,6 +363,11 @@ const Icon_List: IconListItem[] = [
 		name: "swords",
 		icon: SwordsIcon,
 		keywords: ["battle", "challenge", "game", "war", "weapon", "fight"],
+	},
+	{
+		name: "mails",
+		icon: MailsIcon,
+		keywords: ["email", "envelope", "communication", "message", "mailbox"],
 	},
 ];
 

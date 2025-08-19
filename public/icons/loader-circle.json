@@ -13,11 +13,10 @@
   },
   "keywords": [
     "loading",
-    "wait",
-    "busy",
     "progress",
     "spinner",
-    "circle"
+    "circle",
+    "busy"
   ],
   "files": [
     {

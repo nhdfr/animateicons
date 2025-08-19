@@ -15,7 +15,8 @@
     "ecommerce",
     "cart",
     "purchase",
-    "store"
+    "store",
+    "bag"
   ],
   "files": [
     {
