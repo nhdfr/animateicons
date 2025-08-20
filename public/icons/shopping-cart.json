@@ -17,7 +17,8 @@
     "basket",
     "store",
     "purchase",
-    "e-commerce"
+    "e-commerce",
+    "checkout"
   ],
   "files": [
     {

@@ -18,7 +18,8 @@
     "reduce",
     "line",
     "divider",
-    "-"
+    "-",
+    "deduct"
   ],
   "files": [
     {

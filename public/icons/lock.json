@@ -16,7 +16,9 @@
     "password",
     "secure",
     "admin",
-    "lock"
+    "lock",
+    "protected",
+    "private"
   ],
   "files": [
     {

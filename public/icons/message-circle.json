@@ -16,7 +16,9 @@
     "chat",
     "conversation",
     "feedback",
-    "speech bubble"
+    "speech bubble",
+    "reply",
+    "discussion"
   ],
   "files": [
     {

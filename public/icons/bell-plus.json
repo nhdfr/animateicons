@@ -16,7 +16,9 @@
     "reminder",
     "add",
     "create",
-    "new"
+    "new",
+    "subscribe",
+    "enable"
   ],
   "files": [
     {

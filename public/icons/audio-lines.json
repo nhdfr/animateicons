@@ -17,7 +17,9 @@
     "music",
     "frequency",
     "track",
-    "voice"
+    "voice",
+    "levels",
+    "spectrum"
   ],
   "files": [
     {

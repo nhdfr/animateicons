@@ -16,7 +16,8 @@
     "progress",
     "spinner",
     "circle",
-    "busy"
+    "busy",
+    "indicator"
   ],
   "files": [
     {

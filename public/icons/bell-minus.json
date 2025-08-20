@@ -17,7 +17,9 @@
     "silent",
     "delete",
     "remove",
-    "mute"
+    "mute",
+    "disable",
+    "unsubscribe"
   ],
   "files": [
     {

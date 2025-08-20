@@ -1,6 +1,8 @@
 import { ActivityIcon } from "./ActivityIcon";
 import { AtomIcon } from "./AtomIcon";
 import { AudioLinesIcon } from "./AudioLinesIcon";
+import { BatteryFullIcon } from "./BatteryFullIcon";
+import { BatteryIcon } from "./BatteryIcon";
 import { BellIcon } from "./BellIcon";
 import { BellMinusIcon } from "./BellMinusIcon";
 import { BellPlusIcon } from "./BellPlusIcon";
@@ -12,6 +14,7 @@ import { BookmarkIcon } from "./BookmarkIcon";
 import { BookmarkMinusIcon } from "./BookmarkMinusIcon";
 import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
 import { BookmarkXIcon } from "./BookmarkXIcon";
+import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
 import { ChevronRightIcon } from "./ChevronRightIcon";
 import { ChevronsLeftIcon } from "./ChevronsLeftIcon";
@@ -19,6 +22,9 @@ import { ChevronsLeftRightEllipsisIcon } from "./ChevronsLeftRightEllipsisIcon";
 import { ChevronsLeftRightIcon } from "./ChevronsLeftRightIcon";
 import { ChevronsRightIcon } from "./ChevronsRightIcon";
 import { ChevronsRightLeftIcon } from "./ChevronsRightLeftIcon";
+import { ChevronUpIcon } from "./ChevronUpIcon";
+import { ChromeIcon } from "./ChromeIcon";
+import { CirclePlusIcon } from "./CirclePlusIcon";
 import { CopyIcon } from "./CopyIcon";
 import { DashboardIcon } from "./DashboardIcon";
 import { EllipsisIcon } from "./EllipsisIcon";
@@ -51,6 +57,7 @@ import { ShoppingCartIcon } from "./ShoppingCartIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { SprayCanIcon } from "./SprayCanIcon";
 import { SwordsIcon } from "./SwordsIcon";
+import { TrashIcon } from "./TrashIcon";
 import { TwitterIcon } from "./TwitterIcon";
 import { UserLockIcon } from "./UserLockIcon";
 import { XIcon } from "./XIcon";
@@ -60,12 +67,27 @@ const Icon_List: IconListItem[] = [
 	{
 		name: "menu",
 		icon: MenuIcon,
-		keywords: ["bars", "navigation", "hamburger", "options"],
+		keywords: [
+			"bars",
+			"navigation",
+			"hamburger",
+			"options",
+			"drawer",
+			"sidebar",
+		],
 	},
 	{
 		name: "ellipsis-vertical",
 		icon: EllipsisVerticalIcon,
-		keywords: ["menu", "options", "more", "overflow", "dots", "..."],
+		keywords: [
+			"menu",
+			"options",
+			"more",
+			"overflow",
+			"dots",
+			"...",
+			"vertical",
+		],
 	},
 	{
 		name: "ellipsis",
@@ -78,59 +100,130 @@ const Icon_List: IconListItem[] = [
 			"menu",
 			"options",
 			"more",
+			"…",
 		],
 	},
 	{
+		name: "dashboard",
+		icon: DashboardIcon,
+		keywords: ["masonry", "brick", "panel", "grid", "widgets", "layout"],
+	},
+	{
+		name: "info",
+		icon: InfoIcon,
+		keywords: ["help", "i", "information", "about", "details", "tooltip"],
+	},
+
+	// Arrows & Direction
+	{
 		name: "chevron-left",
 		icon: ChevronLeftIcon,
-		keywords: ["back", "previous", "menu", "<"],
+		keywords: ["back", "previous", "menu", "<", "caret", "collapse"],
 	},
 	{
 		name: "chevron-right",
 		icon: ChevronRightIcon,
-		keywords: ["forward", "next", "menu", ">", "code"],
+		keywords: ["forward", "next", "menu", ">", "code", "caret", "expand"],
+	},
+	{
+		name: "chevron-up",
+		icon: ChevronUpIcon,
+		keywords: [
+			"arrow",
+			"direction",
+			"collapse",
+			"dropdown",
+			"menu",
+			"less",
+			"caret",
+		],
+	},
+	{
+		name: "chevron-down",
+		icon: ChevronDownIcon,
+		keywords: [
+			"arrow",
+			"direction",
+			"expand",
+			"dropdown",
+			"menu",
+			"more",
+			"caret",
+		],
 	},
 	{
 		name: "move-left",
 		icon: MoveLeftIcon,
-		keywords: ["arrow", "direction", "back", "west"],
+		keywords: ["arrow", "direction", "back", "west", "pan", "reorder"],
 	},
 	{
 		name: "move-right",
 		icon: MoveRightIcon,
-		keywords: ["arrow", "direction", "next", "east"],
+		keywords: ["arrow", "direction", "next", "east", "pan", "reorder"],
 	},
 	{
 		name: "chevrons-left",
 		icon: ChevronsLeftIcon,
-		keywords: ["turn", "corner", "back"],
+		keywords: ["turn", "corner", "back", "double", "rewind", "jump"],
 	},
 	{
 		name: "chevrons-right",
 		icon: ChevronsRightIcon,
-		keywords: ["turn", "corner", "forward"],
+		keywords: ["turn", "corner", "forward", "double", "fast-forward", "jump"],
 	},
 	{
 		name: "chevrons-left-right",
 		icon: ChevronsLeftRightIcon,
-		keywords: ["expand", "horizontal", "unfold", "resize", "swap"],
+		keywords: ["expand", "horizontal", "unfold", "resize", "swap", "stretch"],
 	},
 	{
 		name: "chevrons-right-left",
 		icon: ChevronsRightLeftIcon,
-		keywords: ["collapse", "fold", "horizontal", "resize", "swap"],
+		keywords: ["collapse", "fold", "horizontal", "resize", "swap", "compress"],
 	},
 	{
 		name: "chevrons-left-right-ellipsis",
 		icon: ChevronsLeftRightEllipsisIcon,
-		keywords: ["internet", "network", "connection", "cable", "router", "data"],
+		keywords: [
+			"internet",
+			"network",
+			"connection",
+			"cable",
+			"router",
+			"data",
+			"sync",
+		],
 	},
 
 	// Actions
 	{
 		name: "plus",
 		icon: PlusIcon,
-		keywords: ["add", "new", "increase", "positive", "toolbar", "upgrade", "+"],
+		keywords: [
+			"add",
+			"new",
+			"increase",
+			"positive",
+			"toolbar",
+			"upgrade",
+			"+",
+			"create",
+		],
+	},
+	{
+		name: "circle-plus",
+		icon: CirclePlusIcon,
+		keywords: [
+			"add",
+			"new",
+			"increase",
+			"increment",
+			"target",
+			"aim",
+			"scope",
+			"join",
+			"operator",
+		],
 	},
 	{
 		name: "minus",
@@ -143,162 +236,342 @@ const Icon_List: IconListItem[] = [
 			"line",
 			"divider",
 			"-",
+			"deduct",
 		],
 	},
 	{
 		name: "X",
 		icon: XIcon,
-		keywords: ["cancel", "close", "delete", "remove", "clear", "multiply"],
+		keywords: [
+			"cancel",
+			"close",
+			"delete",
+			"remove",
+			"clear",
+			"multiply",
+			"dismiss",
+			"exit",
+		],
 	},
 	{
 		name: "copy",
 		icon: CopyIcon,
-		keywords: ["clone", "duplicate", "multiple", "clipboard"],
+		keywords: ["clone", "duplicate", "multiple", "clipboard", "copy"],
 	},
 	{
 		name: "send",
 		icon: SendIcon,
-		keywords: ["message", "chat", "mail", "submit", "forward"],
+		keywords: [
+			"message",
+			"chat",
+			"mail",
+			"submit",
+			"forward",
+			"share",
+			"paper-plane",
+		],
 	},
+	{
+		name: "trash",
+		icon: TrashIcon,
+		keywords: [
+			"empty",
+			"deletion",
+			"cleanup",
+			"junk",
+			"clear",
+			"garbage",
+			"delete",
+			"remove",
+			"bin",
+			"waste",
+			"discard",
+		],
+	},
+	{
+		name: "bookmark",
+		icon: BookmarkIcon,
+		keywords: ["read", "clip", "marker", "tag", "save", "favorite"],
+	},
+	{
+		name: "bookmark-check",
+		icon: BookmarkCheckIcon,
+		keywords: [
+			"finished",
+			"complete",
+			"clip",
+			"tag",
+			"done",
+			"saved",
+			"verified",
+		],
+	},
+	{
+		name: "bookmark-plus",
+		icon: BookmarkPlusIcon,
+		keywords: ["clip", "tag", "add", "plus", "save", "favorite"],
+	},
+	{
+		name: "bookmark-minus",
+		icon: BookmarkMinusIcon,
+		keywords: ["clip", "tag", "delete", "remove", "unsave", "minus"],
+	},
+	{
+		name: "bookmark-x",
+		icon: BookmarkXIcon,
+		keywords: [
+			"cancel",
+			"close",
+			"delete",
+			"remove",
+			"clear",
+			"unsave",
+			"unbookmark",
+		],
+	},
+
+	// Communication & Media
 	{
 		name: "message-circle",
 		icon: MessageCircleIcon,
-		keywords: ["comment", "chat", "conversation", "feedback", "speech bubble"],
+		keywords: [
+			"comment",
+			"chat",
+			"conversation",
+			"feedback",
+			"speech bubble",
+			"reply",
+			"discussion",
+		],
 	},
+	{
+		name: "mails",
+		icon: MailsIcon,
+		keywords: [
+			"email",
+			"envelope",
+			"communication",
+			"message",
+			"mailbox",
+			"inbox",
+			"newsletter",
+		],
+	},
+	{
+		name: "mic",
+		icon: MicIcon,
+		keywords: [
+			"record",
+			"sound",
+			"listen",
+			"radio",
+			"podcast",
+			"microphone",
+			"voice",
+			"input",
+		],
+	},
+	{
+		name: "mic-off",
+		icon: MicOffIcon,
+		keywords: [
+			"mute",
+			"record",
+			"sound",
+			"disable",
+			"microphone",
+			"no audio",
+			"silence",
+		],
+	},
+	{
+		name: "headphones",
+		icon: HeadphonesIcon,
+		keywords: ["music", "audio", "sound", "listen", "headset", "monitor"],
+	},
+	{
+		name: "headphones-off",
+		icon: HeadphonesOffIcon,
+		keywords: ["music", "audio", "mute", "off", "disabled", "no sound"],
+	},
+	{
+		name: "audio-lines",
+		icon: AudioLinesIcon,
+		keywords: [
+			"equaliser",
+			"sound",
+			"music",
+			"frequency",
+			"track",
+			"voice",
+			"levels",
+			"spectrum",
+		],
+	},
+	{
+		name: "send",
+		icon: SendIcon,
+		keywords: [
+			"message",
+			"chat",
+			"mail",
+			"submit",
+			"forward",
+			"share",
+			"paper-plane",
+		],
+	}, // duplicate kept near messaging for discovery
 
 	// Notifications
 	{
 		name: "bell",
 		icon: BellIcon,
-		keywords: ["alarm", "notification", "sound", "reminder"],
+		keywords: ["alarm", "notification", "sound", "reminder", "alert", "ping"],
 	},
 	{
 		name: "bell-ring",
 		icon: BellRingIcon,
-		keywords: ["alarm", "notification", "sound", "reminder", "alert"],
+		keywords: [
+			"alarm",
+			"notification",
+			"sound",
+			"reminder",
+			"alert",
+			"active",
+			"ringing",
+		],
 	},
 	{
 		name: "bell-plus",
 		icon: BellPlusIcon,
-		keywords: ["notification", "reminder", "add", "create", "new"],
+		keywords: [
+			"notification",
+			"reminder",
+			"add",
+			"create",
+			"new",
+			"subscribe",
+			"enable",
+		],
 	},
 	{
 		name: "bell-minus",
 		icon: BellMinusIcon,
-		keywords: ["alarm", "notification", "silent", "delete", "remove", "mute"],
+		keywords: [
+			"alarm",
+			"notification",
+			"silent",
+			"delete",
+			"remove",
+			"mute",
+			"disable",
+			"unsubscribe",
+		],
 	},
 
-	// Security
+	// Security & Privacy
 	{
 		name: "lock",
 		icon: LockIcon,
-		keywords: ["security", "password", "secure", "admin", "lock"],
+		keywords: [
+			"security",
+			"password",
+			"secure",
+			"admin",
+			"lock",
+			"protected",
+			"private",
+		],
 	},
 	{
 		name: "user-lock",
 		icon: UserLockIcon,
-		keywords: ["person", "lock", "locked", "account", "secure", "privacy"],
-	},
-
-	// Media
-	{
-		name: "mic",
-		icon: MicIcon,
-		keywords: ["record", "sound", "listen", "radio", "podcast", "microphone"],
-	},
-	{
-		name: "mic-off",
-		icon: MicOffIcon,
-		keywords: ["mute", "record", "sound", "disable", "microphone"],
-	},
-	{
-		name: "headphones",
-		icon: HeadphonesIcon,
-		keywords: ["music", "audio", "sound", "listen"],
-	},
-	{
-		name: "headphones-off",
-		icon: HeadphonesOffIcon,
-		keywords: ["music", "audio", "mute", "off", "disabled"],
-	},
-	{
-		name: "audio-lines",
-		icon: AudioLinesIcon,
-		keywords: ["equaliser", "sound", "music", "frequency", "track", "voice"],
-	},
-
-	// Social & Brands
-	{
-		name: "github",
-		icon: GithubIcon,
-		keywords: ["logo", "version control", "git", "repository"],
-	},
-	{
-		name: "twitter",
-		icon: TwitterIcon,
-		keywords: ["logo", "social", "x", "twitter", "tweet"],
-	},
-	{
-		name: "facebook",
-		icon: FacebookIcon,
-		keywords: ["logo", "social", "facebook", "social media"],
-	},
-	{
-		name: "linkedin",
-		icon: LinkedInIcon,
-		keywords: ["logo", "social", "linkedin", "social media", "jobs"],
-	},
-	{
-		name: "instagram",
-		icon: InstagramIcon,
-		keywords: ["logo", "social", "insta", "social media", "photos"],
-	},
-	{
-		name: "figma",
-		icon: FigmaIcon,
-		keywords: ["logo", "design", "tool", "ui/ux"],
-	},
-	{
-		name: "framer",
-		icon: FramerIcon,
-		keywords: ["logo", "design", "tool", "motion", "animation"],
+		keywords: [
+			"person",
+			"lock",
+			"locked",
+			"account",
+			"secure",
+			"privacy",
+			"access control",
+		],
 	},
 
 	// Commerce
 	{
 		name: "shopping-cart",
 		icon: ShoppingCartIcon,
-		keywords: ["trolley", "cart", "basket", "store", "purchase", "e-commerce"],
+		keywords: [
+			"trolley",
+			"cart",
+			"basket",
+			"store",
+			"purchase",
+			"e-commerce",
+			"checkout",
+		],
 	},
 	{
 		name: "shopping-bag",
 		icon: ShoppingBagIcon,
-		keywords: ["ecommerce", "cart", "purchase", "store", "bag"],
+		keywords: [
+			"ecommerce",
+			"cart",
+			"purchase",
+			"store",
+			"bag",
+			"retail",
+			"order",
+		],
+	},
+
+	// Social & Brands
+	{
+		name: "github",
+		icon: GithubIcon,
+		keywords: [
+			"logo",
+			"version control",
+			"git",
+			"repository",
+			"code",
+			"octocat",
+		],
 	},
 	{
-		name: "bookmark",
-		icon: BookmarkIcon,
-		keywords: ["read", "clip", "marker", "tag", "save"],
+		name: "twitter",
+		icon: TwitterIcon,
+		keywords: ["logo", "social", "x", "twitter", "tweet", "post"],
 	},
 	{
-		name: "bookmark-check",
-		icon: BookmarkCheckIcon,
-		keywords: ["finished", "complete", "clip", "tag", "done"],
+		name: "facebook",
+		icon: FacebookIcon,
+		keywords: ["logo", "social", "facebook", "social media", "friends", "meta"],
 	},
 	{
-		name: "bookmark-plus",
-		icon: BookmarkPlusIcon,
-		keywords: ["clip", "tag", "add", "plus", "save"],
+		name: "linkedin",
+		icon: LinkedInIcon,
+		keywords: ["logo", "social", "linkedin", "social media", "jobs", "network"],
 	},
 	{
-		name: "bookmark-minus",
-		icon: BookmarkMinusIcon,
-		keywords: ["clip", "tag", "delete", "remove"],
+		name: "instagram",
+		icon: InstagramIcon,
+		keywords: ["logo", "social", "insta", "social media", "photos", "reels"],
 	},
 	{
-		name: "bookmark-x",
-		icon: BookmarkXIcon,
-		keywords: ["cancel", "close", "delete", "remove", "clear"],
+		name: "chrome",
+		icon: ChromeIcon,
+		keywords: ["browser", "web", "internet", "google", "search"],
+	},
+	{
+		name: "figma",
+		icon: FigmaIcon,
+		keywords: ["logo", "design", "tool", "ui/ux", "prototype"],
+	},
+	{
+		name: "framer",
+		icon: FramerIcon,
+		keywords: ["logo", "design", "tool", "motion", "animation", "prototyping"],
 	},
 
 	// Status & System
@@ -310,64 +583,82 @@ const Icon_List: IconListItem[] = [
 	{
 		name: "loader-circle",
 		icon: LoaderCircleIcon,
-		keywords: ["loading", "progress", "spinner", "circle", "busy"],
+		keywords: ["loading", "progress", "spinner", "circle", "busy", "indicator"],
 	},
 	{
-		name: "info",
-		icon: InfoIcon,
-		keywords: ["help", "i", "information", "about"],
+		name: "battery-full",
+		icon: BatteryFullIcon,
+		keywords: ["power", "charge", "energy", "full", "status", "100%"],
 	},
 	{
-		name: "dashboard",
-		icon: DashboardIcon,
-		keywords: ["masonry", "brick", "panel", "grid"],
+		name: "battery",
+		icon: BatteryIcon,
+		keywords: ["power", "charge", "energy", "status", "level"],
 	},
 
 	// Miscellaneous
 	{
 		name: "heart",
 		icon: HeartIcon,
-		keywords: ["like", "love", "emotion", "favourite"],
+		keywords: ["like", "love", "emotion", "favourite", "favorite", "react"],
 	},
 	{
 		name: "activity",
 		icon: ActivityIcon,
-		keywords: ["pulse", "motion", "health", "fitness", "waveform", "monitor"],
+		keywords: [
+			"pulse",
+			"motion",
+			"health",
+			"fitness",
+			"waveform",
+			"monitor",
+			"analytics",
+		],
 	},
 	{
 		name: "snow-flake",
 		icon: SnowflakeIcon,
-		keywords: ["cold", "weather", "snow", "winter", "ice"],
+		keywords: ["cold", "weather", "snow", "winter", "ice", "freeze"],
 	},
 	{
 		name: "atom",
 		icon: AtomIcon,
-		keywords: ["atomic", "nuclear", "physics", "energy", "chemistry"],
+		keywords: [
+			"atomic",
+			"nuclear",
+			"physics",
+			"energy",
+			"chemistry",
+			"science",
+		],
 	},
 	{
 		name: "biceps-flexed",
 		icon: BicepsFlexedIcon,
-		keywords: ["arm", "muscle", "strong", "workout", "fitness"],
+		keywords: ["arm", "muscle", "strong", "workout", "fitness", "strength"],
 	},
 	{
 		name: "bolt",
 		icon: BoltIcon,
-		keywords: ["nut", "screw", "settings", "configuration", "parts"],
+		keywords: [
+			"nut",
+			"screw",
+			"settings",
+			"configuration",
+			"parts",
+			"hardware",
+			"wrench",
+		],
 	},
 	{
 		name: "spray-can",
 		icon: SprayCanIcon,
-		keywords: ["paint", "color", "graffiti", "decoration", "aerosol"],
+		keywords: ["paint", "color", "graffiti", "decoration", "aerosol", "art"],
 	},
 	{
 		name: "swords",
 		icon: SwordsIcon,
-		keywords: ["battle", "challenge", "game", "war", "weapon", "fight"],
-	},
-	{
-		name: "mails",
-		icon: MailsIcon,
-		keywords: ["email", "envelope", "communication", "message", "mailbox"],
+		keywords: ["battle", "challenge", "game", "war", "weapon", "fight", "duel"],
 	},
 ];
 

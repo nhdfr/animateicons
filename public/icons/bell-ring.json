@@ -16,7 +16,9 @@
     "notification",
     "sound",
     "reminder",
-    "alert"
+    "alert",
+    "active",
+    "ringing"
   ],
   "files": [
     {

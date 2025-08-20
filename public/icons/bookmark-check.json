@@ -16,7 +16,9 @@
     "complete",
     "clip",
     "tag",
-    "done"
+    "done",
+    "saved",
+    "verified"
   ],
   "files": [
     {

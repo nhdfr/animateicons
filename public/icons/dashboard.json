@@ -15,7 +15,9 @@
     "masonry",
     "brick",
     "panel",
-    "grid"
+    "grid",
+    "widgets",
+    "layout"
   ],
   "files": [
     {

@@ -15,7 +15,9 @@
     "clip",
     "tag",
     "delete",
-    "remove"
+    "remove",
+    "unsave",
+    "minus"
   ],
   "files": [
     {

@@ -16,7 +16,9 @@
     "screw",
     "settings",
     "configuration",
-    "parts"
+    "parts",
+    "hardware",
+    "wrench"
   ],
   "files": [
     {

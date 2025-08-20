@@ -16,7 +16,9 @@
     "next",
     "menu",
     ">",
-    "code"
+    "code",
+    "caret",
+    "expand"
   ],
   "files": [
     {

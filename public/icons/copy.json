@@ -15,7 +15,8 @@
     "clone",
     "duplicate",
     "multiple",
-    "clipboard"
+    "clipboard",
+    "copy"
   ],
   "files": [
     {

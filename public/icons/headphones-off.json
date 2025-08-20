@@ -16,7 +16,8 @@
     "audio",
     "mute",
     "off",
-    "disabled"
+    "disabled",
+    "no sound"
   ],
   "files": [
     {

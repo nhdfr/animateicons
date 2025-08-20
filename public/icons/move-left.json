@@ -15,7 +15,9 @@
     "arrow",
     "direction",
     "back",
-    "west"
+    "west",
+    "pan",
+    "reorder"
   ],
   "files": [
     {

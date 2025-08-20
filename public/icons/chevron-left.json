@@ -15,7 +15,9 @@
     "back",
     "previous",
     "menu",
-    "<"
+    "<",
+    "caret",
+    "collapse"
   ],
   "files": [
     {

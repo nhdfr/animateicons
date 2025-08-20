@@ -15,7 +15,8 @@
     "logo",
     "design",
     "tool",
-    "ui/ux"
+    "ui/ux",
+    "prototype"
   ],
   "files": [
     {

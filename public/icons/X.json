@@ -17,7 +17,9 @@
     "delete",
     "remove",
     "clear",
-    "multiply"
+    "multiply",
+    "dismiss",
+    "exit"
   ],
   "files": [
     {

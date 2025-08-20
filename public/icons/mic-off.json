@@ -16,7 +16,9 @@
     "record",
     "sound",
     "disable",
-    "microphone"
+    "microphone",
+    "no audio",
+    "silence"
   ],
   "files": [
     {

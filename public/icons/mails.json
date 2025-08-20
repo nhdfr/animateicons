@@ -16,7 +16,9 @@
     "envelope",
     "communication",
     "message",
-    "mailbox"
+    "mailbox",
+    "inbox",
+    "newsletter"
   ],
   "files": [
     {

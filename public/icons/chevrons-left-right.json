@@ -16,7 +16,8 @@
     "horizontal",
     "unfold",
     "resize",
-    "swap"
+    "swap",
+    "stretch"
   ],
   "files": [
     {

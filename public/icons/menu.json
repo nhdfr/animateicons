@@ -15,7 +15,9 @@
     "bars",
     "navigation",
     "hamburger",
-    "options"
+    "options",
+    "drawer",
+    "sidebar"
   ],
   "files": [
     {

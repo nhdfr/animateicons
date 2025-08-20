@@ -17,7 +17,8 @@
     "health",
     "fitness",
     "waveform",
-    "monitor"
+    "monitor",
+    "analytics"
   ],
   "files": [
     {

@@ -16,7 +16,9 @@
     "close",
     "delete",
     "remove",
-    "clear"
+    "clear",
+    "unsave",
+    "unbookmark"
   ],
   "files": [
     {

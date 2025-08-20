@@ -16,7 +16,9 @@
     "cart",
     "purchase",
     "store",
-    "bag"
+    "bag",
+    "retail",
+    "order"
   ],
   "files": [
     {

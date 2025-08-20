@@ -16,7 +16,9 @@
     "chat",
     "mail",
     "submit",
-    "forward"
+    "forward",
+    "share",
+    "paper-plane"
   ],
   "files": [
     {

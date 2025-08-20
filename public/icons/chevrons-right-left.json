@@ -16,7 +16,8 @@
     "fold",
     "horizontal",
     "resize",
-    "swap"
+    "swap",
+    "compress"
   ],
   "files": [
     {

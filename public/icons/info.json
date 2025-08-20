@@ -15,7 +15,9 @@
     "help",
     "i",
     "information",
-    "about"
+    "about",
+    "details",
+    "tooltip"
   ],
   "files": [
     {
