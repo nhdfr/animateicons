@@ -33,6 +33,7 @@ import { CircleChevronLeftIcon } from "./CircleChevronLeftIcon";
 import { CircleChevronRightIcon } from "./CircleChevronRightIcon";
 import { CircleChevronUpIcon } from "./CircleChevronUpIcon";
 import { CirclePlusIcon } from "./CirclePlusIcon";
+import { CodeXmlIcon } from "./CodeXmlIcon";
 import { CopyIcon } from "./CopyIcon";
 import { DashboardIcon } from "./DashboardIcon";
 import { EllipsisIcon } from "./EllipsisIcon";
@@ -740,6 +741,11 @@ const Icon_List: IconListItem[] = [
 		name: "swords",
 		icon: SwordsIcon,
 		keywords: ["battle", "challenge", "game", "war", "weapon", "fight", "duel"],
+	},
+	{
+		name: "code-xml",
+		icon: CodeXmlIcon,
+		keywords: ["source", "programming", "html", "xml"]
 	},
 ];
 
