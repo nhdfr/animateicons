@@ -8,12 +8,14 @@ import { BellMinusIcon } from "./BellMinusIcon";
 import { BellPlusIcon } from "./BellPlusIcon";
 import { BellRingIcon } from "./BellRingIcon";
 import { BicepsFlexedIcon } from "./BicepsFlexedIcon";
+import { BlocksIcon } from "./BlocksIcon";
 import { BoltIcon } from "./BoltIcon";
 import { BookmarkCheckIcon } from "./BookmarkCheckIcon";
 import { BookmarkIcon } from "./BookmarkIcon";
 import { BookmarkMinusIcon } from "./BookmarkMinusIcon";
 import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
 import { BookmarkXIcon } from "./BookmarkXIcon";
+import { BringToFrontIcon } from "./BringToFrontIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
 import { ChevronRightIcon } from "./ChevronRightIcon";
@@ -24,6 +26,12 @@ import { ChevronsRightIcon } from "./ChevronsRightIcon";
 import { ChevronsRightLeftIcon } from "./ChevronsRightLeftIcon";
 import { ChevronUpIcon } from "./ChevronUpIcon";
 import { ChromeIcon } from "./ChromeIcon";
+import { CircleCheckBigIcon } from "./CircleCheckBigIcon";
+import { CircleCheckIcon } from "./CircleCheckIcon";
+import { CircleChevronDownIcon } from "./CircleChevronDownIcon";
+import { CircleChevronLeftIcon } from "./CircleChevronLeftIcon";
+import { CircleChevronRightIcon } from "./CircleChevronRightIcon";
+import { CircleChevronUpIcon } from "./CircleChevronUpIcon";
 import { CirclePlusIcon } from "./CirclePlusIcon";
 import { CopyIcon } from "./CopyIcon";
 import { DashboardIcon } from "./DashboardIcon";
@@ -109,9 +117,82 @@ const Icon_List: IconListItem[] = [
 		keywords: ["masonry", "brick", "panel", "grid", "widgets", "layout"],
 	},
 	{
+		name: "blocks",
+		icon: BlocksIcon,
+		keywords: [
+			"addon",
+			"plugin",
+			"integration",
+			"extension",
+			"package",
+			"build",
+			"stack",
+			"toys",
+			"kids",
+			"children",
+			"learning",
+			"squares",
+			"corne",
+		],
+	},
+	{
+		name: "bring-to-front",
+		icon: BringToFrontIcon,
+		keywords: [
+			"bring",
+			"send",
+			"move",
+			"over",
+			"forward",
+			"front",
+			"overlap",
+			"layer",
+			"order",
+		],
+	},
+	{
 		name: "info",
 		icon: InfoIcon,
 		keywords: ["help", "i", "information", "about", "details", "tooltip"],
+	},
+
+	{
+		name: "circle-check",
+		icon: CircleCheckIcon,
+		keywords: ["done", "todo", "tick", "complete", "task"],
+	},
+	{
+		name: "circle-check-big",
+		icon: CircleCheckBigIcon,
+		keywords: ["done", "todo", "tick", "complete", "task"],
+	},
+	{
+		name: "circle-chevron-down",
+		icon: CircleChevronDownIcon,
+		keywords: ["dropdown", "expand", "menu", "arrow", "direction", "chevron"],
+	},
+	{
+		name: "circle-chevron-left",
+		icon: CircleChevronLeftIcon,
+		keywords: ["back", "previous", "menu", "<", "caret", "collapse"],
+	},
+	{
+		name: "circle-chevron-right",
+		icon: CircleChevronRightIcon,
+		keywords: ["forward", "next", "menu", ">", "code", "caret", "expand"],
+	},
+	{
+		name: "circle-chevron-up",
+		icon: CircleChevronUpIcon,
+		keywords: [
+			"arrow",
+			"direction",
+			"collapse",
+			"dropdown",
+			"menu",
+			"less",
+			"caret",
+		],
 	},
 
 	// Arrows & Direction
