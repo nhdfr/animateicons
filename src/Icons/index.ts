@@ -42,6 +42,7 @@ import { FacebookIcon } from "./FacebookIcon";
 import { FigmaIcon } from "./FigmaIcon";
 import { FramerIcon } from "./FramerIcon";
 import { GithubIcon } from "./GithubIcon";
+import { GlobeIcon } from "./GlobeIcon";
 import { HeadphonesIcon } from "./HeadphonesIcon";
 import { HeadphonesOffIcon } from "./HeadphonesOffIcon";
 import { HeartIcon } from "./HeartIcon";
@@ -745,7 +746,22 @@ const Icon_List: IconListItem[] = [
 	{
 		name: "code-xml",
 		icon: CodeXmlIcon,
-		keywords: ["source", "programming", "html", "xml"]
+		keywords: ["source", "programming", "html", "xml"],
+	},
+	{
+		name: "globe",
+		icon: GlobeIcon,
+		keywords: [
+			"world",
+			"earth",
+			"global",
+			"internet",
+			"network",
+			"planet",
+			"map",
+			"travel",
+			"international",
+		],
 	},
 ];
 
