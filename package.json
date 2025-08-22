@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@radix-ui/react-slot": "^1.2.3",
 		"@radix-ui/react-tabs": "^1.1.12",
+		"@radix-ui/react-tooltip": "^1.2.8",
 		"@vercel/analytics": "^1.5.0",
 		"babel-plugin-react-compiler": "^19.1.0-rc.2",
 		"class-variance-authority": "^0.7.1",
@@ -21,7 +22,6 @@
 		"next": "15.4.4",
 		"react": "19.1.0",
 		"react-dom": "19.1.0",
-		"react-tooltip": "^5.29.1",
 		"tailwind-merge": "^3.3.1",
 		"tsx": "^4.20.4"
 	},

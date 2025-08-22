@@ -1,8 +1,8 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CopyIcon } from "@/Icons/CopyIcon";
 import React, { useEffect, useState } from "react";
 import { CheckIcon } from "./icons/CheckIcon";
-import { CopyIcon } from "./icons/Copy";
 import { WordRotate } from "./magicui/word-rotate";
 import { Button } from "./ui/button";
 

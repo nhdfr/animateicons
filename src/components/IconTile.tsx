@@ -1,9 +1,13 @@
 "use client";
 import { getIconCode } from "@/actions/getIconCode";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { CopyIcon } from "@/Icons/CopyIcon";
 import React, { useState } from "react";
-import { Tooltip } from "react-tooltip";
 import { CheckIcon } from "./icons/CheckIcon";
-import { CopyIcon } from "./icons/Copy";
 import { TerminalIcon } from "./icons/Terminal";
 
 type Props = {
@@ -51,31 +55,42 @@ const IconTile: React.FC<Props> = ({ item }) => {
 			<p className="line-clamp-1 text-gray-300">{item.name}</p>
 
 			<div className="mt-2 flex items-center justify-center gap-6">
-				<button
-					className="hover:text-primary flex size-6 items-center justify-center"
-					onClick={copyCliCommand}
-					aria-label={copiedCli ? "CLI Copied" : "Copy CLI Command"}
-					data-tooltip-id="my-tooltip"
-					data-tooltip-content="copy shadcn/cli command"
-				>
-					{copiedCli ? <CheckIcon /> : <TerminalIcon size={18} />}
-				</button>
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<button
+							className="hover:text-primary flex size-6 items-center justify-center"
+							onClick={copyCliCommand}
+							aria-label={copiedCli ? "CLI Copied" : "Copy CLI Command"}
+						>
+							{copiedCli ? <CheckIcon /> : <TerminalIcon size={18} />}
+						</button>
+					</TooltipTrigger>
+					<TooltipContent
+						side="bottom"
+						className="px-3! py-1.5! font-medium! text-blue-600!"
+					>
+						copy shadcn/cli command
+					</TooltipContent>
+				</Tooltip>
 
-				<button
-					className="hover:text-primary flex size-6 items-center justify-center"
-					onClick={copyToClipboard}
-					aria-label={copied ? "Code Copied" : "Copy JSX Code"}
-					data-tooltip-id="my-tooltip"
-					data-tooltip-content="copy code"
-				>
-					{copied ? <CheckIcon /> : <CopyIcon size={17} />}
-				</button>
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<button
+							className="hover:text-primary flex size-6 items-center justify-center"
+							onClick={copyToClipboard}
+							aria-label={copied ? "Code Copied" : "Copy JSX Code"}
+						>
+							{copied ? <CheckIcon /> : <CopyIcon size={17} />}
+						</button>
+					</TooltipTrigger>
+					<TooltipContent
+						side="bottom"
+						className="px-3! py-1.5! font-medium! text-blue-600!"
+					>
+						copy code
+					</TooltipContent>
+				</Tooltip>
 			</div>
-			<Tooltip
-				id="my-tooltip"
-				className="bg-gray-100! p-1! px-2! font-medium! text-blue-600!"
-				place="bottom"
-			/>
 		</div>
 	);
 };
