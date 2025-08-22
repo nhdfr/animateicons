@@ -16,6 +16,8 @@ import { BookmarkMinusIcon } from "./BookmarkMinusIcon";
 import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
 import { BookmarkXIcon } from "./BookmarkXIcon";
 import { BringToFrontIcon } from "./BringToFrontIcon";
+import { CheckCheckIcon } from "./CheckCheckIcon";
+import { CheckIcon } from "./CheckIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
 import { ChevronRightIcon } from "./ChevronRightIcon";
@@ -38,17 +40,20 @@ import { CopyIcon } from "./CopyIcon";
 import { DashboardIcon } from "./DashboardIcon";
 import { EllipsisIcon } from "./EllipsisIcon";
 import { EllipsisVerticalIcon } from "./EllipsisVerticalIcon";
+import { ExternalLinkIcon } from "./ExternalLinkIcon";
 import { FacebookIcon } from "./FacebookIcon";
 import { FigmaIcon } from "./FigmaIcon";
 import { FramerIcon } from "./FramerIcon";
 import { GithubIcon } from "./GithubIcon";
 import { GlobeIcon } from "./GlobeIcon";
+import { GlobeLockIcon } from "./GlobeLockIcon";
 import { HeadphonesIcon } from "./HeadphonesIcon";
 import { HeadphonesOffIcon } from "./HeadphonesOffIcon";
 import { HeartIcon } from "./HeartIcon";
 import { InfoIcon } from "./InfoIcon";
 import { InstagramIcon } from "./InstagramIcon";
 import { LinkedInIcon } from "./LinkedinIcon";
+import { LinkIcon } from "./LinkIcon";
 import { LoaderCircleIcon } from "./LoaderCircleIcon";
 import { LoaderIcon } from "./LoaderIcon";
 import { LockIcon } from "./LockIcon";
@@ -66,9 +71,11 @@ import { ShoppingBagIcon } from "./ShoppingBagIcon";
 import { ShoppingCartIcon } from "./ShoppingCartIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { SprayCanIcon } from "./SprayCanIcon";
+import { SquareArrowOutUpRightIcon } from "./SquareArrowOutUpRightIcon";
 import { SwordsIcon } from "./SwordsIcon";
 import { TrashIcon } from "./TrashIcon";
 import { TwitterIcon } from "./TwitterIcon";
+import { UnlinkIcon } from "./UnlinkIcon";
 import { UserLockIcon } from "./UserLockIcon";
 import { XIcon } from "./XIcon";
 
@@ -762,6 +769,94 @@ const Icon_List: IconListItem[] = [
 			"travel",
 			"international",
 		],
+	},
+	{
+		name: "globe-lock",
+		icon: GlobeLockIcon,
+		keywords: [
+			"vpn",
+			"private",
+			"privacy",
+			"network",
+			"world",
+			"browser",
+			"security",
+			"encryption",
+			"protection",
+			"connection",
+		],
+	},
+	{
+		name: "square-arrow-out-up-right",
+		icon: SquareArrowOutUpRightIcon,
+		keywords: [
+			"outwards",
+			"direction",
+			"north-east",
+			"diagonal",
+			"share",
+			"open",
+			"external",
+			"link",
+		],
+	},
+	{
+		name: "external-link",
+		icon: ExternalLinkIcon,
+		keywords: [
+			"outwards",
+			"direction",
+			"north-east",
+			"diagonal",
+			"share",
+			"open",
+			"external",
+			"link",
+			"outbound",
+			"open",
+			"share",
+		],
+	},
+	{
+		name: "link",
+		icon: LinkIcon,
+		keywords: [
+			"chain",
+			"url",
+			"hyperlink",
+			"connection",
+			"attachment",
+			"reference",
+			"linked",
+			"website",
+			"linking",
+		],
+	},
+	{
+		name: "unlink",
+		icon: UnlinkIcon,
+		keywords: [
+			"break",
+			"chain",
+			"disconnect",
+			"remove",
+			"detach",
+			"separate",
+			"cut",
+			"link",
+			"unlinked",
+			"unlinking",
+		],
+	},
+	{
+		name: "check",
+		icon: CheckIcon,
+		keywords: ["done", "todo", "tick", "complete", "task"],
+	},
+	{
+		name: "check-check",
+		icon: CheckCheckIcon,
+		keywords: ["done", "todo", "tick", "complete", "task", "multiple"],
 	},
 ];
 
