@@ -9,7 +9,7 @@ import CmdSection from "./CmdSection";
 
 const HeroSection: React.FC = () => {
 	return (
-		<div>
+		<div className="relative">
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
@@ -37,17 +37,6 @@ const HeroSection: React.FC = () => {
 					repeatType: "reverse",
 				}}
 				className="bg-indigoDeep/5 absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full blur-3xl"
-			/>
-			<motion.div
-				initial={{ opacity: 0, scale: 0.6 }}
-				animate={{ opacity: 1, scale: 1 }}
-				transition={{
-					duration: 1.5,
-					delay: 2,
-					repeat: Infinity,
-					repeatType: "reverse",
-				}}
-				className="bg-accent/5 absolute top-1/2 left-1/2 h-64 w-64 rounded-full blur-3xl"
 			/>
 
 			<div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">

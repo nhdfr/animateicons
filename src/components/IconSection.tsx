@@ -33,7 +33,17 @@ const IconSection = () => {
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.5, delay: 0.2 }}
 			/>
-
+			<motion.div
+				initial={{ opacity: 0, scale: 0.6 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{
+					duration: 1.5,
+					delay: 2,
+					repeat: Infinity,
+					repeatType: "reverse",
+				}}
+				className="bg-accent/5 absolute top-1/2 left-1/2 h-64 w-64 rounded-full blur-3xl"
+			/>
 			<AnimatePresence>
 				{filteredItems.length > 0 ? (
 					<motion.div

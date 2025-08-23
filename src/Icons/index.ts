@@ -36,6 +36,8 @@ import { CircleChevronRightIcon } from "./CircleChevronRightIcon";
 import { CircleChevronUpIcon } from "./CircleChevronUpIcon";
 import { CirclePlusIcon } from "./CirclePlusIcon";
 import { CodeXmlIcon } from "./CodeXmlIcon";
+import { ContactIcon } from "./ContactIcon";
+import { ContactRoundIcon } from "./ContactRoundIcon";
 import { CopyIcon } from "./CopyIcon";
 import { DashboardIcon } from "./DashboardIcon";
 import { EllipsisIcon } from "./EllipsisIcon";
@@ -67,6 +69,7 @@ import { MoveLeftIcon } from "./MoveLeftIcon";
 import { MoveRightIcon } from "./MoveRightIcon";
 import { PlusIcon } from "./PlusIcon";
 import { SendIcon } from "./SendIcon";
+import { ShieldUserIcon } from "./ShieldUserIcon";
 import { ShoppingBagIcon } from "./ShoppingBagIcon";
 import { ShoppingCartIcon } from "./ShoppingCartIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
@@ -76,7 +79,13 @@ import { SwordsIcon } from "./SwordsIcon";
 import { TrashIcon } from "./TrashIcon";
 import { TwitterIcon } from "./TwitterIcon";
 import { UnlinkIcon } from "./UnlinkIcon";
+import { UserCheckIcon } from "./UserCheckIcon";
+import { UserCogIcon } from "./UserCogIcon";
+import { UserIcon } from "./UserIcon";
 import { UserLockIcon } from "./UserLockIcon";
+import { UserRoundCheckIcon } from "./UserRoundCheckIcon";
+import { UserRoundCogIcon } from "./UserRoundCogIcon";
+import { UserRoundIcon } from "./UserRoundIcon";
 import { XIcon } from "./XIcon";
 
 const Icon_List: IconListItem[] = [
@@ -157,6 +166,153 @@ const Icon_List: IconListItem[] = [
 			"overlap",
 			"layer",
 			"order",
+		],
+	},
+	{
+		name: "check",
+		icon: CheckIcon,
+		keywords: ["done", "todo", "tick", "complete", "task"],
+	},
+	{
+		name: "check-check",
+		icon: CheckCheckIcon,
+		keywords: ["done", "todo", "tick", "complete", "task", "multiple"],
+	},
+	// user
+	{
+		name: "user",
+		icon: UserIcon,
+		keywords: [
+			"person",
+			"account",
+			"profile",
+			"member",
+			"avatar",
+			"identity",
+			"login",
+			"logout",
+			"customer",
+		],
+	},
+	{
+		name: "user-round",
+		icon: UserRoundIcon,
+		keywords: [
+			"person",
+			"account",
+			"profile",
+			"member",
+			"avatar",
+			"identity",
+			"login",
+			"logout",
+			"customer",
+		],
+	},
+	{
+		name: "shield-user",
+		icon: ShieldUserIcon,
+		keywords: [
+			"security",
+			"protection",
+			"privacy",
+			"safety",
+			"guard",
+			"defend",
+			"secure",
+			"user",
+			"account",
+			"profile",
+		],
+	},
+	{
+		name: "contact-round",
+		icon: ContactRoundIcon,
+		keywords: [
+			"user",
+			"person",
+			"family",
+			"friend",
+			"acquaintance",
+			"listing",
+			"networking",
+		],
+	},
+	{
+		name: "contact",
+		icon: ContactIcon,
+		keywords: [
+			"user",
+			"person",
+			"family",
+			"friend",
+			"acquaintance",
+			"listing",
+			"networking",
+		],
+	},
+	{
+		name: "user-check",
+		icon: UserCheckIcon,
+		keywords: [
+			"followed",
+			"subscribed",
+			"done",
+			"todo",
+			"tick",
+			"complete",
+			"task",
+		],
+	},
+	{
+		name: "user-round-check",
+		icon: UserRoundCheckIcon,
+		keywords: [
+			"followed",
+			"subscribed",
+			"done",
+			"todo",
+			"tick",
+			"complete",
+			"task",
+		],
+	},
+	{
+		name: "user-cog",
+		icon: UserCogIcon,
+		keywords: [
+			"settings",
+			"preferences",
+			"account",
+			"configuration",
+			"user",
+			"person",
+			"profile",
+			"member",
+			"avatar",
+			"identity",
+			"login",
+			"logout",
+			"customer",
+		],
+	},
+	{
+		name: "user-round-cog",
+		icon: UserRoundCogIcon,
+		keywords: [
+			"settings",
+			"preferences",
+			"account",
+			"configuration",
+			"user",
+			"person",
+			"profile",
+			"member",
+			"avatar",
+			"identity",
+			"login",
+			"logout",
+			"customer",
 		],
 	},
 	{
@@ -847,16 +1003,6 @@ const Icon_List: IconListItem[] = [
 			"unlinked",
 			"unlinking",
 		],
-	},
-	{
-		name: "check",
-		icon: CheckIcon,
-		keywords: ["done", "todo", "tick", "complete", "task"],
-	},
-	{
-		name: "check-check",
-		icon: CheckCheckIcon,
-		keywords: ["done", "todo", "tick", "complete", "task", "multiple"],
 	},
 ];
 
