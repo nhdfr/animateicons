@@ -6,9 +6,9 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { CopyIcon } from "@/Icons/CopyIcon";
+import { TerminalIcon } from "@/Icons/TerminalIcon";
 import React, { useState } from "react";
 import { CheckIcon } from "./icons/CheckIcon";
-import { TerminalIcon } from "./icons/Terminal";
 
 type Props = {
 	item: IconListItem;

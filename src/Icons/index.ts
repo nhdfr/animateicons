@@ -52,8 +52,10 @@ import { GlobeLockIcon } from "./GlobeLockIcon";
 import { HeadphonesIcon } from "./HeadphonesIcon";
 import { HeadphonesOffIcon } from "./HeadphonesOffIcon";
 import { HeartIcon } from "./HeartIcon";
+import { HouseIcon } from "./HouseIcon";
 import { InfoIcon } from "./InfoIcon";
 import { InstagramIcon } from "./InstagramIcon";
+import { LayoutGridIcon } from "./LayoutGridIcon";
 import { LinkedInIcon } from "./LinkedinIcon";
 import { LinkIcon } from "./LinkIcon";
 import { LoaderCircleIcon } from "./LoaderCircleIcon";
@@ -67,6 +69,7 @@ import { MicOffIcon } from "./MicOffIcon";
 import { MinusIcon } from "./MinusIcon";
 import { MoveLeftIcon } from "./MoveLeftIcon";
 import { MoveRightIcon } from "./MoveRightIcon";
+import { PhoneIcon } from "./PhoneIcon";
 import { PlusIcon } from "./PlusIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SendIcon } from "./SendIcon";
@@ -77,6 +80,7 @@ import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { SprayCanIcon } from "./SprayCanIcon";
 import { SquareArrowOutUpRightIcon } from "./SquareArrowOutUpRightIcon";
 import { SwordsIcon } from "./SwordsIcon";
+import { TerminalIcon } from "./TerminalIcon";
 import { TrashIcon } from "./TrashIcon";
 import { TwitterIcon } from "./TwitterIcon";
 import { UnlinkIcon } from "./UnlinkIcon";
@@ -99,6 +103,8 @@ import { UsersIcon } from "./UsersIcon";
 import { UsersRoundIcon } from "./UsersRoundIcon";
 import { UserStarIcon } from "./UserStarIcon";
 import { UserXIcon } from "./UserXIcon";
+import { WalletIcon } from "./WalletIcon";
+import { WalletMinimalIcon } from "./WalletMinimalIcon";
 import { XIcon } from "./XIcon";
 
 const Icon_List: IconListItem[] = [
@@ -147,6 +153,12 @@ const Icon_List: IconListItem[] = [
 		icon: DashboardIcon,
 		keywords: ["masonry", "brick", "panel", "grid", "widgets", "layout"],
 	},
+	{
+		name: "layout-grid",
+		icon: LayoutGridIcon,
+		keywords: ["masonry", "brick", "panel", "grid", "widgets", "layout"],
+	},
+
 	{
 		name: "blocks",
 		icon: BlocksIcon,
@@ -495,14 +507,36 @@ const Icon_List: IconListItem[] = [
 		],
 	},
 	{
+		name: "phone",
+		icon: PhoneIcon,
+		keywords: ["call", "mobile", "contact", "telephone", "device", "cell"],
+	},
+	{
 		name: "search",
 		icon: SearchIcon,
 		keywords: ["find", "magnifier", "magnifying glass", "lens", "zoom"],
 	},
 	{
+		name: "house",
+		icon: HouseIcon,
+		keywords: ["home", "main", "dashboard", "start", "begin", "root"],
+	},
+	{
 		name: "info",
 		icon: InfoIcon,
 		keywords: ["help", "i", "information", "about", "details", "tooltip"],
+	},
+	{
+		name: "terminal",
+		icon: TerminalIcon,
+		keywords: [
+			"code",
+			"command",
+			"shell",
+			"console",
+			"developer",
+			"programming",
+		],
 	},
 	{
 		name: "circle-check",
@@ -1173,6 +1207,16 @@ const Icon_List: IconListItem[] = [
 			"unlinked",
 			"unlinking",
 		],
+	},
+	{
+		name: "wallet",
+		icon: WalletIcon,
+		keywords: ["money", "finance", "payment", "cash", "billfold", "purse"],
+	},
+	{
+		name: "wallet-minimal",
+		icon: WalletMinimalIcon,
+		keywords: ["money", "finance", "payment", "cash", "billfold", "purse"],
 	},
 ];
 
