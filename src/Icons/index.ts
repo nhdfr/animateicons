@@ -68,6 +68,7 @@ import { MinusIcon } from "./MinusIcon";
 import { MoveLeftIcon } from "./MoveLeftIcon";
 import { MoveRightIcon } from "./MoveRightIcon";
 import { PlusIcon } from "./PlusIcon";
+import { SearchIcon } from "./SearchIcon";
 import { SendIcon } from "./SendIcon";
 import { ShieldUserIcon } from "./ShieldUserIcon";
 import { ShoppingBagIcon } from "./ShoppingBagIcon";
@@ -83,9 +84,21 @@ import { UserCheckIcon } from "./UserCheckIcon";
 import { UserCogIcon } from "./UserCogIcon";
 import { UserIcon } from "./UserIcon";
 import { UserLockIcon } from "./UserLockIcon";
+import { UserMinusIcon } from "./UserMinusIcon";
+import { UserPenIcon } from "./UserPenIcon";
+import { UserPlusIcon } from "./UserPlusIcon";
 import { UserRoundCheckIcon } from "./UserRoundCheckIcon";
 import { UserRoundCogIcon } from "./UserRoundCogIcon";
 import { UserRoundIcon } from "./UserRoundIcon";
+import { UserRoundMinusIcon } from "./UserRoundMinusIcon";
+import { UserRoundPenIcon } from "./UserRoundPenIcon";
+import { UserRoundSearchIcon } from "./UserRoundSearchIcon";
+import { UserRoundXIcon } from "./UserRoundXIcon";
+import { UserSearchIcon } from "./UserSearchIcon";
+import { UsersIcon } from "./UsersIcon";
+import { UsersRoundIcon } from "./UsersRoundIcon";
+import { UserStarIcon } from "./UserStarIcon";
+import { UserXIcon } from "./UserXIcon";
 import { XIcon } from "./XIcon";
 
 const Icon_List: IconListItem[] = [
@@ -316,11 +329,181 @@ const Icon_List: IconListItem[] = [
 		],
 	},
 	{
+		name: "user-lock",
+		icon: UserLockIcon,
+		keywords: [
+			"person",
+			"lock",
+			"locked",
+			"account",
+			"secure",
+			"privacy",
+			"access control",
+		],
+	},
+	{
+		name: "user-minus",
+		icon: UserMinusIcon,
+		keywords: [
+			"person",
+			"remove",
+			"delete",
+			"account",
+			"unfriend",
+			"unfollow",
+			"block",
+			"ban",
+			"customer",
+		],
+	},
+	{
+		name: "user-round-minus",
+		icon: UserRoundMinusIcon,
+		keywords: [
+			"person",
+			"remove",
+			"delete",
+			"account",
+			"unfriend",
+			"unfollow",
+			"block",
+			"ban",
+			"customer",
+		],
+	},
+	{
+		name: "user-pen",
+		icon: UserPenIcon,
+		keywords: [
+			"edit",
+			"modify",
+			"change",
+			"update",
+			"person",
+			"account",
+			"profile",
+			"member",
+			"avatar",
+			"identity",
+		],
+	},
+	{
+		name: "user-round-pen",
+		icon: UserRoundPenIcon,
+		keywords: [
+			"edit",
+			"modify",
+			"change",
+			"update",
+			"person",
+			"account",
+			"profile",
+			"member",
+			"avatar",
+			"identity",
+		],
+	},
+	{
+		name: "user-plus",
+		icon: UserPlusIcon,
+		keywords: ["new", "add", "create", "follow", "subscribe"],
+	},
+	{
+		name: "user-search",
+		icon: UserSearchIcon,
+		keywords: [
+			"person",
+			"account",
+			"contact",
+			"find",
+			"scan",
+			"magnifier",
+			"magnifying glass",
+			"lens",
+		],
+	},
+	{
+		name: "user-search",
+		icon: UserRoundSearchIcon,
+		keywords: [
+			"person",
+			"account",
+			"contact",
+			"find",
+			"scan",
+			"magnifier",
+			"magnifying glass",
+			"lens",
+		],
+	},
+	{
+		name: "user-x",
+		icon: UserXIcon,
+		keywords: ["delete", "remove", "unfollow", "unsubscribe", "unavailable"],
+	},
+	{
+		name: "user-round-x",
+		icon: UserRoundXIcon,
+		keywords: ["delete", "remove", "unfollow", "unsubscribe", "unavailable"],
+	},
+	{
+		name: "user-star",
+		icon: UserStarIcon,
+		keywords: [
+			"person",
+			"account",
+			"favorite",
+			"contact",
+			"like",
+			"review",
+			"rating",
+			"admin",
+		],
+	},
+	{
+		name: "users",
+		icon: UsersIcon,
+		keywords: [
+			"group",
+			"team",
+			"people",
+			"members",
+			"community",
+			"contacts",
+			"network",
+			"friends",
+			"family",
+			"collaborators",
+			"connections",
+		],
+	},
+	{
+		name: "users-round",
+		icon: UsersRoundIcon,
+		keywords: [
+			"group",
+			"team",
+			"people",
+			"members",
+			"community",
+			"contacts",
+			"network",
+			"friends",
+			"family",
+			"collaborators",
+			"connections",
+		],
+	},
+	{
+		name: "search",
+		icon: SearchIcon,
+		keywords: ["find", "magnifier", "magnifying glass", "lens", "zoom"],
+	},
+	{
 		name: "info",
 		icon: InfoIcon,
 		keywords: ["help", "i", "information", "about", "details", "tooltip"],
 	},
-
 	{
 		name: "circle-check",
 		icon: CircleCheckIcon,
@@ -666,7 +849,7 @@ const Icon_List: IconListItem[] = [
 			"share",
 			"paper-plane",
 		],
-	}, // duplicate kept near messaging for discovery
+	},
 
 	// Notifications
 	{
@@ -727,19 +910,6 @@ const Icon_List: IconListItem[] = [
 			"lock",
 			"protected",
 			"private",
-		],
-	},
-	{
-		name: "user-lock",
-		icon: UserLockIcon,
-		keywords: [
-			"person",
-			"lock",
-			"locked",
-			"account",
-			"secure",
-			"privacy",
-			"access control",
 		],
 	},
 
