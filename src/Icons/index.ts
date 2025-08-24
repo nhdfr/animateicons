@@ -58,6 +58,7 @@ import { HeadphonesIcon } from "./HeadphonesIcon";
 import { HeadphonesOffIcon } from "./HeadphonesOffIcon";
 import { HeartIcon } from "./HeartIcon";
 import { HouseIcon } from "./HouseIcon";
+import { IndianRupeeIcon } from "./IndianRupeeIcon";
 import { InfoIcon } from "./InfoIcon";
 import { InstagramIcon } from "./InstagramIcon";
 import { KeyIcon } from "./KeyIcon";
@@ -1377,6 +1378,19 @@ const Icon_List: IconListItem[] = [
 			"signal",
 			"antenna",
 			"tower",
+		],
+	},
+	{
+		name: "indian-rupee",
+		icon: IndianRupeeIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"rupee",
+			"india",
+			"₹",
 		],
 	},
 ];
