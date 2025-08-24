@@ -45,12 +45,15 @@ import { ContactRoundIcon } from "./ContactRoundIcon";
 import { CopyIcon } from "./CopyIcon";
 import { CreditCardIcon } from "./CreditCardIcon";
 import { DashboardIcon } from "./DashboardIcon";
+import { DollarSignIcon } from "./DollarSignIcon";
 import { EllipsisIcon } from "./EllipsisIcon";
 import { EllipsisVerticalIcon } from "./EllipsisVerticalIcon";
+import { EuroIcon } from "./EuroIcon";
 import { ExternalLinkIcon } from "./ExternalLinkIcon";
 import { FacebookIcon } from "./FacebookIcon";
 import { FigmaIcon } from "./FigmaIcon";
 import { FramerIcon } from "./FramerIcon";
+import { GeorgianLariIcon } from "./GeorgianLariIcon";
 import { GithubIcon } from "./GithubIcon";
 import { GlobeIcon } from "./GlobeIcon";
 import { GlobeLockIcon } from "./GlobeLockIcon";
@@ -78,8 +81,12 @@ import { MicOffIcon } from "./MicOffIcon";
 import { MinusIcon } from "./MinusIcon";
 import { MoveLeftIcon } from "./MoveLeftIcon";
 import { MoveRightIcon } from "./MoveRightIcon";
+import { PhilippinePesoIcon } from "./PhilippinePesoIcon";
 import { PhoneIcon } from "./PhoneIcon";
 import { PlusIcon } from "./PlusIcon";
+import { PoundSterlingIcon } from "./PoundSterlingIcon";
+import { RussianRubleIcon } from "./RussianRubleIcon";
+import { SaudiRiyalIcon } from "./SaudiRiyalIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SendIcon } from "./SendIcon";
 import { ShieldUserIcon } from "./ShieldUserIcon";
@@ -89,9 +96,11 @@ import { SignalIcon } from "./SignalIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { SprayCanIcon } from "./SprayCanIcon";
 import { SquareArrowOutUpRightIcon } from "./SquareArrowOutUpRightIcon";
+import { SwissFrancIcon } from "./SwissFrancIcon";
 import { SwordsIcon } from "./SwordsIcon";
 import { TerminalIcon } from "./TerminalIcon";
 import { TrashIcon } from "./TrashIcon";
+import { TurkishLiraIcon } from "./TurkishLiraIcon";
 import { TwitterIcon } from "./TwitterIcon";
 import { UnlinkIcon } from "./UnlinkIcon";
 import { UploadIcon } from "./UploadIcon";
@@ -117,6 +126,7 @@ import { UserXIcon } from "./UserXIcon";
 import { WalletIcon } from "./WalletIcon";
 import { WalletMinimalIcon } from "./WalletMinimalIcon";
 import { XIcon } from "./XIcon";
+import { YenYuanIcon } from "./YenYuanIcon";
 
 const Icon_List: IconListItem[] = [
 	// UI & Navigation
@@ -1380,6 +1390,7 @@ const Icon_List: IconListItem[] = [
 			"tower",
 		],
 	},
+	// Currency
 	{
 		name: "indian-rupee",
 		icon: IndianRupeeIcon,
@@ -1391,6 +1402,164 @@ const Icon_List: IconListItem[] = [
 			"rupee",
 			"india",
 			"₹",
+		],
+	},
+	{
+		name: "dollar-sign",
+		icon: DollarSignIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"dollar",
+			"usa",
+			"usd",
+			"$",
+		],
+	},
+	{
+		name: "euro",
+		icon: EuroIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"euro",
+			"europe",
+			"eur",
+			"€",
+		],
+	},
+	{
+		name: "pound-sterling",
+		icon: PoundSterlingIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"pound",
+			"uk",
+			"gbp",
+			"£",
+		],
+	},
+	{
+		name: "yen-yuan",
+		icon: YenYuanIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"yen",
+			"yuan",
+			"japan",
+			"china",
+			"cny",
+			"jpy",
+			"¥",
+		],
+	},
+	{
+		name: "georgian-lari",
+		icon: GeorgianLariIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"lari",
+			"georgia",
+			"gel",
+			"₾",
+		],
+	},
+	// {
+	// 	name: "bitcoin",
+	// 	icon: BitcoinIcon,
+	// 	keywords: [
+	// 		"currency",
+	// 		"money",
+	// 		"finance",
+	// 		"payment",
+	// 		"crypto",
+	// 		"cryptocurrency",
+	// 		"bitcoin",
+	// 		"btc",
+	// 		"₿",
+	// 	],
+	// },
+	{
+		name: "philippine-peso",
+		icon: PhilippinePesoIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"peso",
+			"philippines",
+			"php",
+			"₱",
+		],
+	},
+	{
+		name: "turkish-lira",
+		icon: TurkishLiraIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"lira",
+			"turkey",
+			"try",
+			"₺",
+		],
+	},
+	{
+		name: "russian-ruble",
+		icon: RussianRubleIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"ruble",
+			"russia",
+			"rub",
+			"₽",
+		],
+	},
+	{
+		name: "saudi-riyal",
+		icon: SaudiRiyalIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"riyal",
+			"saudi",
+			"sar",
+			"﷼",
+		],
+	},
+	{
+		name: "swiss-franc",
+		icon: SwissFrancIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"franc",
+			"swiss",
+			"chf",
+			"₣",
 		],
 	},
 ];

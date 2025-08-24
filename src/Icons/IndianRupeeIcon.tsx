@@ -15,7 +15,7 @@ interface IndianRupeeProps extends HTMLMotionProps<"div"> {
 }
 
 const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
-	({ className, size = 36, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 
@@ -37,65 +37,69 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 
 		const ease = [0.12, 1, 0.25, 1] as const;
 
-		const groupSettle: Variants = {
-			normal: { scale: 1 },
-			animate: {
-				scale: [1, 1.015, 1],
-				transition: { duration: 0.6, ease },
-			},
-		};
-
 		const drawTop: Variants = {
-			normal: { strokeDasharray: "0 1", strokeDashoffset: 0 },
+			normal: { strokeDasharray: "1", strokeDashoffset: 0 },
 			animate: {
-				strokeDasharray: 20,
-				strokeDashoffset: [20, 0],
-				transition: { duration: 0.6, ease, delay: 0.06 },
+				strokeDasharray: "1",
+				strokeDashoffset: [1, 0],
+				transition: { duration: 0.5, ease, delay: 0.06 },
 			},
 		};
 
 		const drawMid: Variants = {
-			normal: { strokeDasharray: "0 1", strokeDashoffset: 0 },
+			normal: { strokeDasharray: "1", strokeDashoffset: 0 },
 			animate: {
-				strokeDasharray: 20,
-				strokeDashoffset: [20, 0],
-				transition: { duration: 0.6, ease, delay: 0.18 },
+				strokeDasharray: "1",
+				strokeDashoffset: [1, 0],
+				transition: { duration: 0.5, ease, delay: 0.16 },
 			},
 		};
 
 		const drawCurve: Variants = {
-			normal: { strokeDasharray: "0 1", strokeDashoffset: 0 },
+			normal: { strokeDasharray: "1", strokeDashoffset: 0 },
 			animate: {
-				strokeDasharray: 40,
-				strokeDashoffset: [40, 0],
-				transition: { duration: 0.9, ease, delay: 0.28 },
+				strokeDasharray: "1",
+				strokeDashoffset: [1, 0],
+				transition: { duration: 0.8, ease, delay: 0.26 },
 			},
 		};
 
 		const drawNotch: Variants = {
-			normal: { strokeDasharray: "0 1", strokeDashoffset: 0 },
+			normal: { strokeDasharray: "1", strokeDashoffset: 0 },
 			animate: {
-				strokeDasharray: 10,
-				strokeDashoffset: [10, 0],
-				transition: { duration: 0.5, ease, delay: 0.46 },
+				strokeDasharray: "1",
+				strokeDashoffset: [1, 0],
+				transition: { duration: 0.45, ease, delay: 0.42 },
+			},
+		};
+
+		const groupSettle: Variants = {
+			normal: { scale: 1, x: 0, y: 0 },
+			animate: {
+				scale: [1, 1.05, 1],
+				x: [0, -1, 0],
+				y: [0, -1, 0],
+				transition: { duration: 0.6, ease },
 			},
 		};
 
 		const diagonalResolve: Variants = {
 			normal: {
-				strokeDasharray: "0 1",
+				strokeDasharray: "1",
 				strokeDashoffset: 0,
 				x: 0,
 				y: 0,
 				opacity: 1,
+				scale: 1,
 			},
 			animate: {
-				strokeDasharray: 26,
-				strokeDashoffset: [26, 0],
-				x: [-0.3, 0],
-				y: [-0.2, 0],
+				strokeDasharray: "1",
+				strokeDashoffset: [1, 0],
+				x: [-0.3, 0.5, 0],
+				y: [-0.2, 0.5, 0],
+				scale: [1, 1.05, 1],
 				opacity: [1, 1],
-				transition: { duration: 0.65, ease, delay: 0.52 },
+				transition: { duration: 0.6, ease, delay: 0.5 },
 			},
 		};
 
@@ -119,32 +123,45 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 					className="lucide lucide-indian-rupee-icon lucide-indian-rupee"
 				>
 					<motion.g variants={groupSettle} initial="normal" animate={controls}>
+						<g opacity={0.3}>
+							<path d="M6 3h12" />
+							<path d="M6 8h12" />
+							<path d="M9 13c6.667 0 6.667-10 0-10" />
+							<path d="M6 13h3" />
+							<path d="m6 13 8.5 8" />
+						</g>
+
 						<motion.path
 							d="M6 3h12"
+							pathLength={1}
 							variants={drawTop}
 							initial="normal"
 							animate={controls}
 						/>
 						<motion.path
 							d="M6 8h12"
+							pathLength={1}
 							variants={drawMid}
 							initial="normal"
 							animate={controls}
 						/>
 						<motion.path
 							d="M9 13c6.667 0 6.667-10 0-10"
+							pathLength={1}
 							variants={drawCurve}
 							initial="normal"
 							animate={controls}
 						/>
 						<motion.path
 							d="M6 13h3"
+							pathLength={1}
 							variants={drawNotch}
 							initial="normal"
 							animate={controls}
 						/>
 						<motion.path
 							d="m6 13 8.5 8"
+							pathLength={1}
 							variants={diagonalResolve}
 							initial="normal"
 							animate={controls}
