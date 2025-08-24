@@ -81,6 +81,16 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 			},
 		});
 
+		const svgVariants: Variants = {
+			normal: { scale: 1, rotate: 0, y: 0 },
+			animate: {
+				scale: [1, 1.06, 1],
+				rotate: [0, -2, 2, 0],
+				y: [0, -1, 0],
+				transition: { duration: 0.9, ease: "easeInOut" },
+			},
+		};
+
 		return (
 			<motion.div
 				className={cn("inline-flex items-center justify-center", className)}
@@ -99,6 +109,9 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					className="lucide lucide-signal-icon lucide-signal"
+					initial="normal"
+					animate={groupControls}
+					variants={svgVariants}
 				>
 					<motion.g variants={sway} initial="normal" animate={groupControls}>
 						<motion.path
@@ -107,14 +120,12 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 							initial="normal"
 							animate={groupControls}
 						/>
-
 						<motion.g initial="normal" animate={groupControls}>
 							<motion.path d="M7 20v-4" variants={barBounce(0.06)} />
 							<motion.path d="M12 20v-8" variants={barBounce(0.12)} />
 							<motion.path d="M17 20V8" variants={barBounce(0.18)} />
 							<motion.path d="M22 4v16" variants={barBounce(0.24)} />
 						</motion.g>
-
 						<motion.g initial="normal" animate={groupControls}>
 							<motion.path d="M7 20v-4" variants={barBreathe(0.32)} />
 							<motion.path d="M12 20v-8" variants={barBreathe(0.36)} />
