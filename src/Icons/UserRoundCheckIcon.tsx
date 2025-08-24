@@ -17,7 +17,7 @@ interface UserRoundCheckProps extends HTMLMotionProps<"div"> {
 const UserRoundCheckIcon = forwardRef<
 	UserRoundCheckHandle,
 	UserRoundCheckProps
->(({ className, size = 36, ...props }, ref) => {
+>(({ className, size = 28, ...props }, ref) => {
 	const controls = useAnimation();
 	const isControlled = useRef(false);
 

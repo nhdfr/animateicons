@@ -17,7 +17,7 @@ interface WalletMinimalIconProps extends HTMLMotionProps<"div"> {
 const WalletMinimalIcon = forwardRef<
 	WalletMinimalIconHandle,
 	WalletMinimalIconProps
->(({ className, size = 36, ...props }, ref) => {
+>(({ className, size = 28, ...props }, ref) => {
 	const controls = useAnimation();
 	const isControlled = useRef(false);
 

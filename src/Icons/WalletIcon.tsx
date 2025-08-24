@@ -15,7 +15,7 @@ interface WalletProps extends HTMLMotionProps<"div"> {
 }
 
 const WalletIcon = forwardRef<WalletHandle, WalletProps>(
-	({ className, size = 36, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

@@ -15,7 +15,7 @@ interface UserStarProps extends HTMLMotionProps<"div"> {
 }
 
 const UserStarIcon = forwardRef<UserStarHandle, UserStarProps>(
-	({ className, size = 36, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

@@ -15,7 +15,7 @@ interface HouseProps extends HTMLMotionProps<"div"> {
 }
 
 const HouseIcon = forwardRef<HouseHandle, HouseProps>(
-	({ className, size = 36, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

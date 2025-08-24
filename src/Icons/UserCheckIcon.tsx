@@ -15,7 +15,7 @@ interface UserCheckProps extends HTMLMotionProps<"div"> {
 }
 
 const UserCheckIcon = forwardRef<UserCheckHandle, UserCheckProps>(
-	({ className, size = 36, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

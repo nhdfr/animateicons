@@ -50,7 +50,7 @@ const IconTile: React.FC<Props> = ({ item }) => {
 		<div className="bg-primary/10 border-primary/20 relative flex w-full flex-col items-center justify-center gap-2 rounded-md border p-4 text-sm text-white shadow-lg">
 			<IconComponent
 				className="hover:bg-primary/15 inline-block cursor-pointer rounded-xl p-3"
-				size={24}
+				size={23}
 			/>
 			<p className="line-clamp-1 text-gray-300">{item.name}</p>
 

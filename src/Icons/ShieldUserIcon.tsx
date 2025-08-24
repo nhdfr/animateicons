@@ -15,7 +15,7 @@ interface ShieldUserProps extends HTMLMotionProps<"div"> {
 }
 
 const ShieldUserIcon = forwardRef<ShieldUserHandle, ShieldUserProps>(
-	({ className, size = 36, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

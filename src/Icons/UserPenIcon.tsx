@@ -15,7 +15,7 @@ interface UserPenProps extends HTMLMotionProps<"div"> {
 }
 
 const UserPenIcon = forwardRef<UserPenHandle, UserPenProps>(
-	({ className, size = 36, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 
@@ -61,7 +61,7 @@ const UserPenIcon = forwardRef<UserPenHandle, UserPenProps>(
 				y: [0, 2, -1, 1, 0],
 				transition: {
 					duration: 1.2,
-					repeat: 1, 
+					repeat: 1,
 					ease: "easeInOut",
 					delay: 0.6,
 				},

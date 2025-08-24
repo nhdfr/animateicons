@@ -8,6 +8,7 @@ import { BellMinusIcon } from "./BellMinusIcon";
 import { BellPlusIcon } from "./BellPlusIcon";
 import { BellRingIcon } from "./BellRingIcon";
 import { BicepsFlexedIcon } from "./BicepsFlexedIcon";
+import { BlendIcon } from "./BlendIcon";
 import { BlocksIcon } from "./BlocksIcon";
 import { BoltIcon } from "./BoltIcon";
 import { BookmarkCheckIcon } from "./BookmarkCheckIcon";
@@ -15,6 +16,7 @@ import { BookmarkIcon } from "./BookmarkIcon";
 import { BookmarkMinusIcon } from "./BookmarkMinusIcon";
 import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
 import { BookmarkXIcon } from "./BookmarkXIcon";
+import { BrainIcon } from "./BrainIcon";
 import { BringToFrontIcon } from "./BringToFrontIcon";
 import { CheckCheckIcon } from "./CheckCheckIcon";
 import { CheckIcon } from "./CheckIcon";
@@ -35,10 +37,13 @@ import { CircleChevronLeftIcon } from "./CircleChevronLeftIcon";
 import { CircleChevronRightIcon } from "./CircleChevronRightIcon";
 import { CircleChevronUpIcon } from "./CircleChevronUpIcon";
 import { CirclePlusIcon } from "./CirclePlusIcon";
+import { CloudUploadIcon } from "./CloudUploadIcon";
+import { CodeIcon } from "./CodeIcon";
 import { CodeXmlIcon } from "./CodeXmlIcon";
 import { ContactIcon } from "./ContactIcon";
 import { ContactRoundIcon } from "./ContactRoundIcon";
 import { CopyIcon } from "./CopyIcon";
+import { CreditCardIcon } from "./CreditCardIcon";
 import { DashboardIcon } from "./DashboardIcon";
 import { EllipsisIcon } from "./EllipsisIcon";
 import { EllipsisVerticalIcon } from "./EllipsisVerticalIcon";
@@ -55,6 +60,9 @@ import { HeartIcon } from "./HeartIcon";
 import { HouseIcon } from "./HouseIcon";
 import { InfoIcon } from "./InfoIcon";
 import { InstagramIcon } from "./InstagramIcon";
+import { KeyIcon } from "./KeyIcon";
+import { KeyRoundIcon } from "./KeyRoundIcon";
+import { KeySquareIcon } from "./KeySquareIcon";
 import { LayoutGridIcon } from "./LayoutGridIcon";
 import { LinkedInIcon } from "./LinkedinIcon";
 import { LinkIcon } from "./LinkIcon";
@@ -76,6 +84,7 @@ import { SendIcon } from "./SendIcon";
 import { ShieldUserIcon } from "./ShieldUserIcon";
 import { ShoppingBagIcon } from "./ShoppingBagIcon";
 import { ShoppingCartIcon } from "./ShoppingCartIcon";
+import { SignalIcon } from "./SignalIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { SprayCanIcon } from "./SprayCanIcon";
 import { SquareArrowOutUpRightIcon } from "./SquareArrowOutUpRightIcon";
@@ -84,6 +93,7 @@ import { TerminalIcon } from "./TerminalIcon";
 import { TrashIcon } from "./TrashIcon";
 import { TwitterIcon } from "./TwitterIcon";
 import { UnlinkIcon } from "./UnlinkIcon";
+import { UploadIcon } from "./UploadIcon";
 import { UserCheckIcon } from "./UserCheckIcon";
 import { UserCogIcon } from "./UserCogIcon";
 import { UserIcon } from "./UserIcon";
@@ -537,6 +547,16 @@ const Icon_List: IconListItem[] = [
 			"developer",
 			"programming",
 		],
+	},
+	{
+		name: "upload",
+		icon: UploadIcon,
+		keywords: ["import", "file", "document", "data", "transfer", "send"],
+	},
+	{
+		name: "cloud-upload",
+		icon: CloudUploadIcon,
+		keywords: ["import", "file", "document", "data", "transfer", "send"],
 	},
 	{
 		name: "circle-check",
@@ -1116,6 +1136,11 @@ const Icon_List: IconListItem[] = [
 		keywords: ["source", "programming", "html", "xml"],
 	},
 	{
+		name: "code",
+		icon: CodeIcon,
+		keywords: ["source", "programming", "html", "xml", "code"],
+	},
+	{
 		name: "globe",
 		icon: GlobeIcon,
 		keywords: [
@@ -1217,6 +1242,142 @@ const Icon_List: IconListItem[] = [
 		name: "wallet-minimal",
 		icon: WalletMinimalIcon,
 		keywords: ["money", "finance", "payment", "cash", "billfold", "purse"],
+	},
+	{
+		name: "blend",
+		icon: BlendIcon,
+		keywords: [
+			"mode",
+			"overlay",
+			"multiply",
+			"screen",
+			"opacity",
+			"transparency",
+			"alpha",
+			"filters",
+			"lenses",
+			"mixed",
+			"shades",
+			"tints",
+			"hues",
+			"saturation",
+			"brightness",
+			"overlap",
+			"colors",
+			"colours",
+		],
+	},
+	{
+		name: "key-round",
+		icon: KeyRoundIcon,
+		keywords: [
+			"password",
+			"security",
+			"access",
+			"login",
+			"authentication",
+			"credentials",
+			"key",
+			"unlock",
+			"lock",
+			"private",
+			"safe",
+			"protection",
+		],
+	},
+	{
+		name: "key",
+		icon: KeyIcon,
+		keywords: [
+			"password",
+			"security",
+			"access",
+			"login",
+			"authentication",
+			"credentials",
+			"key",
+			"unlock",
+			"lock",
+			"private",
+			"safe",
+			"protection",
+		],
+	},
+	{
+		name: "key-square",
+		icon: KeySquareIcon,
+		keywords: [
+			"password",
+			"security",
+			"access",
+			"login",
+			"authentication",
+			"credentials",
+			"key",
+			"unlock",
+			"lock",
+			"private",
+			"safe",
+			"protection",
+		],
+	},
+	{
+		name: "credit-card",
+		icon: CreditCardIcon,
+		keywords: [
+			"payment",
+			"card",
+			"debit",
+			"credit",
+			"money",
+			"finance",
+			"visa",
+			"mastercard",
+			"amex",
+			"stripe",
+			"paypal",
+		],
+	},
+	{
+		name: "brain",
+		icon: BrainIcon,
+		keywords: [
+			"intelligence",
+			"mind",
+			"thinking",
+			"cognition",
+			"learning",
+			"creativity",
+			"memory",
+			"neuroscience",
+			"psychology",
+			"idea",
+			"thought",
+			"smart",
+			"knowledge",
+			"wisdom",
+		],
+	},
+	{
+		name: "signal",
+		icon: SignalIcon,
+		keywords: [
+			"wifi",
+			"connection",
+			"network",
+			"bars",
+			"cellular",
+			"reception",
+			"coverage",
+			"strength",
+			"data",
+			"internet",
+			"wireless",
+			"hotspot",
+			"signal",
+			"antenna",
+			"tower",
+		],
 	},
 ];
 

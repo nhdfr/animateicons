@@ -15,7 +15,7 @@ interface ContactRoundProps extends HTMLMotionProps<"div"> {
 }
 
 const ContactRoundIcon = forwardRef<ContactRoundHandle, ContactRoundProps>(
-	({ className, size = 36, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 
