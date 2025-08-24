@@ -8,6 +8,7 @@ import { BellMinusIcon } from "./BellMinusIcon";
 import { BellPlusIcon } from "./BellPlusIcon";
 import { BellRingIcon } from "./BellRingIcon";
 import { BicepsFlexedIcon } from "./BicepsFlexedIcon";
+import { BitcoinIcon } from "./BitcoinIcon";
 import { BlendIcon } from "./BlendIcon";
 import { BlocksIcon } from "./BlocksIcon";
 import { BoltIcon } from "./BoltIcon";
@@ -46,6 +47,7 @@ import { CopyIcon } from "./CopyIcon";
 import { CreditCardIcon } from "./CreditCardIcon";
 import { DashboardIcon } from "./DashboardIcon";
 import { DollarSignIcon } from "./DollarSignIcon";
+import { DownloadIcon } from "./DownloadIcon";
 import { EllipsisIcon } from "./EllipsisIcon";
 import { EllipsisVerticalIcon } from "./EllipsisVerticalIcon";
 import { EuroIcon } from "./EuroIcon";
@@ -568,6 +570,11 @@ const Icon_List: IconListItem[] = [
 		name: "cloud-upload",
 		icon: CloudUploadIcon,
 		keywords: ["import", "file", "document", "data", "transfer", "send"],
+	},
+	{
+		name: "download",
+		icon: DownloadIcon,
+		keywords: ["export", "file", "document", "data", "receive", "get"],
 	},
 	{
 		name: "circle-check",
@@ -1477,21 +1484,21 @@ const Icon_List: IconListItem[] = [
 			"₾",
 		],
 	},
-	// {
-	// 	name: "bitcoin",
-	// 	icon: BitcoinIcon,
-	// 	keywords: [
-	// 		"currency",
-	// 		"money",
-	// 		"finance",
-	// 		"payment",
-	// 		"crypto",
-	// 		"cryptocurrency",
-	// 		"bitcoin",
-	// 		"btc",
-	// 		"₿",
-	// 	],
-	// },
+	{
+		name: "bitcoin",
+		icon: BitcoinIcon,
+		keywords: [
+			"currency",
+			"money",
+			"finance",
+			"payment",
+			"crypto",
+			"cryptocurrency",
+			"bitcoin",
+			"btc",
+			"₿",
+		],
+	},
 	{
 		name: "philippine-peso",
 		icon: PhilippinePesoIcon,
