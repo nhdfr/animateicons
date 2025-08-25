@@ -91,6 +91,7 @@ import { RussianRubleIcon } from "./RussianRubleIcon";
 import { SaudiRiyalIcon } from "./SaudiRiyalIcon";
 import { SearchIcon } from "./SearchIcon";
 import { SendIcon } from "./SendIcon";
+import { SettingsIcon } from "./SettingsIcon";
 import { ShieldUserIcon } from "./ShieldUserIcon";
 import { ShoppingBagIcon } from "./ShoppingBagIcon";
 import { ShoppingCartIcon } from "./ShoppingCartIcon";
@@ -1138,6 +1139,58 @@ const Icon_List: IconListItem[] = [
 			"wrench",
 		],
 	},
+	{
+		name: "settings",
+		icon: SettingsIcon,
+		keywords: [
+			"cog",
+			"settings",
+			"preferences",
+			"configuration",
+			"options",
+			"gear",
+			"setup",
+			"tools",
+			"customize",
+			"adjust",
+			"manage",
+			"control",
+		],
+	},
+	// {
+	// 	name: "sliders-vertical",
+	// 	icon: SlidersVerticalIcon,
+	// 	keywords: [
+	// 		"settings",
+	// 		"preferences",
+	// 		"configuration",
+	// 		"options",
+	// 		"customize",
+	// 		"adjust",
+	// 		"control",
+	// 		"tweak",
+	// 		"fine-tune",
+	// 		"equalizer",
+	// 		"mixer",
+	// 	],
+	// },
+	// {
+	// 	name: "sliders-horizontal",
+	// 	icon: SlidersHorizontalIcon,
+	// 	keywords: [
+	// 		"settings",
+	// 		"preferences",
+	// 		"configuration",
+	// 		"options",
+	// 		"customize",
+	// 		"adjust",
+	// 		"control",
+	// 		"tweak",
+	// 		"fine-tune",
+	// 		"equalizer",
+	// 		"mixer",
+	// 	],
+	// },
 	{
 		name: "spray-can",
 		icon: SprayCanIcon,
