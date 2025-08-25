@@ -1,6 +1,14 @@
 import { NextResponse } from "next/server";
 
-export async function GET() {
+type GithubRepoResponse = {
+	stargazers_count: number;
+};
+
+type StarsApiResponse = {
+	stars: number | null;
+};
+
+export async function GET(): Promise<NextResponse<StarsApiResponse>> {
 	try {
 		const res = await fetch(
 			"https://api.github.com/repos/Avijit07x/animateicons",
@@ -14,8 +22,9 @@ export async function GET() {
 			return NextResponse.json({ stars: null }, { status: res.status });
 		}
 
-		const data = await res.json();
-		return NextResponse.json({ stars: data.stargazers_count as number });
+		const data: GithubRepoResponse = await res.json();
+
+		return NextResponse.json({ stars: data.stargazers_count });
 	} catch (error) {
 		console.error("Error fetching stars:", error);
 		return NextResponse.json({ stars: null }, { status: 500 });
