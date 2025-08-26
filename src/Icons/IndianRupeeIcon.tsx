@@ -51,7 +51,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 			animate: {
 				strokeDasharray: "1",
 				strokeDashoffset: [1, 0],
-				transition: { duration: 0.5, ease, delay: 0.16 },
+				transition: { duration: 0.5, ease: "easeInOut", delay: 0.16 },
 			},
 		};
 
@@ -60,7 +60,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 			animate: {
 				strokeDasharray: "1",
 				strokeDashoffset: [1, 0],
-				transition: { duration: 0.8, ease, delay: 0.26 },
+				transition: { duration: 0.8, ease: "easeInOut", delay: 0.26 },
 			},
 		};
 
@@ -69,7 +69,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 			animate: {
 				strokeDasharray: "1",
 				strokeDashoffset: [1, 0],
-				transition: { duration: 0.45, ease, delay: 0.42 },
+				transition: { duration: 0.45, ease: "easeInOut", delay: 0.42 },
 			},
 		};
 
