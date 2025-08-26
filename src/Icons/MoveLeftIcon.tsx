@@ -53,7 +53,7 @@ const MoveLeftIcon = forwardRef<MoveLeftIconHandle, MoveLeftIconProps>(
 			normal: { x: 0 },
 			animate: {
 				x: [0, -3, 0],
-				transition: { duration: 0.6, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 0.6, repeat: 0, ease: "easeInOut" },
 			},
 		};
 
@@ -61,7 +61,7 @@ const MoveLeftIcon = forwardRef<MoveLeftIconHandle, MoveLeftIconProps>(
 			normal: { strokeOpacity: 1 },
 			animate: {
 				strokeOpacity: [1, 0.5, 1],
-				transition: { duration: 0.8, repeat: Infinity },
+				transition: { duration: 0.8, repeat: 0 },
 			},
 		};
 

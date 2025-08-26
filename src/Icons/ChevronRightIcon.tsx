@@ -58,7 +58,7 @@ const ChevronRightIcon = forwardRef<
 			opacity: [1, 0.6, 1],
 			transition: {
 				duration: 0.8,
-				repeat: Infinity,
+				repeat: 0,
 			},
 		},
 	};
@@ -70,7 +70,7 @@ const ChevronRightIcon = forwardRef<
 			opacity: [0.4, 0],
 			transition: {
 				duration: 0.8,
-				repeat: Infinity,
+				repeat: 0,
 			},
 		},
 	};

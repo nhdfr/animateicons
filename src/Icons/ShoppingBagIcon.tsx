@@ -51,7 +51,7 @@ const ShoppingBagIcon = forwardRef<ShoppingBagIconHandle, ShoppingBagIconProps>(
 				y: [0, -3, 0, -1, 0],
 				transition: {
 					duration: 1.5,
-					repeat: Infinity,
+					repeat: 0,
 					ease: "easeInOut",
 				},
 			},

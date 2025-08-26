@@ -54,12 +54,13 @@ const EllipsisVerticalIcon = forwardRef<
 	const dotVariants: Variants = {
 		normal: { y: 0, opacity: 0.7 },
 		animate: (i) => ({
-			y: [-3, 0, -3],
-			opacity: [0.4, 1, 0.4],
+			y: [-3, 0],
+			opacity: [0.4, 1],
 			transition: {
 				duration: 0.8,
-				repeat: Infinity,
 				delay: i * 0.2,
+				ease: "easeInOut",
+				repeat: 0,
 			},
 		}),
 	};

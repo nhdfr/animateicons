@@ -39,7 +39,7 @@ const SprayCanIcon = forwardRef<SprayCanIconHandle, SprayCanIconProps>(
 			normal: { rotate: 0, scale: 1 },
 			animate: {
 				rotate: [0, -4, 4, -2, 2, 0],
-				transition: { duration: 2, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 2, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -52,7 +52,7 @@ const SprayCanIcon = forwardRef<SprayCanIconHandle, SprayCanIconProps>(
 				transition: {
 					duration: 1,
 					ease: "easeInOut",
-					repeat: Infinity,
+					repeat: 0,
 					delay: i * 0.2,
 				},
 			}),

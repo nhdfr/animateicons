@@ -43,7 +43,7 @@ const MailsIcon = forwardRef<MailsIconHandle, MailsIconProps>(
 				transition: {
 					duration: 1.6,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};
@@ -56,7 +56,7 @@ const MailsIcon = forwardRef<MailsIconHandle, MailsIconProps>(
 				transition: {
 					duration: 1.2,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};
@@ -68,7 +68,7 @@ const MailsIcon = forwardRef<MailsIconHandle, MailsIconProps>(
 				transition: {
 					duration: 1.4,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};

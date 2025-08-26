@@ -54,7 +54,7 @@ const CirclePlusIcon = forwardRef<CirclePlusIconHandle, CirclePlusIconProps>(
 			animate: {
 				scale: [1, 1.1, 1],
 				rotate: 360,
-				transition: { duration: 2, repeat: Infinity, ease: "linear" },
+				transition: { duration: 2, repeat: 0, ease: "linear" },
 			},
 		};
 
@@ -62,7 +62,7 @@ const CirclePlusIcon = forwardRef<CirclePlusIconHandle, CirclePlusIconProps>(
 			normal: { opacity: 1 },
 			animate: {
 				opacity: [1, 0.4, 1],
-				transition: { duration: 1, repeat: Infinity },
+				transition: { duration: 1, repeat: 0, ease: "easeInOut" },
 			},
 		};
 

@@ -43,7 +43,7 @@ const BatteryFullIcon = forwardRef<BatteryFullIconHandle, BatteryFullIconProps>(
 				transition: {
 					duration: 1.5,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};
@@ -56,7 +56,7 @@ const BatteryFullIcon = forwardRef<BatteryFullIconHandle, BatteryFullIconProps>(
 				transition: {
 					duration: 1,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 					delay: i * 0.25,
 				},
 			}),
@@ -69,7 +69,7 @@ const BatteryFullIcon = forwardRef<BatteryFullIconHandle, BatteryFullIconProps>(
 				transition: {
 					duration: 1.2,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};

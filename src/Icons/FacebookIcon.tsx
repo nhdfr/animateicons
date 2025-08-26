@@ -44,7 +44,7 @@ const FacebookIcon = forwardRef<FacebookIconHandle, FacebookIconProps>(
 			animate: {
 				scale: [1, 1.1, 0.95, 1],
 				rotate: [0, -2, 2, 0],
-				transition: { duration: 1.2, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 1.2, repeat: 0, ease: "easeInOut" },
 			},
 		};
 
@@ -52,7 +52,7 @@ const FacebookIcon = forwardRef<FacebookIconHandle, FacebookIconProps>(
 			normal: { pathLength: 1 },
 			animate: {
 				pathLength: [0, 1],
-				transition: { duration: 1.5, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.5, ease: "easeInOut", repeat: 0 },
 			},
 		};
 

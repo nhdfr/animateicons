@@ -42,7 +42,7 @@ const HeadphonesOffIcon = forwardRef<
 		animate: {
 			scale: [1, 1.1, 0.95, 1],
 			rotate: [0, -3, 3, -2, 0],
-			transition: { duration: 1.2, ease: "easeInOut", repeat: Infinity },
+			transition: { duration: 1.2, ease: "easeInOut", repeat: 0 },
 		},
 	};
 
@@ -51,7 +51,7 @@ const HeadphonesOffIcon = forwardRef<
 		animate: {
 			scale: [1, 1.2, 0.9, 1],
 			opacity: [1, 0.7, 1],
-			transition: { duration: 0.9, ease: "easeInOut", repeat: Infinity },
+			transition: { duration: 0.9, ease: "easeInOut", repeat: 0 },
 		},
 	};
 

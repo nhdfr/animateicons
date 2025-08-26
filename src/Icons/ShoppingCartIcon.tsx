@@ -52,7 +52,7 @@ const ShoppingCartIcon = forwardRef<
 			rotate: [0, -4, 3, -2, 0],
 			transition: {
 				duration: 1.8,
-				repeat: Infinity,
+				repeat: 0,
 				ease: "easeInOut",
 			},
 		},
@@ -62,7 +62,7 @@ const ShoppingCartIcon = forwardRef<
 		normal: { rotate: 0 },
 		animate: {
 			rotate: [0, 360],
-			transition: { duration: 1, ease: "linear", repeat: Infinity },
+			transition: { duration: 1, ease: "linear", repeat: 0 },
 		},
 	};
 

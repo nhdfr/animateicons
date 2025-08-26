@@ -40,7 +40,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
 			animate: {
 				scale: [1, 1.08, 0.95, 1],
 				rotate: [0, -2, 2, 0],
-				transition: { duration: 1.3, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -49,7 +49,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.7, 1],
-				transition: { duration: 1.5, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.5, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -58,7 +58,7 @@ const InstagramIcon = forwardRef<InstagramIconHandle, InstagramIconProps>(
 			animate: {
 				scale: [1, 1.4, 1],
 				opacity: [1, 0.4, 1],
-				transition: { duration: 1, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 1, repeat: 0, ease: "easeInOut" },
 			},
 		};
 

@@ -47,7 +47,7 @@ const BellMinusIcon = forwardRef<BellMinusIconHandle, BellMinusIconProps>(
 			normal: { rotate: 0 },
 			animate: {
 				rotate: [0, -12, 10, -6, 3, 0],
-				transition: { duration: 1.4, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.4, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -55,7 +55,7 @@ const BellMinusIcon = forwardRef<BellMinusIconHandle, BellMinusIconProps>(
 			normal: { x: 0 },
 			animate: {
 				x: [0, -3, 3, -2, 1, 0],
-				transition: { duration: 1.4, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.4, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -65,7 +65,7 @@ const BellMinusIcon = forwardRef<BellMinusIconHandle, BellMinusIconProps>(
 				scaleX: [1, 0.6, 1.2, 1],
 				rotate: [0, -10, 10, 0],
 				opacity: [1, 0.6, 1],
-				transition: { duration: 1.2, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.2, ease: "easeInOut", repeat: 0 },
 			},
 		};
 

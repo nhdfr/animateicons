@@ -75,7 +75,7 @@ const UnlinkIcon = forwardRef<UnlinkIconHandle, UnlinkIconProps>(
 			normal: { opacity: 1, pathLength: 1 },
 			animate: {
 				pathLength: [0, 1],
-				opacity: [0, 1, 0],
+				opacity: [0, 1, 0, 1],
 				transition: { duration: 0.5, ease: "easeInOut" },
 			},
 		};

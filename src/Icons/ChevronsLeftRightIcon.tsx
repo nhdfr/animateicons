@@ -56,7 +56,7 @@ const ChevronsLeftRightIcon = forwardRef<
 		animate: {
 			x: [0, -4, 0],
 			opacity: [1, 0.6, 1],
-			transition: { duration: 0.8, repeat: Infinity },
+			transition: { duration: 0.8, repeat: 0 },
 		},
 	};
 
@@ -65,7 +65,7 @@ const ChevronsLeftRightIcon = forwardRef<
 		animate: {
 			x: [0, 4, 0],
 			opacity: [1, 0.6, 1],
-			transition: { duration: 0.8, repeat: Infinity, delay: 0.2 },
+			transition: { duration: 0.8, repeat: 0, delay: 0.2 },
 		},
 	};
 

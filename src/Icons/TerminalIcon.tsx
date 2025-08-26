@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { HTMLMotionProps, motion, useAnimation } from "motion/react";
+import type { HTMLMotionProps, Variants } from "motion/react";
+import { motion, useAnimation } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface TerminalIconHandle {
@@ -48,6 +49,29 @@ const TerminalIcon = forwardRef<TerminalIconHandle, TerminalIconProps>(
 			[controls, onMouseLeave],
 		);
 
+		const svgVariants: Variants = {
+			normal: { transition: { duration: 0.3 } },
+			animate: { transition: { staggerChildren: 0.1 } },
+		};
+
+		const commandLineVariants: Variants = {
+			normal: { scaleX: 1, originX: 0, transition: { duration: 0.3 } },
+			animate: {
+				scaleX: [1, 0.3, 1],
+				originX: 0,
+				transition: { duration: 0.6, times: [0, 0.5, 1], repeat: 0 },
+			},
+		};
+
+		const chevronVariants: Variants = {
+			normal: { x: 0, opacity: 1 },
+			animate: {
+				x: [0, -2, 0],
+				opacity: [1, 0.6, 1],
+				transition: { duration: 0.5, repeat: 0 },
+			},
+		};
+
 		return (
 			<motion.div
 				className={cn(className)}
@@ -65,44 +89,12 @@ const TerminalIcon = forwardRef<TerminalIconHandle, TerminalIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					variants={{
-						normal: { transition: { duration: 0.3 } },
-						animate: { transition: { staggerChildren: 0.1 } },
-					}}
+					variants={svgVariants}
 					animate={controls}
 					initial="normal"
 				>
-					<motion.path
-						d="M12 19h8"
-						variants={{
-							normal: { scaleX: 1, originX: 0, transition: { duration: 0.3 } },
-
-							animate: {
-								scaleX: [1, 0.3, 1],
-								originX: 0,
-								transition: {
-									duration: 0.6,
-									times: [0, 0.5, 1],
-								},
-							},
-						}}
-					/>
-
-					<motion.path
-						d="m4 17 6-6-6-6"
-						variants={{
-							normal: { x: 0, opacity: 1 },
-							animate: {
-								x: [0, -2, 0],
-								opacity: [1, 0.6, 1],
-								transition: {
-									duration: 0.5,
-									repeat: Infinity,
-									repeatDelay: 0.5,
-								},
-							},
-						}}
-					/>
+					<motion.path d="M12 19h8" variants={commandLineVariants} />
+					<motion.path d="m4 17 6-6-6-6" variants={chevronVariants} />
 				</motion.svg>
 			</motion.div>
 		);

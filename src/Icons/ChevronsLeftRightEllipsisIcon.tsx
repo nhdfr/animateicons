@@ -56,7 +56,7 @@ const ChevronsLeftRightEllipsisIcon = forwardRef<
 		animate: {
 			x: [0, -4, 0],
 			opacity: [1, 0.5, 1],
-			transition: { duration: 1, repeat: Infinity },
+			transition: { duration: 1, repeat: 0 },
 		},
 	};
 
@@ -65,7 +65,7 @@ const ChevronsLeftRightEllipsisIcon = forwardRef<
 		animate: {
 			x: [0, 4, 0],
 			opacity: [1, 0.5, 1],
-			transition: { duration: 1, repeat: Infinity, delay: 0.2 },
+			transition: { duration: 1, repeat: 0, delay: 0.2 },
 		},
 	};
 

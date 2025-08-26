@@ -17,7 +17,7 @@ interface BringToFrontIconProps extends HTMLMotionProps<"div"> {
 const BringToFrontIcon = forwardRef<
 	BringToFrontIconHandle,
 	BringToFrontIconProps
->(({ onMouseEnter, onMouseLeave, className, size = 32, ...props }, ref) => {
+>(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 	const controls = useAnimation();
 	const isControlled = useRef(false);
 
@@ -45,7 +45,7 @@ const BringToFrontIcon = forwardRef<
 			transition: {
 				duration: 1.4,
 				ease: [0.42, 0, 0.58, 1],
-				repeat: Infinity,
+				repeat: 0,
 			},
 		},
 	};
@@ -58,7 +58,7 @@ const BringToFrontIcon = forwardRef<
 			transition: {
 				duration: 1.2,
 				ease: [0.42, 0, 0.58, 1],
-				repeat: Infinity,
+				repeat: 0,
 			},
 		},
 	};
@@ -70,7 +70,7 @@ const BringToFrontIcon = forwardRef<
 			transition: {
 				duration: 1,
 				ease: [0.42, 0, 0.58, 1],
-				repeat: Infinity,
+				repeat: 0,
 			},
 		},
 	};

@@ -42,7 +42,7 @@ const BatteryIcon = forwardRef<BatteryIconHandle, BatteryIconProps>(
 				transition: {
 					duration: 0.5,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};
@@ -55,7 +55,7 @@ const BatteryIcon = forwardRef<BatteryIconHandle, BatteryIconProps>(
 				transition: {
 					duration: 0.9,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};
@@ -68,7 +68,7 @@ const BatteryIcon = forwardRef<BatteryIconHandle, BatteryIconProps>(
 				transition: {
 					duration: 0.7,
 					ease: [0.42, 0, 0.58, 1],
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};

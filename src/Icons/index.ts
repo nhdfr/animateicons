@@ -910,19 +910,6 @@ const Icon_List: IconListItem[] = [
 			"spectrum",
 		],
 	},
-	{
-		name: "send",
-		icon: SendIcon,
-		keywords: [
-			"message",
-			"chat",
-			"mail",
-			"submit",
-			"forward",
-			"share",
-			"paper-plane",
-		],
-	},
 
 	// Notifications
 	{

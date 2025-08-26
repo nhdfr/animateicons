@@ -49,8 +49,8 @@ const AudioLinesIcon = forwardRef<AudioLinesIconHandle, AudioLinesIconProps>(
 				scaleY: [1, 1.4, 0.6, 1],
 				opacity: [1, 0.8, 1],
 				transition: {
-					duration: 1.2,
-					repeat: Infinity,
+					duration: 0.9,
+					repeat: 0,
 					delay: i * 0.2,
 					ease: "easeInOut",
 				},

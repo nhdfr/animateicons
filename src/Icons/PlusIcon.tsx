@@ -40,7 +40,7 @@ const PlusIcon = forwardRef<PlusIconHandle, PlusIconProps>(
 			animate: {
 				scale: [1, 1.2, 0.85, 1],
 				rotate: [0, 10, -10, 0],
-				transition: { duration: 1, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -52,7 +52,7 @@ const PlusIcon = forwardRef<PlusIconHandle, PlusIconProps>(
 				transition: {
 					duration: 0.6,
 					ease: "easeInOut",
-					repeat: Infinity,
+					repeat: 0,
 					repeatDelay: 0.4,
 				},
 			},

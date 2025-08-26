@@ -53,7 +53,7 @@ const ChromeIcon = forwardRef<ChromeIconHandle, ChromeIconProps>(
 			normal: { rotate: 0 },
 			animate: {
 				rotate: 360,
-				transition: { duration: 4, repeat: Infinity, ease: "linear" },
+				transition: { duration: 4, repeat: 0, ease: "linear" },
 			},
 		};
 
@@ -62,7 +62,7 @@ const ChromeIcon = forwardRef<ChromeIconHandle, ChromeIconProps>(
 			animate: {
 				scale: [1, 1.2, 1],
 				opacity: [1, 0.7, 1],
-				transition: { duration: 1.5, repeat: Infinity },
+				transition: { duration: 1.5, repeat: 0 },
 			},
 		};
 
@@ -70,7 +70,7 @@ const ChromeIcon = forwardRef<ChromeIconHandle, ChromeIconProps>(
 			normal: { opacity: 0.8 },
 			animate: {
 				opacity: [0.8, 0.3, 0.8],
-				transition: { duration: 1.2, repeat: Infinity, staggerChildren: 0.3 },
+				transition: { duration: 1.2, repeat: 0, staggerChildren: 0.3 },
 			},
 		};
 

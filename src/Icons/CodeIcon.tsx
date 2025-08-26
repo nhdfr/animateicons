@@ -51,7 +51,7 @@ const CodeIcon = forwardRef<CodeHandle, CodeProps>(
 			animate: {
 				strokeDasharray: 32,
 				strokeDashoffset: [32, 0],
-				transition: { duration: 1.1, ease, delay: 0.12 },
+				transition: { duration: 1.8, ease, delay: 0.12 },
 			},
 		};
 
@@ -60,7 +60,7 @@ const CodeIcon = forwardRef<CodeHandle, CodeProps>(
 			animate: {
 				strokeDasharray: 32,
 				strokeDashoffset: [32, 0],
-				transition: { duration: 1.1, ease, delay: 0.28 },
+				transition: { duration: 1.8, ease, delay: 0.28 },
 			},
 		};
 

@@ -52,7 +52,7 @@ const BookmarkIcon = forwardRef<BookmarkIconHandle, BookmarkIconProps>(
 			normal: { scale: 1 },
 			animate: {
 				scale: [1, 1.15, 0.9, 1],
-				transition: { duration: 1.2, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 1.2, repeat: 0, ease: "easeInOut" },
 			},
 		};
 
@@ -61,7 +61,7 @@ const BookmarkIcon = forwardRef<BookmarkIconHandle, BookmarkIconProps>(
 			animate: {
 				opacity: [0.8, 0, 0],
 				scale: [1, 1.5, 0],
-				transition: { duration: 1.2, repeat: Infinity, ease: "easeOut" },
+				transition: { duration: 1.2, repeat: 0, ease: "easeOut" },
 			},
 		};
 

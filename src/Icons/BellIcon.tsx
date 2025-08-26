@@ -47,7 +47,7 @@ const BellIcon = forwardRef<BellIconHandle, BellIconProps>(
 			normal: { rotate: 0 },
 			animate: {
 				rotate: [0, -18, 15, -10, 6, -3, 0],
-				transition: { duration: 1.6, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 1.6, repeat: 0, ease: "easeInOut" },
 			},
 		};
 
@@ -55,7 +55,7 @@ const BellIcon = forwardRef<BellIconHandle, BellIconProps>(
 			normal: { x: 0 },
 			animate: {
 				x: [0, -4, 4, -2, 2, 0],
-				transition: { duration: 1.6, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 1.6, repeat: 0, ease: "easeInOut" },
 			},
 		};
 

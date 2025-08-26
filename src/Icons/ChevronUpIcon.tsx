@@ -56,7 +56,7 @@ const ChevronUpIcon = forwardRef<ChevronUpIconHandle, ChevronUpIconProps>(
 				opacity: [1, 0.6, 1],
 				transition: {
 					duration: 0.8,
-					repeat: Infinity,
+					repeat: 0,
 				},
 			},
 		};
@@ -68,7 +68,7 @@ const ChevronUpIcon = forwardRef<ChevronUpIconHandle, ChevronUpIconProps>(
 				opacity: [0.5, 0.2, 0.5],
 				transition: {
 					duration: 0.8,
-					repeat: Infinity,
+					repeat: 0,
 					delay: 0.2,
 				},
 			},

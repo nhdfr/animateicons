@@ -38,10 +38,10 @@ const MicIcon = forwardRef<MicIconHandle, MicIconProps>(
 		const micVariants: Variants = {
 			normal: { scale: 1, rotate: 0, y: 0 },
 			animate: {
-				scale: [1, 1.08, 0.95, 1],
+				scale: [1, 1.1, 0.95, 1],
 				rotate: [0, -3, 3, -2, 2, 0],
 				y: [0, -1, 0],
-				transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 1.5, repeat: 0, ease: "easeInOut" },
 			},
 		};
 

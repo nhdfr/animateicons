@@ -49,8 +49,7 @@ const BlendIcon = forwardRef<BlendHandle, BlendProps>(
 			animate: {
 				strokeDashoffset: [48, 0],
 				opacity: [0.45, 1],
-				x: [0, 2, 4],
-				transition: { duration: 0.6, ease: "easeInOut" as const },
+				transition: { duration: 0.6, ease: "easeInOut" },
 			},
 		};
 
@@ -59,8 +58,7 @@ const BlendIcon = forwardRef<BlendHandle, BlendProps>(
 			animate: {
 				strokeDashoffset: [48, 0],
 				opacity: [0.45, 1],
-				x: [0, -2, -4],
-				transition: { duration: 0.6, ease: "easeInOut" as const, delay: 0.06 },
+				transition: { duration: 0.6, ease: "easeInOut", delay: 0.09 },
 			},
 		};
 
@@ -69,7 +67,7 @@ const BlendIcon = forwardRef<BlendHandle, BlendProps>(
 			animate: {
 				scale: [1, 1.06, 1],
 				opacity: [0.9, 1, 1],
-				transition: { duration: 0.5, ease: "easeInOut" as const, delay: 0.18 },
+				transition: { duration: 0.5, ease: "easeInOut", delay: 0.25 },
 			},
 		};
 

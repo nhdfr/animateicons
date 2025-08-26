@@ -55,7 +55,7 @@ const HeartIcon = forwardRef<HeartIconHandle, HeartIconProps>(
 			normal: { pathLength: 1 },
 			animate: {
 				pathLength: [0, 1],
-				transition: { duration: 0.4, ease: easeInOutArray },
+				transition: { duration: 0.7, ease: easeInOutArray },
 			},
 		};
 
@@ -63,7 +63,7 @@ const HeartIcon = forwardRef<HeartIconHandle, HeartIconProps>(
 			normal: { pathLength: 1 },
 			animate: {
 				pathLength: [0, 1],
-				transition: { duration: 0.4, ease: easeInOutArray, delay: 0.2 },
+				transition: { duration: 0.7, ease: easeInOutArray, delay: 0.2 },
 			},
 		};
 

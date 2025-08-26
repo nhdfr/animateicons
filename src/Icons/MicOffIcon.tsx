@@ -41,7 +41,7 @@ const MicOffIcon = forwardRef<MicOffIconHandle, MicOffIconProps>(
 				scale: [1, 1.05, 0.95, 1],
 				rotate: [0, -3, 3, -2, 2, 0],
 				y: [0, -1, 0],
-				transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 1.5, repeat: 0, ease: "easeInOut" },
 			},
 		};
 

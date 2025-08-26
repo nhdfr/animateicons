@@ -40,7 +40,7 @@ const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
 			animate: {
 				scale: [1, 1.07, 0.95, 1],
 				rotate: [0, -2, 2, 0],
-				transition: { duration: 1.4, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.4, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -49,7 +49,7 @@ const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.7, 1],
-				transition: { duration: 1.5, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.5, ease: "easeInOut", repeat: 0 },
 			},
 		};
 

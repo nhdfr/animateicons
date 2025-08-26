@@ -40,7 +40,7 @@ const FigmaIcon = forwardRef<FigmaIconHandle, FigmaIconProps>(
 			animate: {
 				scale: [1, 1.05, 0.95, 1],
 				rotate: [0, -2, 2, 0],
-				transition: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
+				transition: { duration: 1.4, repeat: 0, ease: "easeInOut" },
 			},
 		};
 
@@ -52,7 +52,7 @@ const FigmaIcon = forwardRef<FigmaIconHandle, FigmaIconProps>(
 				transition: {
 					duration: 1.2,
 					ease: "easeInOut",
-					repeat: Infinity,
+					repeat: 0,
 					delay: i * 0.25,
 				},
 			}),

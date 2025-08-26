@@ -40,7 +40,7 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 			animate: {
 				scale: [1, 1.05, 0.95, 1],
 				rotate: [0, -2, 2, 0],
-				transition: { duration: 1.3, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -53,7 +53,7 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 				transition: {
 					duration: 1.2,
 					ease: "easeInOut",
-					repeat: Infinity,
+					repeat: 0,
 					delay: i * 0.2,
 				},
 			}),

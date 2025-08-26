@@ -40,7 +40,7 @@ const BoltIcon = forwardRef<BoltIconHandle, BoltIconProps>(
 			animate: {
 				scale: [1, 1.08, 0.95, 1],
 				rotate: [0, -2, 2, 0],
-				transition: { duration: 1.2, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.2, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -48,7 +48,7 @@ const BoltIcon = forwardRef<BoltIconHandle, BoltIconProps>(
 			normal: { pathLength: 1 },
 			animate: {
 				pathLength: [0, 1],
-				transition: { duration: 1.3, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -57,7 +57,7 @@ const BoltIcon = forwardRef<BoltIconHandle, BoltIconProps>(
 			animate: {
 				scale: [1, 1.3, 0.9, 1],
 				opacity: [1, 0.6, 1],
-				transition: { duration: 1.1, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.1, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
