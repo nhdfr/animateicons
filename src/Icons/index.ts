@@ -20,6 +20,8 @@ import { BookmarkXIcon } from "./BookmarkXIcon";
 import { BrainIcon } from "./BrainIcon";
 import { BringToFrontIcon } from "./BringToFrontIcon";
 import { ChartAreaIcon } from "./ChartAreaIcon";
+import { ChartBarIcon } from "./ChartBarIcon";
+import { ChartColumnIcon } from "./ChartColumnIcon";
 import { CheckCheckIcon } from "./CheckCheckIcon";
 import { CheckIcon } from "./CheckIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
@@ -1657,6 +1659,45 @@ const Icon_List: IconListItem[] = [
 			"dashboard",
 			"bars",
 			"histogram",
+		],
+	},
+	{
+		name: "chart-bar",
+		icon: ChartBarIcon,
+		keywords: [
+			"bar",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"bars",
+			"histogram",
+			"columns",
+		],
+	},
+	{
+		name: "chart-column",
+		icon: ChartColumnIcon,
+		keywords: [
+			"column",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"bars",
+			"histogram",
+			"vertical",
+			"towers",
 		],
 	},
 ];
