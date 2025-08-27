@@ -1,10 +1,8 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CopyIcon } from "@/Icons/CopyIcon";
 import React, { useEffect, useState } from "react";
-import { CheckIcon } from "./icons/CheckIcon";
+import CmdCopy from "./CmdCopy";
 import { WordRotate } from "./magicui/word-rotate";
-import { Button } from "./ui/button";
 
 const CmdSection: React.FC = () => {
 	const [activeTab, setActiveTab] = useState<"npm" | "bun">("npm");
@@ -73,7 +71,7 @@ const CmdSection: React.FC = () => {
 
 			<TabsContent
 				value="npm"
-				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-scroll"
+				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-auto"
 			>
 				<div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
 					<code className="line-clamp-1 flex flex-nowrap items-center">
@@ -87,20 +85,12 @@ const CmdSection: React.FC = () => {
 							}
 						/>
 					</code>
-					<Button
-						variant="ghost"
-						size="icon"
-						className="hover:bg-primary/10 p-0.5 hover:text-white"
-						onClick={copyToClipboard}
-						aria-label={copied ? "Copied" : "Copy"}
-					>
-						{copied ? <CheckIcon /> : <CopyIcon />}
-					</Button>
+					<CmdCopy copied={copied} copyToClipboard={copyToClipboard} />
 				</div>
 			</TabsContent>
 			<TabsContent
 				value="pnpm"
-				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-scroll"
+				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-auto"
 			>
 				<div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
 					<code className="line-clamp-1 flex flex-nowrap items-center">
@@ -114,21 +104,13 @@ const CmdSection: React.FC = () => {
 							}
 						/>
 					</code>
-					<Button
-						variant="ghost"
-						size="icon"
-						className="hover:bg-primary/10 p-0.5 hover:text-white"
-						onClick={copyToClipboard}
-						aria-label={copied ? "Copied" : "Copy"}
-					>
-						{copied ? <CheckIcon /> : <CopyIcon />}
-					</Button>
+					<CmdCopy copied={copied} copyToClipboard={copyToClipboard} />
 				</div>
 			</TabsContent>
 
 			<TabsContent
 				value="bun"
-				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-scroll"
+				className="bg-primary/5 flex items-center justify-between px-4 py-2 text-sm text-zinc-300 max-md:line-clamp-1 max-sm:overflow-x-auto"
 			>
 				<div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
 					<code className="line-clamp-1 flex items-center">
@@ -143,15 +125,7 @@ const CmdSection: React.FC = () => {
 							className="inline-block"
 						/>
 					</code>
-					<Button
-						variant="ghost"
-						size="icon"
-						className="hover:bg-primary/10 p-0.5 hover:text-white"
-						onClick={copyToClipboard}
-						aria-label={copied ? "Copied" : "Copy"}
-					>
-						{copied ? <CheckIcon /> : <CopyIcon />}
-					</Button>
+					<CmdCopy copied={copied} copyToClipboard={copyToClipboard} />
 				</div>
 			</TabsContent>
 		</Tabs>

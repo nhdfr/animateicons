@@ -5,8 +5,8 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { CopyIcon } from "@/Icons/CopyIcon";
-import { TerminalIcon } from "@/Icons/TerminalIcon";
+import { CopyIcon, CopyIconHandle } from "@/Icons/CopyIcon";
+import { TerminalIcon, TerminalIconHandle } from "@/Icons/TerminalIcon";
 import React, { useState } from "react";
 import { CheckIcon } from "./icons/CheckIcon";
 
@@ -17,6 +17,9 @@ type Props = {
 const IconTile: React.FC<Props> = ({ item }) => {
 	const [copied, setCopied] = useState(false);
 	const [copiedCli, setCopiedCli] = useState(false);
+	const cliRef = React.useRef<TerminalIconHandle>(null);
+	const codeRef = React.useRef<CopyIconHandle>(null);
+
 	const IconComponent = item.icon;
 
 	const copyToClipboard = async () => {
@@ -61,8 +64,14 @@ const IconTile: React.FC<Props> = ({ item }) => {
 							className="hover:text-primary flex size-6 items-center justify-center"
 							onClick={copyCliCommand}
 							aria-label={copiedCli ? "CLI Copied" : "Copy CLI Command"}
+							onMouseEnter={() => cliRef.current?.startAnimation()}
+							onMouseLeave={() => cliRef.current?.stopAnimation()}
 						>
-							{copiedCli ? <CheckIcon /> : <TerminalIcon size={18} />}
+							{copiedCli ? (
+								<CheckIcon />
+							) : (
+								<TerminalIcon size={18} ref={cliRef} />
+							)}
 						</button>
 					</TooltipTrigger>
 					<TooltipContent
@@ -79,8 +88,10 @@ const IconTile: React.FC<Props> = ({ item }) => {
 							className="hover:text-primary flex size-6 items-center justify-center"
 							onClick={copyToClipboard}
 							aria-label={copied ? "Code Copied" : "Copy JSX Code"}
+							onMouseEnter={() => codeRef.current?.startAnimation()}
+							onMouseLeave={() => codeRef.current?.stopAnimation()}
 						>
-							{copied ? <CheckIcon /> : <CopyIcon size={17} />}
+							{copied ? <CheckIcon /> : <CopyIcon size={17} ref={codeRef} />}
 						</button>
 					</TooltipTrigger>
 					<TooltipContent
