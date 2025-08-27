@@ -24,6 +24,7 @@ import { ChartBarIcon } from "./ChartBarIcon";
 import { ChartColumnIcon } from "./ChartColumnIcon";
 import { CheckCheckIcon } from "./CheckCheckIcon";
 import { ChartLineIcon } from "./ChartLineIcon";
+import { ChartNetworkIcon } from "./ChartNetwork";
 import { CheckIcon } from "./CheckIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
@@ -1719,6 +1720,27 @@ const Icon_List: IconListItem[] = [
 			"curve",
 			"plot",
 			"series",
+		],
+	},
+	{
+		name: "chart-network",
+		icon: ChartNetworkIcon,
+		keywords: [
+			"network",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"nodes",
+			"connections",
+			"relationships",
+			"topology",
+			"mesh",
 		],
 	},
 ];
