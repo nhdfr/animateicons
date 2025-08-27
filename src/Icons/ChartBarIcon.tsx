@@ -5,16 +5,16 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface ChartAreaIconHandle {
+export interface ChartBarIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface ChartAreaIconProps extends HTMLMotionProps<"div"> {
+interface ChartBarIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const ChartAreaIcon = forwardRef<ChartAreaIconHandle, ChartAreaIconProps>(
+const ChartBarIcon = forwardRef<ChartBarIconHandle, ChartBarIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
@@ -67,7 +67,7 @@ const ChartAreaIcon = forwardRef<ChartAreaIconHandle, ChartAreaIconProps>(
 			animate: {
 				scale: [1, 1.05, 1],
 				transition: {
-					duration: 0.4,
+					duration: 0.6,
 					ease: "easeInOut",
 				},
 			},
@@ -95,15 +95,14 @@ const ChartAreaIcon = forwardRef<ChartAreaIconHandle, ChartAreaIconProps>(
 					initial="normal"
 				>
 					<motion.path d="M3 3v16a2 2 0 0 0 2 2h16" variants={pathVariants} />
-					<motion.path
-						d="M7 11.207a.5.5 0 0 1 .146-.353l2-2a.5.5 0 0 1 .708 0l3.292 3.292a.5.5 0 0 0 .708 0l4.292-4.292a.5.5 0 0 1 .854.353V16a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"
-						variants={pathVariants}
-					/>
+					<motion.path d="M7 16h8" variants={pathVariants} />
+					<motion.path d="M7 11h12" variants={pathVariants} />
+					<motion.path d="M7 6h3" variants={pathVariants} />
 				</motion.svg>
 			</motion.div>
 		);
 	},
 );
 
-ChartAreaIcon.displayName = "ChartAreaIcon";
-export { ChartAreaIcon };
+ChartBarIcon.displayName = "ChartBarIcon";
+export { ChartBarIcon };
