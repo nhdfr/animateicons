@@ -24,7 +24,8 @@ import { ChartBarIcon } from "./ChartBarIcon";
 import { ChartColumnIcon } from "./ChartColumnIcon";
 import { CheckCheckIcon } from "./CheckCheckIcon";
 import { ChartLineIcon } from "./ChartLineIcon";
-import { ChartNetworkIcon } from "./ChartNetwork";
+import { ChartNetworkIcon } from "./ChartNetworkIcon";
+import { ChartPieIcon } from "./ChartPieIcon";
 import { CheckIcon } from "./CheckIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
@@ -1741,6 +1742,27 @@ const Icon_List: IconListItem[] = [
 			"relationships",
 			"topology",
 			"mesh",
+		],
+	},
+	{
+		name: "chart-pie",
+		icon: ChartPieIcon,
+		keywords: [
+			"pie",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"circle",
+			"segment",
+			"portion",
+			"percentage",
+			"distribution",
 		],
 	},
 ];
