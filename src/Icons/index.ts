@@ -19,6 +19,7 @@ import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
 import { BookmarkXIcon } from "./BookmarkXIcon";
 import { BrainIcon } from "./BrainIcon";
 import { BringToFrontIcon } from "./BringToFrontIcon";
+import { ChartAreaIcon } from "./ChartAreaIcon";
 import { CheckCheckIcon } from "./CheckCheckIcon";
 import { CheckIcon } from "./CheckIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
@@ -1636,6 +1637,26 @@ const Icon_List: IconListItem[] = [
 			"like",
 			"achievement",
 			"bookmark",
+		],
+	},
+
+	// Graphs
+	{
+		name: "chart-area",
+		icon: ChartAreaIcon,
+		keywords: [
+			"bar",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"bars",
+			"histogram",
 		],
 	},
 ];
