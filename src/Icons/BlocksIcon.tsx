@@ -15,7 +15,7 @@ interface BlocksIconProps extends HTMLMotionProps<"div"> {
 }
 
 const BlocksIcon = forwardRef<BlocksIconHandle, BlocksIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 32, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 
@@ -75,7 +75,7 @@ const BlocksIcon = forwardRef<BlocksIconHandle, BlocksIconProps>(
 
 		return (
 			<motion.div
-				className={cn("inline-flex", className)}
+				className={cn("inline-flex items-center justify-center", className)}
 				onMouseEnter={handleEnter}
 				onMouseLeave={handleLeave}
 				{...props}

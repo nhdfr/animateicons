@@ -15,7 +15,7 @@ interface CircleCheckIconProps extends HTMLMotionProps<"div"> {
 }
 
 const CircleCheckIcon = forwardRef<CircleCheckIconHandle, CircleCheckIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 32, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const tickControls = useAnimation();
 		const isControlled = useRef(false);
@@ -78,7 +78,7 @@ const CircleCheckIcon = forwardRef<CircleCheckIconHandle, CircleCheckIconProps>(
 
 		return (
 			<motion.div
-				className={cn("inline-flex", className)}
+				className={cn("inline-flex items-center justify-center", className)}
 				onMouseEnter={handleEnter}
 				onMouseLeave={handleLeave}
 				{...props}

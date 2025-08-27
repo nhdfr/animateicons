@@ -74,7 +74,7 @@ const TurkishLiraIcon = forwardRef<TurkishLiraIconHandle, TurkishLiraIconProps>(
 
 		return (
 			<motion.div
-				className={cn("inline-flex", className)}
+				className={cn("inline-flex items-center justify-center", className)}
 				onMouseEnter={handleEnter}
 				onMouseLeave={handleLeave}
 				{...props}

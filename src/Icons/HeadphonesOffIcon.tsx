@@ -66,7 +66,7 @@ const HeadphonesOffIcon = forwardRef<
 
 	return (
 		<motion.div
-			className={cn("inline-flex", className)}
+			className={cn("inline-flex items-center justify-center", className)}
 			onMouseEnter={handleEnter}
 			onMouseLeave={handleLeave}
 			{...props}
@@ -94,7 +94,11 @@ const HeadphonesOffIcon = forwardRef<
 					variants={earcupVariants}
 				/>
 
-				<motion.path d="M22 2L2 22" variants={slashVariants} strokeWidth={2.5} />
+				<motion.path
+					d="M22 2L2 22"
+					variants={slashVariants}
+					strokeWidth={2.5}
+				/>
 			</motion.svg>
 		</motion.div>
 	);

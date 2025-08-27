@@ -5,17 +5,17 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface FramerIconHandle {
+export interface ZapHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface FramerIconProps extends HTMLMotionProps<"div"> {
+interface ZapProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
+const ZapIcon = forwardRef<ZapHandle, ZapProps>(
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 
@@ -35,21 +35,14 @@ const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
 			if (!isControlled.current) controls.start("normal");
 		}, [controls]);
 
-		const iconVariants: Variants = {
-			normal: { scale: 1, rotate: 0 },
-			animate: {
-				scale: [1, 1.07, 0.95, 1],
-				rotate: [0, -2, 2, 0],
-				transition: { duration: 1.4, ease: "easeInOut", repeat: 0 },
-			},
-		};
-
-		const pathVariants: Variants = {
-			normal: { pathLength: 1, opacity: 1 },
+		const bodyVariants: Variants = {
+			normal: { pathLength: 1, opacity: 1, rotate: 0, scale: 1 },
 			animate: {
 				pathLength: [0, 1],
-				opacity: [0.7, 1],
-				transition: { duration: 1.5, ease: "easeInOut", repeat: 0 },
+				opacity: [0.95, 1],
+				rotate: [0, -6, 2, 0],
+				scale: [1, 1.08, 1.02, 1],
+				transition: { duration: 0.8, ease: "easeInOut" },
 			},
 		};
 
@@ -70,13 +63,14 @@ const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					animate={controls}
-					initial="normal"
-					variants={iconVariants}
+					className="lucide lucide-zap-icon lucide-zap"
 				>
 					<motion.path
-						d="M5 16V9h14V2H5l14 14h-7m-7 0 7 7v-7m-7 0h7"
-						variants={pathVariants}
+						d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"
+						fill="none"
+						variants={bodyVariants}
+						initial="normal"
+						animate={controls}
 					/>
 				</motion.svg>
 			</motion.div>
@@ -84,5 +78,5 @@ const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
 	},
 );
 
-FramerIcon.displayName = "FramerIcon";
-export { FramerIcon };
+ZapIcon.displayName = "ZapIcon";
+export { ZapIcon };

@@ -99,6 +99,7 @@ import { SignalIcon } from "./SignalIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
 import { SprayCanIcon } from "./SprayCanIcon";
 import { SquareArrowOutUpRightIcon } from "./SquareArrowOutUpRightIcon";
+import { StarIcon } from "./StarIcon";
 import { SwissFrancIcon } from "./SwissFrancIcon";
 import { SwordsIcon } from "./SwordsIcon";
 import { TerminalIcon } from "./TerminalIcon";
@@ -130,6 +131,7 @@ import { WalletIcon } from "./WalletIcon";
 import { WalletMinimalIcon } from "./WalletMinimalIcon";
 import { XIcon } from "./XIcon";
 import { YenYuanIcon } from "./YenYuanIcon";
+import { ZapIcon } from "./ZapIcon";
 
 const Icon_List: IconListItem[] = [
 	// UI & Navigation
@@ -1607,6 +1609,33 @@ const Icon_List: IconListItem[] = [
 			"swiss",
 			"chf",
 			"₣",
+		],
+	},
+	{
+		name: "zap",
+		icon: ZapIcon,
+		keywords: [
+			"flash",
+			"lightning",
+			"electric",
+			"power",
+			"energy",
+			"strike",
+			"zap",
+			"thunder",
+			"weather",
+		],
+	},
+	{
+		name: "star",
+		icon: StarIcon,
+		keywords: [
+			"favorite",
+			"rating",
+			"review",
+			"like",
+			"achievement",
+			"bookmark",
 		],
 	},
 ];

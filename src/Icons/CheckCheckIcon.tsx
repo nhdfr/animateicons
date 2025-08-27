@@ -15,7 +15,7 @@ interface CheckCheckIconProps extends HTMLMotionProps<"div"> {
 }
 
 const CheckCheckIcon = forwardRef<DoubleCheckHandle, CheckCheckIconProps>(
-	({ className, size = 32, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

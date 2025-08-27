@@ -15,7 +15,7 @@ interface UserRoundProps extends HTMLMotionProps<"div"> {
 }
 
 const UserRoundIcon = forwardRef<UserRoundHandle, UserRoundProps>(
-	({ className, size = 32, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

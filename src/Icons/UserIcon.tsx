@@ -15,7 +15,7 @@ interface UserIconProps extends HTMLMotionProps<"div"> {
 }
 
 const UserIcon = forwardRef<UserIconHandle, UserIconProps>(
-	({ className, size = 32, ...props }, ref) => {
+	({ className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

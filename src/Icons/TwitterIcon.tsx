@@ -48,7 +48,7 @@ const TwitterIcon = forwardRef<TwitterIconHandle, TwitterIconProps>(
 			animate: {
 				scale: [1, 1.1, 0.95, 1],
 				rotate: [0, -3, 3, -2, 0],
-				transition: { duration: 1.3, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -57,13 +57,13 @@ const TwitterIcon = forwardRef<TwitterIconHandle, TwitterIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.8, 1],
-				transition: { duration: 1.3, ease: "easeInOut", repeat: Infinity },
+				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
 		return (
 			<motion.div
-				className={cn("inline-flex", className)}
+				className={cn("inline-flex items-center justify-center", className)}
 				onMouseEnter={handleEnter}
 				onMouseLeave={handleLeave}
 				{...props}

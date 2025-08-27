@@ -17,7 +17,7 @@ interface CircleChevronLeftIconProps extends HTMLMotionProps<"div"> {
 const CircleChevronLeftIcon = forwardRef<
 	CircleChevronLeftIconHandle,
 	CircleChevronLeftIconProps
->(({ className, size = 32, ...props }, ref) => {
+>(({ className, size = 28, ...props }, ref) => {
 	const circleControls = useAnimation();
 	const arrowControls = useAnimation();
 	const isControlled = useRef(false);
@@ -75,7 +75,7 @@ const CircleChevronLeftIcon = forwardRef<
 
 	return (
 		<motion.div
-			className={cn("inline-flex", className)}
+			className={cn("inline-flex items-center justify-center", className)}
 			onMouseEnter={handleEnter}
 			onMouseLeave={handleLeave}
 			{...props}
