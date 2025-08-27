@@ -23,6 +23,7 @@ import { ChartAreaIcon } from "./ChartAreaIcon";
 import { ChartBarIcon } from "./ChartBarIcon";
 import { ChartColumnIcon } from "./ChartColumnIcon";
 import { CheckCheckIcon } from "./CheckCheckIcon";
+import { ChartLineIcon } from "./ChartLineIcon";
 import { CheckIcon } from "./CheckIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
@@ -1698,6 +1699,26 @@ const Icon_List: IconListItem[] = [
 			"histogram",
 			"vertical",
 			"towers",
+		],
+	},
+	{
+		name: "chart-line",
+		icon: ChartLineIcon,
+		keywords: [
+			"line",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"trend",
+			"curve",
+			"plot",
+			"series",
 		],
 	},
 ];
