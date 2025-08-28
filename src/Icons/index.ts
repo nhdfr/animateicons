@@ -19,7 +19,13 @@ import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
 import { BookmarkXIcon } from "./BookmarkXIcon";
 import { BrainIcon } from "./BrainIcon";
 import { BringToFrontIcon } from "./BringToFrontIcon";
+import { ChartAreaIcon } from "./ChartAreaIcon";
+import { ChartBarIcon } from "./ChartBarIcon";
+import { ChartColumnIcon } from "./ChartColumnIcon";
 import { CheckCheckIcon } from "./CheckCheckIcon";
+import { ChartLineIcon } from "./ChartLineIcon";
+import { ChartNetworkIcon } from "./ChartNetworkIcon";
+import { ChartPieIcon } from "./ChartPieIcon";
 import { CheckIcon } from "./CheckIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
@@ -1636,6 +1642,127 @@ const Icon_List: IconListItem[] = [
 			"like",
 			"achievement",
 			"bookmark",
+		],
+	},
+
+	// Graphs
+	{
+		name: "chart-area",
+		icon: ChartAreaIcon,
+		keywords: [
+			"bar",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"bars",
+			"histogram",
+		],
+	},
+	{
+		name: "chart-bar",
+		icon: ChartBarIcon,
+		keywords: [
+			"bar",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"bars",
+			"histogram",
+			"columns",
+		],
+	},
+	{
+		name: "chart-column",
+		icon: ChartColumnIcon,
+		keywords: [
+			"column",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"bars",
+			"histogram",
+			"vertical",
+			"towers",
+		],
+	},
+	{
+		name: "chart-line",
+		icon: ChartLineIcon,
+		keywords: [
+			"line",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"trend",
+			"curve",
+			"plot",
+			"series",
+		],
+	},
+	{
+		name: "chart-network",
+		icon: ChartNetworkIcon,
+		keywords: [
+			"network",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"nodes",
+			"connections",
+			"relationships",
+			"topology",
+			"mesh",
+		],
+	},
+	{
+		name: "chart-pie",
+		icon: ChartPieIcon,
+		keywords: [
+			"pie",
+			"graph",
+			"analytics",
+			"data",
+			"statistics",
+			"chart",
+			"visualization",
+			"metrics",
+			"report",
+			"dashboard",
+			"circle",
+			"segment",
+			"portion",
+			"percentage",
+			"distribution",
 		],
 	},
 ];
