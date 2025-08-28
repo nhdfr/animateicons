@@ -48,12 +48,12 @@ const ChartNetworkIcon = forwardRef<
 	const pathVariants: Variants = {
 		normal: {
 			pathLength: 1,
-			opacity: 0.7,
+			opacity: 1,
 			transition: { duration: 0.2 },
 		},
 		animate: {
 			pathLength: [0, 1],
-			opacity: [0.7, 1, 0.7],
+			opacity: [0.7, 1],
 			transition: {
 				duration: 0.6,
 				ease: "easeInOut",
