@@ -15,7 +15,7 @@ interface StarIconProps extends HTMLMotionProps<"div"> {
 }
 
 const StarIcon = forwardRef<StarIconHandle, StarIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

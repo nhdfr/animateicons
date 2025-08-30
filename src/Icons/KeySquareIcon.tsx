@@ -15,7 +15,7 @@ interface KeySquareProps extends HTMLMotionProps<"div"> {
 }
 
 const KeySquareIcon = forwardRef<KeySquareHandle, KeySquareProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const sparkControls = useAnimation();
 		const isControlled = useRef(false);

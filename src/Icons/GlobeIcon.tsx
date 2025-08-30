@@ -15,7 +15,7 @@ interface GlobeIconProps extends HTMLMotionProps<"div"> {
 }
 
 const GlobeIcon = forwardRef<GlobeIconHandle, GlobeIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const svgControls = useAnimation();
 		const pathControls = useAnimation();
 		const isControlled = useRef(false);

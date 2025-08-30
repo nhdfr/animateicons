@@ -15,7 +15,7 @@ interface IndianRupeeProps extends HTMLMotionProps<"div"> {
 }
 
 const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

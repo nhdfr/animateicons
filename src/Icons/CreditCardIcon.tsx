@@ -15,7 +15,7 @@ interface CardProps extends HTMLMotionProps<"div"> {
 }
 
 const CreditCardIcon = forwardRef<CardHandle, CardProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const stripeControls = useAnimation();
 		const swipeControls = useAnimation();

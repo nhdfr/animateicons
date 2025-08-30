@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface UserRoundHandle {
@@ -15,8 +15,9 @@ interface UserRoundProps extends HTMLMotionProps<"div"> {
 }
 
 const UserRoundIcon = forwardRef<UserRoundHandle, UserRoundProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
@@ -27,31 +28,47 @@ const UserRoundIcon = forwardRef<UserRoundHandle, UserRoundProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
-
-		const curveVariants: Variants = {
-			normal: { strokeDashoffset: 0, opacity: 1 },
-			animate: {
-				strokeDashoffset: [40, 0],
-				opacity: [0.3, 1],
-				transition: { duration: 0.6, delay: 0.3, ease: "easeInOut" },
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-		};
+			[controls, onMouseEnter, reduced],
+		);
 
-		const headVariants: Variants = {
-			normal: { scale: 1, opacity: 1 },
-			animate: {
-				scale: [0.5, 1.2, 1],
-				opacity: [0, 1],
-				transition: { duration: 0.6, ease: "easeOut" },
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
 			},
-		};
+			[controls, onMouseLeave],
+		);
+
+		const curveVariants: Variants = reduced
+			? {
+					normal: { strokeDashoffset: 0, opacity: 1 },
+					animate: { strokeDashoffset: 0, opacity: 1 },
+				}
+			: {
+					normal: { strokeDashoffset: 0, opacity: 1 },
+					animate: {
+						strokeDashoffset: [40, 0],
+						opacity: [0.3, 1],
+						transition: { duration: 0.6, delay: 0.3, ease: "easeInOut" },
+					},
+				};
+
+		const headVariants: Variants = reduced
+			? { normal: { scale: 1, opacity: 1 }, animate: { scale: 1, opacity: 1 } }
+			: {
+					normal: { scale: 1, opacity: 1 },
+					animate: {
+						scale: [0.5, 1.2, 1],
+						opacity: [0, 1],
+						transition: { duration: 0.6, ease: "easeOut" },
+					},
+				};
 
 		return (
 			<motion.div

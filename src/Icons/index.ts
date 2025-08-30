@@ -17,15 +17,16 @@ import { BookmarkIcon } from "./BookmarkIcon";
 import { BookmarkMinusIcon } from "./BookmarkMinusIcon";
 import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
 import { BookmarkXIcon } from "./BookmarkXIcon";
+import { BookOpenTextIcon } from "./BookOpenTextIcon";
 import { BrainIcon } from "./BrainIcon";
 import { BringToFrontIcon } from "./BringToFrontIcon";
 import { ChartAreaIcon } from "./ChartAreaIcon";
 import { ChartBarIcon } from "./ChartBarIcon";
 import { ChartColumnIcon } from "./ChartColumnIcon";
-import { CheckCheckIcon } from "./CheckCheckIcon";
 import { ChartLineIcon } from "./ChartLineIcon";
 import { ChartNetworkIcon } from "./ChartNetworkIcon";
 import { ChartPieIcon } from "./ChartPieIcon";
+import { CheckCheckIcon } from "./CheckCheckIcon";
 import { CheckIcon } from "./CheckIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { ChevronLeftIcon } from "./ChevronLeftIcon";
@@ -103,6 +104,7 @@ import { ShoppingBagIcon } from "./ShoppingBagIcon";
 import { ShoppingCartIcon } from "./ShoppingCartIcon";
 import { SignalIcon } from "./SignalIcon";
 import { SnowflakeIcon } from "./SnowFlakeIcon";
+import { SparklesIcon } from "./SparklesIcon";
 import { SprayCanIcon } from "./SprayCanIcon";
 import { SquareArrowOutUpRightIcon } from "./SquareArrowOutUpRightIcon";
 import { StarIcon } from "./StarIcon";
@@ -1763,6 +1765,46 @@ const Icon_List: IconListItem[] = [
 			"portion",
 			"percentage",
 			"distribution",
+		],
+	},
+	{
+		name: "book-open-text",
+		icon: BookOpenTextIcon,
+		keywords: [
+			"read",
+			"library",
+			"documentation",
+			"manual",
+			"guide",
+			"book",
+			"text",
+			"pages",
+			"literature",
+			"knowledge",
+			"education",
+			"study",
+			"research",
+		],
+	},
+	{
+		name: "sparkles",
+		icon: SparklesIcon,
+		keywords: [
+			"shine",
+			"glow",
+			"twinkle",
+			"glitter",
+			"star",
+			"magic",
+			"sparkle",
+			"shimmer",
+			"bright",
+			"flash",
+			"dazzle",
+			"radiant",
+			"luminous",
+			"brilliant",
+			"festive",
 		],
 	},
 ];

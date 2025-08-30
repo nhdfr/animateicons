@@ -21,7 +21,7 @@ interface BrainProps extends HTMLMotionProps<"div"> {
 }
 
 const BrainIcon = forwardRef<BrainHandle, BrainProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const groupControls = useAnimation();
 		const pulseControls = useAnimation();
 		const sparkControlsL = useAnimation();

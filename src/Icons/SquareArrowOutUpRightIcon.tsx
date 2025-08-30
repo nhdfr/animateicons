@@ -17,7 +17,7 @@ interface SquareArrowOutUpRightIconProps extends HTMLMotionProps<"div"> {
 const SquareArrowOutUpRightIcon = forwardRef<
 	SquareArrowOutUpRightIconHandle,
 	SquareArrowOutUpRightIconProps
->(({ className, size = 28, ...props }, ref) => {
+>(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 	const boxControls = useAnimation();
 	const arrowControls = useAnimation();
 	const isControlled = useRef(false);

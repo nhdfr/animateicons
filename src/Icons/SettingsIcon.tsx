@@ -15,7 +15,7 @@ interface SettingsIconProps extends HTMLMotionProps<"div"> {
 }
 
 const SettingsIcon = forwardRef<SettingsIconHandle, SettingsIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

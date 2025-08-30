@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface BlocksIconHandle {
@@ -17,61 +17,87 @@ interface BlocksIconProps extends HTMLMotionProps<"div"> {
 const BlocksIcon = forwardRef<BlocksIconHandle, BlocksIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
-
-		const svgVariants: Variants = {
-			normal: { rotate: 0, scale: 1 },
-			animate: {
-				rotate: [0, -2, 2, 0],
-				scale: [1, 1.05, 0.95, 1],
-				transition: {
-					duration: 1.6,
-					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
-				},
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-		};
+			[controls, onMouseEnter, reduced],
+		);
 
-		const pathVariants: Variants = {
-			normal: { pathLength: 1, opacity: 1 },
-			animate: {
-				pathLength: [0, 1],
-				opacity: [0.5, 1],
-				transition: {
-					duration: 1.4,
-					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
-				},
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
 			},
-		};
+			[controls, onMouseLeave],
+		);
 
-		const rectVariants: Variants = {
-			normal: { scale: 1 },
-			animate: {
-				scale: [1, 1.2, 0.9, 1],
-				transition: {
-					duration: 1.2,
-					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
-				},
-			},
-		};
+		const svgVariants: Variants = reduced
+			? {
+					normal: { rotate: 0, scale: 1 },
+					animate: { rotate: 0, scale: 1 },
+				}
+			: {
+					normal: { rotate: 0, scale: 1 },
+					animate: {
+						rotate: [0, -2, 2, 0],
+						scale: [1, 1.05, 0.95, 1],
+						transition: {
+							duration: 1.6,
+							ease: [0.42, 0, 0.58, 1],
+							repeat: 0,
+						},
+					},
+				};
+
+		const pathVariants: Variants = reduced
+			? {
+					normal: { pathLength: 1, opacity: 1 },
+					animate: { pathLength: 1, opacity: 1 },
+				}
+			: {
+					normal: { pathLength: 1, opacity: 1 },
+					animate: {
+						pathLength: [0, 1],
+						opacity: [0.5, 1],
+						transition: {
+							duration: 1.4,
+							ease: [0.42, 0, 0.58, 1],
+							repeat: 0,
+						},
+					},
+				};
+
+		const rectVariants: Variants = reduced
+			? {
+					normal: { scale: 1 },
+					animate: { scale: 1 },
+				}
+			: {
+					normal: { scale: 1 },
+					animate: {
+						scale: [1, 1.2, 0.9, 1],
+						transition: {
+							duration: 1.2,
+							ease: [0.42, 0, 0.58, 1],
+							repeat: 0,
+						},
+					},
+				};
 
 		return (
 			<motion.div

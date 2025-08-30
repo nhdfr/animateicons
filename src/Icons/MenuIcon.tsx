@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface MenuIconHandle {
@@ -17,25 +17,28 @@ interface MenuIconProps extends HTMLMotionProps<"div"> {
 const MenuIcon = forwardRef<MenuIconHandle, MenuIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
 		const handleEnter = useCallback(
 			(e: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
 				if (!isControlled.current) {
 					controls.start("animate");
 				} else {
 					onMouseEnter?.(e);
 				}
 			},
-			[controls, onMouseEnter],
+			[controls, onMouseEnter, reduced],
 		);
 
 		const handleLeave = useCallback(
@@ -49,14 +52,19 @@ const MenuIcon = forwardRef<MenuIconHandle, MenuIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const lineVariants: Variants = {
-			normal: { x: 0, opacity: 1 },
-			animate: (i) => ({
-				x: [0, i % 2 === 0 ? 4 : -4, 0],
-				opacity: [1, 0.5, 1],
-				transition: { duration: 0.4, delay: i * 0.1 },
-			}),
-		};
+		const lineVariants: Variants = reduced
+			? {
+					normal: { x: 0, opacity: 1 },
+					animate: { x: 0, opacity: 1 },
+				}
+			: {
+					normal: { x: 0, opacity: 1 },
+					animate: (i) => ({
+						x: [0, i % 2 === 0 ? 4 : -4, 0],
+						opacity: [1, 0.5, 1],
+						transition: { duration: 0.4, delay: i * 0.1 },
+					}),
+				};
 
 		return (
 			<motion.div

@@ -15,7 +15,7 @@ interface KeyProps extends HTMLMotionProps<"div"> {
 }
 
 const KeyIcon = forwardRef<KeyHandle, KeyProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

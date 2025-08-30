@@ -15,7 +15,7 @@ interface UploadProps extends HTMLMotionProps<"div"> {
 }
 
 const UploadIcon = forwardRef<UploadHandle, UploadProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

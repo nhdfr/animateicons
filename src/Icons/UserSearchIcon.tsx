@@ -15,7 +15,7 @@ interface UserSearchProps extends HTMLMotionProps<"div"> {
 }
 
 const UserSearchIcon = forwardRef<UserSearchHandle, UserSearchProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 
