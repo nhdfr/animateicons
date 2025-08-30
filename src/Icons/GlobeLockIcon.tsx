@@ -15,7 +15,7 @@ interface GlobeLockIconProps extends HTMLMotionProps<"div"> {
 }
 
 const GlobeLockIcon = forwardRef<GlobeLockIconHandle, GlobeLockIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const lockControls = useAnimation();
 		const isControlled = useRef(false);
 

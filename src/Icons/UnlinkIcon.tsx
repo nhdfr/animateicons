@@ -15,7 +15,7 @@ interface UnlinkIconProps extends HTMLMotionProps<"div"> {
 }
 
 const UnlinkIcon = forwardRef<UnlinkIconHandle, UnlinkIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const leftChainControls = useAnimation();
 		const rightChainControls = useAnimation();
 		const sparksControls = useAnimation();

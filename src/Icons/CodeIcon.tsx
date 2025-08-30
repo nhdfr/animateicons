@@ -15,7 +15,7 @@ interface CodeProps extends HTMLMotionProps<"div"> {
 }
 
 const CodeIcon = forwardRef<CodeHandle, CodeProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

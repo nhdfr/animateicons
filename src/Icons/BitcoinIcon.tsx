@@ -15,7 +15,7 @@ interface BitcoinIconProps extends HTMLMotionProps<"div"> {
 }
 
 const BitcoinIcon = forwardRef<BitcoinIconHandle, BitcoinIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

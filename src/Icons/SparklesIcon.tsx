@@ -5,16 +5,16 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface DashboardIconHandle {
+export interface SparklesIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface DashboardIconProps extends HTMLMotionProps<"div"> {
+interface SparklesIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
+const SparklesIcon = forwardRef<SparklesIconHandle, SparklesIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
@@ -54,30 +54,53 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 			: {
 					normal: { scale: 1, rotate: 0 },
 					animate: {
-						scale: [1, 1.05, 0.95, 1],
-						rotate: [0, -2, 2, 0],
-						transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
+						scale: [1, 1.06, 0.98, 1],
+						rotate: [0, -3, 3, 0],
+						transition: { duration: 1.1, ease: "easeInOut" },
 					},
 				};
 
-		const tileVariants: Variants = reduced
+		const starVariants: Variants = reduced
+			? {
+					normal: { pathLength: 1, opacity: 1 },
+					animate: { pathLength: 1, opacity: 1 },
+				}
+			: {
+					normal: { pathLength: 1, opacity: 1 },
+					animate: {
+						pathLength: [0.9, 1, 1],
+						opacity: [0.8, 1, 1],
+						transition: { duration: 0.9, ease: "easeInOut", delay: 0.05 },
+					},
+				};
+
+		const crossVariants: Variants = reduced
+			? {
+					normal: { opacity: 1, scale: 1 },
+					animate: { opacity: 1, scale: 1 },
+				}
+			: {
+					normal: { opacity: 1, scale: 1 },
+					animate: {
+						opacity: [0.6, 1, 0.8, 1],
+						scale: [0.9, 1.05, 1],
+						transition: { duration: 0.8, ease: "easeInOut", delay: 0.18 },
+					},
+				};
+
+		const dotVariants: Variants = reduced
 			? {
 					normal: { opacity: 1, scale: 1, y: 0 },
 					animate: { opacity: 1, scale: 1, y: 0 },
 				}
 			: {
 					normal: { opacity: 1, scale: 1, y: 0 },
-					animate: (i: number) => ({
-						opacity: [0.5, 1, 0.8, 1],
-						scale: [0.9, 1.1, 1],
-						y: [2, -2, 0],
-						transition: {
-							duration: 1.2,
-							ease: "easeInOut",
-							repeat: 0,
-							delay: i * 0.2,
-						},
-					}),
+					animate: {
+						opacity: [0.7, 1, 1],
+						scale: [0.85, 1.1, 1],
+						y: [1.5, -0.5, 0],
+						transition: { duration: 0.9, ease: "easeInOut", delay: 0.28 },
+					},
 				};
 
 		return (
@@ -101,47 +124,29 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 					initial="normal"
 					variants={iconVariants}
 				>
-					<motion.rect
-						width="7"
-						height="9"
-						x="3"
-						y="3"
-						rx="1"
-						variants={tileVariants}
-						custom={0}
+					<motion.path
+						d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"
+						variants={starVariants}
 						initial="normal"
 						animate={controls}
 					/>
-					<motion.rect
-						width="7"
-						height="5"
-						x="14"
-						y="3"
-						rx="1"
-						variants={tileVariants}
-						custom={1}
+					<motion.path
+						d="M20 2v4"
+						variants={crossVariants}
 						initial="normal"
 						animate={controls}
 					/>
-					<motion.rect
-						width="7"
-						height="9"
-						x="14"
-						y="12"
-						rx="1"
-						variants={tileVariants}
-						custom={2}
+					<motion.path
+						d="M22 4h-4"
+						variants={crossVariants}
 						initial="normal"
 						animate={controls}
 					/>
-					<motion.rect
-						width="7"
-						height="5"
-						x="3"
-						y="16"
-						rx="1"
-						variants={tileVariants}
-						custom={3}
+					<motion.circle
+						cx="4"
+						cy="20"
+						r="2"
+						variants={dotVariants}
 						initial="normal"
 						animate={controls}
 					/>
@@ -151,5 +156,5 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 	},
 );
 
-DashboardIcon.displayName = "DashboardIcon";
-export { DashboardIcon };
+SparklesIcon.displayName = "SparklesIcon";
+export { SparklesIcon };

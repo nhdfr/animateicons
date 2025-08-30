@@ -17,7 +17,7 @@ interface CircleCheckBigIconProps extends HTMLMotionProps<"div"> {
 const CircleCheckBigIcon = forwardRef<
 	CircleCheckBigIconHandle,
 	CircleCheckBigIconProps
->(({ className, size = 28, ...props }, ref) => {
+>(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 	const controls = useAnimation();
 	const tickControls = useAnimation();
 	const isControlled = useRef(false);

@@ -15,7 +15,7 @@ interface KeyRoundProps extends HTMLMotionProps<"div"> {
 }
 
 const KeyRoundIcon = forwardRef<KeyRoundHandle, KeyRoundProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

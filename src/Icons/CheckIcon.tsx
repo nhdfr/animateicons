@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface CheckIconHandle {
@@ -15,35 +15,51 @@ interface CheckIconProps extends HTMLMotionProps<"div"> {
 }
 
 const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
-
-		const tickVariants: Variants = {
-			normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
-			animate: {
-				strokeDashoffset: [20, 0],
-				scale: [1, 1.2, 1],
-				opacity: [0.5, 1],
-				transition: { duration: 0.6, ease: "easeInOut" },
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-		};
+			[controls, onMouseEnter, reduced],
+		);
+
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
+			},
+			[controls, onMouseLeave],
+		);
+
+		const tickVariants: Variants = reduced
+			? {
+					normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
+					animate: { strokeDashoffset: 0, scale: 1, opacity: 1 },
+				}
+			: {
+					normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
+					animate: {
+						strokeDashoffset: [20, 0],
+						scale: [1, 1.2, 1],
+						opacity: [0.5, 1],
+						transition: { duration: 0.6, ease: "easeInOut" },
+					},
+				};
 
 		return (
 			<motion.div

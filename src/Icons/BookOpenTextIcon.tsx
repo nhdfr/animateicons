@@ -5,18 +5,18 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface BringToFrontIconHandle {
+export interface BookOpenTextIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface BringToFrontIconProps extends HTMLMotionProps<"div"> {
+interface BookOpenTextIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const BringToFrontIcon = forwardRef<
-	BringToFrontIconHandle,
-	BringToFrontIconProps
+const BookOpenTextIcon = forwardRef<
+	BookOpenTextIconHandle,
+	BookOpenTextIconProps
 >(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 	const controls = useAnimation();
 	const reduced = useReducedMotion();
@@ -37,7 +37,7 @@ const BringToFrontIcon = forwardRef<
 			if (!isControlled.current) controls.start("animate");
 			else onMouseEnter?.(e as any);
 		},
-		[controls, onMouseEnter, reduced],
+		[controls, reduced, onMouseEnter],
 	);
 
 	const handleLeave = useCallback(
@@ -48,7 +48,7 @@ const BringToFrontIcon = forwardRef<
 		[controls, onMouseLeave],
 	);
 
-	const svgVariants: Variants = reduced
+	const iconVariants: Variants = reduced
 		? {
 				normal: { scale: 1, rotate: 0 },
 				animate: { scale: 1, rotate: 0 },
@@ -56,49 +56,47 @@ const BringToFrontIcon = forwardRef<
 		: {
 				normal: { scale: 1, rotate: 0 },
 				animate: {
-					rotate: [0, -3, 3, 0],
-					scale: [1, 1.05, 0.95, 1],
-					transition: {
-						duration: 1.4,
-						ease: [0.42, 0, 0.58, 1],
-						repeat: 0,
-					},
+					scale: [1, 1.04, 0.98, 1],
+					rotate: [0, -2, 2, 0],
+					transition: { duration: 1.1, ease: "easeInOut", repeat: 0 },
 				},
 			};
 
-	const pathVariants: Variants = reduced
+	const strokeVariants: Variants = reduced
 		? {
 				normal: { pathLength: 1, opacity: 1 },
 				animate: { pathLength: 1, opacity: 1 },
 			}
 		: {
 				normal: { pathLength: 1, opacity: 1 },
-				animate: {
-					pathLength: [0, 1],
-					opacity: [0.5, 1],
+				animate: (i: number) => ({
+					pathLength: [0.9, 1, 1],
+					opacity: [0.7, 1, 1],
 					transition: {
-						duration: 1.2,
-						ease: [0.42, 0, 0.58, 1],
-						repeat: 0,
+						duration: 0.9,
+						ease: "easeInOut",
+						delay: i * 0.12,
 					},
-				},
+				}),
 			};
 
-	const rectVariants: Variants = reduced
+	const lineVariants: Variants = reduced
 		? {
-				normal: { scale: 1 },
-				animate: { scale: 1 },
+				normal: { opacity: 1, y: 0, scaleX: 1 },
+				animate: { opacity: 1, y: 0, scaleX: 1 },
 			}
 		: {
-				normal: { scale: 1 },
-				animate: {
-					scale: [1, 1.2, 0.9, 1],
+				normal: { opacity: 1, y: 0, scaleX: 1 },
+				animate: (i: number) => ({
+					opacity: [0.6, 1, 1],
+					y: [1.5, -1, 0],
+					scaleX: [0.9, 1.05, 1],
 					transition: {
-						duration: 1,
-						ease: [0.42, 0, 0.58, 1],
-						repeat: 0,
+						duration: 0.9,
+						ease: "easeInOut",
+						delay: 0.2 + i * 0.1,
 					},
-				},
+				}),
 			};
 
 	return (
@@ -120,28 +118,54 @@ const BringToFrontIcon = forwardRef<
 				strokeLinejoin="round"
 				animate={controls}
 				initial="normal"
-				variants={svgVariants}
+				variants={iconVariants}
 			>
-				<motion.rect
-					x="8"
-					y="8"
-					width="8"
-					height="8"
-					rx="2"
-					variants={rectVariants}
+				<motion.path
+					d="M12 7v14"
+					variants={strokeVariants}
+					custom={0}
+					initial="normal"
+					animate={controls}
 				/>
 				<motion.path
-					d="M4 10a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2"
-					variants={pathVariants}
+					d="M16 12h2"
+					variants={lineVariants}
+					custom={0}
+					initial="normal"
+					animate={controls}
 				/>
 				<motion.path
-					d="M14 20a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2"
-					variants={pathVariants}
+					d="M16 8h2"
+					variants={lineVariants}
+					custom={1}
+					initial="normal"
+					animate={controls}
+				/>
+				<motion.path
+					d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+					variants={strokeVariants}
+					custom={1}
+					initial="normal"
+					animate={controls}
+				/>
+				<motion.path
+					d="M6 12h2"
+					variants={lineVariants}
+					custom={2}
+					initial="normal"
+					animate={controls}
+				/>
+				<motion.path
+					d="M6 8h2"
+					variants={lineVariants}
+					custom={3}
+					initial="normal"
+					animate={controls}
 				/>
 			</motion.svg>
 		</motion.div>
 	);
 });
 
-BringToFrontIcon.displayName = "BringToFrontIcon";
-export { BringToFrontIcon };
+BookOpenTextIcon.displayName = "BookOpenTextIcon";
+export { BookOpenTextIcon };

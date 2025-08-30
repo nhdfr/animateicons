@@ -15,7 +15,7 @@ interface SignalProps extends HTMLMotionProps<"div"> {
 }
 
 const SignalIcon = forwardRef<SignalHandle, SignalProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const groupControls = useAnimation();
 		const isControlled = useRef(false);
 

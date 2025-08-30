@@ -15,7 +15,7 @@ interface CodeXmlIconProps extends HTMLMotionProps<"div"> {
 }
 
 const CodeXmlIcon = forwardRef<CodeXmlIconHandle, CodeXmlIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const leftControls = useAnimation();
 		const rightControls = useAnimation();

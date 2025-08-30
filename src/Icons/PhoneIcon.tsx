@@ -15,7 +15,7 @@ interface PhoneProps extends HTMLMotionProps<"div"> {
 }
 
 const PhoneIcon = forwardRef<PhoneHandle, PhoneProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isHover = useRef(false);
 

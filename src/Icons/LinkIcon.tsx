@@ -15,7 +15,7 @@ interface LinkIconProps extends HTMLMotionProps<"div"> {
 }
 
 const LinkIcon = forwardRef<LinkIconHandle, LinkIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const leftPartControls = useAnimation();
 		const rightPartControls = useAnimation();
 		const isControlled = useRef(false);

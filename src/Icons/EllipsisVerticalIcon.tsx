@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface EllipsisVerticalIconHandle {
@@ -19,25 +19,28 @@ const EllipsisVerticalIcon = forwardRef<
 	EllipsisVerticalIconProps
 >(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 	const controls = useAnimation();
+	const reduced = useReducedMotion();
 	const isControlled = useRef(false);
 
 	useImperativeHandle(ref, () => {
 		isControlled.current = true;
 		return {
-			startAnimation: () => controls.start("animate"),
+			startAnimation: () =>
+				reduced ? controls.start("normal") : controls.start("animate"),
 			stopAnimation: () => controls.start("normal"),
 		};
 	});
 
 	const handleEnter = useCallback(
 		(e: React.MouseEvent<HTMLDivElement>) => {
+			if (reduced) return;
 			if (!isControlled.current) {
 				controls.start("animate");
 			} else {
 				onMouseEnter?.(e);
 			}
 		},
-		[controls, onMouseEnter],
+		[controls, onMouseEnter, reduced],
 	);
 
 	const handleLeave = useCallback(
@@ -51,19 +54,24 @@ const EllipsisVerticalIcon = forwardRef<
 		[controls, onMouseLeave],
 	);
 
-	const dotVariants: Variants = {
-		normal: { y: 0, opacity: 1 },
-		animate: (i) => ({
-			y: [-3.5, 0],
-			opacity: [0.4, 0.8, 1, 0.8, 0.4, 1],
-			transition: {
-				duration: 0.8,
-				delay: i * 0.2,
-				ease: "easeInOut",
-				repeat: 0,
-			},
-		}),
-	};
+	const dotVariants: Variants = reduced
+		? {
+				normal: { y: 0, opacity: 1 },
+				animate: { y: 0, opacity: 1 },
+			}
+		: {
+				normal: { y: 0, opacity: 1 },
+				animate: (i) => ({
+					y: [-3.5, 0],
+					opacity: [0.4, 0.8, 1, 0.8, 0.4, 1],
+					transition: {
+						duration: 0.8,
+						delay: i * 0.2,
+						ease: "easeInOut",
+						repeat: 0,
+					},
+				}),
+			};
 
 	return (
 		<motion.div

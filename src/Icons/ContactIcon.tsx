@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface ContactHandle {
@@ -15,61 +15,92 @@ interface ContactProps extends HTMLMotionProps<"div"> {
 }
 
 const ContactIcon = forwardRef<ContactHandle, ContactProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
-
-		const rectVariants: Variants = {
-			normal: { strokeDashoffset: 0, opacity: 1 },
-			animate: {
-				strokeDashoffset: [100, 0],
-				opacity: [0.3, 1],
-				transition: { duration: 0.8, ease: "easeInOut" },
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-		};
+			[controls, reduced, onMouseEnter],
+		);
 
-		const circleVariants: Variants = {
-			normal: { scale: 1, opacity: 1 },
-			animate: {
-				scale: [0.5, 1.2, 1],
-				opacity: [0, 1],
-				transition: { duration: 0.6, delay: 0.25, ease: "easeOut" },
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
 			},
-		};
+			[controls, onMouseLeave],
+		);
 
-		const lineVariants: Variants = {
-			normal: { x: 0, opacity: 1 },
-			animate: {
-				x: [-10, 0],
-				opacity: [0, 1],
-				transition: { duration: 0.4, ease: "easeOut", delay: 0.4 },
-			},
-		};
+		const rectVariants: Variants = reduced
+			? {
+					normal: { strokeDashoffset: 0, opacity: 1 },
+					animate: { strokeDashoffset: 0, opacity: 1 },
+				}
+			: {
+					normal: { strokeDashoffset: 0, opacity: 1 },
+					animate: {
+						strokeDashoffset: [100, 0],
+						opacity: [0.3, 1],
+						transition: { duration: 0.8, ease: "easeInOut" },
+					},
+				};
 
-		const curveVariants: Variants = {
-			normal: { opacity: 1, strokeDashoffset: 0 },
-			animate: {
-				strokeDashoffset: [30, 0],
-				opacity: [0, 1],
-				transition: { duration: 0.6, delay: 0.5, ease: "easeInOut" },
-			},
-		};
+		const circleVariants: Variants = reduced
+			? {
+					normal: { scale: 1, opacity: 1 },
+					animate: { scale: 1, opacity: 1 },
+				}
+			: {
+					normal: { scale: 1, opacity: 1 },
+					animate: {
+						scale: [0.5, 1.2, 1],
+						opacity: [0, 1],
+						transition: { duration: 0.6, delay: 0.3, ease: "easeOut" },
+					},
+				};
+
+		const lineVariants: Variants = reduced
+			? {
+					normal: { x: 0, opacity: 1 },
+					animate: { x: 0, opacity: 1 },
+				}
+			: {
+					normal: { x: 0, opacity: 1 },
+					animate: {
+						x: [-10, 0],
+						opacity: [0, 1],
+						transition: { duration: 0.4, ease: "easeOut", delay: 0.6 },
+					},
+				};
+
+		const curveVariants: Variants = reduced
+			? {
+					normal: { strokeDashoffset: 0, opacity: 1 },
+					animate: { strokeDashoffset: 0, opacity: 1 },
+				}
+			: {
+					normal: { opacity: 1, strokeDashoffset: 0 },
+					animate: {
+						strokeDashoffset: [30, 0],
+						opacity: [0, 1],
+						transition: { duration: 0.6, delay: 0.5, ease: "easeInOut" },
+					},
+				};
 
 		return (
 			<motion.div

@@ -15,7 +15,7 @@ interface SearchProps extends HTMLMotionProps<"div"> {
 }
 
 const SearchIcon = forwardRef<SearchHandle, SearchProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

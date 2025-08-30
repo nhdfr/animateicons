@@ -17,7 +17,7 @@ interface CircleChevronRightIconProps extends HTMLMotionProps<"div"> {
 const CircleChevronRightIcon = forwardRef<
 	CircleChevronRightIconHandle,
 	CircleChevronRightIconProps
->(({ className, size = 28, ...props }, ref) => {
+>(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 	const circleControls = useAnimation();
 	const arrowControls = useAnimation();
 	const isControlled = useRef(false);

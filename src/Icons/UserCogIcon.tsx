@@ -15,7 +15,7 @@ interface UserCogProps extends HTMLMotionProps<"div"> {
 }
 
 const UserCogIcon = forwardRef<UserCogHandle, UserCogProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const isControlled = useRef(false);
 

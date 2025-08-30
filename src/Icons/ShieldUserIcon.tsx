@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface ShieldUserHandle {
@@ -15,8 +15,9 @@ interface ShieldUserProps extends HTMLMotionProps<"div"> {
 }
 
 const ShieldUserIcon = forwardRef<ShieldUserHandle, ShieldUserProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
@@ -27,40 +28,64 @@ const ShieldUserIcon = forwardRef<ShieldUserHandle, ShieldUserProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
-
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
-
-		const shieldVariants: Variants = {
-			normal: { strokeDashoffset: 0, opacity: 1 },
-			animate: {
-				strokeDashoffset: [120, 0],
-				opacity: [0.3, 1],
-				transition: { duration: 0.8, ease: "easeInOut" },
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-		};
+			[controls, onMouseEnter, reduced],
+		);
 
-		const bodyVariants: Variants = {
-			normal: { opacity: 1, y: 0 },
-			animate: {
-				opacity: [0, 1],
-				y: [6, 0],
-				transition: { duration: 0.5, delay: 0.5, ease: "easeOut" },
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
 			},
-		};
+			[controls, onMouseLeave],
+		);
 
-		const headVariants: Variants = {
-			normal: { scale: 1, opacity: 1 },
-			animate: {
-				scale: [0.5, 1.2, 1],
-				opacity: [0, 1],
-				transition: { duration: 0.6, delay: 0.3, ease: "easeOut" },
-			},
-		};
+		const shieldVariants: Variants = reduced
+			? {
+					normal: { strokeDashoffset: 0, opacity: 1 },
+					animate: { strokeDashoffset: 0, opacity: 1 },
+				}
+			: {
+					normal: { strokeDashoffset: 0, opacity: 1 },
+					animate: {
+						strokeDashoffset: [120, 0],
+						opacity: [0.3, 1],
+						transition: { duration: 0.8, ease: "easeInOut" },
+					},
+				};
+
+		const bodyVariants: Variants = reduced
+			? {
+					normal: { opacity: 1, y: 0 },
+					animate: { opacity: 1, y: 0 },
+				}
+			: {
+					normal: { opacity: 1, y: 0 },
+					animate: {
+						opacity: [0, 1],
+						y: [6, 0],
+						transition: { duration: 0.5, delay: 0.5, ease: "easeOut" },
+					},
+				};
+
+		const headVariants: Variants = reduced
+			? {
+					normal: { scale: 1, opacity: 1 },
+					animate: { scale: 1, opacity: 1 },
+				}
+			: {
+					normal: { scale: 1, opacity: 1 },
+					animate: {
+						scale: [0.5, 1.2, 1],
+						opacity: [0, 1],
+						transition: { duration: 0.6, delay: 0.3, ease: "easeOut" },
+					},
+				};
 
 		return (
 			<motion.div

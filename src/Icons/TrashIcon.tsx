@@ -10,7 +10,7 @@ export interface TrashIconProps extends HTMLMotionProps<"div"> {
 }
 
 const TrashIcon = forwardRef<HTMLDivElement, TrashIconProps>(
-	({ className, size = 28, ...props }, ref) => {
+	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const lidVariants: Variants = {
 			normal: { y: 0, rotate: 0 },
 			hover: {
