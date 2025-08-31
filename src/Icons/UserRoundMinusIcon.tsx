@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface UserRoundMinusHandle {
@@ -19,50 +19,76 @@ const UserRoundMinusIcon = forwardRef<
 	UserRoundMinusProps
 >(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 	const controls = useAnimation();
+	const reduced = useReducedMotion();
 	const isControlled = useRef(false);
 
 	useImperativeHandle(ref, () => {
 		isControlled.current = true;
 		return {
-			startAnimation: () => controls.start("animate"),
+			startAnimation: () =>
+				reduced ? controls.start("normal") : controls.start("animate"),
 			stopAnimation: () => controls.start("normal"),
 		};
 	});
 
-	const handleEnter = useCallback(() => {
-		if (!isControlled.current) controls.start("animate");
-	}, [controls]);
-
-	const handleLeave = useCallback(() => {
-		if (!isControlled.current) controls.start("normal");
-	}, [controls]);
-
-	const bodyVariants: Variants = {
-		normal: { strokeDashoffset: 0, opacity: 1 },
-		animate: {
-			strokeDashoffset: [40, 0],
-			opacity: [0.3, 1],
-			transition: { duration: 0.7, delay: 0.2, ease: "easeInOut" },
+	const handleEnter = useCallback(
+		(e?: React.MouseEvent<HTMLDivElement>) => {
+			if (reduced) return;
+			if (!isControlled.current) controls.start("animate");
+			else onMouseEnter?.(e as any);
 		},
-	};
+		[controls, reduced, onMouseEnter],
+	);
 
-	const headVariants: Variants = {
-		normal: { scale: 1, opacity: 1 },
-		animate: {
-			scale: [0.5, 1.2, 1],
-			opacity: [0, 1],
-			transition: { duration: 0.6, ease: "easeOut" },
+	const handleLeave = useCallback(
+		(e?: React.MouseEvent<HTMLDivElement>) => {
+			if (!isControlled.current) controls.start("normal");
+			else onMouseLeave?.(e as any);
 		},
-	};
+		[controls, onMouseLeave],
+	);
 
-	const minusVariants: Variants = {
-		normal: { strokeDashoffset: 0, opacity: 1 },
-		animate: {
-			strokeDashoffset: [20, 0],
-			opacity: [0.4, 1],
-			transition: { duration: 0.5, ease: "easeInOut", delay: 0.6 },
-		},
-	};
+	const bodyVariants: Variants = reduced
+		? {
+				normal: { strokeDashoffset: 0, opacity: 1 },
+				animate: { strokeDashoffset: 0, opacity: 1 },
+			}
+		: {
+				normal: { strokeDashoffset: 0, opacity: 1 },
+				animate: {
+					strokeDashoffset: [40, 0],
+					opacity: [0.3, 1],
+					transition: { duration: 0.7, delay: 0.2, ease: "easeInOut" },
+				},
+			};
+
+	const headVariants: Variants = reduced
+		? {
+				normal: { scale: 1, opacity: 1 },
+				animate: { scale: 1, opacity: 1 },
+			}
+		: {
+				normal: { scale: 1, opacity: 1 },
+				animate: {
+					scale: [0.5, 1.2, 1],
+					opacity: [0, 1],
+					transition: { duration: 0.6, ease: "easeOut" },
+				},
+			};
+
+	const minusVariants: Variants = reduced
+		? {
+				normal: { strokeDashoffset: 0, opacity: 1 },
+				animate: { strokeDashoffset: 0, opacity: 1 },
+			}
+		: {
+				normal: { strokeDashoffset: 0, opacity: 1 },
+				animate: {
+					strokeDashoffset: [20, 0],
+					opacity: [0.4, 1],
+					transition: { duration: 0.5, ease: "easeInOut", delay: 0.6 },
+				},
+			};
 
 	return (
 		<motion.div
