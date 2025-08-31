@@ -1,6 +1,6 @@
 "use server";
 
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
 
 export async function getIconCode(iconName: string) {
@@ -16,11 +16,13 @@ export async function getIconCode(iconName: string) {
 
 		const filePath = path.join(ICONS_DIR, `${pascalName}.tsx`);
 
-		if (!fs.existsSync(filePath)) {
+		try {
+			await fs.access(filePath);
+		} catch {
 			throw new Error(`Icon file not found: ${filePath}`);
 		}
 
-		const content = fs.readFileSync(filePath, "utf8");
+		const content = await fs.readFile(filePath, "utf8");
 		return content;
 	} catch (err) {
 		console.error(err);
