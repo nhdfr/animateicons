@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface LockIconHandle {
@@ -17,25 +17,25 @@ interface LockIconProps extends HTMLMotionProps<"div"> {
 const LockIcon = forwardRef<LockIconHandle, LockIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("shake"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
 		const handleEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlled.current) {
-					controls.start("shake");
-				} else {
-					onMouseEnter?.(e);
-				}
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-			[controls, onMouseEnter],
+			[controls, reduced, onMouseEnter],
 		);
 
 		const handleLeave = useCallback(
@@ -43,7 +43,7 @@ const LockIcon = forwardRef<LockIconHandle, LockIconProps>(
 				if (!isControlled.current) {
 					controls.start("normal");
 				} else {
-					onMouseLeave?.(e);
+					onMouseLeave?.(e as any);
 				}
 			},
 			[controls, onMouseLeave],
@@ -60,7 +60,7 @@ const LockIcon = forwardRef<LockIconHandle, LockIconProps>(
 
 		return (
 			<motion.div
-				className={cn(className)}
+				className={cn("inline-flex items-center justify-center", className)}
 				onMouseEnter={handleEnter}
 				onMouseLeave={handleLeave}
 				{...props}

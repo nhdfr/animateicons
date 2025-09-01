@@ -48,56 +48,41 @@ const BookOpenTextIcon = forwardRef<
 		[controls, onMouseLeave],
 	);
 
-	const iconVariants: Variants = reduced
-		? {
-				normal: { scale: 1, rotate: 0 },
-				animate: { scale: 1, rotate: 0 },
-			}
-		: {
-				normal: { scale: 1, rotate: 0 },
-				animate: {
-					scale: [1, 1.04, 0.98, 1],
-					rotate: [0, -2, 2, 0],
-					transition: { duration: 1.1, ease: "easeInOut", repeat: 0 },
-				},
-			};
+	const iconVariants: Variants = {
+		normal: { scale: 1, rotate: 0 },
+		animate: {
+			scale: [1, 1.04, 0.98, 1],
+			rotate: [0, -2, 2, 0],
+			transition: { duration: 1.1, ease: "easeInOut", repeat: 0 },
+		},
+	};
 
-	const strokeVariants: Variants = reduced
-		? {
-				normal: { pathLength: 1, opacity: 1 },
-				animate: { pathLength: 1, opacity: 1 },
-			}
-		: {
-				normal: { pathLength: 1, opacity: 1 },
-				animate: (i: number) => ({
-					pathLength: [0.9, 1, 1],
-					opacity: [0.7, 1, 1],
-					transition: {
-						duration: 0.9,
-						ease: "easeInOut",
-						delay: i * 0.12,
-					},
-				}),
-			};
+	const strokeVariants: Variants = {
+		normal: { pathLength: 1, opacity: 1 },
+		animate: (i: number) => ({
+			pathLength: [0.9, 1, 1],
+			opacity: [0.7, 1, 1],
+			transition: {
+				duration: 0.9,
+				ease: "easeInOut",
+				delay: i * 0.12,
+			},
+		}),
+	};
 
-	const lineVariants: Variants = reduced
-		? {
-				normal: { opacity: 1, y: 0, scaleX: 1 },
-				animate: { opacity: 1, y: 0, scaleX: 1 },
-			}
-		: {
-				normal: { opacity: 1, y: 0, scaleX: 1 },
-				animate: (i: number) => ({
-					opacity: [0.6, 1, 1],
-					y: [1.5, -1, 0],
-					scaleX: [0.9, 1.05, 1],
-					transition: {
-						duration: 0.9,
-						ease: "easeInOut",
-						delay: 0.2 + i * 0.1,
-					},
-				}),
-			};
+	const lineVariants: Variants = {
+		normal: { opacity: 1, y: 0, scaleX: 1 },
+		animate: (i: number) => ({
+			opacity: [0.6, 1, 1],
+			y: [1.5, -1, 0],
+			scaleX: [0.9, 1.05, 1],
+			transition: {
+				duration: 0.9,
+				ease: "easeInOut",
+				delay: 0.2 + i * 0.1,
+			},
+		}),
+	};
 
 	return (
 		<motion.div

@@ -46,48 +46,33 @@ const UserCogIcon = forwardRef<UserCogHandle, UserCogProps>(
 			[controls, onMouseLeave],
 		);
 
-		const bodyVariants: Variants = reduced
-			? {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: { strokeDashoffset: 0, opacity: 1 },
-				}
-			: {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: {
-						strokeDashoffset: [40, 0],
-						opacity: [0.3, 1],
-						transition: { duration: 0.7, ease: "easeInOut" },
-					},
-				};
+		const bodyVariants: Variants = {
+			normal: { strokeDashoffset: 0, opacity: 1 },
+			animate: {
+				strokeDashoffset: [40, 0],
+				opacity: [0.3, 1],
+				transition: { duration: 0.7, ease: "easeInOut" },
+			},
+		};
 
-		const headVariants: Variants = reduced
-			? {
-					normal: { scale: 1, opacity: 1 },
-					animate: { scale: 1, opacity: 1 },
-				}
-			: {
-					normal: { scale: 1, opacity: 1 },
-					animate: {
-						scale: [0.5, 1.2, 1],
-						opacity: [0, 1],
-						transition: { duration: 0.6, ease: "easeOut" },
-					},
-				};
+		const headVariants: Variants = {
+			normal: { scale: 1, opacity: 1 },
+			animate: {
+				scale: [0.5, 1.2, 1],
+				opacity: [0, 1],
+				transition: { duration: 0.6, ease: "easeOut" },
+			},
+		};
 
-		const cogCircleVariants: Variants = reduced
-			? {
-					normal: { rotate: 0, scale: 1, opacity: 1 },
-					animate: { rotate: 0, scale: 1, opacity: 1 },
-				}
-			: {
-					normal: { rotate: 0, scale: 1, opacity: 1 },
-					animate: {
-						rotate: 360,
-						scale: [0.8, 1.1, 1],
-						opacity: 1,
-						transition: { duration: 1, ease: "easeInOut" },
-					},
-				};
+		const cogCircleVariants: Variants = {
+			normal: { rotate: 0, scale: 1, opacity: 1 },
+			animate: {
+				rotate: 360,
+				scale: [0.8, 1.1, 1],
+				opacity: 1,
+				transition: { duration: 1, ease: "easeInOut" },
+			},
+		};
 
 		return (
 			<motion.div

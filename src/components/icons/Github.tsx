@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 
@@ -100,7 +100,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 
 		return (
 			<div
-				className={cn(className)}
+				className={cn("inline-flex items-center justify-center", className)}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 				{...props}

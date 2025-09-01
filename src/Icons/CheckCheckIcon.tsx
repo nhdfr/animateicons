@@ -46,34 +46,24 @@ const CheckCheckIcon = forwardRef<DoubleCheckHandle, CheckCheckIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const tick1Variants: Variants = reduced
-			? {
-					normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
-					animate: { strokeDashoffset: 0, scale: 1, opacity: 1 },
-				}
-			: {
-					normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
-					animate: {
-						strokeDashoffset: [20, 0],
-						scale: [1, 1.2, 1],
-						opacity: [0.5, 1],
-						transition: { duration: 0.7, ease: "easeInOut" },
-					},
-				};
+		const tick1Variants: Variants = {
+			normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
+			animate: {
+				strokeDashoffset: [20, 0],
+				scale: [1, 1.2, 1],
+				opacity: [0.5, 1],
+				transition: { duration: 0.7, ease: "easeInOut" },
+			},
+		};
 
-		const tick2Variants: Variants = reduced
-			? {
-					normal: { opacity: 1, x: 0 },
-					animate: { opacity: 1, x: 0 },
-				}
-			: {
-					normal: { opacity: 1, x: 0 },
-					animate: {
-						opacity: [0, 1],
-						x: [-6, 0],
-						transition: { duration: 0.5, ease: "easeOut", delay: 0.35 },
-					},
-				};
+		const tick2Variants: Variants = {
+			normal: { opacity: 1, x: 0 },
+			animate: {
+				opacity: [0, 1],
+				x: [-6, 0],
+				transition: { duration: 0.5, ease: "easeOut", delay: 0.35 },
+			},
+		};
 
 		return (
 			<motion.div

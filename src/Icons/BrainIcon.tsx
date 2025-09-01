@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import {
 	forwardRef,
 	useCallback,
@@ -26,16 +26,24 @@ const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 		const pulseControls = useAnimation();
 		const sparkControlsL = useAnimation();
 		const sparkControlsR = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					groupControls.start("animate");
-					pulseControls.start("animate");
-					sparkControlsL.start("animate");
-					sparkControlsR.start("animate");
+					if (reduced) {
+						groupControls.start("normal");
+						pulseControls.start("normal");
+						sparkControlsL.start("normal");
+						sparkControlsR.start("normal");
+					} else {
+						groupControls.start("animate");
+						pulseControls.start("animate");
+						sparkControlsL.start("animate");
+						sparkControlsR.start("animate");
+					}
 				},
 				stopAnimation: () => {
 					groupControls.start("normal");
@@ -46,23 +54,30 @@ const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				groupControls.start("animate");
-				pulseControls.start("animate");
-				sparkControlsL.start("animate");
-				sparkControlsR.start("animate");
-			}
-		}, [groupControls, pulseControls, sparkControlsL, sparkControlsR]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					groupControls.start("animate");
+					pulseControls.start("animate");
+					sparkControlsL.start("animate");
+					sparkControlsR.start("animate");
+				} else onMouseLeave?.(e as any);
+			},
+			[groupControls, pulseControls, sparkControlsL, sparkControlsR],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				groupControls.start("normal");
-				pulseControls.start("normal");
-				sparkControlsL.start("normal");
-				sparkControlsR.start("normal");
-			}
-		}, [groupControls, pulseControls, sparkControlsL, sparkControlsR]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					groupControls.start("normal");
+					pulseControls.start("normal");
+					sparkControlsL.start("normal");
+					sparkControlsR.start("normal");
+				} else onMouseLeave?.(e as any);
+			},
+			[groupControls, pulseControls, sparkControlsL, sparkControlsR],
+		);
 
 		const microTilt: Variants = useMemo(
 			() => ({

@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import type { Transition } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import type { HTMLMotionProps, Transition } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
@@ -11,71 +11,70 @@ export interface CopyIconHandle {
 	stopAnimation: () => void;
 }
 
-interface CopyIconProps extends HTMLAttributes<HTMLDivElement> {
+interface CopyIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
-
-const defaultTransition: Transition = {
-	type: "spring",
-	stiffness: 160,
-	damping: 17,
-	mass: 1,
-};
-
-const boxVariants = {
-	normal: { translateY: 0, translateX: 0, rotate: 0 },
-	animate: { translateY: -3, translateX: -3, rotate: 360 },
-};
-
-const pathVariants = {
-	normal: { x: 0, y: 0 },
-	animate: { x: 3, y: 3 },
-};
 
 const CopyIcon = forwardRef<CopyIconHandle, CopyIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
-		const isControlledRef = useRef(false);
+		const reduced = useReducedMotion();
+		const isControlled = useRef(false);
+
 
 		useImperativeHandle(ref, () => {
-			isControlledRef.current = true;
-
+			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
-					controls.start("animate");
-				} else {
-					onMouseEnter?.(e);
-				}
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-			[controls, onMouseEnter],
+			[controls, reduced, onMouseEnter],
 		);
 
-		const handleMouseLeave = useCallback(
+		const handleLeave = useCallback(
 			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
+				if (!isControlled.current) {
 					controls.start("normal");
 				} else {
-					onMouseLeave?.(e);
+					onMouseLeave?.(e as any);
 				}
 			},
 			[controls, onMouseLeave],
 		);
+		const defaultTransition: Transition = {
+			type: "spring",
+			stiffness: 160,
+			damping: 17,
+			mass: 1,
+		};
+
+		const boxVariants = {
+			normal: { translateY: 0, translateX: 0, rotate: 0 },
+			animate: { translateY: -3, translateX: -3, rotate: 360 },
+		};
+
+		const pathVariants = {
+			normal: { x: 0, y: 0 },
+			animate: { x: 3, y: 3 },
+		};
 
 		return (
-			<div
-				className={cn(className)}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
+			<motion.div
+				className={cn("inline-flex items-center justify-center", className)}
+				onMouseEnter={handleEnter}
+				onMouseLeave={handleLeave}
 				{...props}
 			>
-				<svg
+				<motion.svg
 					xmlns="http://www.w3.org/2000/svg"
 					width={size}
 					height={size}
@@ -106,8 +105,8 @@ const CopyIcon = forwardRef<CopyIconHandle, CopyIconProps>(
 						animate={controls}
 						transition={defaultTransition}
 					/>
-				</svg>
-			</div>
+				</motion.svg>
+			</motion.div>
 		);
 	},
 );

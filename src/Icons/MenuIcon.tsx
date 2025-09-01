@@ -52,12 +52,7 @@ const MenuIcon = forwardRef<MenuIconHandle, MenuIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const lineVariants: Variants = reduced
-			? {
-					normal: { x: 0, opacity: 1 },
-					animate: { x: 0, opacity: 1 },
-				}
-			: {
+		const lineVariants: Variants ={
 					normal: { x: 0, opacity: 1 },
 					animate: (i) => ({
 						x: [0, i % 2 === 0 ? 4 : -4, 0],

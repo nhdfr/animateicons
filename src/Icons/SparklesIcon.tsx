@@ -46,62 +46,42 @@ const SparklesIcon = forwardRef<SparklesIconHandle, SparklesIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const iconVariants: Variants = reduced
-			? {
-					normal: { scale: 1, rotate: 0 },
-					animate: { scale: 1, rotate: 0 },
-				}
-			: {
-					normal: { scale: 1, rotate: 0 },
-					animate: {
-						scale: [1, 1.06, 0.98, 1],
-						rotate: [0, -3, 3, 0],
-						transition: { duration: 1.1, ease: "easeInOut" },
-					},
-				};
+		const iconVariants: Variants = {
+			normal: { scale: 1, rotate: 0 },
+			animate: {
+				scale: [1, 1.06, 0.98, 1],
+				rotate: [0, -3, 3, 0],
+				transition: { duration: 1.1, ease: "easeInOut" },
+			},
+		};
 
-		const starVariants: Variants = reduced
-			? {
-					normal: { pathLength: 1, opacity: 1 },
-					animate: { pathLength: 1, opacity: 1 },
-				}
-			: {
-					normal: { pathLength: 1, opacity: 1 },
-					animate: {
-						pathLength: [0.9, 1, 1],
-						opacity: [0.8, 1, 1],
-						transition: { duration: 0.9, ease: "easeInOut", delay: 0.05 },
-					},
-				};
+		const starVariants: Variants = {
+			normal: { pathLength: 1, opacity: 1 },
+			animate: {
+				pathLength: [0.9, 1, 1],
+				opacity: [0.8, 1, 1],
+				transition: { duration: 0.9, ease: "easeInOut", delay: 0.05 },
+			},
+		};
 
-		const crossVariants: Variants = reduced
-			? {
-					normal: { opacity: 1, scale: 1 },
-					animate: { opacity: 1, scale: 1 },
-				}
-			: {
-					normal: { opacity: 1, scale: 1 },
-					animate: {
-						opacity: [0.6, 1, 0.8, 1],
-						scale: [0.9, 1.05, 1],
-						transition: { duration: 0.8, ease: "easeInOut", delay: 0.18 },
-					},
-				};
+		const crossVariants: Variants = {
+			normal: { opacity: 1, scale: 1 },
+			animate: {
+				opacity: [0.6, 1, 0.8, 1],
+				scale: [0.9, 1.05, 1],
+				transition: { duration: 0.8, ease: "easeInOut", delay: 0.18 },
+			},
+		};
 
-		const dotVariants: Variants = reduced
-			? {
-					normal: { opacity: 1, scale: 1, y: 0 },
-					animate: { opacity: 1, scale: 1, y: 0 },
-				}
-			: {
-					normal: { opacity: 1, scale: 1, y: 0 },
-					animate: {
-						opacity: [0.7, 1, 1],
-						scale: [0.85, 1.1, 1],
-						y: [1.5, -0.5, 0],
-						transition: { duration: 0.9, ease: "easeInOut", delay: 0.28 },
-					},
-				};
+		const dotVariants: Variants = {
+			normal: { opacity: 1, scale: 1, y: 0 },
+			animate: {
+				opacity: [0.7, 1, 1],
+				scale: [0.85, 1.1, 1],
+				y: [1.5, -0.5, 0],
+				transition: { duration: 0.9, ease: "easeInOut", delay: 0.28 },
+			},
+		};
 
 		return (
 			<motion.div

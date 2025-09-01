@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface HeartIconHandle {
@@ -17,33 +17,33 @@ interface HeartIconProps extends HTMLMotionProps<"div"> {
 const HeartIcon = forwardRef<HeartIconHandle, HeartIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
-		const isControlledRef = useRef(false);
+		const reduced = useReducedMotion();
+		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
-			isControlledRef.current = true;
+			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
-					controls.start("animate");
-				} else {
-					onMouseEnter?.(e);
-				}
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-			[controls, onMouseEnter],
+			[controls, reduced, onMouseEnter],
 		);
 
-		const handleMouseLeave = useCallback(
+		const handleLeave = useCallback(
 			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
+				if (!isControlled.current) {
 					controls.start("normal");
 				} else {
-					onMouseLeave?.(e);
+					onMouseLeave?.(e as any);
 				}
 			},
 			[controls, onMouseLeave],
@@ -69,9 +69,9 @@ const HeartIcon = forwardRef<HeartIconHandle, HeartIconProps>(
 
 		return (
 			<motion.div
-				className={cn(className)}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
+				className={cn("inline-flex items-center justify-center", className)}
+				onMouseEnter={handleEnter}
+				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg

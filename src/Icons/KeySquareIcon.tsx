@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface KeySquareHandle {
@@ -18,14 +18,20 @@ const KeySquareIcon = forwardRef<KeySquareHandle, KeySquareProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const sparkControls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					controls.start("animate");
-					sparkControls.start("animate");
+					if (reduced) {
+						controls.start("normal");
+						sparkControls.start("normal");
+					} else {
+						controls.start("animate");
+						sparkControls.start("animate");
+					}
 				},
 				stopAnimation: () => {
 					controls.start("normal");
@@ -34,19 +40,26 @@ const KeySquareIcon = forwardRef<KeySquareHandle, KeySquareProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("animate");
-				sparkControls.start("animate");
-			}
-		}, [controls, sparkControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					controls.start("animate");
+					sparkControls.start("animate");
+				} else onMouseLeave?.(e as any);
+			},
+			[controls, sparkControls],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("normal");
-				sparkControls.start("normal");
-			}
-		}, [controls, sparkControls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					controls.start("normal");
+					sparkControls.start("normal");
+				} else onMouseLeave?.(e as any);
+			},
+			[controls, sparkControls],
+		);
 
 		const settle: Variants = {
 			normal: { scale: 1, rotate: 0 },

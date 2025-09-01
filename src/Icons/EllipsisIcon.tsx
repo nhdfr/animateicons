@@ -52,24 +52,19 @@ const EllipsisIcon = forwardRef<EllipsisIconHandle, EllipsisIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const dotVariants: Variants = reduced
-			? {
-					normal: { y: 0, opacity: 1 },
-					animate: { y: 0, opacity: 1 },
-				}
-			: {
-					normal: { y: 0, opacity: 1 },
-					animate: (i) => ({
-						y: [-3.5, 0],
-						opacity: [0.4, 0.8, 1, 0.8, 0.4, 1],
-						transition: {
-							duration: 0.8,
-							repeat: 0,
-							delay: i * 0.15,
-							ease: "easeInOut",
-						},
-					}),
-				};
+		const dotVariants: Variants = {
+			normal: { y: 0, opacity: 1 },
+			animate: (i) => ({
+				y: [-3.5, 0],
+				opacity: [0.4, 0.8, 1, 0.8, 0.4, 1],
+				transition: {
+					duration: 0.8,
+					repeat: 0,
+					delay: i * 0.15,
+					ease: "easeInOut",
+				},
+			}),
+		};
 
 		return (
 			<motion.div

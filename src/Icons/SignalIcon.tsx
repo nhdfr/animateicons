@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface SignalHandle {
@@ -17,13 +17,16 @@ interface SignalProps extends HTMLMotionProps<"div"> {
 const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const groupControls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					groupControls.start("animate");
+					reduced
+						? groupControls.start("normal")
+						: groupControls.start("animate");
 				},
 				stopAnimation: () => {
 					groupControls.start("normal");
@@ -31,17 +34,24 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				groupControls.start("animate");
-			}
-		}, [groupControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					groupControls.start("animate");
+				} else onMouseLeave?.(e as any);
+			},
+			[groupControls],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				groupControls.start("normal");
-			}
-		}, [groupControls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					groupControls.start("normal");
+				} else onMouseLeave?.(e as any);
+			},
+			[groupControls],
+		);
 
 		const sway: Variants = {
 			normal: { rotate: 0, x: 0, y: 0, scale: 1 },

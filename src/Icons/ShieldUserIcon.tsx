@@ -45,47 +45,32 @@ const ShieldUserIcon = forwardRef<ShieldUserHandle, ShieldUserProps>(
 			[controls, onMouseLeave],
 		);
 
-		const shieldVariants: Variants = reduced
-			? {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: { strokeDashoffset: 0, opacity: 1 },
-				}
-			: {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: {
-						strokeDashoffset: [120, 0],
-						opacity: [0.3, 1],
-						transition: { duration: 0.8, ease: "easeInOut" },
-					},
-				};
+		const shieldVariants: Variants = {
+			normal: { strokeDashoffset: 0, opacity: 1 },
+			animate: {
+				strokeDashoffset: [120, 0],
+				opacity: [0.3, 1],
+				transition: { duration: 0.8, ease: "easeInOut" },
+			},
+		};
 
-		const bodyVariants: Variants = reduced
-			? {
-					normal: { opacity: 1, y: 0 },
-					animate: { opacity: 1, y: 0 },
-				}
-			: {
-					normal: { opacity: 1, y: 0 },
-					animate: {
-						opacity: [0, 1],
-						y: [6, 0],
-						transition: { duration: 0.5, delay: 0.5, ease: "easeOut" },
-					},
-				};
+		const bodyVariants: Variants = {
+			normal: { opacity: 1, y: 0 },
+			animate: {
+				opacity: [0, 1],
+				y: [6, 0],
+				transition: { duration: 0.5, delay: 0.5, ease: "easeOut" },
+			},
+		};
 
-		const headVariants: Variants = reduced
-			? {
-					normal: { scale: 1, opacity: 1 },
-					animate: { scale: 1, opacity: 1 },
-				}
-			: {
-					normal: { scale: 1, opacity: 1 },
-					animate: {
-						scale: [0.5, 1.2, 1],
-						opacity: [0, 1],
-						transition: { duration: 0.6, delay: 0.3, ease: "easeOut" },
-					},
-				};
+		const headVariants: Variants = {
+			normal: { scale: 1, opacity: 1 },
+			animate: {
+				scale: [0.5, 1.2, 1],
+				opacity: [0, 1],
+				transition: { duration: 0.6, delay: 0.3, ease: "easeOut" },
+			},
+		};
 
 		return (
 			<motion.div

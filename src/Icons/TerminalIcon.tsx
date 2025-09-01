@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface TerminalIconHandle {
@@ -17,34 +17,31 @@ interface TerminalIconProps extends HTMLMotionProps<"div"> {
 const TerminalIcon = forwardRef<TerminalIconHandle, TerminalIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
-		const isControlledRef = useRef(false);
+		const reduced = useReducedMotion();
+		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
-			isControlledRef.current = true;
+			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
-					controls.start("animate");
-				} else {
-					onMouseEnter?.(e);
-				}
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-			[controls, onMouseEnter],
+			[controls, reduced, onMouseEnter],
 		);
 
-		const handleMouseLeave = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
-					controls.start("normal");
-				} else {
-					onMouseLeave?.(e);
-				}
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
 			},
 			[controls, onMouseLeave],
 		);
@@ -74,9 +71,9 @@ const TerminalIcon = forwardRef<TerminalIconHandle, TerminalIconProps>(
 
 		return (
 			<motion.div
-				className={cn(className)}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
+				className={cn("inline-flex items-center justify-center", className)}
+				onMouseEnter={handleEnter}
+				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg
