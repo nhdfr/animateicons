@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface UserPlusHandle {
@@ -17,32 +17,41 @@ interface UserPlusProps extends HTMLMotionProps<"div"> {
 const UserPlusIcon = forwardRef<UserPlusHandle, UserPlusProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) controls.start("animate");
-		}, [controls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
+			},
+			[controls, reduced, onMouseEnter],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
-
-		const sharedTransition = { duration: 0.6, ease: "easeInOut" as const };
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
+			},
+			[controls, onMouseLeave],
+		);
 
 		const bodyVariants: Variants = {
 			normal: { strokeDashoffset: 0, opacity: 1 },
 			animate: {
 				strokeDashoffset: [40, 0],
 				opacity: [0.3, 1],
-				transition: sharedTransition,
+				transition: { duration: 0.6, ease: "easeInOut" },
 			},
 		};
 
@@ -51,7 +60,7 @@ const UserPlusIcon = forwardRef<UserPlusHandle, UserPlusProps>(
 			animate: {
 				scale: [0.5, 1.2, 1],
 				opacity: [0, 1],
-				transition: sharedTransition,
+				transition: { duration: 0.6, ease: "easeInOut" },
 			},
 		};
 
@@ -61,7 +70,7 @@ const UserPlusIcon = forwardRef<UserPlusHandle, UserPlusProps>(
 				scale: [1, 1.3, 1],
 				rotate: [0, 25, -25, 0],
 				opacity: 1,
-				transition: sharedTransition,
+				transition: { duration: 0.6, ease: "easeInOut" },
 			},
 		};
 

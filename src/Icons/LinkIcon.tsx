@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface LinkIconHandle {
@@ -18,14 +18,20 @@ const LinkIcon = forwardRef<LinkIconHandle, LinkIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const leftPartControls = useAnimation();
 		const rightPartControls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					leftPartControls.start("animate");
-					rightPartControls.start("animate");
+					if (reduced) {
+						leftPartControls.start("normal");
+						rightPartControls.start("normal");
+					} else {
+						leftPartControls.start("animate");
+						rightPartControls.start("animate");
+					}
 				},
 				stopAnimation: () => {
 					leftPartControls.start("normal");
@@ -34,19 +40,26 @@ const LinkIcon = forwardRef<LinkIconHandle, LinkIconProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				leftPartControls.start("animate");
-				rightPartControls.start("animate");
-			}
-		}, [leftPartControls, rightPartControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					leftPartControls.start("animate");
+					rightPartControls.start("animate");
+				} else onMouseLeave?.(e as any);
+			},
+			[leftPartControls, rightPartControls],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				leftPartControls.start("normal");
-				rightPartControls.start("normal");
-			}
-		}, [leftPartControls, rightPartControls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					leftPartControls.start("normal");
+					rightPartControls.start("normal");
+				} else onMouseLeave?.(e as any);
+			},
+			[leftPartControls, rightPartControls],
+		);
 
 		const linkVariantsLeft: Variants = {
 			normal: { scale: 1, rotate: 0, x: 0 },

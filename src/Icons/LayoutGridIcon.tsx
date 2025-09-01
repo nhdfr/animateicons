@@ -38,56 +38,41 @@ const LayoutGridIcon = forwardRef<LayoutGridHandle, LayoutGridProps>(
 			if (!isControlled.current) controls.start("normal");
 		}, [controls]);
 
-		const gridVariants: Variants = reduced
-			? {
-					normal: { scale: 1, rotate: 0 },
-					animate: { scale: 1, rotate: 0 },
-				}
-			: {
-					normal: { scale: 1, rotate: 0 },
-					animate: {
-						scale: [1, 1.03, 1],
-						rotate: [0, 1, 0],
-						transition: { duration: 0.6, ease: "easeInOut" as const },
-					},
-				};
+		const gridVariants: Variants = {
+			normal: { scale: 1, rotate: 0 },
+			animate: {
+				scale: [1, 1.03, 1],
+				rotate: [0, 1, 0],
+				transition: { duration: 0.6, ease: "easeInOut" as const },
+			},
+		};
 
-		const tileVariants: Variants = reduced
-			? {
-					normal: { opacity: 1, scale: 1 },
-					animate: { opacity: 1, scale: 1 },
-				}
-			: {
-					normal: { opacity: 1, scale: 1 },
-					animate: (i: number) => ({
-						opacity: [0.4, 1],
-						scale: [0.85, 1.08, 1],
-						transition: {
-							duration: 0.55,
-							delay: 0.08 * i,
-							ease: "easeOut" as const,
-						},
-					}),
-				};
+		const tileVariants: Variants = {
+			normal: { opacity: 1, scale: 1 },
+			animate: (i: number) => ({
+				opacity: [0.4, 1],
+				scale: [0.85, 1.08, 1],
+				transition: {
+					duration: 0.55,
+					delay: 0.08 * i,
+					ease: "easeOut" as const,
+				},
+			}),
+		};
 
-		const sweepVariants: Variants = reduced
-			? {
-					normal: { x: -26, y: -26, opacity: 0 },
-					animate: { x: -26, y: -26, opacity: 0 },
-				}
-			: {
-					normal: { x: -26, y: -26, opacity: 0 },
-					animate: {
-						x: [-26, 26],
-						y: [-26, 26],
-						opacity: [0, 0.35, 0],
-						transition: {
-							duration: 0.8,
-							ease: "easeInOut" as const,
-							delay: 0.1,
-						},
-					},
-				};
+		const sweepVariants: Variants = {
+			normal: { x: -26, y: -26, opacity: 0 },
+			animate: {
+				x: [-26, 26],
+				y: [-26, 26],
+				opacity: [0, 0.35, 0],
+				transition: {
+					duration: 0.8,
+					ease: "easeInOut" as const,
+					delay: 0.1,
+				},
+			},
+		};
 
 		return (
 			<motion.div

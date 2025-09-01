@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface CodeXmlIconHandle {
@@ -16,19 +16,25 @@ interface CodeXmlIconProps extends HTMLMotionProps<"div"> {
 
 const CodeXmlIcon = forwardRef<CodeXmlIconHandle, CodeXmlIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const controls = useAnimation();
 		const leftControls = useAnimation();
 		const rightControls = useAnimation();
 		const slashControls = useAnimation();
 		const isControlled = useRef(false);
+		const reduced = useReducedMotion();
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					leftControls.start("animate");
-					rightControls.start("animate");
-					slashControls.start("animate");
+					if (reduced) {
+						leftControls.start("normal");
+						rightControls.start("normal");
+						slashControls.start("normal");
+					} else {
+						leftControls.start("animate");
+						rightControls.start("animate");
+						slashControls.start("animate");
+					}
 				},
 				stopAnimation: () => {
 					leftControls.start("normal");
@@ -38,21 +44,32 @@ const CodeXmlIcon = forwardRef<CodeXmlIconHandle, CodeXmlIconProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				leftControls.start("animate");
-				rightControls.start("animate");
-				slashControls.start("animate");
-			}
-		}, [leftControls, rightControls, slashControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					leftControls.start("animate");
+					rightControls.start("animate");
+					slashControls.start("animate");
+				} else {
+					onMouseEnter?.(e as any);
+				}
+			},
+			[leftControls, rightControls, slashControls, reduced, onMouseEnter],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				leftControls.start("normal");
-				rightControls.start("normal");
-				slashControls.start("normal");
-			}
-		}, [leftControls, rightControls, slashControls]);
+		const handleLeave = useCallback(
+			(e: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					leftControls.start("normal");
+					rightControls.start("normal");
+					slashControls.start("normal");
+				} else {
+					onMouseLeave?.(e as any);
+				}
+			},
+			[leftControls, rightControls, slashControls, onMouseLeave],
+		);
 
 		const leftArrowVariants: Variants = {
 			normal: { pathLength: 1, opacity: 1 },

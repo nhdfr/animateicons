@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import type { HTMLMotionProps } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import type { HTMLMotionProps, Variants } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface AtomIconHandle {
@@ -17,43 +17,50 @@ interface AtomIconProps extends HTMLMotionProps<"div"> {
 const AtomIcon = forwardRef<AtomIconHandle, AtomIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
-		const isControlledRef = useRef(false);
+		const reduced = useReducedMotion();
+		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
-			isControlledRef.current = true;
+			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
 				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
-					controls.start("animate");
-				} else {
-					onMouseEnter?.(e);
-				}
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
 			},
-			[controls, onMouseEnter],
+			[controls, reduced, onMouseEnter],
 		);
 
-		const handleMouseLeave = useCallback(
+		const handleLeave = useCallback(
 			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
+				if (!isControlled.current) {
 					controls.start("normal");
 				} else {
-					onMouseLeave?.(e);
+					onMouseLeave?.(e as any);
 				}
 			},
 			[controls, onMouseLeave],
 		);
-
+		const pathVariants: Variants = {
+			normal: { rotate: 0, scale: 1, transition: { duration: 0.3 } },
+			animate: {
+				rotate: 360,
+				scale: [1, 1.1, 1],
+				transition: { duration: 2, ease: "linear", repeat: Infinity },
+			},
+		};
 		return (
 			<motion.div
-				className={cn(className)}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
+				className={cn("inline-flex items-center justify-center", className)}
+				onMouseEnter={handleEnter}
+				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg
@@ -66,14 +73,7 @@ const AtomIcon = forwardRef<AtomIconHandle, AtomIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					variants={{
-						normal: { rotate: 0, scale: 1, transition: { duration: 0.3 } },
-						animate: {
-							rotate: 360,
-							scale: [1, 1.1, 1],
-							transition: { duration: 2, ease: "linear", repeat: Infinity },
-						},
-					}}
+					variants={pathVariants}
 					animate={controls}
 					initial="normal"
 				>

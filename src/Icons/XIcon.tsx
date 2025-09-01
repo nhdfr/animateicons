@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import type { HTMLMotionProps } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import type { HTMLMotionProps, Variants } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface XIconHandle {
@@ -16,44 +16,84 @@ interface XIconProps extends HTMLMotionProps<"div"> {
 
 const XIcon = forwardRef<XIconHandle, XIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 24, ...props }, ref) => {
-		const controls = useAnimation();
-		const isControlledRef = useRef(false);
+		const svgControls = useAnimation();
+		const path1Controls = useAnimation();
+		const path2Controls = useAnimation();
+		const reduced = useReducedMotion();
+		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
-			isControlledRef.current = true;
+			isControlled.current = true;
 			return {
-				startAnimation: () => controls.start("animate"),
-				stopAnimation: () => controls.start("normal"),
+				startAnimation: () => {
+					if (reduced) {
+						svgControls.start("normal");
+						path1Controls.start("normal");
+						path2Controls.start("normal");
+					} else {
+						svgControls.start("animate");
+						path1Controls.start("animate");
+						path2Controls.start("animate");
+					}
+				},
+				stopAnimation: () => {
+					svgControls.start("normal");
+					path1Controls.start("normal");
+					path2Controls.start("normal");
+				},
 			};
 		});
 
-		const handleMouseEnter = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
-					controls.start("animate");
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					svgControls.start("animate");
+					path1Controls.start("animate");
+					path2Controls.start("animate");
 				} else {
-					onMouseEnter?.(e);
+					onMouseEnter?.(e as any);
 				}
 			},
-			[controls, onMouseEnter],
+			[svgControls, path1Controls, path2Controls, reduced, onMouseEnter],
 		);
 
-		const handleMouseLeave = useCallback(
+		const handleLeave = useCallback(
 			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlledRef.current) {
-					controls.start("normal");
+				if (!isControlled.current) {
+					svgControls.start("normal");
+					path1Controls.start("normal");
+					path2Controls.start("normal");
 				} else {
 					onMouseLeave?.(e);
 				}
 			},
-			[controls, onMouseLeave],
+			[svgControls, path1Controls, path2Controls, onMouseLeave],
 		);
+
+		const svgVariants: Variants = {
+			normal: { rotate: 0, scale: 1, transition: { duration: 0.3 } },
+			animate: {
+				rotate: [0, 15, -15, 0],
+				scale: [1, 1.1, 1],
+				transition: { duration: 0.6 },
+			},
+		};
+
+		const pathVariants: Variants = {
+			normal: { pathLength: 1, opacity: 1 },
+			animate: {
+				pathLength: [0, 1],
+				opacity: [0, 1],
+				transition: { duration: 0.6, ease: "easeInOut" },
+			},
+		};
 
 		return (
 			<motion.div
-				className={cn(className)}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
+				className={cn("inline-flex items-center justify-center", className)}
+				onMouseEnter={handleEnter}
+				onMouseLeave={handleLeave}
 				{...props}
 			>
 				<motion.svg
@@ -66,44 +106,22 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					variants={{
-						normal: { rotate: 0, scale: 1, transition: { duration: 0.3 } },
-						animate: {
-							rotate: [0, 15, -15, 0],
-							scale: [1, 1.1, 1],
-							transition: { duration: 0.6 },
-						},
-					}}
+					variants={svgVariants}
 					initial="normal"
-					animate={controls}
+					animate={svgControls}
 				>
 					<motion.path
 						d="M18 6 6 18"
-						initial={{ pathLength: 0, opacity: 0 }}
-						animate={{ pathLength: 1, opacity: 1 }}
-						transition={{ duration: 0.6, ease: "easeInOut" }}
-						variants={{
-							normal: { pathLength: 1, opacity: 1 },
-							animate: {
-								pathLength: [0, 1],
-								opacity: [0, 1],
-								transition: { duration: 0.6, ease: "easeInOut" },
-							},
-						}}
+						variants={pathVariants}
+						initial="normal"
+						animate={path1Controls}
 					/>
 					<motion.path
 						d="m6 6 12 12"
-						initial={{ pathLength: 0, opacity: 0 }}
-						animate={{ pathLength: 1, opacity: 1 }}
-						transition={{ duration: 0.6, ease: "easeInOut", delay: 0.2 }}
-						variants={{
-							normal: { pathLength: 1, opacity: 1 },
-							animate: {
-								pathLength: [0, 1],
-								opacity: [0, 1],
-								transition: { duration: 0.6, ease: "easeInOut", delay: 0.2 },
-							},
-						}}
+						variants={pathVariants}
+						initial="normal"
+						animate={path2Controls}
+						transition={{ delay: 0.2 }}
 					/>
 				</motion.svg>
 			</motion.div>
@@ -112,5 +130,4 @@ const XIcon = forwardRef<XIconHandle, XIconProps>(
 );
 
 XIcon.displayName = "XIcon";
-
 export { XIcon };

@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface BookmarkIconHandle {
@@ -18,35 +18,37 @@ const BookmarkIcon = forwardRef<BookmarkIconHandle, BookmarkIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const sparkControls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => {
-					controls.start("animate");
-					sparkControls.start("animate");
-				},
-				stopAnimation: () => {
-					controls.start("normal");
-					sparkControls.start("normal");
-				},
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
+				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("animate");
-				sparkControls.start("animate");
-			}
-		}, [controls, sparkControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
+			},
+			[controls, reduced, onMouseEnter],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("normal");
-				sparkControls.start("normal");
-			}
-		}, [controls, sparkControls]);
+		const handleLeave = useCallback(
+			(e: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					controls.start("normal");
+				} else {
+					onMouseLeave?.(e as any);
+				}
+			},
+			[controls, onMouseLeave],
+		);
 
 		const bookmarkVariants: Variants = {
 			normal: { scale: 1 },

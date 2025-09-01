@@ -45,33 +45,23 @@ const UserIcon = forwardRef<UserIconHandle, UserIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const bodyVariants: Variants = reduced
-			? {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: { strokeDashoffset: 0, opacity: 1 },
-				}
-			: {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: {
-						strokeDashoffset: [40, 0],
-						opacity: [0.3, 1],
-						transition: { duration: 0.6, ease: "easeInOut" },
-					},
-				};
+		const bodyVariants: Variants = {
+			normal: { strokeDashoffset: 0, opacity: 1 },
+			animate: {
+				strokeDashoffset: [40, 0],
+				opacity: [0.3, 1],
+				transition: { duration: 0.6, ease: "easeInOut" },
+			},
+		};
 
-		const headVariants: Variants = reduced
-			? {
-					normal: { scale: 1, opacity: 1 },
-					animate: { scale: 1, opacity: 1 },
-				}
-			: {
-					normal: { scale: 1, opacity: 1 },
-					animate: {
-						scale: [0.6, 1.2, 1],
-						opacity: [0, 1],
-						transition: { duration: 0.5, ease: "easeOut", delay: 0.2 },
-					},
-				};
+		const headVariants: Variants = {
+			normal: { scale: 1, opacity: 1 },
+			animate: {
+				scale: [0.6, 1.2, 1],
+				opacity: [0, 1],
+				transition: { duration: 0.5, ease: "easeOut", delay: 0.2 },
+			},
+		};
 
 		return (
 			<motion.div

@@ -46,20 +46,15 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const tickVariants: Variants = reduced
-			? {
-					normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
-					animate: { strokeDashoffset: 0, scale: 1, opacity: 1 },
-				}
-			: {
-					normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
-					animate: {
-						strokeDashoffset: [20, 0],
-						scale: [1, 1.2, 1],
-						opacity: [0.5, 1],
-						transition: { duration: 0.6, ease: "easeInOut" },
-					},
-				};
+		const tickVariants: Variants = {
+			normal: { strokeDashoffset: 0, scale: 1, opacity: 1 },
+			animate: {
+				strokeDashoffset: [20, 0],
+				scale: [1, 1.2, 1],
+				opacity: [0.5, 1],
+				transition: { duration: 0.6, ease: "easeInOut" },
+			},
+		};
 
 		return (
 			<motion.div

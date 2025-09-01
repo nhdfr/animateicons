@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface CardHandle {
@@ -19,15 +19,22 @@ const CreditCardIcon = forwardRef<CardHandle, CardProps>(
 		const controls = useAnimation();
 		const stripeControls = useAnimation();
 		const swipeControls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					controls.start("animate");
-					stripeControls.start("animate");
-					swipeControls.start("animate");
+					if (reduced) {
+						controls.start("normal");
+						stripeControls.start("normal");
+						swipeControls.start("normal");
+					} else {
+						controls.start("animate");
+						stripeControls.start("animate");
+						swipeControls.start("animate");
+					}
 				},
 				stopAnimation: () => {
 					controls.start("normal");
@@ -37,21 +44,28 @@ const CreditCardIcon = forwardRef<CardHandle, CardProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("animate");
-				stripeControls.start("animate");
-				swipeControls.start("animate");
-			}
-		}, [controls, stripeControls, swipeControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					controls.start("animate");
+					stripeControls.start("animate");
+					swipeControls.start("animate");
+				} else onMouseLeave?.(e as any);
+			},
+			[controls, stripeControls, swipeControls],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("normal");
-				stripeControls.start("normal");
-				swipeControls.start("normal");
-			}
-		}, [controls, stripeControls, swipeControls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					controls.start("normal");
+					stripeControls.start("normal");
+					swipeControls.start("normal");
+				} else onMouseLeave?.(e as any);
+			},
+			[controls, stripeControls, swipeControls],
+		);
 
 		const cardTilt: Variants = {
 			normal: { rotate: 0, scale: 1, x: 0, y: 0 },

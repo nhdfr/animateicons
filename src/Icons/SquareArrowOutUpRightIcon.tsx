@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface SquareArrowOutUpRightIconHandle {
@@ -21,11 +21,16 @@ const SquareArrowOutUpRightIcon = forwardRef<
 	const boxControls = useAnimation();
 	const arrowControls = useAnimation();
 	const isControlled = useRef(false);
+	const reduced = useReducedMotion();
 
 	useImperativeHandle(ref, () => {
 		isControlled.current = true;
 		return {
 			startAnimation: () => {
+				if (reduced) {
+					boxControls.start("normal");
+					arrowControls.start("normal");
+				}
 				boxControls.start("animate");
 				arrowControls.start("animate");
 			},
@@ -36,19 +41,26 @@ const SquareArrowOutUpRightIcon = forwardRef<
 		};
 	});
 
-	const handleEnter = useCallback(() => {
-		if (!isControlled.current) {
-			boxControls.start("animate");
-			arrowControls.start("animate");
-		}
-	}, [boxControls, arrowControls]);
+	const handleEnter = useCallback(
+		(e?: React.MouseEvent<HTMLDivElement>) => {
+			if (reduced) return;
+			if (!isControlled.current) {
+				boxControls.start("animate");
+				arrowControls.start("animate");
+			} else onMouseLeave?.(e as any);
+		},
+		[boxControls, arrowControls],
+	);
 
-	const handleLeave = useCallback(() => {
-		if (!isControlled.current) {
-			boxControls.start("normal");
-			arrowControls.start("normal");
-		}
-	}, [boxControls, arrowControls]);
+	const handleLeave = useCallback(
+		(e?: React.MouseEvent<HTMLDivElement>) => {
+			if (!isControlled.current) {
+				boxControls.start("normal");
+				arrowControls.start("normal");
+			} else onMouseLeave?.(e as any);
+		},
+		[boxControls, arrowControls],
+	);
 
 	const boxVariants: Variants = {
 		normal: { pathLength: 1, opacity: 1 },

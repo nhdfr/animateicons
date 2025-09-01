@@ -46,61 +46,41 @@ const ContactRoundIcon = forwardRef<ContactRoundHandle, ContactRoundProps>(
 			[controls, onMouseLeave],
 		);
 
-		const rectVariants: Variants = reduced
-			? {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: { strokeDashoffset: 0, opacity: 1 },
-				}
-			: {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: {
-						strokeDashoffset: [100, 0],
-						opacity: [0.3, 1],
-						transition: { duration: 0.8, ease: "easeInOut" },
-					},
-				};
+		const rectVariants: Variants = {
+			normal: { strokeDashoffset: 0, opacity: 1 },
+			animate: {
+				strokeDashoffset: [100, 0],
+				opacity: [0.3, 1],
+				transition: { duration: 0.8, ease: "easeInOut" },
+			},
+		};
 
-		const circleVariants: Variants = reduced
-			? {
-					normal: { scale: 1, opacity: 1 },
-					animate: { scale: 1, opacity: 1 },
-				}
-			: {
-					normal: { scale: 1, opacity: 1 },
-					animate: {
-						scale: [0.5, 1.2, 1],
-						opacity: [0, 1],
-						transition: { duration: 0.6, delay: 0.3, ease: "easeOut" },
-					},
-				};
+		const circleVariants: Variants = {
+			normal: { scale: 1, opacity: 1 },
+			animate: {
+				scale: [0.5, 1.2, 1],
+				opacity: [0, 1],
+				transition: { duration: 0.6, delay: 0.3, ease: "easeOut" },
+			},
+		};
 
-		const lineVariants: Variants = reduced
-			? {
-					normal: { x: 0, opacity: 1 },
-					animate: { x: 0, opacity: 1 },
-				}
-			: {
-					normal: { x: 0, opacity: 1 },
-					animate: {
-						x: [-10, 0],
-						opacity: [0, 1],
-						transition: { duration: 0.4, ease: "easeOut", delay: 0.6 },
-					},
-				};
+		const lineVariants: Variants = {
+			normal: { x: 0, opacity: 1 },
+			animate: {
+				x: [-10, 0],
+				opacity: [0, 1],
+				transition: { duration: 0.4, ease: "easeOut", delay: 0.6 },
+			},
+		};
 
-		const curveVariants: Variants = reduced
-			? {
-					normal: { strokeDashoffset: 0, opacity: 1 },
-					animate: { strokeDashoffset: 0, opacity: 1 },
-				}
-			: {
-					normal: { opacity: 1, strokeDashoffset: 0 },
-					animate: {
-						strokeDashoffset: [30, 0],
-						opacity: [0, 1],
-						transition: { duration: 0.6, delay: 0.5, ease: "easeInOut" },
-					},
-				};
+		const curveVariants: Variants = {
+			normal: { opacity: 1, strokeDashoffset: 0 },
+			animate: {
+				strokeDashoffset: [30, 0],
+				opacity: [0, 1],
+				transition: { duration: 0.6, delay: 0.5, ease: "easeInOut" },
+			},
+		};
 
 		return (
 			<motion.div

@@ -42,7 +42,7 @@ export function WordRotate({
 			<AnimatePresence mode="wait">
 				<motion.span
 					key={words[index]}
-					className={cn(className)}
+					className={cn("inline-flex items-center justify-center", className)}
 					{...motionProps}
 				>
 					{words[index]}"

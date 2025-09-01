@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface GlobeIconHandle {
@@ -16,37 +16,52 @@ interface GlobeIconProps extends HTMLMotionProps<"div"> {
 
 const GlobeIcon = forwardRef<GlobeIconHandle, GlobeIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const svgControls = useAnimation();
+		const controls = useAnimation();
 		const pathControls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					svgControls.start("animate");
-					pathControls.start("animate");
+					if (reduced) {
+						controls.start("normal");
+						pathControls.start("normal");
+					} else {
+						controls.start("animate");
+						pathControls.start("animate");
+					}
 				},
 				stopAnimation: () => {
-					svgControls.start("normal");
+					controls.start("normal");
 					pathControls.start("normal");
 				},
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				svgControls.start("animate");
-				pathControls.start("animate");
-			}
-		}, [svgControls, pathControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					controls.start("animate");
+					pathControls.start("animate");
+				} else {
+					onMouseEnter?.(e as any);
+				}
+			},
+			[controls, pathControls],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				svgControls.start("normal");
-				pathControls.start("normal");
-			}
-		}, [svgControls, pathControls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					controls.start("normal");
+					pathControls.start("normal");
+				}
+			},
+			[controls, pathControls],
+		);
 
 		const svgVariants: Variants = {
 			normal: { scale: 1, rotate: 0 },
@@ -83,7 +98,7 @@ const GlobeIcon = forwardRef<GlobeIconHandle, GlobeIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					animate={svgControls}
+					animate={controls}
 					initial="normal"
 					variants={svgVariants}
 				>

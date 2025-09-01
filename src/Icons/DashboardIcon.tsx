@@ -46,39 +46,29 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 			[controls, onMouseLeave],
 		);
 
-		const iconVariants: Variants = reduced
-			? {
-					normal: { scale: 1, rotate: 0 },
-					animate: { scale: 1, rotate: 0 },
-				}
-			: {
-					normal: { scale: 1, rotate: 0 },
-					animate: {
-						scale: [1, 1.05, 0.95, 1],
-						rotate: [0, -2, 2, 0],
-						transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
-					},
-				};
+		const iconVariants: Variants = {
+			normal: { scale: 1, rotate: 0 },
+			animate: {
+				scale: [1, 1.05, 0.95, 1],
+				rotate: [0, -2, 2, 0],
+				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
+			},
+		};
 
-		const tileVariants: Variants = reduced
-			? {
-					normal: { opacity: 1, scale: 1, y: 0 },
-					animate: { opacity: 1, scale: 1, y: 0 },
-				}
-			: {
-					normal: { opacity: 1, scale: 1, y: 0 },
-					animate: (i: number) => ({
-						opacity: [0.5, 1, 0.8, 1],
-						scale: [0.9, 1.1, 1],
-						y: [2, -2, 0],
-						transition: {
-							duration: 1.2,
-							ease: "easeInOut",
-							repeat: 0,
-							delay: i * 0.2,
-						},
-					}),
-				};
+		const tileVariants: Variants = {
+			normal: { opacity: 1, scale: 1, y: 0 },
+			animate: (i: number) => ({
+				opacity: [0.5, 1, 0.8, 1],
+				scale: [0.9, 1.1, 1],
+				y: [2, -2, 0],
+				transition: {
+					duration: 1.2,
+					ease: "easeInOut",
+					repeat: 0,
+					delay: i * 0.2,
+				},
+			}),
+		};
 
 		return (
 			<motion.div

@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface CircleChevronDownIconHandle {
@@ -21,34 +21,57 @@ const CircleChevronDownIcon = forwardRef<
 	const circleControls = useAnimation();
 	const arrowControls = useAnimation();
 	const isControlled = useRef(false);
+	const tickControls = useAnimation();
+	const reduced = useReducedMotion();
 
 	useImperativeHandle(ref, () => {
 		isControlled.current = true;
 		return {
 			startAnimation: () => {
-				circleControls.start("animate");
-				arrowControls.start("animate");
+				if (reduced) {
+					circleControls.start("normal");
+					tickControls.start("normal");
+					arrowControls.start("normal");
+				} else {
+					circleControls.start("animate");
+					tickControls.start("animate");
+					arrowControls.start("animate");
+				}
 			},
 			stopAnimation: () => {
 				circleControls.start("normal");
+				tickControls.start("normal");
 				arrowControls.start("normal");
 			},
 		};
 	});
 
-	const handleEnter = useCallback(() => {
-		if (!isControlled.current) {
-			circleControls.start("animate");
-			arrowControls.start("animate");
-		}
-	}, [circleControls, arrowControls]);
+	const handleEnter = useCallback(
+		(e?: React.MouseEvent<HTMLDivElement>) => {
+			if (reduced) return;
+			if (!isControlled.current) {
+				circleControls.start("animate");
+				tickControls.start("animate");
+				arrowControls.start("animate");
+			} else {
+				onMouseEnter?.(e as any);
+			}
+		},
+		[circleControls, tickControls, reduced, onMouseEnter],
+	);
 
-	const handleLeave = useCallback(() => {
-		if (!isControlled.current) {
-			circleControls.start("normal");
-			arrowControls.start("normal");
-		}
-	}, [circleControls, arrowControls]);
+	const handleLeave = useCallback(
+		(e?: React.MouseEvent<HTMLDivElement>) => {
+			if (!isControlled.current) {
+				circleControls.start("normal");
+				tickControls.start("normal");
+				arrowControls.start("normal");
+			} else {
+				onMouseLeave?.(e as any);
+			}
+		},
+		[circleControls, tickControls, onMouseLeave],
+	);
 
 	const circleVariants: Variants = {
 		normal: { scale: 1, opacity: 1 },

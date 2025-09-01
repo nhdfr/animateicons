@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface UnlinkIconHandle {
@@ -19,15 +19,22 @@ const UnlinkIcon = forwardRef<UnlinkIconHandle, UnlinkIconProps>(
 		const leftChainControls = useAnimation();
 		const rightChainControls = useAnimation();
 		const sparksControls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					leftChainControls.start("animate");
-					rightChainControls.start("animate");
-					sparksControls.start("animate");
+					if (reduced) {
+						leftChainControls.start("normal");
+						rightChainControls.start("normal");
+						sparksControls.start("normal");
+					} else {
+						leftChainControls.start("animate");
+						rightChainControls.start("animate");
+						sparksControls.start("animate");
+					}
 				},
 				stopAnimation: () => {
 					leftChainControls.start("normal");
@@ -37,21 +44,28 @@ const UnlinkIcon = forwardRef<UnlinkIconHandle, UnlinkIconProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				leftChainControls.start("animate");
-				rightChainControls.start("animate");
-				sparksControls.start("animate");
-			}
-		}, [leftChainControls, rightChainControls, sparksControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					leftChainControls.start("animate");
+					rightChainControls.start("animate");
+					sparksControls.start("animate");
+				} else onMouseLeave?.(e as any);
+			},
+			[leftChainControls, rightChainControls, sparksControls],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				leftChainControls.start("normal");
-				rightChainControls.start("normal");
-				sparksControls.start("normal");
-			}
-		}, [leftChainControls, rightChainControls, sparksControls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					leftChainControls.start("normal");
+					rightChainControls.start("normal");
+					sparksControls.start("normal");
+				} else onMouseLeave?.(e as any);
+			},
+			[leftChainControls, rightChainControls, sparksControls],
+		);
 
 		const leftVariants: Variants = {
 			normal: { x: 0, rotate: 0 },

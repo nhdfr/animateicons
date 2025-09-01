@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface GlobeLockIconHandle {
@@ -16,28 +16,35 @@ interface GlobeLockIconProps extends HTMLMotionProps<"div"> {
 
 const GlobeLockIcon = forwardRef<GlobeLockIconHandle, GlobeLockIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const lockControls = useAnimation();
+		const controls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => lockControls.start("animate"),
-				stopAnimation: () => lockControls.start("normal"),
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
+				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				lockControls.start("animate");
-			}
-		}, [lockControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
+			},
+			[controls, reduced, onMouseEnter],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				lockControls.start("normal");
-			}
-		}, [lockControls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
+			},
+			[controls, onMouseLeave],
+		);
 
 		const lockVariants: Variants = {
 			normal: { rotate: 0, x: 0, opacity: 1 },
@@ -76,7 +83,7 @@ const GlobeLockIcon = forwardRef<GlobeLockIconHandle, GlobeLockIconProps>(
 						d="M20 6V4a2 2 0 1 0-4 0v2"
 						variants={lockVariants}
 						initial="normal"
-						animate={lockControls}
+						animate={controls}
 					/>
 					<motion.rect
 						width="8"
@@ -86,7 +93,7 @@ const GlobeLockIcon = forwardRef<GlobeLockIconHandle, GlobeLockIconProps>(
 						rx="1"
 						variants={lockVariants}
 						initial="normal"
-						animate={lockControls}
+						animate={controls}
 					/>
 				</svg>
 			</motion.div>

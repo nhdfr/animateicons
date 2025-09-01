@@ -45,32 +45,22 @@ const UserLockIcon = forwardRef<UserLockIconHandle, UserLockIconProps>(
 			},
 			[controls, onMouseLeave],
 		);
-		const headBodyVariants: Variants = reduced
-			? {
-					normal: { scale: 1 },
-					animate: { scale: 1 },
-				}
-			: {
-					normal: { scale: 1 },
-					animate: {
-						scale: [1, 1.05, 1],
-						transition: { duration: 0.4 },
-					},
-				};
+		const headBodyVariants: Variants = {
+			normal: { scale: 1 },
+			animate: {
+				scale: [1, 1.05, 1],
+				transition: { duration: 0.4 },
+			},
+		};
 
-		const lockVariants: Variants = reduced
-			? {
-					normal: { x: 0, rotate: 0 },
-					animate: { x: 0, rotate: 0 },
-				}
-			: {
-					normal: { x: 0, rotate: 0 },
-					animate: {
-						x: [0, -2, 2, -2, 2, 0],
-						rotate: [0, -3, 3, -3, 3, 0],
-						transition: { duration: 0.5 },
-					},
-				};
+		const lockVariants: Variants = {
+			normal: { x: 0, rotate: 0 },
+			animate: {
+				x: [0, -2, 2, -2, 2, 0],
+				rotate: [0, -3, 3, -3, 3, 0],
+				transition: { duration: 0.5 },
+			},
+		};
 
 		return (
 			<motion.div

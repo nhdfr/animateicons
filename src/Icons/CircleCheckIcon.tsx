@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation } from "motion/react";
+import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface CircleCheckIconHandle {
@@ -18,14 +18,20 @@ const CircleCheckIcon = forwardRef<CircleCheckIconHandle, CircleCheckIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const tickControls = useAnimation();
+		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
 				startAnimation: () => {
-					controls.start("animate");
-					tickControls.start("animate");
+					if (reduced) {
+						controls.start("normal");
+						tickControls.start("normal");
+					} else {
+						controls.start("animate");
+						tickControls.start("animate");
+					}
 				},
 				stopAnimation: () => {
 					controls.start("normal");
@@ -34,19 +40,30 @@ const CircleCheckIcon = forwardRef<CircleCheckIconHandle, CircleCheckIconProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("animate");
-				tickControls.start("animate");
-			}
-		}, [controls, tickControls]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) {
+					controls.start("animate");
+					tickControls.start("animate");
+				} else {
+					onMouseEnter?.(e as any);
+				}
+			},
+			[controls, tickControls, reduced, onMouseEnter],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) {
-				controls.start("normal");
-				tickControls.start("normal");
-			}
-		}, [controls, tickControls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) {
+					controls.start("normal");
+					tickControls.start("normal");
+				} else {
+					onMouseLeave?.(e as any);
+				}
+			},
+			[controls, tickControls, onMouseLeave],
+		);
 
 		const svgVariants: Variants = {
 			normal: { scale: 1 },
