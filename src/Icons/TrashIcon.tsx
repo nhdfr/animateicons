@@ -49,39 +49,37 @@ const TrashIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 		const iconVariants: Variants = {
 			normal: { scale: 1, rotate: 0 },
 			animate: {
-				scale: [1, 1.04, 0.99, 1],
-				rotate: [0, -1, 1, 0],
-				transition: { duration: 1, ease: "easeInOut" },
+				scale: [1, 1.03, 1],
+
+				transition: { duration: 0.5, ease: "easeOut" },
 			},
 		};
 
-		const lidLiftVariants: Variants = {
-			normal: { y: 0, rotate: 0, opacity: 1 },
-			animate: {
-				y: [-1, -3, 0],
-				rotate: [0, -6, 0],
-				opacity: [1],
-				transition: { duration: 0.7, ease: "easeInOut", delay: 0.05 },
-			},
-		};
+		const lidBounce: Variants ={
+					normal: { y: 0, rotate: 0, transformOrigin: "12px 6px" },
+					animate: {
+						rotate: [0, -10, 6, -3, 0],
+						y: [0, -2, 0.5, 0],
+						transition: { duration: 0.9, ease: "easeInOut", delay: 0.05 },
+					},
+				};
 
-		const barVariants: Variants = {
-			normal: { scaleX: 1, opacity: 1 },
-			animate: {
-				scaleX: [0.9, 1.05, 1],
-				opacity: [0.7, 1, 1],
-				transition: { duration: 0.6, ease: "easeInOut", delay: 0.15 },
-			},
-		};
+		const barSnap: Variants ={
+					normal: { scaleX: 1, opacity: 1 },
+					animate: {
+						scaleX: [0.85, 1.08, 1],
+						opacity: [0.9, 1, 1],
+						transition: { duration: 0.45, ease: "easeOut", delay: 0.1 },
+					},
+				};
 
-		const binVariants: Variants = {
-			normal: { scaleY: 1, y: 0 },
-			animate: {
-				scaleY: [1, 0.96, 1],
-				y: [0, 1.5, 0],
-				transition: { duration: 0.7, ease: "easeInOut", delay: 0.22 },
-			},
-		};
+		const binSettle: Variants = {
+					normal: { y: 0, scaleY: 1, transformOrigin: "50% 100%" },
+					animate: {
+						scaleY: [1, 0.97, 1],
+						transition: { duration: 0.5, ease: "easeOut", delay: 0.2 },
+					},
+				};
 
 		return (
 			<motion.div
@@ -106,19 +104,19 @@ const TrashIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 				>
 					<motion.path
 						d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"
-						variants={binVariants}
+						variants={binSettle}
 						initial="normal"
 						animate={controls}
 					/>
 					<motion.path
 						d="M3 6h18"
-						variants={barVariants}
+						variants={barSnap}
 						initial="normal"
 						animate={controls}
 					/>
 					<motion.path
 						d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-						variants={lidLiftVariants}
+						variants={lidBounce}
 						initial="normal"
 						animate={controls}
 					/>
