@@ -16,74 +16,86 @@ interface BatteryIconProps extends HTMLMotionProps<"div"> {
 
 const BatteryIcon = forwardRef<BatteryIconHandle, BatteryIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const controls = useAnimation();
+		const svgControls = useAnimation();
+		const rectControls = useAnimation();
+		const tipControls = useAnimation();
+
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () =>
-					reduced ? controls.start("normal") : controls.start("animate"),
-				stopAnimation: () => controls.start("normal"),
+				startAnimation: () => {
+					if (reduced) {
+						svgControls.start("normal");
+						rectControls.start("normal");
+						tipControls.start("normal");
+					} else {
+						svgControls.start("warning");
+						rectControls.start("warning");
+						tipControls.start("warning");
+					}
+				},
+				stopAnimation: () => {
+					svgControls.start("normal");
+					rectControls.start("normal");
+					tipControls.start("normal");
+				},
 			};
 		});
 
 		const handleEnter = useCallback(
 			(e?: React.MouseEvent<HTMLDivElement>) => {
 				if (reduced) return;
-				if (!isControlled.current) controls.start("animate");
-				else onMouseEnter?.(e as any);
+				if (!isControlled.current) {
+					svgControls.start("warning");
+					rectControls.start("warning");
+					tipControls.start("warning");
+				} else {
+					onMouseEnter?.(e as any);
+				}
 			},
-			[controls, reduced, onMouseEnter],
+			[svgControls, rectControls, tipControls, reduced, onMouseEnter],
 		);
 
 		const handleLeave = useCallback(
 			(e: React.MouseEvent<HTMLDivElement>) => {
 				if (!isControlled.current) {
-					controls.start("normal");
+					svgControls.start("normal");
+					rectControls.start("normal");
+					tipControls.start("normal");
 				} else {
 					onMouseLeave?.(e as any);
 				}
 			},
-			[controls, onMouseLeave],
+			[svgControls, rectControls, tipControls, onMouseLeave],
 		);
 
 		const svgVariants: Variants = {
-			normal: { rotate: 0 },
+			normal: { rotate: 0, scale: 1 },
 			warning: {
-				rotate: [0, -3, 3, -2, 0],
-				transition: {
-					duration: 0.5,
-					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
-				},
+				rotate: [0, -4, 4, -2, 0],
+				scale: [1, 1.1, 0.95, 1.05, 1],
+				transition: { duration: 0.8, ease: "easeInOut" },
 			},
 		};
 
 		const rectVariants: Variants = {
-			normal: { stroke: "currentColor", opacity: 1 },
+			normal: { pathLength: 1, opacity: 1 },
 			warning: {
-				stroke: ["#ef4444", "#dc2626", "#ef4444"],
-				opacity: [0.6, 1, 0.6],
-				transition: {
-					duration: 0.9,
-					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
-				},
+				pathLength: [1, 0.6, 1],
+				opacity: [1, 0.7, 1],
+				transition: { duration: 1, ease: "easeInOut" },
 			},
 		};
 
 		const tipVariants: Variants = {
-			normal: { stroke: "currentColor", opacity: 1 },
+			normal: { y: 0, opacity: 1 },
 			warning: {
-				stroke: ["#ef4444", "#dc2626", "#ef4444"],
-				opacity: [0.4, 1, 0.4],
-				transition: {
-					duration: 0.7,
-					ease: [0.42, 0, 0.58, 1],
-					repeat: 0,
-				},
+				y: [0, -2, 2, -1, 0],
+				opacity: [1, 0.6, 1],
+				transition: { duration: 0.7, ease: "easeInOut" },
 			},
 		};
 
@@ -104,14 +116,15 @@ const BatteryIcon = forwardRef<BatteryIconHandle, BatteryIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					animate={controls}
+					animate={svgControls}
 					initial="normal"
 					variants={svgVariants}
 				>
 					<motion.path
 						d="M22 14L22 10"
-						variants={tipVariants}
+						animate={tipControls}
 						initial="normal"
+						variants={tipVariants}
 					/>
 					<motion.rect
 						x="2"
@@ -119,8 +132,9 @@ const BatteryIcon = forwardRef<BatteryIconHandle, BatteryIconProps>(
 						width="16"
 						height="12"
 						rx="2"
-						variants={rectVariants}
+						animate={rectControls}
 						initial="normal"
+						variants={rectVariants}
 					/>
 				</motion.svg>
 			</motion.div>
