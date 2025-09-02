@@ -5,16 +5,16 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface LockIconHandle {
+export interface ArrowDownUpIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface LockIconProps extends HTMLMotionProps<"div"> {
+interface ArrowDownUpIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const LockIcon = forwardRef<LockIconHandle, LockIconProps>(
+const ArrowDownUpIcon = forwardRef<ArrowDownUpIconHandle, ArrowDownUpIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
@@ -39,22 +39,45 @@ const LockIcon = forwardRef<LockIconHandle, LockIconProps>(
 		);
 
 		const handleLeave = useCallback(
-			(e: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlled.current) {
-					controls.start("normal");
-				} else {
-					onMouseLeave?.(e as any);
-				}
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
 			},
 			[controls, onMouseLeave],
 		);
 
-		const lockVariants: Variants = {
-			normal: { x: 0, rotate: 0 },
+		const iconVariants: Variants = {
+			normal: { scale: 1, rotate: 0 },
 			animate: {
-				x: [0, -3, 3, -3, 3, 0],
-				rotate: [0, -2, 2, -2, 2, 0],
-				transition: { duration: 0.4 },
+				scale: [1, 1.08, 0.96, 1],
+				rotate: [0, -4, 2, 0],
+				transition: { duration: 0.9, ease: "easeInOut" },
+			},
+		};
+
+		const downArrowVariants: Variants = {
+			normal: { y: 0, opacity: 1 },
+			animate: {
+				y: [-4, 2, 0],
+				opacity: [0, 1],
+				transition: { duration: 0.7, ease: "easeOut", delay: 0.1 },
+			},
+		};
+
+		const upArrowVariants: Variants = {
+			normal: { y: 0, opacity: 1 },
+			animate: {
+				y: [4, -2, 0],
+				opacity: [0, 1],
+				transition: { duration: 0.7, ease: "easeOut", delay: 0.15 },
+			},
+		};
+
+		const lineVariants: Variants = {
+			normal: { pathLength: 1 },
+			animate: {
+				pathLength: [0, 1],
+				transition: { duration: 0.8, ease: "easeInOut" },
 			},
 		};
 
@@ -75,22 +98,31 @@ const LockIcon = forwardRef<LockIconHandle, LockIconProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					variants={lockVariants}
 					animate={controls}
 					initial="normal"
+					variants={iconVariants}
 				>
-					<motion.rect
-						width="18"
-						height="11"
-						x="3"
-						y="11"
-						rx="2"
-						ry="2"
+					<motion.path
+						d="m3 16 4 4 4-4"
+						variants={downArrowVariants}
 						initial="normal"
 						animate={controls}
 					/>
 					<motion.path
-						d="M7 11V7a5 5 0 0 1 10 0v4"
+						d="M7 20V4"
+						variants={lineVariants}
+						initial="normal"
+						animate={controls}
+					/>
+					<motion.path
+						d="m21 8-4-4-4 4"
+						variants={upArrowVariants}
+						initial="normal"
+						animate={controls}
+					/>
+					<motion.path
+						d="M17 4v16"
+						variants={lineVariants}
 						initial="normal"
 						animate={controls}
 					/>
@@ -100,5 +132,5 @@ const LockIcon = forwardRef<LockIconHandle, LockIconProps>(
 	},
 );
 
-LockIcon.displayName = "LockIcon";
-export { LockIcon };
+ArrowDownUpIcon.displayName = "ArrowDownUpIcon";
+export { ArrowDownUpIcon };

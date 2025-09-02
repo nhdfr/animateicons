@@ -16,90 +16,57 @@ interface SignalProps extends HTMLMotionProps<"div"> {
 
 const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-		const groupControls = useAnimation();
+		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
 			return {
-				startAnimation: () => {
-					reduced
-						? groupControls.start("normal")
-						: groupControls.start("animate");
-				},
-				stopAnimation: () => {
-					groupControls.start("normal");
-				},
+				startAnimation: () =>
+					reduced ? controls.start("normal") : controls.start("animate"),
+				stopAnimation: () => controls.start("normal"),
 			};
 		});
 
-		const handleEnter = useCallback(
-			(e?: React.MouseEvent<HTMLDivElement>) => {
-				if (reduced) return;
-				if (!isControlled.current) {
-					groupControls.start("animate");
-				} else onMouseLeave?.(e as any);
-			},
-			[groupControls],
-		);
+		const handleEnter = useCallback(() => {
+			if (reduced) return;
+			if (!isControlled.current) controls.start("animate");
+		}, [controls, reduced]);
 
-		const handleLeave = useCallback(
-			(e?: React.MouseEvent<HTMLDivElement>) => {
-				if (!isControlled.current) {
-					groupControls.start("normal");
-				} else onMouseLeave?.(e as any);
-			},
-			[groupControls],
-		);
-
-		const sway: Variants = {
-			normal: { rotate: 0, x: 0, y: 0, scale: 1 },
-			animate: {
-				rotate: [0, -2, 1, 0],
-				x: [0, -0.4, 0.2, 0],
-				y: [0, -0.3, 0.1, 0],
-				scale: [1, 1.018, 1],
-				transition: { duration: 0.7, ease: "easeInOut" },
-			},
-		};
-
-		const dotKick: Variants = {
-			normal: { scale: 1, opacity: 1 },
-			animate: {
-				scale: [1, 1.18, 1],
-				opacity: [1, 1, 1],
-				transition: { duration: 0.3, ease: "easeOut", delay: 0.06 },
-			},
-		};
-
-		const barBounce = (delay: number): Variants => ({
-			normal: { y: 0, scaleY: 1, opacity: 1, transformOrigin: "center bottom" },
-			animate: {
-				y: [0, -0.8, 0],
-				scaleY: [1, 1.1, 1],
-				opacity: [1, 1, 1],
-				transition: { duration: 0.42, ease: "easeOut", delay },
-			},
-		});
-
-		const barBreathe = (delay: number): Variants => ({
-			normal: { scaleY: 1, transformOrigin: "center bottom" },
-			animate: {
-				scaleY: [1, 1.04, 1],
-				transition: { duration: 0.5, ease: "easeInOut", delay },
-			},
-		});
+		const handleLeave = useCallback(() => {
+			if (!isControlled.current) controls.start("normal");
+		}, [controls]);
 
 		const svgVariants: Variants = {
-			normal: { scale: 1, rotate: 0, y: 0 },
+			normal: { scale: 1, rotate: 0 },
 			animate: {
-				scale: [1, 1.06, 1],
-				rotate: [0, -2, 2, 0],
-				y: [0, -1, 0],
-				transition: { duration: 0.9, ease: "easeInOut" },
+				scale: [1, 1.05, 1],
+				transition: { duration: 1, ease: "easeInOut" },
 			},
 		};
+
+		const dotVariants: Variants = {
+			normal: { scale: 1, opacity: 0.8 },
+			animate: {
+				scale: [1, 1.3, 1],
+				opacity: [0.5, 1, 0.8],
+				transition: { duration: 0.5, ease: "easeInOut" },
+			},
+		};
+
+		const barPulse = (delay: number): Variants => ({
+			normal: { scaleY: 1, opacity: 0.9, transformOrigin: "center bottom" },
+			animate: {
+				scaleY: [1, 1.4, 0.95, 1],
+				opacity: [0.8, 1, 0.85, 1],
+				transition: {
+					duration: 0.8,
+					ease: "easeInOut",
+					delay,
+				},
+			},
+		});
 
 		return (
 			<motion.div
@@ -118,31 +85,40 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					className="lucide lucide-signal-icon lucide-signal"
+					animate={controls}
 					initial="normal"
-					animate={groupControls}
 					variants={svgVariants}
 				>
-					<motion.g variants={sway} initial="normal" animate={groupControls}>
-						<motion.path
-							d="M2 20h.01"
-							variants={dotKick}
-							initial="normal"
-							animate={groupControls}
-						/>
-						<motion.g initial="normal" animate={groupControls}>
-							<motion.path d="M7 20v-4" variants={barBounce(0.06)} />
-							<motion.path d="M12 20v-8" variants={barBounce(0.12)} />
-							<motion.path d="M17 20V8" variants={barBounce(0.18)} />
-							<motion.path d="M22 4v16" variants={barBounce(0.24)} />
-						</motion.g>
-						<motion.g initial="normal" animate={groupControls}>
-							<motion.path d="M7 20v-4" variants={barBreathe(0.32)} />
-							<motion.path d="M12 20v-8" variants={barBreathe(0.36)} />
-							<motion.path d="M17 20V8" variants={barBreathe(0.4)} />
-							<motion.path d="M22 4v16" variants={barBreathe(0.44)} />
-						</motion.g>
-					</motion.g>
+					<motion.path
+						d="M2 20h.01"
+						variants={dotVariants}
+						initial="normal"
+						animate={controls}
+					/>
+					<motion.path
+						d="M7 20v-4"
+						variants={barPulse(0.1)}
+						initial="normal"
+						animate={controls}
+					/>
+					<motion.path
+						d="M12 20v-8"
+						variants={barPulse(0.25)}
+						initial="normal"
+						animate={controls}
+					/>
+					<motion.path
+						d="M17 20V8"
+						variants={barPulse(0.4)}
+						initial="normal"
+						animate={controls}
+					/>
+					<motion.path
+						d="M22 4v16"
+						variants={barPulse(0.55)}
+						initial="normal"
+						animate={controls}
+					/>
 				</motion.svg>
 			</motion.div>
 		);
