@@ -51,6 +51,14 @@ import { CodeXmlIcon } from "./CodeXmlIcon";
 import { ContactIcon } from "./ContactIcon";
 import { ContactRoundIcon } from "./ContactRoundIcon";
 import { CopyIcon } from "./CopyIcon";
+import { CornerDownLeftIcon } from "./CornerDownLeftIcon";
+import { CornerDownRightIcon } from "./CornerDownRightIcon";
+import { CornerLeftDownIcon } from "./CornerLeftDownIcon";
+import { CornerLeftUpIcon } from "./CornerLeftUpIcon";
+import { CornerRightDownIcon } from "./CornerRightDownIcon";
+import { CornerRightUpIcon } from "./CornerRightUpIcon";
+import { CornerUpLeftIcon } from "./CornerUpLeftIcon";
+import { CornerUpRightIcon } from "./CornerUpRightIcon";
 import { CreditCardIcon } from "./CreditCardIcon";
 import { DashboardIcon } from "./DashboardIcon";
 import { DollarSignIcon } from "./DollarSignIcon";
@@ -683,6 +691,47 @@ const Icon_List: IconListItem[] = [
 		icon: ChevronsRightIcon,
 		keywords: ["turn", "corner", "forward", "double", "fast-forward", "jump"],
 	},
+
+	{
+		name: "corner-down-left",
+		icon: CornerDownLeftIcon,
+		keywords: ["arrow", "return", "back", "previous"],
+	},
+	{
+		name: "corner-down-right",
+		icon: CornerDownRightIcon,
+		keywords: ["arrow", "next", "forward", "continue"],
+	},
+	{
+		name: "corner-left-down",
+		icon: CornerLeftDownIcon,
+		keywords: ["arrow", "return", "back", "previous"],
+	},
+	{
+		name: "corner-left-up",
+		icon: CornerLeftUpIcon,
+		keywords: ["arrow", "return", "back", "previous"],
+	},
+	{
+		name: "corner-right-down",
+		icon: CornerRightDownIcon,
+		keywords: ["arrow", "next", "forward", "continue"],
+	},
+	{
+		name: "corner-right-up",
+		icon: CornerRightUpIcon,
+		keywords: ["arrow", "next", "forward", "continue"],
+	},
+	{
+		name: "corner-up-left",
+		icon: CornerUpLeftIcon,
+		keywords: ["arrow", "return", "back", "previous"],
+	},
+	{
+		name: "corner-up-right",
+		icon: CornerUpRightIcon,
+		keywords: ["arrow", "next", "forward", "continue"],
+	},
 	{
 		name: "chevrons-left-right",
 		icon: ChevronsLeftRightIcon,
@@ -706,7 +755,6 @@ const Icon_List: IconListItem[] = [
 			"sync",
 		],
 	},
-
 	// Actions
 	{
 		name: "plus",
