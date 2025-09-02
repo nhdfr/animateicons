@@ -5,16 +5,16 @@ import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation, useReducedMotion } from "motion/react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
-export interface SignalHandle {
+export interface ArrowDownUpIconHandle {
 	startAnimation: () => void;
 	stopAnimation: () => void;
 }
 
-interface SignalProps extends HTMLMotionProps<"div"> {
+interface ArrowDownUpIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
 }
 
-const SignalIcon = forwardRef<SignalHandle, SignalProps>(
+const ArrowDownUpIcon = forwardRef<ArrowDownUpIconHandle, ArrowDownUpIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
@@ -29,44 +29,57 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 			};
 		});
 
-		const handleEnter = useCallback(() => {
-			if (reduced) return;
-			if (!isControlled.current) controls.start("animate");
-		}, [controls, reduced]);
+		const handleEnter = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (reduced) return;
+				if (!isControlled.current) controls.start("animate");
+				else onMouseEnter?.(e as any);
+			},
+			[controls, reduced, onMouseEnter],
+		);
 
-		const handleLeave = useCallback(() => {
-			if (!isControlled.current) controls.start("normal");
-		}, [controls]);
+		const handleLeave = useCallback(
+			(e?: React.MouseEvent<HTMLDivElement>) => {
+				if (!isControlled.current) controls.start("normal");
+				else onMouseLeave?.(e as any);
+			},
+			[controls, onMouseLeave],
+		);
 
-		const svgVariants: Variants = {
+		const iconVariants: Variants = {
 			normal: { scale: 1, rotate: 0 },
 			animate: {
-				scale: [1, 1.05, 1],
-				transition: { duration: 1, ease: "easeInOut" },
+				scale: [1, 1.08, 0.96, 1],
+				rotate: [0, -4, 2, 0],
+				transition: { duration: 0.9, ease: "easeInOut" },
 			},
 		};
 
-		const dotVariants: Variants = {
-			normal: { scale: 1, opacity: 0.8 },
+		const downArrowVariants: Variants = {
+			normal: { y: 0, opacity: 1 },
 			animate: {
-				scale: [1, 1.3, 1],
-				opacity: [0.5, 1, 0.8],
-				transition: { duration: 0.5, ease: "easeInOut" },
+				y: [-4, 2, 0],
+				opacity: [0, 1],
+				transition: { duration: 0.7, ease: "easeOut", delay: 0.1 },
 			},
 		};
 
-		const barPulse = (delay: number): Variants => ({
-			normal: { scaleY: 1, opacity: 0.9, transformOrigin: "center bottom" },
+		const upArrowVariants: Variants = {
+			normal: { y: 0, opacity: 1 },
 			animate: {
-				scaleY: [1, 1.4, 0.95, 1],
-				opacity: [0.8, 1, 0.85, 1],
-				transition: {
-					duration: 0.8,
-					ease: "easeInOut",
-					delay,
-				},
+				y: [4, -2, 0],
+				opacity: [0, 1],
+				transition: { duration: 0.7, ease: "easeOut", delay: 0.15 },
 			},
-		});
+		};
+
+		const lineVariants: Variants = {
+			normal: { pathLength: 1 },
+			animate: {
+				pathLength: [0, 1],
+				transition: { duration: 0.8, ease: "easeInOut" },
+			},
+		};
 
 		return (
 			<motion.div
@@ -87,35 +100,29 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 					strokeLinejoin="round"
 					animate={controls}
 					initial="normal"
-					variants={svgVariants}
+					variants={iconVariants}
 				>
 					<motion.path
-						d="M2 20h.01"
-						variants={dotVariants}
+						d="m3 16 4 4 4-4"
+						variants={downArrowVariants}
 						initial="normal"
 						animate={controls}
 					/>
 					<motion.path
-						d="M7 20v-4"
-						variants={barPulse(0.1)}
+						d="M7 20V4"
+						variants={lineVariants}
 						initial="normal"
 						animate={controls}
 					/>
 					<motion.path
-						d="M12 20v-8"
-						variants={barPulse(0.25)}
+						d="m21 8-4-4-4 4"
+						variants={upArrowVariants}
 						initial="normal"
 						animate={controls}
 					/>
 					<motion.path
-						d="M17 20V8"
-						variants={barPulse(0.4)}
-						initial="normal"
-						animate={controls}
-					/>
-					<motion.path
-						d="M22 4v16"
-						variants={barPulse(0.55)}
+						d="M17 4v16"
+						variants={lineVariants}
 						initial="normal"
 						animate={controls}
 					/>
@@ -125,5 +132,5 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 	},
 );
 
-SignalIcon.displayName = "SignalIcon";
-export { SignalIcon };
+ArrowDownUpIcon.displayName = "ArrowDownUpIcon";
+export { ArrowDownUpIcon };

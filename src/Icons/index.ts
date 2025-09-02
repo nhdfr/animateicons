@@ -1,4 +1,5 @@
 import { ActivityIcon } from "./ActivityIcon";
+import { ArrowDownUpIcon } from "./ArrowDownUpIcon";
 import { ArrowUp01Icon } from "./ArrowUp01Icon";
 import { ArrowUp10Icon } from "./ArrowUp10Icon";
 import { ArrowUpAzIcon } from "./ArrowUpAZIcon";
@@ -21,6 +22,8 @@ import { BookmarkIcon } from "./BookmarkIcon";
 import { BookmarkMinusIcon } from "./BookmarkMinusIcon";
 import { BookmarkPlusIcon } from "./BookmarkPlusIcon";
 import { BookmarkXIcon } from "./BookmarkXIcon";
+import { BookOpenCheckIcon } from "./BookOpenCheckIcon";
+import { BookOpenIcon } from "./BookOpenIcon";
 import { BookOpenTextIcon } from "./BookOpenTextIcon";
 import { BrainIcon } from "./BrainIcon";
 import { BringToFrontIcon } from "./BringToFrontIcon";
@@ -1805,6 +1808,88 @@ const Icon_List: IconListItem[] = [
 		],
 	},
 	{
+		name: "book-open",
+		icon: BookOpenIcon,
+		keywords: [
+			"reading",
+			"pages",
+			"booklet",
+			"magazine",
+			"leaflet",
+			"pamphlet",
+			"library",
+			"writing",
+			"written",
+			"writer",
+			"author",
+			"story",
+			"script",
+			"screenplay",
+			"fiction",
+			"novel",
+			"information",
+			"knowledge",
+			"education",
+			"high school",
+			"university",
+			"college",
+			"academy",
+			"student",
+			"study",
+			"learning",
+			"homework",
+			"research",
+			"documentation",
+			"revealed",
+			"blank",
+			"plai",
+		],
+	},
+	{
+		name: "book-open-check",
+		icon: BookOpenCheckIcon,
+		keywords: [
+			"read",
+			"pages",
+			"booklet",
+			"magazine",
+			"leaflet",
+			"pamphlet",
+			"library",
+			"written",
+			"authored",
+			"published",
+			"informed",
+			"knowledgeable",
+			"educated",
+			"schooled",
+			"homework",
+			"examined",
+			"tested",
+			"marked",
+			"passed",
+			"graduated",
+			"studied",
+			"learned",
+			"lesson",
+			"researched",
+			"documented",
+			"revealed",
+			"blank",
+			"plain language",
+			"true",
+			"truth",
+			"verified",
+			"corrected",
+			"task",
+			"todo",
+			"done",
+			"completed",
+			"finished",
+			"ticked",
+		],
+	},
+	{
 		name: "sparkles",
 		icon: SparklesIcon,
 		keywords: [
@@ -1883,6 +1968,25 @@ const Icon_List: IconListItem[] = [
 			"rising",
 			"falling",
 			"alphabetical",
+		],
+	},
+	{
+		name: "arrow-down-up",
+		icon: ArrowDownUpIcon,
+		keywords: [
+			"bidirectional",
+			"two-way",
+			"2-way",
+			"swap",
+			"switch",
+			"network",
+			"traffic",
+			"flow",
+			"mobile data",
+			"internet",
+			"sort",
+			"reorder",
+			"move",
 		],
 	},
 ];
