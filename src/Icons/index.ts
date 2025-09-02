@@ -1,4 +1,8 @@
 import { ActivityIcon } from "./ActivityIcon";
+import { ArrowUp01Icon } from "./ArrowUp01Icon";
+import { ArrowUp10Icon } from "./ArrowUp10Icon";
+import { ArrowUpAzIcon } from "./ArrowUpAZIcon";
+import { ArrowUpZaIcon } from "./ArrowUpZAIcon";
 import { AtomIcon } from "./AtomIcon";
 import { AudioLinesIcon } from "./AudioLinesIcon";
 import { BatteryFullIcon } from "./BatteryFullIcon";
@@ -1819,6 +1823,66 @@ const Icon_List: IconListItem[] = [
 			"luminous",
 			"brilliant",
 			"festive",
+		],
+	},
+	{
+		name: "arrow-up-0-1",
+		icon: ArrowUp01Icon,
+		keywords: [
+			"filter",
+			"sort",
+			"ascending",
+			"descending",
+			"increasing",
+			"decreasing",
+			"rising",
+			"falling",
+			"numerical",
+		],
+	},
+	{
+		name: "arrow-up-1-0",
+		icon: ArrowUp10Icon,
+		keywords: [
+			"filter",
+			"sort",
+			"ascending",
+			"descending",
+			"increasing",
+			"decreasing",
+			"rising",
+			"falling",
+			"numerical",
+		],
+	},
+	{
+		name: "arrow-up-a-z",
+		icon: ArrowUpAzIcon,
+		keywords: [
+			"filter",
+			"sort",
+			"ascending",
+			"descending",
+			"increasing",
+			"decreasing",
+			"rising",
+			"falling",
+			"alphabetical",
+		],
+	},
+	{
+		name: "arrow-up-z-a",
+		icon: ArrowUpZaIcon,
+		keywords: [
+			"filter",
+			"sort",
+			"ascending",
+			"descending",
+			"increasing",
+			"decreasing",
+			"rising",
+			"falling",
+			"alphabetical",
 		],
 	},
 ];
