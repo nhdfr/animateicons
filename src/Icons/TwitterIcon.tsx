@@ -47,20 +47,21 @@ const TwitterIcon = forwardRef<TwitterIconHandle, TwitterIconProps>(
 		);
 
 		const svgVariants: Variants = {
-			normal: { scale: 1, rotate: 0 },
+			normal: { y: 0, scale: 1, rotate: 0 },
 			animate: {
-				scale: [1, 1.1, 0.95, 1],
-				rotate: [0, -3, 3, -2, 0],
-				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
+				y: [0, -4, 0, -2, 0],
+				scale: [1, 1.08, 0.95, 1],
+				rotate: [0, -2, 2, 0],
+				transition: { duration: 1.2, ease: "easeInOut" },
 			},
 		};
 
 		const pathVariants: Variants = {
-			normal: { pathLength: 1, opacity: 1 },
+			normal: { opacity: 1, scale: 1 },
 			animate: {
-				pathLength: [0, 1],
-				opacity: [0.8, 1],
-				transition: { duration: 1.3, ease: "easeInOut", repeat: 0 },
+				opacity: [0.9, 1, 1],
+				scale: [1, 1.12, 1],
+				transition: { duration: 0.8, ease: "easeOut", delay: 0.15 },
 			},
 		};
 
@@ -87,6 +88,8 @@ const TwitterIcon = forwardRef<TwitterIconHandle, TwitterIconProps>(
                106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 
                389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
 						variants={pathVariants}
+						initial="normal"
+						animate={controls}
 					/>
 				</motion.svg>
 			</motion.div>
