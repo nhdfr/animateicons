@@ -76,6 +76,8 @@ import { EuroIcon } from "./EuroIcon";
 import { ExternalLinkIcon } from "./ExternalLinkIcon";
 import { FacebookIcon } from "./FacebookIcon";
 import { FigmaIcon } from "./FigmaIcon";
+import { FolderIcon } from "./FolderIcon";
+import { FolderOpenIcon } from "./FolderOpenIcon";
 import { FramerIcon } from "./FramerIcon";
 import { GeorgianLariIcon } from "./GeorgianLariIcon";
 import { GithubIcon } from "./GithubIcon";
@@ -1988,6 +1990,16 @@ const Icon_List: IconListItem[] = [
 			"reorder",
 			"move",
 		],
+	},
+	{
+		name: "folder",
+		icon: FolderIcon,
+		keywords: ["file", "document", "folder"],
+	},
+	{
+		name: "folder-open",
+		icon: FolderOpenIcon,
+		keywords: ["file", "document", "folder"],
 	},
 ];
 
