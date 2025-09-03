@@ -128,6 +128,7 @@ import { StarIcon } from "./StarIcon";
 import { SwissFrancIcon } from "./SwissFrancIcon";
 import { SwordsIcon } from "./SwordsIcon";
 import { TerminalIcon } from "./TerminalIcon";
+import { Trash2Icon } from "./Trash2Icon";
 import { TrashIcon } from "./TrashIcon";
 import { TurkishLiraIcon } from "./TurkishLiraIcon";
 import { TwitterIcon } from "./TwitterIcon";
@@ -843,6 +844,23 @@ const Icon_List: IconListItem[] = [
 	{
 		name: "trash",
 		icon: TrashIcon,
+		keywords: [
+			"empty",
+			"deletion",
+			"cleanup",
+			"junk",
+			"clear",
+			"garbage",
+			"delete",
+			"remove",
+			"bin",
+			"waste",
+			"discard",
+		],
+	},
+	{
+		name: "trash-2",
+		icon: Trash2Icon,
 		keywords: [
 			"empty",
 			"deletion",
