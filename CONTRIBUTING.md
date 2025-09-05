@@ -13,7 +13,7 @@ Please follow the guide below to keep the codebase clean and consistent.
 1. **Fork** the repo and clone it:
 
    ```bash
-   git clone https://github.com/<avijit07x>/animateicons.git
+   git clone https://github.com/avijit07x/animateicons.git
    ```
 
 2. Navigate to the project directory:
