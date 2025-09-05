@@ -1,6 +1,6 @@
 # Contributing to AnimateIcons
 
-Thank you for your interest in contributing! 🚀  
+Thank you for your interest in contributing!
 AnimateIcons is a library of **beautiful animated SVG icons** built with [React](https://react.dev/), [motion/react](https://motion.dev/), and [Lucide](https://lucide.dev/).
 
 We welcome contributions of **new icons, bug fixes, and improvements**.  
@@ -52,6 +52,7 @@ Each icon is a **React component** (with animation support via `motion/react`), 
 
 ```tsx
 "use client";
+
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Variants } from "motion/react";
 import { motion, useAnimation, useReducedMotion } from "motion/react";
@@ -151,6 +152,8 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 						rx="1"
 						variants={tileVariants}
 						custom={0}
+						initial="normal"
+						animate={controls}
 					/>
 					<motion.rect
 						width="7"
@@ -160,6 +163,8 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 						rx="1"
 						variants={tileVariants}
 						custom={1}
+						initial="normal"
+						animate={controls}
 					/>
 					<motion.rect
 						width="7"
@@ -169,6 +174,8 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 						rx="1"
 						variants={tileVariants}
 						custom={2}
+						initial="normal"
+						animate={controls}
 					/>
 					<motion.rect
 						width="7"
@@ -178,6 +185,8 @@ const DashboardIcon = forwardRef<DashboardIconHandle, DashboardIconProps>(
 						rx="1"
 						variants={tileVariants}
 						custom={3}
+						initial="normal"
+						animate={controls}
 					/>
 				</motion.svg>
 			</motion.div>
@@ -189,8 +198,6 @@ DashboardIcon.displayName = "DashboardIcon";
 export { DashboardIcon };
 ```
 
-
-
 ---
 
 ### 2. Add the Icon to `index.ts`
@@ -199,19 +206,19 @@ Open `src/icons/index.ts` and:
 
 1.  **Import your icon** at the top:
 
-  ```ts
-  import { DashboardIcon } from "./DashboardIcon";
-  ```
+```ts
+import { DashboardIcon } from "./DashboardIcon";
+```
 
 2.  **Add it inside the `Icon_List` array** with a unique name and keywords:
 
-  ```ts
-  {
-  	name: "dashboard",
-  	icon: DashboardIcon,
-  	keywords: ["masonry", "brick", "panel", "grid", "widgets", "layout"],
-  },
-  ```
+```ts
+{
+	name: "dashboard",
+	icon: DashboardIcon,
+	keywords: ["masonry", "brick", "panel", "grid", "widgets", "layout"],
+},
+```
 
 ---
 
@@ -222,17 +229,17 @@ Open `src/icons/index.ts` and:
 
 ---
 
-## 📦 Commit & PR Guidelines
+## Commit & PR Guidelines
 
 1. Create a new branch:
 
- ```bash
- git checkout -b feat/new-icon-name
-````
+```bash
+git checkout -b feat/new-icon-name
+```
 
 2. Commit message style:
-   - ✅ `feat: add DashboardIcon`
-   - ❌ `new icon`
+   - `feat: add DashboardIcon`
+   - `fix: fix bug in DashboardIcon`
 
 3. Push and open a Pull Request to the `dev` branch:
 
@@ -247,9 +254,11 @@ Open `src/icons/index.ts` and:
 Before submitting a PR, make sure:
 
 - [ ] Icon follows the template
-- [ ] Export added in `src/icons/index.ts`
+- [ ] Icon is based on [Lucide](https://lucide.dev/) (no custom/random SVGs)
+- [ ] Animations implemented using [motion/react](https://motion.dev/) (correct import pattern followed)
+- [ ] Icon added and registered in src/icons/index.ts (import at top + entry in Icon_List with unique name & keywords)
 - [ ] Tested locally in playground
-- [ ] PR targets the **`dev`** branch, not `main`
+- [ ] PR should target `dev` branch only. Maintainers will merge `dev` → `main` during release.
 
 ---
 
