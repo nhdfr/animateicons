@@ -127,6 +127,7 @@ import { SquareArrowOutUpRightIcon } from "./SquareArrowOutUpRightIcon";
 import { StarIcon } from "./StarIcon";
 import { SwissFrancIcon } from "./SwissFrancIcon";
 import { SwordsIcon } from "./SwordsIcon";
+import { TelescopeIcon } from "./TelescopeIcon";
 import { TerminalIcon } from "./TerminalIcon";
 import { Trash2Icon } from "./Trash2Icon";
 import { TrashIcon } from "./TrashIcon";
@@ -2018,6 +2019,23 @@ const Icon_List: IconListItem[] = [
 		name: "folder-open",
 		icon: FolderOpenIcon,
 		keywords: ["file", "document", "folder"],
+	},
+	{
+		name: "telescope",
+		icon: TelescopeIcon,
+		keywords: [
+			"astronomy",
+			"space",
+			"discovery",
+			"exploration",
+			"explore",
+			"vision",
+			"perspective",
+			"focus",
+			"stargazing",
+			"observe",
+			"view",
+		],
 	},
 ];
 
