@@ -10,7 +10,7 @@ import { NumberTicker } from "./magicui/number-ticker";
 
 const Navbar: React.FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [stars, setStars] = useState<number | null>(10);
+	const [stars, setStars] = useState<number | null>(250);
 	const starRef = useRef<StarIconHandle>(null);
 	const githubRef = useRef<GithubIconHandle>(null);
 	const toggleMenu = () => setIsOpen(!isOpen);
