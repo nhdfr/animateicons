@@ -32,6 +32,7 @@ import { ChartBarIcon } from "./ChartBarIcon";
 import { ChartColumnIcon } from "./ChartColumnIcon";
 import { ChartLineIcon } from "./ChartLineIcon";
 import { ChartNetworkIcon } from "./ChartNetworkIcon";
+import { ChartNoAxesCombinedIcon } from "./ChartNoAxesCombinedIcon";
 import { ChartPieIcon } from "./ChartPieIcon";
 import { CheckCheckIcon } from "./CheckCheckIcon";
 import { CheckIcon } from "./CheckIcon";
@@ -1808,6 +1809,11 @@ const Icon_List: IconListItem[] = [
 			"percentage",
 			"distribution",
 		],
+	},
+	{
+		name: "chart-no-axes-combined",
+		icon: ChartNoAxesCombinedIcon,
+		keywords: ["statistics", "analytics", "diagram", "graph", "trending up"],
 	},
 	{
 		name: "book-open-text",
