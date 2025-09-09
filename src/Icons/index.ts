@@ -1,3 +1,5 @@
+import { AArrowDownIcon } from "./AArrowDownIcon";
+import { AArrowUpIcon } from "./AArrowUpIcon";
 import { ActivityIcon } from "./ActivityIcon";
 import { ArrowDownUpIcon } from "./ArrowDownUpIcon";
 import { ArrowUp01Icon } from "./ArrowUp01Icon";
@@ -2001,6 +2003,7 @@ const Icon_List: IconListItem[] = [
 		name: "arrow-down-up",
 		icon: ArrowDownUpIcon,
 		keywords: [
+			"filter",
 			"bidirectional",
 			"two-way",
 			"2-way",
@@ -2015,6 +2018,16 @@ const Icon_List: IconListItem[] = [
 			"reorder",
 			"move",
 		],
+	},
+	{
+		name: "a-arrow-down",
+		icon: AArrowDownIcon,
+		keywords: ["letter", "font size", "text", "formatting", "smaller"],
+	},
+	{
+		name: "a-arrow-up",
+		icon: AArrowUpIcon,
+		keywords: ["letter", "font size", "text", "formatting", "bigger"],
 	},
 	{
 		name: "folder",
