@@ -86,6 +86,7 @@ import { GeorgianLariIcon } from "./GeorgianLariIcon";
 import { GithubIcon } from "./GithubIcon";
 import { GlobeIcon } from "./GlobeIcon";
 import { GlobeLockIcon } from "./GlobeLockIcon";
+import { HandCoinsIcon } from "./HandCoinsIcon";
 import { HeadphonesIcon } from "./HeadphonesIcon";
 import { HeadphonesOffIcon } from "./HeadphonesOffIcon";
 import { HeartIcon } from "./HeartIcon";
@@ -1355,6 +1356,26 @@ const Icon_List: IconListItem[] = [
 		name: "wallet-minimal",
 		icon: WalletMinimalIcon,
 		keywords: ["money", "finance", "payment", "cash", "billfold", "purse"],
+	},
+	{
+		name: "hand-coins",
+		icon: HandCoinsIcon,
+		keywords: [
+			"savings",
+			"banking",
+			"money",
+			"finance",
+			"offers",
+			"mortgage",
+			"payment",
+			"received",
+			"wage",
+			"payroll",
+			"allowance",
+			"pocket money",
+			"handout",
+			"pennie",
+		],
 	},
 	{
 		name: "blend",
