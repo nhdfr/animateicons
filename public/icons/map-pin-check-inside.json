@@ -1,0 +1,32 @@
+{
+  "name": "map-pin-check-inside",
+  "type": "registry:ui",
+  "registryDependencies": [],
+  "dependencies": [
+    "motion"
+  ],
+  "devDependencies": [],
+  "tailwind": {},
+  "cssVars": {
+    "light": {},
+    "dark": {}
+  },
+  "keywords": [
+    "location",
+    "waypoint",
+    "marker",
+    "drop",
+    "done",
+    "tick",
+    "complete",
+    "task",
+    "added"
+  ],
+  "files": [
+    {
+      "path": "MapPinCheckInsideIcon.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport type { HTMLMotionProps, Variants } from \"motion/react\";\nimport { motion, useAnimation, useReducedMotion } from \"motion/react\";\nimport { forwardRef, useCallback, useImperativeHandle, useRef } from \"react\";\n\nexport interface MapPinCheckInsideIconHandle {\n\tstartAnimation: () => void;\n\tstopAnimation: () => void;\n}\n\ninterface MapPinCheckInsideIconProps extends HTMLMotionProps<\"div\"> {\n\tsize?: number;\n}\n\nconst MapPinCheckInsideIcon = forwardRef<\n\tMapPinCheckInsideIconHandle,\n\tMapPinCheckInsideIconProps\n>(({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {\n\tconst pinControls = useAnimation();\n\tconst checkControls = useAnimation();\n\tconst reduced = useReducedMotion();\n\tconst isControlled = useRef(false);\n\n\tuseImperativeHandle(ref, () => {\n\t\tisControlled.current = true;\n\t\treturn {\n\t\t\tstartAnimation: () => {\n\t\t\t\tif (reduced) {\n\t\t\t\t\tpinControls.start(\"normal\");\n\t\t\t\t\tcheckControls.start(\"normal\");\n\t\t\t\t} else {\n\t\t\t\t\tpinControls.start(\"animate\");\n\t\t\t\t\tcheckControls.start(\"animate\");\n\t\t\t\t}\n\t\t\t},\n\t\t\tstopAnimation: () => {\n\t\t\t\tpinControls.start(\"normal\");\n\t\t\t\tcheckControls.start(\"normal\");\n\t\t\t},\n\t\t};\n\t});\n\n\tconst handleEnter = useCallback(\n\t\t(e?: React.MouseEvent<HTMLDivElement>) => {\n\t\t\tif (reduced) return;\n\t\t\tif (!isControlled.current) {\n\t\t\t\tpinControls.start(\"animate\");\n\t\t\t\tcheckControls.start(\"animate\");\n\t\t\t} else onMouseEnter?.(e as any);\n\t\t},\n\t\t[pinControls, checkControls, reduced, onMouseEnter],\n\t);\n\n\tconst handleLeave = useCallback(\n\t\t(e?: React.MouseEvent<HTMLDivElement>) => {\n\t\t\tif (!isControlled.current) {\n\t\t\t\tpinControls.start(\"normal\");\n\t\t\t\tcheckControls.start(\"normal\");\n\t\t\t} else onMouseLeave?.(e as any);\n\t\t},\n\t\t[pinControls, checkControls, onMouseLeave],\n\t);\n\n\tconst pinVariants: Variants = {\n\t\tnormal: { strokeDashoffset: 0 },\n\t\tanimate: {\n\t\t\tstrokeDashoffset: [160, 0],\n\t\t\ttransition: { duration: 1, ease: \"easeInOut\" },\n\t\t},\n\t};\n\n\tconst checkVariants: Variants = {\n\t\tnormal: { strokeDashoffset: 0, opacity: 1 },\n\t\tanimate: {\n\t\t\tstrokeDashoffset: [28, 0],\n\t\t\topacity: [0, 1],\n\t\t\ttransition: { duration: 1, ease: \"easeOut\", delay: 0.28 },\n\t\t},\n\t};\n\n\treturn (\n\t\t<motion.div\n\t\t\tclassName={cn(\"inline-flex items-center justify-center\", className)}\n\t\t\tonMouseEnter={handleEnter}\n\t\t\tonMouseLeave={handleLeave}\n\t\t\t{...props}\n\t\t>\n\t\t\t<svg\n\t\t\t\txmlns=\"http://www.w3.org/2000/svg\"\n\t\t\t\twidth={size}\n\t\t\t\theight={size}\n\t\t\t\tviewBox=\"0 0 24 24\"\n\t\t\t\tfill=\"none\"\n\t\t\t\tstroke=\"currentColor\"\n\t\t\t\tstrokeWidth=\"2\"\n\t\t\t\tstrokeLinecap=\"round\"\n\t\t\t\tstrokeLinejoin=\"round\"\n\t\t\t>\n\t\t\t\t<motion.path\n\t\t\t\t\td=\"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\"\n\t\t\t\t\tinitial=\"normal\"\n\t\t\t\t\tanimate={pinControls}\n\t\t\t\t\tvariants={pinVariants}\n\t\t\t\t\tstyle={{ strokeDasharray: 160, strokeLinecap: \"round\" }}\n\t\t\t\t/>\n\t\t\t\t<motion.path\n\t\t\t\t\td=\"m9 10 2 2 4-4\"\n\t\t\t\t\tinitial=\"normal\"\n\t\t\t\t\tanimate={checkControls}\n\t\t\t\t\tvariants={checkVariants}\n\t\t\t\t\tstyle={{ strokeDasharray: 28, strokeLinecap: \"round\" }}\n\t\t\t\t/>\n\t\t\t</svg>\n\t\t</motion.div>\n\t);\n});\n\nMapPinCheckInsideIcon.displayName = \"MapPinCheckInsideIcon\";\nexport { MapPinCheckInsideIcon };\n",
+      "type": "registry:ui"
+    }
+  ]
+}

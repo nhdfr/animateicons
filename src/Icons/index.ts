@@ -103,7 +103,12 @@ import { LinkIcon } from "./LinkIcon";
 import { LoaderCircleIcon } from "./LoaderCircleIcon";
 import { LoaderIcon } from "./LoaderIcon";
 import { LockIcon } from "./LockIcon";
+import { MailIcon } from "./MailIcon";
 import { MailsIcon } from "./MailsIcon";
+import { MapPinCheckIcon } from "./MapPinCheckIcon";
+import { MapPinCheckInsideIcon } from "./MapPinCheckInsideIcon";
+import { MapPinIcon } from "./MapPinIcon";
+import { MapPinnedIcon } from "./MapPinnedIcon";
 import { MenuIcon } from "./MenuIcon";
 import { MessageCircleIcon } from "./MessageCircleIcon";
 import { MicIcon } from "./MicIcon";
@@ -937,6 +942,19 @@ const Icon_List: IconListItem[] = [
 		],
 	},
 	{
+		name: "mail",
+		icon: MailIcon,
+		keywords: [
+			"email",
+			"envelope",
+			"communication",
+			"message",
+			"mailbox",
+			"inbox",
+			"newsletter",
+		],
+	},
+	{
 		name: "mails",
 		icon: MailsIcon,
 		keywords: [
@@ -1283,6 +1301,80 @@ const Icon_List: IconListItem[] = [
 			"encryption",
 			"protection",
 			"connection",
+		],
+	},
+	{
+		name: "map-pinned",
+		icon: MapPinnedIcon,
+		keywords: [
+			"location",
+			"place",
+			"marker",
+			"gps",
+			"navigation",
+			"destination",
+			"map",
+			"position",
+			"address",
+			"coordinates",
+			"travel",
+			"trip",
+			"journey",
+			"waypoint",
+			"geolocation",
+			"pin",
+		],
+	},
+	{
+		name: "map-pin",
+		icon: MapPinIcon,
+		keywords: [
+			"location",
+			"place",
+			"marker",
+			"gps",
+			"navigation",
+			"destination",
+			"map",
+			"position",
+			"address",
+			"coordinates",
+			"travel",
+			"trip",
+			"journey",
+			"waypoint",
+			"geolocation",
+			"pin",
+		],
+	},
+	{
+		name: "map-pin-check",
+		icon: MapPinCheckIcon,
+		keywords: [
+			"location",
+			"waypoint",
+			"marker",
+			"drop",
+			"done",
+			"tick",
+			"complete",
+			"task",
+			"added",
+		],
+	},
+	{
+		name: "map-pin-check-inside",
+		icon: MapPinCheckInsideIcon,
+		keywords: [
+			"location",
+			"waypoint",
+			"marker",
+			"drop",
+			"done",
+			"tick",
+			"complete",
+			"task",
+			"added",
 		],
 	},
 	{
