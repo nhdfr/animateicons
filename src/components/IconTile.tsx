@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/tooltip";
 import { CopyIcon, CopyIconHandle } from "@/Icons/CopyIcon";
 import { TerminalIcon, TerminalIconHandle } from "@/Icons/TerminalIcon";
+import { differenceInDays } from "date-fns";
 import React, { useState } from "react";
 import { CheckIcon } from "./icons/CheckIcon";
 
@@ -49,8 +50,18 @@ const IconTile: React.FC<Props> = ({ item }) => {
 		setTimeout(() => setCopiedCli(false), 1500);
 	};
 
+	function isNew(addedAt: string) {
+		return differenceInDays(new Date(), new Date(addedAt)) <= 7;
+	}
+
 	return (
-		<div className="bg-primary/10 border-primary/20 relative flex w-full flex-col items-center justify-center gap-2 rounded-md border p-4 text-sm text-white shadow-lg">
+		<div className="bg-primary/10 border-primary/20 relative flex w-full flex-col items-center justify-center gap-2 overflow-hidden rounded-md border p-4 text-sm text-white shadow-lg">
+			{item.addedAt && isNew(item.addedAt) && (
+				<span className="bg-primary/25 absolute top-0 right-0 rounded-bl-md px-2 py-1 text-xs font-medium text-gray-200">
+					New
+				</span>
+			)}
+
 			<IconComponent
 				className="hover:bg-primary/15 inline-block cursor-pointer rounded-xl p-3"
 				size={23}
