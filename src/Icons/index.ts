@@ -81,6 +81,7 @@ import { EuroIcon } from "./EuroIcon";
 import { ExternalLinkIcon } from "./ExternalLinkIcon";
 import { FacebookIcon } from "./FacebookIcon";
 import { FigmaIcon } from "./FigmaIcon";
+import { FlameIcon } from "./FlameIcon";
 import { FolderIcon } from "./FolderIcon";
 import { FolderOpenIcon } from "./FolderOpenIcon";
 import { FramerIcon } from "./FramerIcon";
@@ -2363,6 +2364,32 @@ const Icon_List: IconListItem[] = [
 			"stargazing",
 			"observe",
 			"view",
+		],
+	},
+	{
+		name: "flame",
+		icon: FlameIcon,
+		addedAt: "2025-10-07",
+		keywords: [
+			"heat",
+			"burn",
+			"light",
+			"glow",
+			"ignite",
+			"passion",
+			"ember",
+			"fire",
+			"lit",
+			"burning",
+			"spark",
+			"embers",
+			"smoke",
+			"firefighter",
+			"fireman",
+			"department",
+			"brigade",
+			"station",
+			"emergency",
 		],
 	},
 ];
