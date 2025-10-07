@@ -73,7 +73,7 @@ const BadgeCentIcon = forwardRef<BadgeCentIconHandle, BadgeCentIconProps>(
 				strokeDashoffset: [260, 20, 0],
 				scale: [1, 0.985, 1.03, 1],
 				transition: {
-					duration: 0.95,
+					duration: 1.2,
 					ease: [0.2, 0.85, 0.25, 1],
 					times: [0, 0.35, 0.7, 1],
 				},
@@ -86,7 +86,7 @@ const BadgeCentIcon = forwardRef<BadgeCentIconHandle, BadgeCentIconProps>(
 				strokeDashoffset: [16, 0],
 				scaleY: [1, 1.16, 0.98, 1],
 				opacity: [0.9, 1, 1],
-				transition: { duration: 0.5, ease: [0.22, 0.9, 0.28, 1], delay: 0.18 },
+				transition: { duration: 0.8, ease: [0.22, 0.9, 0.28, 1], delay: 0.18 },
 			},
 		};
 
@@ -95,7 +95,7 @@ const BadgeCentIcon = forwardRef<BadgeCentIconHandle, BadgeCentIconProps>(
 			animate: {
 				strokeDashoffset: [80, 0],
 				opacity: [0, 1],
-				transition: { duration: 0.6, ease: [0.22, 0.8, 0.2, 1], delay: 0.32 },
+				transition: { duration: 0.9, ease: [0.22, 0.8, 0.2, 1], delay: 0.32 },
 			},
 		};
 

@@ -62,14 +62,15 @@ const ShieldCheckIcon = forwardRef<ShieldCheckIconHandle, ShieldCheckIconProps>(
 		);
 
 		const shieldVariants: Variants = {
-			normal: { strokeDashoffset: 0, scale: 1 },
+			normal: { strokeDashoffset: 0, scale: 1, rotate: 0 },
 			animate: {
-				strokeDashoffset: [300, 0],
-				scale: [1, 0.97, 1.03, 1],
+				strokeDashoffset: [300, 24, 0],
+				scale: [1, 0.98, 1.04, 1],
+				rotate: [0, -2, 1, 0],
 				transition: {
-					duration: 1.1,
-					ease: [0.2, 0.85, 0.25, 1],
-					times: [0, 0.4, 0.75, 1],
+					duration: 1.0,
+					ease: [0.18, 0.85, 0.25, 1],
+					times: [0, 0.35, 0.75, 1],
 				},
 			},
 		};
@@ -81,7 +82,7 @@ const ShieldCheckIcon = forwardRef<ShieldCheckIconHandle, ShieldCheckIconProps>(
 				scale: [1, 1.1, 0.98, 1],
 				opacity: [0, 1, 1],
 				transition: {
-					duration: 0.7,
+					duration: 1.3,
 					ease: [0.22, 0.9, 0.28, 1],
 					delay: 0.25,
 					times: [0, 0.5, 1],
