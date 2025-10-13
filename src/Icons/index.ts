@@ -57,6 +57,7 @@ import { CircleChevronLeftIcon } from "./CircleChevronLeftIcon";
 import { CircleChevronRightIcon } from "./CircleChevronRightIcon";
 import { CircleChevronUpIcon } from "./CircleChevronUpIcon";
 import { CirclePlusIcon } from "./CirclePlusIcon";
+import { ClipboardIcon } from "./ClipboardIcon";
 import { CloudUploadIcon } from "./CloudUploadIcon";
 import { CodeIcon } from "./CodeIcon";
 import { CodeXmlIcon } from "./CodeXmlIcon";
@@ -120,6 +121,7 @@ import { MicOffIcon } from "./MicOffIcon";
 import { MinusIcon } from "./MinusIcon";
 import { MoveLeftIcon } from "./MoveLeftIcon";
 import { MoveRightIcon } from "./MoveRightIcon";
+import { PaperclipIcon } from "./PaperclipIcon";
 import { PhilippinePesoIcon } from "./PhilippinePesoIcon";
 import { PhoneIcon } from "./PhoneIcon";
 import { PlusIcon } from "./PlusIcon";
@@ -843,6 +845,12 @@ const Icon_List: IconListItem[] = [
 		name: "copy",
 		icon: CopyIcon,
 		keywords: ["clone", "duplicate", "multiple", "clipboard", "copy"],
+	},
+	{
+		name: "clipboard",
+		icon: ClipboardIcon,
+		addedAt: "2025-10-12",
+		keywords: ["copy", "paste"],
 	},
 	{
 		name: "send",
@@ -2348,6 +2356,12 @@ const Icon_List: IconListItem[] = [
 		name: "folder-open",
 		icon: FolderOpenIcon,
 		keywords: ["file", "document", "folder"],
+	},
+	{
+		name: "paperclip",
+		icon: PaperclipIcon,
+		addedAt: "2025-10-12",
+		keywords: ["attachment", "file", "document", "clip", "paper"],
 	},
 	{
 		name: "telescope",

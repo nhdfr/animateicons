@@ -5,7 +5,7 @@ import CmdCopy from "./CmdCopy";
 import { WordRotate } from "./magicui/word-rotate";
 
 const CmdSection: React.FC = () => {
-	const [activeTab, setActiveTab] = useState<"npm" | "bun">("npm");
+	const [activeTab, setActiveTab] = useState<"npm" | "pnpm" | "bun">("npm");
 	const [currentCmd, setCurrentCmd] = useState("");
 	const [copied, setCopied] = useState(false);
 	const [isReady, setIsReady] = useState(false);
@@ -29,7 +29,7 @@ const CmdSection: React.FC = () => {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			const tab = localStorage.getItem("tab") as "npm" | "bun" | null;
+			const tab = localStorage.getItem("tab") as "npm" | "pnpm" | "bun" | null;
 			if (tab) {
 				setActiveTab(tab);
 			}
@@ -43,7 +43,7 @@ const CmdSection: React.FC = () => {
 		<Tabs
 			value={activeTab}
 			onValueChange={(value) => {
-				setActiveTab(value as "npm" | "bun");
+				setActiveTab(value as "npm" | "pnpm" | "bun");
 				localStorage.setItem("tab", value);
 			}}
 			className="bg-primary/10 border-primary/20 relative mt-5 w-full gap-0 rounded-md border shadow-lg lg:w-200"
