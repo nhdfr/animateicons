@@ -36,7 +36,7 @@ After installing an icon, import it into your component:
 import { AtomIcon } from "./components/ui/AtomIcon";
 
 export default function Page() {
-	return <AtomIcon />;
+	return <AtomIcon size={28} speed={1} />;
 }
 ```
 
@@ -53,12 +53,12 @@ export default function Page() {
 	return (
 		<>
 			{/* Default hover animation */}
-			<BellRingIcon size={32} />
+			<BellRingIcon size={28} speed={1} />
 
 			{/* Programmatic control */}
 			<button onClick={() => bellRef.current?.startAnimation()}>Start</button>
 			<button onClick={() => bellRef.current?.stopAnimation()}>Stop</button>
-			<BellRingIcon ref={bellRef} size={32} />
+			<BellRingIcon ref={bellRef} size={28} speed={1} />
 		</>
 	);
 }
