@@ -12,11 +12,14 @@ export interface BellRingIconHandle {
 
 interface BellRingIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const BellRingIcon = forwardRef<BellRingIconHandle, BellRingIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -54,7 +57,7 @@ const BellRingIcon = forwardRef<BellRingIconHandle, BellRingIconProps>(
 			normal: { rotate: 0 },
 			animate: {
 				rotate: [0, -15, 13, -9, 6, -3, 0],
-				transition: { duration: 1.4 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 1.4 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -62,7 +65,7 @@ const BellRingIcon = forwardRef<BellRingIconHandle, BellRingIconProps>(
 			normal: { x: 0 },
 			animate: {
 				x: [0, -3, 3, -2, 2, 0],
-				transition: { duration: 1.4 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 1.4 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -70,7 +73,7 @@ const BellRingIcon = forwardRef<BellRingIconHandle, BellRingIconProps>(
 			normal: { opacity: 1 },
 			animate: {
 				opacity: [1, 0.4, 1],
-				transition: { duration: 1.4 * durationMultiplier, repeat: 0, ease: "easeInOut" },
+				transition: { duration: 1.4 * speed, repeat: 0, ease: "easeInOut" },
 			},
 		};
 

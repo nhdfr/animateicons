@@ -12,19 +12,12 @@ export interface IndianRupeeHandle {
 
 interface IndianRupeeProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -64,7 +57,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 			animate: {
 				strokeDasharray: "1",
 				strokeDashoffset: [1, 0],
-				transition: { duration: 0.5 * durationMultiplier, ease, delay: 0.06 },
+				transition: { duration: 0.5 * speed, ease, delay: 0.06 },
 			},
 		};
 
@@ -74,7 +67,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 				strokeDasharray: "1",
 				strokeDashoffset: [1, 0],
 				transition: {
-					duration: 0.5 * durationMultiplier,
+					duration: 0.5 * speed,
 					ease: "easeInOut",
 					delay: 0.16,
 				},
@@ -87,7 +80,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 				strokeDasharray: "1",
 				strokeDashoffset: [1, 0],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					ease: "easeInOut",
 					delay: 0.26,
 				},
@@ -100,7 +93,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 				strokeDasharray: "1",
 				strokeDashoffset: [1, 0],
 				transition: {
-					duration: 0.45 * durationMultiplier,
+					duration: 0.45 * speed,
 					ease: "easeInOut",
 					delay: 0.42,
 				},
@@ -113,7 +106,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 				scale: [1, 1.05, 1],
 				x: [0, -1, 0],
 				y: [0, -1, 0],
-				transition: { duration: 0.6 * durationMultiplier, ease },
+				transition: { duration: 0.6 * speed, ease },
 			},
 		};
 
@@ -133,7 +126,7 @@ const IndianRupeeIcon = forwardRef<IndianRupeeHandle, IndianRupeeProps>(
 				y: [-0.2, 0.5, 0],
 				scale: [1, 1.05, 1],
 				opacity: [1, 1],
-				transition: { duration: 0.6 * durationMultiplier, ease, delay: 0.5 },
+				transition: { duration: 0.6 * speed, ease, delay: 0.5 },
 			},
 		};
 

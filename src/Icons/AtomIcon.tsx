@@ -12,19 +12,12 @@ export interface AtomIconHandle {
 
 interface AtomIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const AtomIcon = forwardRef<AtomIconHandle, AtomIconProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -63,13 +56,13 @@ const AtomIcon = forwardRef<AtomIconHandle, AtomIconProps>(
 			normal: {
 				rotate: 0,
 				scale: 1,
-				transition: { duration: 0.3 * durationMultiplier },
+				transition: { duration: 0.3 * speed },
 			},
 			animate: {
 				rotate: 360,
 				scale: [1, 1.1, 1],
 				transition: {
-					duration: 2 * durationMultiplier,
+					duration: 2 * speed,
 					ease: "linear",
 					repeat: Infinity,
 				},

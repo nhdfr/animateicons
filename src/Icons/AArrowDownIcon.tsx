@@ -12,19 +12,12 @@ export interface AArrowDownIconHandle {
 
 interface AArrowDownIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const AArrowDownIcon = forwardRef<AArrowDownIconHandle, AArrowDownIconProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const groupControls = useAnimation();
@@ -111,7 +104,7 @@ const AArrowDownIcon = forwardRef<AArrowDownIconHandle, AArrowDownIconProps>(
 				scale: [1, 1.06, 0.98, 1],
 				rotate: [0, -1.5, 1, 0],
 				transition: {
-					duration: 0.85 * durationMultiplier,
+					duration: 0.85 * speed,
 					ease: [0.22, 0.9, 0.32, 1],
 				},
 			},
@@ -124,7 +117,7 @@ const AArrowDownIcon = forwardRef<AArrowDownIconHandle, AArrowDownIconProps>(
 				scale: [1, 1.12, 1],
 				opacity: [0.6, 1, 1],
 				transition: {
-					duration: 0.9 * durationMultiplier,
+					duration: 0.9 * speed,
 					ease: "easeOut",
 					delay: 0.06,
 				},
@@ -138,7 +131,7 @@ const AArrowDownIcon = forwardRef<AArrowDownIconHandle, AArrowDownIconProps>(
 				y: [-6, 0],
 				opacity: [0, 1],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					ease: "easeOut",
 					delay: 0.12,
 				},
@@ -151,7 +144,7 @@ const AArrowDownIcon = forwardRef<AArrowDownIconHandle, AArrowDownIconProps>(
 				x: [-8, 0],
 				opacity: [0, 1],
 				transition: {
-					duration: 0.7 * durationMultiplier,
+					duration: 0.7 * speed,
 					ease: "easeOut",
 					delay: 0.02,
 				},
@@ -165,7 +158,7 @@ const AArrowDownIcon = forwardRef<AArrowDownIconHandle, AArrowDownIconProps>(
 				opacity: [0, 1],
 				scaleX: [0.9, 1],
 				transition: {
-					duration: 0.7 * durationMultiplier,
+					duration: 0.7 * speed,
 					ease: "easeInOut",
 					delay: 0.18,
 				},

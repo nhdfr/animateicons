@@ -12,11 +12,14 @@ export interface HeadphonesIconHandle {
 
 interface HeadphonesIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const HeadphonesIcon = forwardRef<HeadphonesIconHandle, HeadphonesIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -52,7 +55,7 @@ const HeadphonesIcon = forwardRef<HeadphonesIconHandle, HeadphonesIconProps>(
 			animate: {
 				scale: [1, 1.1, 0.95, 1],
 				rotate: [0, -3, 3, -2, 0],
-				transition: { duration: 1.2 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 1.2 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -61,7 +64,7 @@ const HeadphonesIcon = forwardRef<HeadphonesIconHandle, HeadphonesIconProps>(
 			animate: {
 				scale: [1, 1.2, 0.9, 1],
 				opacity: [1, 0.7, 1],
-				transition: { duration: 0.9 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 0.9 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 

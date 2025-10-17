@@ -12,11 +12,14 @@ export interface ClipboardIconHandle {
 
 interface ClipboardIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const ClipboardIcon = forwardRef<ClipboardIconHandle, ClipboardIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const bodyControls = useAnimation();
 		const clipControls = useAnimation();
 		const reduced = useReducedMotion();
@@ -67,7 +70,7 @@ const ClipboardIcon = forwardRef<ClipboardIconHandle, ClipboardIconProps>(
 
 			animate: {
 				strokeDashoffset: [240, 0],
-				transition: { duration: 1 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 1 * speed, ease: "easeInOut" },
 				y: [0, -2, 0],
 			},
 		};
@@ -76,7 +79,7 @@ const ClipboardIcon = forwardRef<ClipboardIconHandle, ClipboardIconProps>(
 			normal: { strokeDashoffset: 0, y: 0 },
 			animate: {
 				strokeDashoffset: [60, 0],
-				transition: { duration: 1 * durationMultiplier, ease: "easeInOut", delay: 0.2 },
+				transition: { duration: 1 * speed, ease: "easeInOut", delay: 0.2 },
 				y: [0, -2, 0],
 			},
 		};

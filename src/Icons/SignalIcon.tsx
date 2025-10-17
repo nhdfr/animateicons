@@ -12,19 +12,12 @@ export interface SignalHandle {
 
 interface SignalProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -53,7 +46,7 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 			normal: { scale: 1, rotate: 0 },
 			animate: {
 				scale: [1, 1.05, 1],
-				transition: { duration: 1 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 1 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -62,7 +55,7 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 			animate: {
 				scale: [1, 1.3, 1],
 				opacity: [0.5, 1, 0.8],
-				transition: { duration: 0.5 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.5 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -72,7 +65,7 @@ const SignalIcon = forwardRef<SignalHandle, SignalProps>(
 				scaleY: [1, 1.4, 0.95, 1],
 				opacity: [0.8, 1, 0.85, 1],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					ease: "easeInOut",
 					delay,
 				},

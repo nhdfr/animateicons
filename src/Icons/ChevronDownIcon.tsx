@@ -12,11 +12,14 @@ export interface ChevronDownIconHandle {
 
 interface ChevronDownIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const ChevronDownIcon = forwardRef<ChevronDownIconHandle, ChevronDownIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -53,7 +56,7 @@ const ChevronDownIcon = forwardRef<ChevronDownIconHandle, ChevronDownIconProps>(
 				y: [0, 4, 0],
 				opacity: [1, 0.6, 1],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					repeat: 0,
 				},
 			},
@@ -65,7 +68,7 @@ const ChevronDownIcon = forwardRef<ChevronDownIconHandle, ChevronDownIconProps>(
 				y: [0, 6, 0],
 				opacity: [0.5, 0.2, 0.5],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					repeat: 0,
 					delay: 0.2,
 				},

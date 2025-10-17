@@ -12,19 +12,12 @@ export interface ShieldUserHandle {
 
 interface ShieldUserProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const ShieldUserIcon = forwardRef<ShieldUserHandle, ShieldUserProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -61,7 +54,7 @@ const ShieldUserIcon = forwardRef<ShieldUserHandle, ShieldUserProps>(
 			animate: {
 				strokeDashoffset: [120, 0],
 				opacity: [0.3, 1],
-				transition: { duration: 0.8 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.8 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -71,7 +64,7 @@ const ShieldUserIcon = forwardRef<ShieldUserHandle, ShieldUserProps>(
 				opacity: [0, 1],
 				y: [6, 0],
 				transition: {
-					duration: 0.5 * durationMultiplier,
+					duration: 0.5 * speed,
 					delay: 0.5,
 					ease: "easeOut",
 				},
@@ -84,7 +77,7 @@ const ShieldUserIcon = forwardRef<ShieldUserHandle, ShieldUserProps>(
 				scale: [0.5, 1.2, 1],
 				opacity: [0, 1],
 				transition: {
-					duration: 0.6 * durationMultiplier,
+					duration: 0.6 * speed,
 					delay: 0.3,
 					ease: "easeOut",
 				},

@@ -12,11 +12,14 @@ export interface GithubIconHandle {
 
 interface GithubIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -55,13 +58,13 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 				pathLength: 1,
 				pathOffset: 0,
 				opacity: 1,
-				transition: { duration: 0.3 * durationMultiplier },
+				transition: { duration: 0.3 * speed },
 			},
 			animate: {
 				pathLength: [1, 0.6, 1],
 				pathOffset: [0, 0.4, 0],
 				opacity: [1, 0.7, 1],
-				transition: { duration: 1 * durationMultiplier },
+				transition: { duration: 1 * speed },
 			},
 		};
 
@@ -71,7 +74,7 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 				rotate: [0, 20, -15, 0],
 				originX: 0.9,
 				originY: 0.5,
-				transition: { duration: 1 * durationMultiplier, repeat: Infinity },
+				transition: { duration: 1 * speed, repeat: Infinity },
 			},
 		};
 
@@ -93,8 +96,11 @@ const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					variants={{
-						normal: { scale: 1, transition: { duration: 0.3 * durationMultiplier } },
-						animate: { scale: [1, 1.05, 1], transition: { duration: 1 * durationMultiplier } },
+						normal: { scale: 1, transition: { duration: 0.3 * speed } },
+						animate: {
+							scale: [1, 1.05, 1],
+							transition: { duration: 1 * speed },
+						},
 					}}
 					animate={controls}
 					initial="normal"

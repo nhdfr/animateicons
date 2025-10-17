@@ -12,19 +12,12 @@ export interface PhoneHandle {
 
 interface PhoneProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const PhoneIcon = forwardRef<PhoneHandle, PhoneProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -63,7 +56,7 @@ const PhoneIcon = forwardRef<PhoneHandle, PhoneProps>(
 				rotate: [0, -3, 3, -2, 2, 0],
 				scale: [1, 1.02, 1, 1.015, 1],
 				transition: {
-					duration: 1.2 * durationMultiplier,
+					duration: 1.2 * speed,
 					ease: "easeInOut" as const,
 				},
 			},
@@ -75,7 +68,7 @@ const PhoneIcon = forwardRef<PhoneHandle, PhoneProps>(
 				strokeDashoffset: [110, 0],
 				opacity: [0.55, 1, 0.9, 1],
 				transition: {
-					duration: 0.9 * durationMultiplier,
+					duration: 0.9 * speed,
 					ease: "easeInOut" as const,
 				},
 			},

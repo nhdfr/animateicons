@@ -12,11 +12,14 @@ export interface MicIconHandle {
 
 interface MicIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const MicIcon = forwardRef<MicIconHandle, MicIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -53,7 +56,7 @@ const MicIcon = forwardRef<MicIconHandle, MicIconProps>(
 				scale: [1, 1.1, 0.95, 1],
 				rotate: [0, -3, 3, -2, 2, 0],
 				y: [0, -1, 0],
-				transition: { duration: 1.5 * durationMultiplier, repeat: 0, ease: "easeInOut" },
+				transition: { duration: 1.5 * speed, repeat: 0, ease: "easeInOut" },
 			},
 		};
 

@@ -12,19 +12,12 @@ export interface CodeHandle {
 
 interface CodeProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const CodeIcon = forwardRef<CodeHandle, CodeProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -64,7 +57,7 @@ const CodeIcon = forwardRef<CodeHandle, CodeProps>(
 			animate: {
 				scale: [1, 1.03, 1],
 				rotate: [0, -0.5, 0],
-				transition: { duration: 0.8 * durationMultiplier, ease },
+				transition: { duration: 0.8 * speed, ease },
 			},
 		};
 
@@ -73,7 +66,7 @@ const CodeIcon = forwardRef<CodeHandle, CodeProps>(
 			animate: {
 				strokeDasharray: 32,
 				strokeDashoffset: [32, 0],
-				transition: { duration: 1.8 * durationMultiplier, ease, delay: 0.12 },
+				transition: { duration: 1.8 * speed, ease, delay: 0.12 },
 			},
 		};
 
@@ -82,7 +75,7 @@ const CodeIcon = forwardRef<CodeHandle, CodeProps>(
 			animate: {
 				strokeDasharray: 32,
 				strokeDashoffset: [32, 0],
-				transition: { duration: 1.8 * durationMultiplier, ease, delay: 0.28 },
+				transition: { duration: 1.8 * speed, ease, delay: 0.28 },
 			},
 		};
 

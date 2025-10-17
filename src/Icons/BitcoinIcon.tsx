@@ -12,11 +12,14 @@ export interface BitcoinIconHandle {
 
 interface BitcoinIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const BitcoinIcon = forwardRef<BitcoinIconHandle, BitcoinIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -53,7 +56,7 @@ const BitcoinIcon = forwardRef<BitcoinIconHandle, BitcoinIconProps>(
 				scale: [1, 1.055, 1],
 				rotate: [0, -2, 2, 0],
 				y: [0, -1, 0],
-				transition: { duration: 0.9 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.9 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -71,7 +74,7 @@ const BitcoinIcon = forwardRef<BitcoinIconHandle, BitcoinIconProps>(
 			animate: {
 				scale: [0.6, 1.25, 1],
 				opacity: [0, 0.9, 0],
-				transition: { duration: 0.35 * durationMultiplier, ease: "easeOut", delay },
+				transition: { duration: 0.35 * speed, ease: "easeOut", delay },
 			},
 		});
 

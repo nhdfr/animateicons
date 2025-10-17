@@ -18,19 +18,12 @@ export interface BrainHandle {
 
 interface BrainProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const groupControls = useAnimation();
@@ -96,7 +89,7 @@ const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 				animate: {
 					rotate: [0, -2.2, 1.2, 0],
 					scale: [1, 1.015, 1],
-					transition: { duration: 0.7 * durationMultiplier, ease: "easeInOut" },
+					transition: { duration: 0.7 * speed, ease: "easeInOut" },
 				},
 			}),
 			[],
@@ -109,7 +102,7 @@ const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 					pathLength: [0, 1],
 					opacity: [0.55, 1],
 					transition: {
-						duration: 0.5 * durationMultiplier,
+						duration: 0.5 * speed,
 						ease: "easeInOut",
 						delay: 0.06,
 					},
@@ -126,7 +119,7 @@ const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 					opacity: [0.6, 1],
 					scale: [0.98, 1.02, 1],
 					transition: {
-						duration: 0.6 * durationMultiplier,
+						duration: 0.6 * speed,
 						ease: "easeInOut",
 						delay: 0.12,
 					},
@@ -143,7 +136,7 @@ const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 					opacity: [0.6, 1],
 					scale: [1.02, 0.98, 1],
 					transition: {
-						duration: 0.62 * durationMultiplier,
+						duration: 0.62 * speed,
 						ease: "easeInOut",
 						delay: 0.18,
 					},
@@ -159,7 +152,7 @@ const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 					pathLength: [0, 1],
 					opacity: [0, 1, 0],
 					transition: {
-						duration: 0.55 * durationMultiplier,
+						duration: 0.55 * speed,
 						ease: "easeInOut",
 						delay: 0.26,
 					},
@@ -175,7 +168,7 @@ const BrainIcon = forwardRef<BrainHandle, BrainProps>(
 					pathLength: [0, 1],
 					opacity: [0, 1, 0],
 					transition: {
-						duration: 0.55 * durationMultiplier,
+						duration: 0.55 * speed,
 						ease: "easeInOut",
 						delay: 0.34,
 					},

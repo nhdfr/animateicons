@@ -12,11 +12,14 @@ export interface CheckIconHandle {
 
 interface CheckIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -53,7 +56,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
 				strokeDashoffset: [20, 0],
 				scale: [1, 1.2, 1],
 				opacity: [0.5, 1],
-				transition: { duration: 0.6 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.6 * speed, ease: "easeInOut" },
 			},
 		};
 

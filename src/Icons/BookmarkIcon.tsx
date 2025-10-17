@@ -12,11 +12,14 @@ export interface BookmarkIconHandle {
 
 interface BookmarkIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const BookmarkIcon = forwardRef<BookmarkIconHandle, BookmarkIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const sparkControls = useAnimation();
 		const reduced = useReducedMotion();
@@ -55,7 +58,7 @@ const BookmarkIcon = forwardRef<BookmarkIconHandle, BookmarkIconProps>(
 			normal: { scale: 1 },
 			animate: {
 				scale: [1, 1.15, 0.9, 1],
-				transition: { duration: 1.2 * durationMultiplier, repeat: 0, ease: "easeInOut" },
+				transition: { duration: 1.2 * speed, repeat: 0, ease: "easeInOut" },
 			},
 		};
 
@@ -64,7 +67,7 @@ const BookmarkIcon = forwardRef<BookmarkIconHandle, BookmarkIconProps>(
 			animate: {
 				opacity: [0.8, 0, 0],
 				scale: [1, 1.5, 0],
-				transition: { duration: 1.2 * durationMultiplier, repeat: 0, ease: "easeOut" },
+				transition: { duration: 1.2 * speed, repeat: 0, ease: "easeOut" },
 			},
 		};
 

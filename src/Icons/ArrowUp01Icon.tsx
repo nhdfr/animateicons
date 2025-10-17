@@ -12,19 +12,12 @@ export interface ArrowUp01IconHandle {
 
 interface ArrowUp01IconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const ArrowUp01Icon = forwardRef<ArrowUp01IconHandle, ArrowUp01IconProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -62,7 +55,7 @@ const ArrowUp01Icon = forwardRef<ArrowUp01IconHandle, ArrowUp01IconProps>(
 			animate: {
 				scale: [1, 1.08, 0.96, 1],
 				rotate: [0, -4, 2, 0],
-				transition: { duration: 0.8 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.8 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -71,7 +64,7 @@ const ArrowUp01Icon = forwardRef<ArrowUp01IconHandle, ArrowUp01IconProps>(
 			animate: {
 				y: [6, -2, 0],
 				opacity: [0, 1],
-				transition: { duration: 0.6 * durationMultiplier, ease: "easeOut" },
+				transition: { duration: 0.6 * speed, ease: "easeOut" },
 			},
 		};
 
@@ -80,7 +73,7 @@ const ArrowUp01Icon = forwardRef<ArrowUp01IconHandle, ArrowUp01IconProps>(
 			animate: {
 				pathLength: [0, 1],
 				transition: {
-					duration: 0.7 * durationMultiplier,
+					duration: 0.7 * speed,
 					ease: "easeInOut",
 					delay: 0.1,
 				},
@@ -93,7 +86,7 @@ const ArrowUp01Icon = forwardRef<ArrowUp01IconHandle, ArrowUp01IconProps>(
 				scale: [0.8, 1.1, 1],
 				opacity: [0.7, 1, 1],
 				transition: {
-					duration: 0.6 * durationMultiplier,
+					duration: 0.6 * speed,
 					ease: "easeOut",
 					delay: 0.2,
 				},
@@ -106,7 +99,7 @@ const ArrowUp01Icon = forwardRef<ArrowUp01IconHandle, ArrowUp01IconProps>(
 				x: [-6, 0],
 				opacity: [0, 1],
 				transition: {
-					duration: 0.5 * durationMultiplier,
+					duration: 0.5 * speed,
 					ease: "easeOut",
 					delay: 0.3,
 				},

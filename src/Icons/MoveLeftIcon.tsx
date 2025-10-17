@@ -12,11 +12,14 @@ export interface MoveLeftIconHandle {
 
 interface MoveLeftIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const MoveLeftIcon = forwardRef<MoveLeftIconHandle, MoveLeftIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -51,7 +54,7 @@ const MoveLeftIcon = forwardRef<MoveLeftIconHandle, MoveLeftIconProps>(
 			normal: { x: 0 },
 			animate: {
 				x: [0, -3, 0],
-				transition: { duration: 0.6 * durationMultiplier, repeat: 0, ease: "easeInOut" },
+				transition: { duration: 0.6 * speed, repeat: 0, ease: "easeInOut" },
 			},
 		};
 
@@ -59,7 +62,7 @@ const MoveLeftIcon = forwardRef<MoveLeftIconHandle, MoveLeftIconProps>(
 			normal: { strokeOpacity: 1 },
 			animate: {
 				strokeOpacity: [1, 0.5, 1],
-				transition: { duration: 0.8 * durationMultiplier, repeat: 0 },
+				transition: { duration: 0.8 * speed, repeat: 0 },
 			},
 		};
 

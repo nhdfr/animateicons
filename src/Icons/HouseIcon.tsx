@@ -12,19 +12,12 @@ export interface HouseHandle {
 
 interface HouseProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const HouseIcon = forwardRef<HouseHandle, HouseProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -63,7 +56,7 @@ const HouseIcon = forwardRef<HouseHandle, HouseProps>(
 				strokeDashoffset: [100, 0],
 				opacity: [0.35, 1],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					ease: "easeInOut" as const,
 				},
 			},
@@ -75,7 +68,7 @@ const HouseIcon = forwardRef<HouseHandle, HouseProps>(
 				scaleY: [0.6, 1.15, 1],
 				opacity: [0, 1],
 				transition: {
-					duration: 0.5 * durationMultiplier,
+					duration: 0.5 * speed,
 					delay: 0.45,
 					ease: "easeOut" as const,
 				},
@@ -89,7 +82,7 @@ const HouseIcon = forwardRef<HouseHandle, HouseProps>(
 				y: [-2, -6, -10],
 				scale: [0.8, 1, 1.1],
 				transition: {
-					duration: 1.1 * durationMultiplier,
+					duration: 1.1 * speed,
 					delay: 0.3,
 					ease: "easeInOut" as const,
 				},
@@ -102,7 +95,7 @@ const HouseIcon = forwardRef<HouseHandle, HouseProps>(
 				rotate: [0, -1.5, 1.5, 0],
 				scale: [1, 1.02, 1],
 				transition: {
-					duration: 0.6 * durationMultiplier,
+					duration: 0.6 * speed,
 					ease: "easeInOut" as const,
 				},
 			},
