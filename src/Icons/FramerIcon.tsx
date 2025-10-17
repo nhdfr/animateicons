@@ -12,11 +12,14 @@ export interface FramerIconHandle {
 
 interface FramerIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -52,7 +55,7 @@ const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
 			animate: {
 				scale: [1, 1.07, 0.95, 1],
 				rotate: [0, -2, 2, 0],
-				transition: { duration: 1.4 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 1.4 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -61,7 +64,7 @@ const FramerIcon = forwardRef<FramerIconHandle, FramerIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.7, 1],
-				transition: { duration: 1.5 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 1.5 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 

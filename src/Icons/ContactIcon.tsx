@@ -12,11 +12,14 @@ export interface ContactHandle {
 
 interface ContactProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const ContactIcon = forwardRef<ContactHandle, ContactProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -52,7 +55,7 @@ const ContactIcon = forwardRef<ContactHandle, ContactProps>(
 			animate: {
 				strokeDashoffset: [100, 0],
 				opacity: [0.3, 1],
-				transition: { duration: 0.8 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.8 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -61,7 +64,7 @@ const ContactIcon = forwardRef<ContactHandle, ContactProps>(
 			animate: {
 				scale: [0.5, 1.2, 1],
 				opacity: [0, 1],
-				transition: { duration: 0.6 * durationMultiplier, delay: 0.3, ease: "easeOut" },
+				transition: { duration: 0.6 * speed, delay: 0.3, ease: "easeOut" },
 			},
 		};
 
@@ -70,7 +73,7 @@ const ContactIcon = forwardRef<ContactHandle, ContactProps>(
 			animate: {
 				x: [-10, 0],
 				opacity: [0, 1],
-				transition: { duration: 0.4 * durationMultiplier, ease: "easeOut", delay: 0.6 },
+				transition: { duration: 0.4 * speed, ease: "easeOut", delay: 0.6 },
 			},
 		};
 
@@ -79,7 +82,7 @@ const ContactIcon = forwardRef<ContactHandle, ContactProps>(
 			animate: {
 				strokeDashoffset: [30, 0],
 				opacity: [0, 1],
-				transition: { duration: 0.6 * durationMultiplier, delay: 0.5, ease: "easeInOut" },
+				transition: { duration: 0.6 * speed, delay: 0.5, ease: "easeInOut" },
 			},
 		};
 

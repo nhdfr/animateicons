@@ -12,19 +12,12 @@ export interface ActivityIconHandle {
 
 interface ActivityIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const ActivityIcon = forwardRef<ActivityIconHandle, ActivityIconProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -67,7 +60,7 @@ const ActivityIcon = forwardRef<ActivityIconHandle, ActivityIconProps>(
 				strokeDashoffset: [80, 0, -80],
 				opacity: [0.6, 1, 0.6],
 				transition: {
-					duration: 2 * durationMultiplier,
+					duration: 2 * speed,
 					repeat: Infinity,
 					ease: "easeInOut",
 				},

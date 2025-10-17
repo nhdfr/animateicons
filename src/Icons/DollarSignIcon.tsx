@@ -12,11 +12,14 @@ export interface DollarSignIconHandle {
 
 interface DollarSignIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const DollarSignIcon = forwardRef<DollarSignIconHandle, DollarSignIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -53,7 +56,7 @@ const DollarSignIcon = forwardRef<DollarSignIconHandle, DollarSignIconProps>(
 				scale: [1, 1.06, 1],
 				rotate: [0, -2, 2, 0],
 				y: [0, -1, 0],
-				transition: { duration: 1.2 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 1.2 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -62,7 +65,7 @@ const DollarSignIcon = forwardRef<DollarSignIconHandle, DollarSignIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.7, 1],
-				transition: { duration: 0.9 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.9 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -71,7 +74,7 @@ const DollarSignIcon = forwardRef<DollarSignIconHandle, DollarSignIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.8, 1],
-				transition: { duration: 0.8 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.8 * speed, ease: "easeInOut" },
 			},
 		};
 

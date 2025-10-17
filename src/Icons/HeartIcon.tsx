@@ -12,11 +12,14 @@ export interface HeartIconHandle {
 
 interface HeartIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const HeartIcon = forwardRef<HeartIconHandle, HeartIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -56,7 +59,7 @@ const HeartIcon = forwardRef<HeartIconHandle, HeartIconProps>(
 			normal: { pathLength: 1 },
 			animate: {
 				pathLength: [0, 1],
-				transition: { duration: 0.7 * durationMultiplier, ease: easeInOutArray },
+				transition: { duration: 0.7 * speed, ease: easeInOutArray },
 			},
 		};
 
@@ -64,7 +67,7 @@ const HeartIcon = forwardRef<HeartIconHandle, HeartIconProps>(
 			normal: { pathLength: 1 },
 			animate: {
 				pathLength: [0, 1],
-				transition: { duration: 0.7 * durationMultiplier, ease: easeInOutArray, delay: 0.2 },
+				transition: { duration: 0.7 * speed, ease: easeInOutArray, delay: 0.2 },
 			},
 		};
 

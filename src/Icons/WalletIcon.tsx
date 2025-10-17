@@ -12,19 +12,12 @@ export interface WalletHandle {
 
 interface WalletProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const WalletIcon = forwardRef<WalletHandle, WalletProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -63,7 +56,7 @@ const WalletIcon = forwardRef<WalletHandle, WalletProps>(
 				strokeDashoffset: [80, 0],
 				opacity: [0.4, 1],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					ease: "easeInOut" as const,
 				},
 			},
@@ -74,7 +67,7 @@ const WalletIcon = forwardRef<WalletHandle, WalletProps>(
 			animate: {
 				rotate: [-6, 0, -3, 0],
 				transition: {
-					duration: 0.9 * durationMultiplier,
+					duration: 0.9 * speed,
 					ease: "easeInOut" as const,
 					delay: 0.2,
 				},
@@ -87,7 +80,7 @@ const WalletIcon = forwardRef<WalletHandle, WalletProps>(
 				x: [0, 6, 0],
 				opacity: [0, 1, 0],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					ease: "easeInOut" as const,
 					delay: 0.45,
 				},

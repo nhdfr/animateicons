@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import type { HTMLMotionProps, Transition } from "motion/react";
 import { motion, useAnimation, useReducedMotion } from "motion/react";
-import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 export interface CopyIconHandle {
@@ -13,15 +12,17 @@ export interface CopyIconHandle {
 
 interface CopyIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const CopyIcon = forwardRef<CopyIconHandle, CopyIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
-
 
 		useImperativeHandle(ref, () => {
 			isControlled.current = true;
@@ -97,7 +98,7 @@ const CopyIcon = forwardRef<CopyIconHandle, CopyIconProps>(
 						animate={controls}
 						transition={{
 							...defaultTransition,
-							duration: 0.7 * durationMultiplier,
+							duration: 0.7 * speed,
 						}}
 					/>
 					<motion.path

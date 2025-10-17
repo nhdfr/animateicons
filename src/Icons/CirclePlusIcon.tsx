@@ -12,11 +12,14 @@ export interface CirclePlusIconHandle {
 
 interface CirclePlusIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const CirclePlusIcon = forwardRef<CirclePlusIconHandle, CirclePlusIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -52,7 +55,7 @@ const CirclePlusIcon = forwardRef<CirclePlusIconHandle, CirclePlusIconProps>(
 			animate: {
 				scale: [1, 1.1, 1],
 				rotate: 360,
-				transition: { duration: 2 * durationMultiplier, repeat: 0, ease: "linear" },
+				transition: { duration: 2 * speed, repeat: 0, ease: "linear" },
 			},
 		};
 
@@ -60,7 +63,7 @@ const CirclePlusIcon = forwardRef<CirclePlusIconHandle, CirclePlusIconProps>(
 			normal: { opacity: 1 },
 			animate: {
 				opacity: [1, 0.4, 1],
-				transition: { duration: 1 * durationMultiplier, repeat: 0, ease: "easeInOut" },
+				transition: { duration: 1 * speed, repeat: 0, ease: "easeInOut" },
 			},
 		};
 

@@ -12,11 +12,14 @@ export interface TerminalIconHandle {
 
 interface TerminalIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const TerminalIcon = forwardRef<TerminalIconHandle, TerminalIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -48,16 +51,16 @@ const TerminalIcon = forwardRef<TerminalIconHandle, TerminalIconProps>(
 		);
 
 		const svgVariants: Variants = {
-			normal: { transition: { duration: 0.3 * durationMultiplier } },
+			normal: { transition: { duration: 0.3 * speed } },
 			animate: { transition: { staggerChildren: 0.1 } },
 		};
 
 		const commandLineVariants: Variants = {
-			normal: { scaleX: 1, originX: 0, transition: { duration: 0.3 * durationMultiplier } },
+			normal: { scaleX: 1, originX: 0, transition: { duration: 0.3 * speed } },
 			animate: {
 				scaleX: [1, 0.3, 1],
 				originX: 0,
-				transition: { duration: 0.6 * durationMultiplier, times: [0, 0.5, 1], repeat: 0 },
+				transition: { duration: 0.6 * speed, times: [0, 0.5, 1], repeat: 0 },
 			},
 		};
 
@@ -66,7 +69,7 @@ const TerminalIcon = forwardRef<TerminalIconHandle, TerminalIconProps>(
 			animate: {
 				x: [0, -2, 0],
 				opacity: [1, 0.6, 1],
-				transition: { duration: 0.5 * durationMultiplier, repeat: 0 },
+				transition: { duration: 0.5 * speed, repeat: 0 },
 			},
 		};
 

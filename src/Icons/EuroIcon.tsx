@@ -12,11 +12,14 @@ export interface EuroIconHandle {
 
 interface EuroIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const EuroIcon = forwardRef<EuroIconHandle, EuroIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -53,7 +56,7 @@ const EuroIcon = forwardRef<EuroIconHandle, EuroIconProps>(
 				scale: [1, 1.06, 1],
 				rotate: [0, -2, 2, 0],
 				y: [0, -1, 0],
-				transition: { duration: 1.2 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 1.2 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -62,7 +65,7 @@ const EuroIcon = forwardRef<EuroIconHandle, EuroIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.7, 1],
-				transition: { duration: 0.5 * durationMultiplier, ease: "easeInOut", delay: 0.06 },
+				transition: { duration: 0.5 * speed, ease: "easeInOut", delay: 0.06 },
 			},
 		};
 
@@ -71,7 +74,7 @@ const EuroIcon = forwardRef<EuroIconHandle, EuroIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.7, 1],
-				transition: { duration: 0.6 * durationMultiplier, ease: "easeInOut", delay: 0.16 },
+				transition: { duration: 0.6 * speed, ease: "easeInOut", delay: 0.16 },
 			},
 		};
 
@@ -80,7 +83,7 @@ const EuroIcon = forwardRef<EuroIconHandle, EuroIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.8, 1],
-				transition: { duration: 0.9 * durationMultiplier, ease: "easeInOut", delay: 0.26 },
+				transition: { duration: 0.9 * speed, ease: "easeInOut", delay: 0.26 },
 			},
 		};
 

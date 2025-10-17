@@ -12,11 +12,14 @@ export interface InfoIconHandle {
 
 interface InfoIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const InfoIcon = forwardRef<InfoIconHandle, InfoIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -52,7 +55,7 @@ const InfoIcon = forwardRef<InfoIconHandle, InfoIconProps>(
 			animate: {
 				rotate: [0, -2, 2, 0],
 				scale: [1, 1.08, 0.95, 1],
-				transition: { duration: 0.7 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 0.7 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -61,7 +64,7 @@ const InfoIcon = forwardRef<InfoIconHandle, InfoIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.6, 1],
-				transition: { duration: 0.8 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 0.8 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 
@@ -70,7 +73,7 @@ const InfoIcon = forwardRef<InfoIconHandle, InfoIconProps>(
 			animate: {
 				scale: [1, 1.3, 0.8, 1],
 				opacity: [1, 0.5, 1],
-				transition: { duration: 0.5 * durationMultiplier, ease: "easeInOut", repeat: 0 },
+				transition: { duration: 0.5 * speed, ease: "easeInOut", repeat: 0 },
 			},
 		};
 

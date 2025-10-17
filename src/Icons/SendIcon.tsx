@@ -12,11 +12,14 @@ export interface SendIconHandle {
 
 interface SendIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const SendIcon = forwardRef<SendIconHandle, SendIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -55,7 +58,7 @@ const SendIcon = forwardRef<SendIconHandle, SendIconProps>(
 				y: [0, -2, 0, 0],
 				scale: [1, 1.04, 1, 1],
 				transition: {
-					duration: 1.2 * durationMultiplier,
+					duration: 1.2 * speed,
 					ease: "easeInOut",
 					when: "beforeChildren",
 					staggerChildren: 0.08,
@@ -70,7 +73,12 @@ const SendIcon = forwardRef<SendIconHandle, SendIconProps>(
 				opacity: [0, 0.5, 0],
 				x: [-4, -6, -8],
 				scaleX: [0.8, 1, 1.1],
-				transition: { duration: 0.5 * durationMultiplier, ease: "easeOut", repeat: 0, delay: 0.05 },
+				transition: {
+					duration: 0.5 * speed,
+					ease: "easeOut",
+					repeat: 0,
+					delay: 0.05,
+				},
 			},
 		};
 

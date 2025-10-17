@@ -12,11 +12,14 @@ export interface ChromeIconHandle {
 
 interface ChromeIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const ChromeIcon = forwardRef<ChromeIconHandle, ChromeIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -51,7 +54,7 @@ const ChromeIcon = forwardRef<ChromeIconHandle, ChromeIconProps>(
 			normal: { rotate: 0 },
 			animate: {
 				rotate: 360,
-				transition: { duration: 4 * durationMultiplier, repeat: 0, ease: "linear" },
+				transition: { duration: 4 * speed, repeat: 0, ease: "linear" },
 			},
 		};
 
@@ -60,7 +63,7 @@ const ChromeIcon = forwardRef<ChromeIconHandle, ChromeIconProps>(
 			animate: {
 				scale: [1, 1.2, 1],
 				opacity: [1, 0.7, 1],
-				transition: { duration: 1.5 * durationMultiplier, repeat: 0 },
+				transition: { duration: 1.5 * speed, repeat: 0 },
 			},
 		};
 
@@ -68,7 +71,7 @@ const ChromeIcon = forwardRef<ChromeIconHandle, ChromeIconProps>(
 			normal: { opacity: 0.8 },
 			animate: {
 				opacity: [0.8, 0.3, 0.8],
-				transition: { duration: 1.2 * durationMultiplier, repeat: 0, staggerChildren: 0.3 },
+				transition: { duration: 1.2 * speed, repeat: 0, staggerChildren: 0.3 },
 			},
 		};
 

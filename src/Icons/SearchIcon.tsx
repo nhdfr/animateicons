@@ -12,19 +12,12 @@ export interface SearchHandle {
 
 interface SearchProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const SearchIcon = forwardRef<SearchHandle, SearchProps>(
 	(
-		{
-			onMouseEnter,
-			onMouseLeave,
-			className,
-			size = 28,
-			durationMultiplier = 1,
-			...props
-		},
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
 		ref,
 	) => {
 		const controls = useAnimation();
@@ -64,7 +57,7 @@ const SearchIcon = forwardRef<SearchHandle, SearchProps>(
 				opacity: [0.3, 1],
 				scale: [1, 1.1, 1],
 				transition: {
-					duration: 0.8 * durationMultiplier,
+					duration: 0.8 * speed,
 					ease: "easeInOut" as const,
 				},
 			},
@@ -76,7 +69,7 @@ const SearchIcon = forwardRef<SearchHandle, SearchProps>(
 				strokeDashoffset: [20, 0],
 				opacity: [0, 1],
 				transition: {
-					duration: 0.6 * durationMultiplier,
+					duration: 0.6 * speed,
 					delay: 0.3,
 					ease: "easeInOut" as const,
 				},
@@ -89,7 +82,7 @@ const SearchIcon = forwardRef<SearchHandle, SearchProps>(
 				rotate: [0, 5, -5, 0],
 				scale: [1, 1.05, 1],
 				transition: {
-					duration: 1 * durationMultiplier,
+					duration: 1 * speed,
 					ease: "easeInOut" as const,
 				},
 			},

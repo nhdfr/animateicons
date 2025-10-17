@@ -12,11 +12,14 @@ export interface UnlinkIconHandle {
 
 interface UnlinkIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const UnlinkIcon = forwardRef<UnlinkIconHandle, UnlinkIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const leftChainControls = useAnimation();
 		const rightChainControls = useAnimation();
 		const sparksControls = useAnimation();
@@ -73,7 +76,7 @@ const UnlinkIcon = forwardRef<UnlinkIconHandle, UnlinkIconProps>(
 			animate: {
 				x: [-2, -4, -2, 0],
 				rotate: [-5, -8, -5, 0],
-				transition: { duration: 0.8 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.8 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -82,7 +85,7 @@ const UnlinkIcon = forwardRef<UnlinkIconHandle, UnlinkIconProps>(
 			animate: {
 				x: [2, 4, 2, 0],
 				rotate: [5, 8, 5, 0],
-				transition: { duration: 0.8 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.8 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -91,7 +94,7 @@ const UnlinkIcon = forwardRef<UnlinkIconHandle, UnlinkIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0, 1, 0, 1],
-				transition: { duration: 0.5 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.5 * speed, ease: "easeInOut" },
 			},
 		};
 

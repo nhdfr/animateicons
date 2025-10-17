@@ -12,11 +12,14 @@ export interface LoaderIconHandle {
 
 interface LoaderIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const LoaderIcon = forwardRef<LoaderIconHandle, LoaderIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -48,13 +51,17 @@ const LoaderIcon = forwardRef<LoaderIconHandle, LoaderIconProps>(
 		);
 
 		const wrapperVariants: Variants = {
-			normal: { rotate: 0, scale: 1, transition: { duration: 0.3 * durationMultiplier } },
+			normal: { rotate: 0, scale: 1, transition: { duration: 0.3 * speed } },
 			animate: {
 				rotate: 360,
 				scale: [1, 1.1, 1],
 				transition: {
-					rotate: { duration: 1 * durationMultiplier, ease: "linear", repeat: Infinity },
-					scale: { duration: 0.6 * durationMultiplier, repeat: Infinity, repeatType: "mirror" },
+					rotate: { duration: 1 * speed, ease: "linear", repeat: Infinity },
+					scale: {
+						duration: 0.6 * speed,
+						repeat: Infinity,
+						repeatType: "mirror",
+					},
 				},
 			},
 		};

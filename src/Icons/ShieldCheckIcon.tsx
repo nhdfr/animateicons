@@ -12,11 +12,14 @@ export interface ShieldCheckIconHandle {
 
 interface ShieldCheckIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const ShieldCheckIcon = forwardRef<ShieldCheckIconHandle, ShieldCheckIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const shieldControls = useAnimation();
 		const checkControls = useAnimation();
 		const reduced = useReducedMotion();
@@ -69,7 +72,7 @@ const ShieldCheckIcon = forwardRef<ShieldCheckIconHandle, ShieldCheckIconProps>(
 				scale: [1, 0.98, 1.04, 1],
 				rotate: [0, -2, 1, 0],
 				transition: {
-					duration: 1.0 * durationMultiplier,
+					duration: 1.0 * speed,
 					ease: [0.18, 0.85, 0.25, 1],
 					times: [0, 0.35, 0.75, 1],
 				},
@@ -83,7 +86,7 @@ const ShieldCheckIcon = forwardRef<ShieldCheckIconHandle, ShieldCheckIconProps>(
 				scale: [1, 1.1, 0.98, 1],
 				opacity: [0, 1, 1],
 				transition: {
-					duration: 1.3 * durationMultiplier,
+					duration: 1.3 * speed,
 					ease: [0.22, 0.9, 0.28, 1],
 					delay: 0.25,
 					times: [0, 0.5, 1],

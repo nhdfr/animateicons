@@ -12,11 +12,14 @@ export interface HandCoinsIconHandle {
 
 interface HandCoinsIconProps extends HTMLMotionProps<"div"> {
 	size?: number;
-	durationMultiplier?: number;
+	speed?: number;
 }
 
 const HandCoinsIcon = forwardRef<HandCoinsIconHandle, HandCoinsIconProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, durationMultiplier = 1, ...props }, ref) => {
+	(
+		{ onMouseEnter, onMouseLeave, className, size = 28, speed = 1, ...props },
+		ref,
+	) => {
 		const groupControls = useAnimation();
 		const coinsControls = useAnimation();
 		const handControls = useAnimation();
@@ -73,7 +76,7 @@ const HandCoinsIcon = forwardRef<HandCoinsIconHandle, HandCoinsIconProps>(
 			animate: {
 				scale: [1, 1.05, 0.98, 1],
 				rotate: [0, -1.5, 1.5, 0],
-				transition: { duration: 0.9 * durationMultiplier, ease: "easeInOut" },
+				transition: { duration: 0.9 * speed, ease: "easeInOut" },
 			},
 		};
 
@@ -82,7 +85,7 @@ const HandCoinsIcon = forwardRef<HandCoinsIconHandle, HandCoinsIconProps>(
 			animate: {
 				scale: [1, 1.2, 0.95, 1],
 				opacity: [1, 0.9, 1],
-				transition: { duration: 0.7 * durationMultiplier, ease: "easeOut", delay: 0.1 },
+				transition: { duration: 0.7 * speed, ease: "easeOut", delay: 0.1 },
 			},
 		};
 
@@ -91,7 +94,7 @@ const HandCoinsIcon = forwardRef<HandCoinsIconHandle, HandCoinsIconProps>(
 			animate: {
 				pathLength: [0, 1],
 				opacity: [0.6, 1],
-				transition: { duration: 1.1 * durationMultiplier, ease: "easeInOut", delay: 0.15 },
+				transition: { duration: 1.1 * speed, ease: "easeInOut", delay: 0.15 },
 			},
 		};
 
