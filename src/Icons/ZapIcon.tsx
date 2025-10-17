@@ -12,10 +12,21 @@ export interface ZapHandle {
 
 interface ZapProps extends HTMLMotionProps<"div"> {
 	size?: number;
+	durationMultiplier?: number;
 }
 
 const ZapIcon = forwardRef<ZapHandle, ZapProps>(
-	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
+	(
+		{
+			onMouseEnter,
+			onMouseLeave,
+			className,
+			size = 28,
+			durationMultiplier = 1,
+			...props
+		},
+		ref,
+	) => {
 		const controls = useAnimation();
 		const reduced = useReducedMotion();
 		const isControlled = useRef(false);
@@ -53,7 +64,7 @@ const ZapIcon = forwardRef<ZapHandle, ZapProps>(
 				opacity: [0.95, 1],
 				rotate: [0, -6, 2, 0],
 				scale: [1, 1.08, 1.02, 1],
-				transition: { duration: 0.8, ease: "easeInOut" },
+				transition: { duration: 0.8 * durationMultiplier, ease: "easeInOut" },
 			},
 		};
 
